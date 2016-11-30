@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Handles requests for the application home page.
  */
+
+//WEB-INF/home.jsp 연결하는 부분
 @Controller
 public class HomeController {
 	
