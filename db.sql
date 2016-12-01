@@ -1,3 +1,7 @@
+1.1  <11.29 /user-컬럼이름수정,pw Null board-updateDate Null, admin_number null>
+         수정시간/수정한 테이블-수정된 내용
+
+
 drop database buytogether;
 
 
@@ -21,16 +25,17 @@ CREATE TABLE access (
 
 
 
+
 -- 유저
 CREATE TABLE user (
 	user_number      INTEGER      NOT NULL auto_increment, -- 유저번호
-	id               VARCHAR(20)  NOT NULL unique,     -- 아이디
+	id               VARCHAR(12)  NOT NULL unique,     -- 아이디
 	pw               VARCHAR(60)  NULL,     -- 비밀번호
 	name             VARCHAR(8)   NOT NULL,     -- 이름
 	email            VARCHAR(20)  NOT NULL unique,     -- 이메일
 	phone_number     VARCHAR(11)  NOT NULL,     -- 전화번호
 	birthdate         DATE         NOT NULL,     -- 생년월일
-	gender              VARCHAR(2)   NOT NULL,     -- 성별
+	gender           VARCHAR(2)   NOT NULL,     -- 성별
 	nickname         VARCHAR(10)  NOT NULL unique,     -- 닉네임
 	profile          VARCHAR(100) NULL,     -- 프로필사진
 	region           VARCHAR(100) NULL,     -- 지역
@@ -88,7 +93,7 @@ CREATE TABLE qna (
 	qna_writedate timestamp        NOT NULL default now(),     -- 작성일
 	user_number   INTEGER     NULL,     -- 유저번호
 	admin_number  INTEGER     NULL,      -- 관리자번호
-	qna_password  INTEGER	NOT NULL,   -- qna 질문 비밀번호
+
 
 	primary key (qna_number),
 	foreign key (user_number) references user (user_number) on delete cascade,
@@ -283,7 +288,7 @@ CREATE TABLE board (
 	board_title       VARCHAR(20) NOT NULL,     -- 제목
 	board_content     TEXT        NOT NULL,     -- 내용
 	board_writedate   timestamp        NOT NULL default now(),     -- 작성시간
-	board_updatedate  timestamp        NOT NULL default now(),     -- 수정시간
+	board_updatedate  timestamp        NULL,     -- 수정시간
 	admin_number      INTEGER     NULL,     -- 관리자번호
 	board_type_number INTEGER     NOT NULL,      -- 게시판종류번호
 
@@ -368,5 +373,3 @@ CREATE TABLE declareuser (
 
 
 );
-
-
