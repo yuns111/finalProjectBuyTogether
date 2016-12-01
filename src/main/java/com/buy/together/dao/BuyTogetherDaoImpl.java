@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BuyTogetherImpl implements BuyTogetherDao {
+public class BuyTogetherDaoImpl implements BuyTogetherDao {
 
 	private static final String namespace="com.buy.together.mappers.buyTogetherMapper";
 	

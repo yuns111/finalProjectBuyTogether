@@ -1,33 +1,139 @@
 <!DOCTYPE html>
-<html>
+<!-- 웹페이지에서 사용되는 글은 한글 -->
+<html lang="ko-kr">
 <head>
-
+<!-- 부라우저 최신 버젼 적용 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- 해상도 자동 맞춤, 반응형 웹 페이지 적용 부분 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 웹 브라우저에서 다양한 언어 사용 가능 -->
 <meta charset="UTF-8">
 
-	<!-- 부라우저 최신 버젼 적용 -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- 해상도 자동 맞춤, 반응형 웹 페이지 적용 부분 -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- 웹 브라우저에서 다양한 언어 사용 가능 -->
-	<meta charset="UTF-8">
-	
-	<!-- Bootstrap 적용 부분 -->
-	<link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- jQuery 부분 -->
-	<script src="../resources/bootstrap/js/jquery-3.1.1.min.js"></script>
-	<!-- Bootstrap에서 사용하는 자바스크립트 부분 -->
-	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
-	
-<title>Insert title here</title>
+<!-- Bootstrap 적용 부분 -->
+<link href="../resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- jQuery 부분 -->
+<script src="../resources/bootstrap/js/jquery-3.1.1.min.js"></script>
+<!-- Bootstrap에서 사용하는 자바스크립트 부분 -->
+<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+
+<title>Test</title>
+
+<style>
+.box {
+	border: 1px solid powderblue;
+}
+</style>
+
 </head>
 <body>
-	<p>위치: views/buyTogether/buyTogether.html</p>
+	<h1>위치: views/buyTogether/buyTogether.html</h1>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-offset-2 col-sm-8">
-			 <p>사이즈 2 8 2</p>
+			<!-- 썸네일 부분 -->
+			<div class="col-md-6 col-xs-12 thumb">
+				<a href="#" class="thumbnail"> <img
+					src="../../resources/img/김지원.jpg" alt="#">
+				</a>
+			</div>
+			<!-- 우측 썸네일 부분 -->
+			<div class="col-md-2 col-xs-12">
+				<br>
+				<div class="col-md-12 col-xs-4 thumb">
+					<a href="#" class="thumbnail"> <img
+						src="../../resources/img/김지원.jpg" alt="사진1">
+					</a>
+				</div>
+				<div class="col-md-12 col-xs-4 thumb">
+					<a href="#" class="thumbnail"> <img
+						src="../../resources/img/김지원.jpg" alt="사진2">
+					</a>
+				</div>
+				<div class="col-md-12 col-xs-4 thumb">
+					<a href="#" class="thumbnail"> <img
+						src="../../resources/img/김지원.jpg" alt="사진3">
+					</a>
+				</div>
+				<!-- row end -->
+			</div>
+
+			<!-- 제품 조회 정보 -->
+			<div class="col-md-4 col-xs-12 well">
+				<div class="row">
+					<p>
+						<abbr title="섬유향수">섬유향수 로제 200ml</abbr>
+					</p>
+					<dl>
+						<dt>가격: 9000원</dt>
+						<dt>지역: 경기도 성남시 분당구 상평동 대왕판교로</dt>
+						<dt>같이사냥상태: 혼자 사냥 중</dt>
+						<dt>등록일: 2016. 11. 17</dt>
+						<dt>마감일: 2016. 11. 20</dt>
+						<dt>참여 인원: 11 / 2</dt>
+					</dl>
+				</div>
+				<br>
+				<!-- 프로필 정보 부분 -->
+				<div class="row box">
+					<div class="col-md-3 col-xs-5">
+						<br> <a href="#" class="thumbnail"> <img
+							src="../../resources/img/김지원.jpg" alt="#"></a>
+					</div>
+					<div class="col-md-9 col-xs-7">
+						<p>
+							<br>양 갱갱 갱갱갱갱 <span class="glyphicon glyphicon-user"></span>
+							<br> qjsrodkfhd@gmail.com
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- row end -->
+		</div>
+
+		<div class="row">
+
+			<div class="panel panel-primary">
+				<div class="panel-heading"><h3 title="상세정보">상세정보</h3></div>
+				<div class="panel-body"><p>오광수·양재식 등 특검보 거론…朴 "가깝다고 선임 안 해" 檢특수본 부부장급 이하 파견 전망…'중량급' 파견
+						관측도 (서울=연합뉴스) 차대운 전성훈 방현덕 기자 = 박근혜 대통령의 제3자 뇌물수수 의혹과
+						최순실(60·구소기소)씨의 국정 농단 의혹 등을 파헤칠 박영수(64·사법연수원 10기) 특별검사가 임명과 동시에 수사팀
+						구성 작업에 착수했다. 박 특검은 1일 서초구 반포동 사무실에 출근하면서 기자들과 만나 "특검보 인선은 이번 주 내로
+						끝낼 생각"이라고 밝혔다. '최순실 특검법'에 따르면 특검은 최장 20일간의 준비 기간 자신을 도와 수사를 지휘할
+						특별검사보 4명, 파견 검사 20명, 특별수사관 40명, 검사를 제외한 수사관과 경찰관 등 공무원 40명을 등 최대
+						104명으로 꾸려진 특별검사팀을 구성한다.</p></div>
 			</div>
 		</div>
+		<br>
+		<div class="row">
+			<ul class="nav nav-tabs nav-justified">
+				<li class="active"><a href="#tab1" data-toggle="tab">댓글1</a></li>
+				<li role="presentation"><a href="#tab2" data-toggle="tab">댓글2</a></li>
+			</ul>
+			<!-- tab-content 부분 -->
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab1">
+					<h3>댓글1</h3>
+					<p>오광수·양재식 등 특검보 거론…朴 "가깝다고 선임 안 해" 檢특수본 부부장급 이하 파견 전망…'중량급' 파견
+						관측도 (서울=연합뉴스) 차대운 전성훈 방현덕 기자 = 박근혜 대통령의 제3자 뇌물수수 의혹과
+						최순실(60·구소기소)씨의 국정 농단 의혹 등을 파헤칠 박영수(64·사법연수원 10기) 특별검사가 임명과 동시에 수사팀
+						구성 작업에 착수했다. 박 특검은 1일 서초구 반포동 사무실에 출근하면서 기자들과 만나 "특검보 인선은 이번 주 내로
+						끝낼 생각"이라고 밝혔다. '최순실 특검법'에 따르면 특검은 최장 20일간의 준비 기간 자신을 도와 수사를 지휘할
+						특별검사보 4명, 파견 검사 20명, 특별수사관 40명, 검사를 제외한 수사관과 경찰관 등 공무원 40명을 등 최대
+						104명으로 꾸려진 특별검사팀을 구성한다.</p>
+				</div>
+				<div class="tab-pane" id="tab2">
+					<h3>댓글2</h3>
+					<p>제주도 해녀들의 물질(잠수장비 없이 바닷속에서 해산물을 채취하는 일)과 노동요 등 독특한 해녀 문화가 전
+						세계인이 보전해야 할 인류무형문화유산이 됐다. 문화재청은 1일 “제주 해녀들의 특별한 문화를 담은 ‘제주해녀문화’가
+						이날 에티오피아 아디스아바바에서 열린 ‘유네스코 무형문화유산보호협약 정부간위원회’(무형유산위원회) 회의에서 유네스코
+						인류무형문화유산으로의 등재가 확정됐다”고 밝혔다. ‘제주해녀문화’의 등재로 한국은 ‘줄다리기’ ‘김장문화’ ‘아리랑’
+						‘종묘제례 및 종묘제례악’ 등 모두 19개 종목의 인류무형문화유산을 보유하게 됐다. 원문보기:
+						http://news.khan.co.kr/kh_news/khan_art_view.html?artid=201612010025001&code=960100#csidx4bfcfae2d90c61a8275d88963f33baa
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- 25 line container end -->
 	</div>
 </body>
 </html>
