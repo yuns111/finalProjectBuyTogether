@@ -14,6 +14,7 @@ use buytogether;
 
 -- 접근
 CREATE TABLE access (
+
 	access_number INTEGER     NOT NULL auto_increment, -- 접근번호
 	access_name   VARCHAR(10) NULL,      -- 접근명
 	access_declare_count INTEGER     NULL,     -- 신고횟수
