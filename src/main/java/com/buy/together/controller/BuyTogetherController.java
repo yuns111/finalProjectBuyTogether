@@ -24,4 +24,13 @@ public class BuyTogetherController {
 		
 		return "/views/buyTogether/buyTogether";
 	}
+	
+	@RequestMapping(value ="/list", method = RequestMethod.GET)
+	public String list(Locale locale, Model model) {
+		
+		System.out.println("buyTogetherController");
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		return "/views/buyTogether/buytogetherlist";
+	}
 }
