@@ -9,11 +9,12 @@ public class BuyTogether {
 	private String content;
 	private Date writeDate;
 	private Date updateDate;
-	private int join_number;
+	private Date dueDate;
+	private int joinin_number;
 	private int price;
 	private int category_number;
 	private int user_number;
-	private int hunting_status;
+	private int status_number;
 	private int hunting_type_number;
 
 	public BuyTogether() {
@@ -60,12 +61,12 @@ public class BuyTogether {
 		this.updateDate = updateDate;
 	}
 
-	public int getJoin_number() {
-		return join_number;
+	public int getJoinin_number() {
+		return joinin_number;
 	}
 
-	public void setJoin_number(int join_number) {
-		this.join_number = join_number;
+	public void setJoinin_number(int joinin_number) {
+		this.joinin_number = joinin_number;
 	}
 
 	public int getPrice() {
@@ -92,12 +93,12 @@ public class BuyTogether {
 		this.user_number = user_number;
 	}
 
-	public int getHunting_status() {
-		return hunting_status;
+	public int getStatus_number() {
+		return status_number;
 	}
 
-	public void setHunting_status(int hunting_status) {
-		this.hunting_status = hunting_status;
+	public void setStatus_number(int status_number) {
+		this.status_number = status_number;
 	}
 
 	public int getHunting_type_number() {
@@ -108,4 +109,13 @@ public class BuyTogether {
 		this.hunting_type_number = hunting_type_number;
 	}
 
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
+	
+	
 }

@@ -29,5 +29,6 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 	public List<AttachedPhoto> photoList(Integer buytogether_number) throws Exception {
 	
 		return sqlSession.selectList(namespace+".photoList", buytogether_number);
+	
 	}
 }
