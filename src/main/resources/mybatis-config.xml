@@ -6,4 +6,5 @@
 	<typeAliases>
 		<package name="com.buy.together.domain"/>
 	</typeAliases>
+
 </configuration>
