@@ -24,7 +24,7 @@ public class BuyTogetherDTO {
 	private int reputation;
 	private String hunting_status;
 	private String hunting_type;
-	private List<AttachedPhoto> photo_path;
+	private List<AttachedPhoto> path;
 
 	public BuyTogetherDTO() {
 
@@ -166,12 +166,12 @@ public class BuyTogetherDTO {
 		this.hunting_type = hunting_type;
 	}
 
-	public List<AttachedPhoto> getPhoto_path() {
-		return photo_path;
+	public List<AttachedPhoto> getPath() {
+		return path;
 	}
 
-	public void setPhoto_path(List<AttachedPhoto> photo_path) {
-		this.photo_path = photo_path;
+	public void setPath(List<AttachedPhoto> path) {
+		this.path = path;
 	}
 	
 }

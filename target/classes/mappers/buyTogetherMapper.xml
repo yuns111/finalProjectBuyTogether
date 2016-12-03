@@ -21,8 +21,8 @@
 	<!-- 같이사냥 게시글의 사진조회 -->
 	<select id="photoList" resultType="attachedPhoto">
 		select *
-		from attachedphoto 
-		where board_type_number = 5 and board_number = #{buytogether_number}
+		from attachedphoto
+		where board_type_number = 5 and buytogether_number = #{buytogether_number}
 		order by photo_number desc
 	</select>
 </mapper>

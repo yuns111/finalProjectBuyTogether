@@ -75,7 +75,7 @@
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#collapseOne" aria-expanded="true"
 								aria-controls="collapseOne"> <!-- 토글 화살표 이미지 --> <img
-								src="/views/buyTogether/arrow_down.png" class="center-block" alt="Cinque Terre"
+								src="../../resources/img/arrow_down.png" class="center-block" alt="Cinque Terre"
 								width="20" height="20">
 							</a>
 						</h5>
@@ -89,7 +89,7 @@
 						<!-- 지도 api 여기 느세요  -->
 
 						<div class="card-block">
-							<img src="/views/buyTogether/map.png" width="1200" height="300">
+							<img src="../../resources/img/map.png" width="1200" height="300">
 						</div>
 					</div>
 				</div>
@@ -250,7 +250,7 @@
 
 	<!-- img id = "photo_number" <- 같이사냥번호 -->
 
-		<img src={{imageHelper photo_path}} class="img-thumbnail" id = {{buyTogether_number}}>
+		<img src= "{{imageHelper path}}" class="img-thumbnail" id = {{buyTogether_number}}>
 	</button>
 						
 	<span class="glyphicon glyphicon-star pull-right" aria-hidden="true" ></span>
@@ -273,10 +273,13 @@ Handlebars.registerHelper("imageHelper", function(imagePath) {
 	
 	if(imagePath[0] == null) {
 		
-		return "/views/buyTogether/noImage.png";
+		return "../../resources/img/noImage.png";
+		
 	} else {
 		
-		return imagePath[0];
+		console.log(imagePath[0]);
+		
+		return imagePath[0].path;
 	}
 	
 });
