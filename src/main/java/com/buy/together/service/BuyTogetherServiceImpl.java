@@ -25,7 +25,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 			
 			List<AttachedPhoto> attachedPhotos = dao.photoList(buyTogether.get(i).getBuyTogether_number());
 			
-			buyTogether.get(i).setPhoto_path(attachedPhotos);
+			buyTogether.get(i).setPath(attachedPhotos);
 			
 		}
 		

@@ -5,6 +5,7 @@ public class AttachedPhoto {
 	private int photo_number;
 	private String path;
 	private int board_number;
+	private int buytogether_number;
 	private int board_type_number;
 
 	public AttachedPhoto() {
@@ -33,6 +34,14 @@ public class AttachedPhoto {
 
 	public void setBoard_number(int board_number) {
 		this.board_number = board_number;
+	}
+	
+	public int getBuytogether_number() {
+		return buytogether_number;
+	}
+
+	public void setBuytogether_number(int buytogether_number) {
+		this.buytogether_number = buytogether_number;
 	}
 
 	public int getBoard_type_number() {
