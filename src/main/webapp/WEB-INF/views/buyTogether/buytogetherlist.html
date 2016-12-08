@@ -32,10 +32,10 @@
 .img-thumbnail {
 
 	display: block;
-	min-width: 200px;
-	height: 200px;
+	min-width: 100px;
+/* 	height: 200px;
 	max-width: 200px;
-
+ */
 }
 
 </style>
@@ -243,21 +243,20 @@
 
 <script id="listTemplate" type="text/x-handlebars-template">
 {{#each.}}
-<div class="col-md-3">		
+<div class="col-md-3 col-xs-3 col-sm-3" >		
 	<div class="row" id="buyTogetherLi">
 
 	<button class="btn btn-default center-block">
 
-	<!-- img id = "photo_number" <- 같이사냥번호 -->
-
 		<img src= "{{imageHelper path}}" class="img-thumbnail" id = {{buyTogether_number}}>
+	
 	</button>
 						
 	<span class="glyphicon glyphicon-star pull-right" aria-hidden="true" ></span>
 						
-	<br> <label id="title"> {{title}} </label> <br> <label
+	<br> <label id="title"> {{titleHelper title}} </label> <br> <label
 				id="price"> 가격 : {{price}} 원 </label> <br> <label
-				id="duedate"> 마감일 : ~ {{DateHelper duedate}} </label> <br>  <label
+				id="duedate"> 마감일 : ~ {{dateHelper duedate}} </label> <br>  <label
 				id="buyTogether_address">지역 : {{buytogether_address_sido}} {{buytogether_address_sigungu}} </label> <br> <label 
 				id="hunting_status"> 사냥상태 : {{status_name}} </label> <label 
 				id="hunting_type_number">사냥방식 : {{hunting_type}} </label> <br> <label
@@ -284,7 +283,7 @@ Handlebars.registerHelper("imageHelper", function(imagePath) {
 	
 });
 
-Handlebars.registerHelper("DateHelper", function(timeValue) {
+Handlebars.registerHelper("dateHelper", function(timeValue) {
 	
 	var dateObj = new Date(timeValue);
 	var year = dateObj.getFullYear();
@@ -294,6 +293,19 @@ Handlebars.registerHelper("DateHelper", function(timeValue) {
 	return year+"/"+month+"/"+date;
 	
 });
+
+Handlebars.registerHelper("titleHelper", function(titleValue) {
+	
+	if(titleValue.length > 10) {
+		
+		titleValue = titleValue.substring(0,10);
+		titleValue = titleValue + "...";
+	}
+	
+	return titleValue;
+
+});
+
 </script>
 
 
