@@ -4,7 +4,6 @@
 
 	src:url('Simple-Line-Icons.eot');
 	src:url('Simple-Line-Icons.eot?#iefix') format('embedded-opentype'),
-		url('Simple-Line-Icons.woff') format('woff'),
 		url('Simple-Line-Icons.ttf') format('truetype'),
 		url('Simple-Line-Icons.svg#Simple-Line-Icons') format('svg');
 	font-weight: normal;

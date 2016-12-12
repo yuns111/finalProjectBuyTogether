@@ -518,7 +518,7 @@ var ContentOwlcarousel = function () {
 // END: OwlCarousel
 
 // BEGIN: ContentCubeLatestPortfolio
-var ContentCubeLatestPortfolio = function () {
+/*var ContentCubeLatestPortfolio = function () {
 
 	var _initInstances = function () {
 
@@ -625,11 +625,11 @@ var ContentCubeLatestPortfolio = function () {
 		}
 
 	};
-}();
+}();*/
 // END: ContentCubeLatestPortfolio
 
 // BEGIN: CounterUp
-var ContentCounterUp = function () {
+/*var ContentCounterUp = function () {
 
 	var _initInstances = function () {
 
@@ -648,7 +648,7 @@ var ContentCounterUp = function () {
 		}
 
 	};
-}();
+}();*/
 // END: CounterUp
 
 // BEGIN: Fancybox
@@ -869,8 +869,8 @@ $(document).ready(function () {
 
 	// init plugin wrappers
 	ContentOwlcarousel.init();
-	ContentCubeLatestPortfolio.init();
-	ContentCounterUp.init();
+	//ContentCubeLatestPortfolio.init();
+	//ContentCounterUp.init();
 	ContentFancybox.init();
 	ContentTwitter.init();
 });
