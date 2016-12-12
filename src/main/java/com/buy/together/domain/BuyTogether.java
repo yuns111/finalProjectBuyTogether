@@ -1,15 +1,15 @@
 package com.buy.together.domain;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class BuyTogether {
 
 	private int buyTogether_number;
 	private String title;
 	private String content;
-	private Date writeDate;
-	private Date updateDate;
-	private Date dueDate;
+	private Timestamp writeDate;
+	private Timestamp updateDate;
+	private Timestamp dueDate;
 	private int joinin_number;
 	private int price;
 	private int category_number;
@@ -45,20 +45,30 @@ public class BuyTogether {
 		this.content = content;
 	}
 
-	public Date getWriteDate() {
+	
+
+	public Timestamp getWriteDate() {
 		return writeDate;
 	}
 
-	public void setWriteDate(Date writeDate) {
+	public void setWriteDate(Timestamp writeDate) {
 		this.writeDate = writeDate;
 	}
 
-	public Date getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public Timestamp getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(Timestamp dueDate) {
+		this.dueDate = dueDate;
 	}
 
 	public int getJoinin_number() {
@@ -108,14 +118,5 @@ public class BuyTogether {
 	public void setHunting_type_number(int hunting_type_number) {
 		this.hunting_type_number = hunting_type_number;
 	}
-
-	public Date getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
-	
 	
 }
