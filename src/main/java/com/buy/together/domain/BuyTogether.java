@@ -9,13 +9,14 @@ public class BuyTogether {
 	private String content;
 	private Timestamp writeDate;
 	private Timestamp updateDate;
-	private Timestamp dueDate;
+	private String dueDate;
 	private int joinin_number;
 	private int price;
 	private int category_number;
 	private int user_number;
 	private int status_number;
 	private int hunting_type_number;
+	private String[] path;
 
 	public BuyTogether() {
 
@@ -63,11 +64,11 @@ public class BuyTogether {
 		this.updateDate = updateDate;
 	}
 
-	public Timestamp getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Timestamp dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -117,6 +118,14 @@ public class BuyTogether {
 
 	public void setHunting_type_number(int hunting_type_number) {
 		this.hunting_type_number = hunting_type_number;
+	}
+
+	public String[] getPath() {
+		return path;
+	}
+
+	public void setPath(String[] path) {
+		this.path = path;
 	}
 	
 }
