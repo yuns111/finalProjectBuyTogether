@@ -99,6 +99,7 @@ public class BuyTogetherRestController {
 
 		HttpSession session = request.getSession();
 		String uploadPath = session.getServletContext().getRealPath("/") + "/resources/upload";
+		System.out.println(uploadPath);
 		
 		return new ResponseEntity<>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()),HttpStatus.CREATED);
 
