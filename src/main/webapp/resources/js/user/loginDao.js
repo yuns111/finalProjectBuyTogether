@@ -33,71 +33,75 @@ function statusChangeCallback(response) {
 	console.log(response);
 }
 
-function facebookAPI() {
+//페이스북 API
+function facebookAPI(callback) {
 
-	FB.api('/me?fields=email, first_name, last_name, id', function(response) {		
+	var user;
+	//페이스북 로그인 회원의 이메일, 이름, 아이디 정보 요청
+	FB.api('/me?fields=email, first_name, last_name, id', function(response) {	
 
-		var user = { 
+		var FBuser = {
 				id : response.id,
 				name : response.last_name + response.first_name,
 				email : response.email
 		};
-
+		//서버에 페이스북 로그인 회원 정보 전달
 		$.ajax({
 			type: 'post',
-			url: '/login/externalLogin',	
+			url: '/restLogin/facebookLogin',	
 			headers: { 
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "POST" },
-			data: JSON.stringify(user),
-			dataType: 'json', //서버에서 보내오는 데이터 타입
+			data: JSON.stringify(FBuser),
+			dataType: 'json',
 			async : false,	
-			success:function(data){
-				if(data.nickName==null) { //신규 회원
-					new loginDao().insertUserInfoDao(data);
-				} else { //기존 회원
-					new loginDao().homeDao();
-				}
+			success:function(data){				
+				user = data;
+				callback(user);
 			}
 		});
-
+		
+		return user;
+		
 	});
 
 }
 
+//로그인 dao
 function loginDao() {
-	//Login Dao
+	
+	var userInfo;
+	
+	//같이사냥 로그인 dao 
 	this.LoginDao = function(user) {
-		var result;
-		
+
 		$.ajax({
 			type: 'post',
-			url: '/login/buyTogetherLogin',	
+			url: '/restLogin/buyTogetherLogin',	
 			headers: { 
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "POST" },
 			data: JSON.stringify(user),
-			dataType: 'json', //서버에서 보내오는 데이터 타입
-			async : false,	
+			dataType: 'json',
+			async : false,
 			success:function(data){
-				if(data.nickName==null) { //신규 회원
-					insertUserInfoDao(data);
-				} else { //기존 회원
-					homeDao(data);
-				}
+				userInfo = data;
 			}
 		});
+
+		return userInfo;
 		
 	};
 
-	//Naver login Dao
+	//네이버 로그인 ㅇao
 	this.NVLoginDao = function() {
-		//GET state
+
 		var state;
+		//서버에 토큰 요청
 		$.ajax({
 			type: 'get',
-			url: '/login/state',	
-			headers: { 
+			url: '/restLogin/state',	
+			headers: {
 				"Content-Type": "application/json",
 				"X-HTTP-Method-Override": "GET" },
 			dataType: 'text',
@@ -106,86 +110,52 @@ function loginDao() {
 				state = data;
 			}
 		});
-
-		var clientId = "by6_tJPL7JlGEEddntmk";			
+		
+		var clientId = "by6_tJPL7JlGEEddntmk";	
 		var url = "https://nid.naver.com/oauth2.0/authorize?client_id=";
-		var redirect_uri = "http%3A%2F%2Flocalhost%3A8098%2Fuser%2FnaverCallback";
+		var redirect_uri = "http%3A%2F%2Flocalhost%3A8098%2Flogin%2FnaverCallback1";	
 		var requestUrl = url + clientId + "&response_type=code&redirect_uri=" + redirect_uri + "&state=" + state;
 		
-		document.location = requestUrl;
-		/*var code;
-		$.ajax({
-			type: 'get',
-			url: requestUrl,
-			headers: { 
-				"Content-Type": "application/json",
-				"X-HTTP-Method-Override": "GET" },
-			dataType: 'jsonp',
-			async : false,	
-			success:function(data){
-				state = data[0];
-				code = data[1];
-			}
-		});
-		alert(state); alert(code);*/
+		document.location = requestUrl; //네이버 로그인 인증 요청 후 redirect_uri 로 이동
+		
 	};
 
-	//Facebook login dao
-	this.FBLoginDao = function() {
-
-		var user;
-		//페이스북 로그인 API
+	//페이스북 로그인 dao
+	this.FBLoginDao = function(callback) {
+		//페이스북 로그인 권한 및 연결 확인 요청
 		FB.login(function(response){
 			console.log('statusChangeCallback');
 			console.log(response);
 
-			if (response.status === 'connected') {
-				facebookAPI();
+			if (response.status === 'connected') { //권한 승인이 됐다면,
+				
+				facebookAPI(callback); //페이스북 로그인 회원 정보 요청
+				
 			} else if (response.status === 'not_authorized') {
+				
 			} else {
+				
 			}
 		}, {scope: 'public_profile,email'});
 
 	};
+	
+	//로그인 회원 정보 세션에 저장 및 로그인 상태 유지 회원 정보 로컬 저장소에 저장
+	this.loginSession = function(user, loginCheckStatus) {
 
-	//신규회원 등록
-	this.regist = function(user) {
-
-		$.ajax({
-			type: 'post',
-			url: '/login/regist',	
-			headers: { 
-				"Content-Type": "application/json",
-				"X-HTTP-Method-Override": "POST" },
-				data: JSON.stringify(user),
-				dataType: 'text', //서버에서 보내오는 데이터 타입
-				success:function(result){
-					if(result==null) { //등록 성공시
-						alert("성공");
-					}
-				}
-		});
-
-	}
-
-	//신규회원 로그인 시 닉네임 및 기본정보 등록 화면으로 이동
-	this.insertUserInfoDao = function(user) {
-
-		document.location = "/user/info";
-
-	};
-
-	//로그인 성공 시 메인 화면으로 이동
-	this.homeDao = function(user) {		
-		//회원정보세션 저장
-		document.location = "/home";
-
-	};
-
-	//로그인 실패 시 로그인 화면으로 이동
-	this.loginDao = function() {		
-
-		document.location = "/user/login";
+		if(loginCheckStatus == "true") { //로그인 상태 유지하기를 체크했다면,
+			
+			localStorage.clear(); //로컬 저장소 초기화
+			localStorage.setItem("id", user.id);
+			localStorage.setItem("pw", user.pw);
+			localStorage.setItem("number", user.number);
+			
+		}
+		
+		sessionStorage.clear(); //세션 초기화
+		sessionStorage.setItem("id", user.id);
+		sessionStorage.setItem("pw", user.pw);
+		sessionStorage.setItem("number", user.number);
 
 	};
 

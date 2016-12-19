@@ -1,21 +1,22 @@
 package com.buy.together.domain;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class BuyTogether {
 
 	private int buyTogether_number;
 	private String title;
 	private String content;
-	private Date writeDate;
-	private Date updateDate;
-	private Date dueDate;
+	private Timestamp writeDate;
+	private Timestamp updateDate;
+	private String dueDate;
 	private int joinin_number;
 	private int price;
 	private int category_number;
 	private int user_number;
 	private int status_number;
 	private int hunting_type_number;
+	private String[] path;
 
 	public BuyTogether() {
 
@@ -34,6 +35,7 @@ public class BuyTogether {
 	}
 
 	public void setTitle(String title) {
+		System.out.println("title " + title);
 		this.title = title;
 	}
 
@@ -42,23 +44,34 @@ public class BuyTogether {
 	}
 
 	public void setContent(String content) {
+		System.out.println("content " + content);
 		this.content = content;
 	}
 
-	public Date getWriteDate() {
+	public Timestamp getWriteDate() {
 		return writeDate;
 	}
 
-	public void setWriteDate(Date writeDate) {
+	public void setWriteDate(Timestamp writeDate) {
 		this.writeDate = writeDate;
 	}
 
-	public Date getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
+
 		this.updateDate = updateDate;
+	}
+
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		System.out.println("dueDate " + dueDate);
+		this.dueDate = dueDate;
 	}
 
 	public int getJoinin_number() {
@@ -66,6 +79,7 @@ public class BuyTogether {
 	}
 
 	public void setJoinin_number(int joinin_number) {
+		System.out.println("joinin_number " + joinin_number);
 		this.joinin_number = joinin_number;
 	}
 
@@ -74,6 +88,7 @@ public class BuyTogether {
 	}
 
 	public void setPrice(int price) {
+		System.out.println("price " + price);
 		this.price = price;
 	}
 
@@ -82,6 +97,7 @@ public class BuyTogether {
 	}
 
 	public void setCategory_number(int category_number) {
+		System.out.println("category_number " + category_number);
 		this.category_number = category_number;
 	}
 
@@ -90,6 +106,7 @@ public class BuyTogether {
 	}
 
 	public void setUser_number(int user_number) {
+		System.out.println("user_number " + user_number);
 		this.user_number = user_number;
 	}
 
@@ -106,16 +123,17 @@ public class BuyTogether {
 	}
 
 	public void setHunting_type_number(int hunting_type_number) {
+		System.out.println("hunting_type_number " + hunting_type_number);
 		this.hunting_type_number = hunting_type_number;
 	}
 
-	public Date getDueDate() {
-		return dueDate;
+	public String[] getPath() {
+		return path;
 	}
 
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
+	public void setPath(String[] path) {
+		System.out.println("path " + path.length);
+		this.path = path;
 	}
-	
 	
 }

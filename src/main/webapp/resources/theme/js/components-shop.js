@@ -53,6 +53,26 @@ var LayoutCheckboxVisibilityToggle = function () {
 					}
 				});
 			});
+			
+			$('.c-toggle-show').each(function () {
+				var $checkbox = $(this).find('input.c-check'),
+					$speed = $(this).data('animation-speed'),
+					$object = $('.' + $(this).data('object-selector'));
+
+				$object.show();
+				
+				if (typeof $speed === 'undefined') {
+					$speed = 'slow';
+				}
+
+				$($checkbox).on('change', function () {
+					if ($($object).is(':hidden')) {
+						$($object).show($speed);
+					} else {
+						$($object).slideUp($speed);
+					}
+				});
+			});
 		}
 	};
 
