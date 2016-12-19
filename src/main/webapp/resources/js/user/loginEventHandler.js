@@ -1,4 +1,4 @@
-$('head').append('<script type="text/javascript" src="../../../resources/js/user/loginController.js"></script>')
+$('head').append('<script type="text/javascript" src="/resources/js/user/loginController.js"></script>')
 
 $(document).ready(function() {
 	
