@@ -32,10 +32,10 @@
 .img-thumbnail {
 
 	display: block;
-	min-width: 200px;
-	height: 200px;
+	min-width: 100px;
+/* 	height: 200px;
 	max-width: 200px;
-
+ */
 }
 
 </style>
@@ -283,14 +283,13 @@ Handlebars.registerHelper("imageHelper", function(imagePath) {
 });
 
 Handlebars.registerHelper("dateHelper", function(timeValue) {
-   
-   var dateObj = new Date(timeValue);
-   var year = dateObj.getFullYear();
-   var month = dateObj.getMonth() + 1;
-   var date = dateObj.getDate();
-   
-   return year+"/"+month+"/"+date;
-   
+	
+	var dateObj = new Date(timeValue);
+	var year = dateObj.getFullYear();
+	var month = dateObj.getMonth() + 1;
+	var date = dateObj.getDate();
+	
+	return year+"/"+month+"/"+date;
 });
 
 Handlebars.registerHelper("titleHelper", function(titleValue) {
@@ -304,8 +303,20 @@ Handlebars.registerHelper("titleHelper", function(titleValue) {
    return titleValue;
 
 });
-</script>
 
+Handlebars.registerHelper("titleHelper", function(titleValue) {
+	
+	if(titleValue.length > 10) {
+		
+		titleValue = titleValue.substring(0,10);
+		titleValue = titleValue + "...";
+	}
+	
+	return titleValue;
+
+});
+
+</script>
 
 </body>
 

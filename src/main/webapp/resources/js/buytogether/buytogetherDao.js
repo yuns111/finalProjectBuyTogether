@@ -49,7 +49,7 @@ function buytogetherDao() {
 		});
 	}
 	
-	//사냥방식 리스트 요청
+	//사냥상태 리스트 요청
 	this.listHuntingStatusDao = function() {
 
 		$.getJSON("/restBuytogether/listHuntingStatus", function(data) {
@@ -108,7 +108,7 @@ function buytogetherDao() {
 		});
 	}
 
-	//게시글 삽입
+	//게시글 쓰기
 	this.insertDao = function(buytogether, buyTogetherAddress) {
 
 		$.ajax({
@@ -167,7 +167,7 @@ function buytogetherDao() {
 			}
 		});
 	}
-	
+
 	//같이사냥 리스트(지도)
 	this.listBuyTogetherDao = function(scri){
 		

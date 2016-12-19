@@ -6,10 +6,14 @@ import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.BuyTogether;
 import com.buy.together.domain.BuyTogetherAddress;
 import com.buy.together.domain.Category;
+<<<<<<< HEAD
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.domain.MySearchCriteria;
+=======
+import com.buy.together.domain.HuntingType;
+>>>>>>> 272cbe2846571edd7391a5958f89b1cd0579a1c8
 import com.buy.together.dto.BuyTogetherDTO;
 
 public interface BuyTogetherDao {
@@ -36,5 +40,20 @@ public interface BuyTogetherDao {
 	
 	public void buyTogetherPhotoInsert(AttachedPhoto AttachedPhoto) throws Exception;
 
+<<<<<<< HEAD
 	
+=======
+	public List<Category> categoryList() throws Exception;
+	
+	public List<HuntingType> huntingTypeList() throws Exception;
+	
+	public void buyTogetherInsert(BuyTogether buyTogether) throws Exception;
+	
+	public Integer getBuyTogetherNumber(BuyTogether buyTogether) throws Exception;
+
+	public void buyTogetherAddressInsert(BuyTogetherAddress BuyTogetherAddress) throws Exception;
+	
+	public void buyTogetherPhotoInsert(AttachedPhoto AttachedPhoto) throws Exception;
+
+>>>>>>> 272cbe2846571edd7391a5958f89b1cd0579a1c8
 }

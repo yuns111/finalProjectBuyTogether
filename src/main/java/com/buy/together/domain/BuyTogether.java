@@ -48,6 +48,11 @@ public class BuyTogether {
 		this.content = content;
 	}
 
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> 272cbe2846571edd7391a5958f89b1cd0579a1c8
 	public Timestamp getWriteDate() {
 		return writeDate;
 	}
@@ -61,7 +66,10 @@ public class BuyTogether {
 	}
 
 	public void setUpdateDate(Timestamp updateDate) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 272cbe2846571edd7391a5958f89b1cd0579a1c8
 		this.updateDate = updateDate;
 	}
 
@@ -70,7 +78,10 @@ public class BuyTogether {
 	}
 
 	public void setDueDate(String dueDate) {
+<<<<<<< HEAD
 		System.out.println("dueDate " + dueDate);
+=======
+>>>>>>> 272cbe2846571edd7391a5958f89b1cd0579a1c8
 		this.dueDate = dueDate;
 	}
 
@@ -132,7 +143,10 @@ public class BuyTogether {
 	}
 
 	public void setPath(String[] path) {
+<<<<<<< HEAD
 		System.out.println("path " + path.length);
+=======
+>>>>>>> 272cbe2846571edd7391a5958f89b1cd0579a1c8
 		this.path = path;
 	}
 	

@@ -8,7 +8,6 @@ import com.buy.together.domain.Category;
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
-import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
 
 public interface BuyTogetherService {
@@ -16,8 +15,6 @@ public interface BuyTogetherService {
 	public int searchBuyTogetherCount(ListSearchCriteria cri) throws Exception;
 	
 	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception;
-	
-	public List<BuyTogetherDTO> buyTogetherList(MySearchCriteria cri) throws Exception;
 	
 	public List<Category> categoryList() throws Exception;
 	

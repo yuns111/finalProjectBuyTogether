@@ -11,10 +11,14 @@ import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.BuyTogether;
 import com.buy.together.domain.BuyTogetherAddress;
 import com.buy.together.domain.Category;
+<<<<<<< HEAD
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.domain.MySearchCriteria;
+=======
+import com.buy.together.domain.HuntingType;
+>>>>>>> 272cbe2846571edd7391a5958f89b1cd0579a1c8
 import com.buy.together.dto.BuyTogetherDTO;
 
 @Repository
@@ -69,6 +73,43 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 	public List<HuntingStatus> huntingStatusList() throws Exception {
 
 		return sqlSession.selectList(namespace+".huntingStatusList");
+	}
+	
+	@Override //같이사냥 게시글 쓰기
+	public void buyTogetherInsert(BuyTogether buyTogether) throws Exception {
+
+		sqlSession.insert(namespace+".buytogetherInsert", buyTogether);
+	}
+	
+	@Override //방금 쓴 게시글 번호
+	public Integer getBuyTogetherNumber(BuyTogether buyTogether) throws Exception {
+
+		return sqlSession.selectOne(namespace+".buytogetherNumber", buyTogether);
+	}
+	
+	@Override //게시글과 함께 같이사냥 주소 저장
+	public void buyTogetherAddressInsert(BuyTogetherAddress buyTogetherAddress) throws Exception {
+
+		sqlSession.insert(namespace+".buytogetherAddressInsert", buyTogetherAddress);
+	}
+	
+	@Override //게시글과 함께 같이사냥 첨부사진 저장
+	public void buyTogetherPhotoInsert(AttachedPhoto attachedPhoto) throws Exception {
+
+		sqlSession.insert(namespace+".buytogetherPhotoInsert", attachedPhoto);
+		
+	}
+	
+	@Override //카테고리 리스트 조회
+	public List<Category> categoryList() throws Exception {
+
+		return sqlSession.selectList(namespace+".categoryList");
+	}
+	
+	@Override //사냥방식 리스트 조회
+	public List<HuntingType> huntingTypeList() throws Exception {
+
+		return sqlSession.selectList(namespace+".huntingTypeList");
 	}
 	
 	@Override //같이사냥 게시글 쓰기

@@ -231,6 +231,6 @@ public class BuyTogetherRestController {
 
 		return entity;
 	}
-	
+
 
 }

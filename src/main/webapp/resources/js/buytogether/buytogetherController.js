@@ -60,7 +60,7 @@ function buytogetherController() {
 		dao.savePhotoPath(formData);
 		
 	}
-	
+
 	//첨부사진 삭제
 	this.requestPhotoDelete = function(photo) {
 		

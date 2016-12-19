@@ -15,7 +15,6 @@ import com.buy.together.domain.Category;
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
-import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
 
 @Service
@@ -43,22 +42,6 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return searchBuyTogether;
 	}
 	
-	@Override //같이사냥 게시판 리스트
-	public List<BuyTogetherDTO> buyTogetherList(MySearchCriteria cri) throws Exception {
-
-		List<BuyTogetherDTO> buyTogether = dao.buyTogetherList(cri);
-
-		for(int i = 0; i<buyTogether.size(); i++) {
-
-			List<AttachedPhoto> attachedPhotos = dao.photoList(buyTogether.get(i).getBuyTogether_number());
-
-			buyTogether.get(i).setPhoto_path(attachedPhotos);
-
-		}
-
-		return buyTogether;
-	}
-
 	@Override
 	public List<Category> categoryList() throws Exception {
 
