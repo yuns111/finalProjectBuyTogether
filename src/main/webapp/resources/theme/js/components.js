@@ -26,7 +26,7 @@ var LayoutHeaderCart = function () {
 		init: function () {
 			var cart = $('.c-cart-menu');
 
-			if (cart.size() === 0) {
+			if (cart.length === 0) {
 				return;
 			}
 
@@ -300,8 +300,8 @@ var LayoutOnepageNav = function () {
 		offset = $('.c-layout-header-onepage').outerHeight(true);
 		$('body').removeClass('c-page-on-scroll');
 
-		if ($('.c-mega-menu-onepage-dots').size() > 0) {
-			if ($('.c-onepage-dots-nav').size() > 0) {
+		if ($('.c-mega-menu-onepage-dots').length > 0) {
+			if ($('.c-onepage-dots-nav').length > 0) {
 				$('.c-onepage-dots-nav').css('margin-top', -($('.c-onepage-dots-nav').outerHeight(true) / 2));
 			}
 			scrollspy = $('body').scrollspy({
