@@ -36,9 +36,19 @@ $(document).ready(function() {
 
 	});
 	
+	//로그인 버튼 클릭 시
+	$('#close').on("click", function() {
+		
+		$('.c-layout-header-fixed').removeClass('modal-open');
+		$('#modal').css({'display' : 'none'});
+
+	});
+	
 	//모달 실행
 	function modal(message) {
 		
+		$('.c-layout-header-fixed').addClass('modal-open');
+		$('#modal').css({'display' : 'block'});
 		$(".modal-body").children("p").removeClass();
 		$(".modal-body").children("p").addClass(message[0]);
 		$("#msg").children("span").text(message[1]);
