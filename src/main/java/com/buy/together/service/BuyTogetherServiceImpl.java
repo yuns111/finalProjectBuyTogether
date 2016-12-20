@@ -12,7 +12,9 @@ import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.BuyTogether;
 import com.buy.together.domain.BuyTogetherAddress;
 import com.buy.together.domain.Category;
+import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
+import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
 
 @Service
@@ -20,21 +22,24 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 
 	@Inject
 	private BuyTogetherDao dao;
+
+	@Override
+	public int searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
+		return dao.searchBuyTogetherCount(cri);
+	}
 	
-	@Override //같이사냥 게시판 리스트
-	public List<BuyTogetherDTO> buyTogetherList() throws Exception {
+	@Override//개설한 같이사냥
+	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception {
 		
-		List<BuyTogetherDTO> buyTogether = dao.buyTogetherList();
-		
-		for(int i = 0; i<buyTogether.size(); i++) {
-			
-			List<AttachedPhoto> attachedPhotos = dao.photoList(buyTogether.get(i).getBuyTogether_number());
-			
-			buyTogether.get(i).setPath(attachedPhotos);
-			
+		List<BuyTogetherDTO> searchBuyTogether = dao.searchBuyTogetherList(cri);
+
+		for(int i = 0; i<searchBuyTogether.size(); i++){
+			List<AttachedPhoto> attachedPhotos = dao.photoList(searchBuyTogether.get(i).getBuyTogether_number());
+
+			searchBuyTogether.get(i).setPhoto_path(attachedPhotos);
 		}
 		
-		return buyTogether;
+		return searchBuyTogether;
 	}
 	
 	@Override
@@ -47,6 +52,12 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 	public List<HuntingType> huntingTypeList() throws Exception {
 
 		return dao.huntingTypeList();
+	}
+	
+	@Override
+	public List<HuntingStatus> huntingStatusList() throws Exception {
+
+		return dao.huntingStatusList();
 	}
 
 	@Transactional
