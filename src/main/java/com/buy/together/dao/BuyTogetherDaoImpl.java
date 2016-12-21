@@ -11,7 +11,10 @@ import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.BuyTogether;
 import com.buy.together.domain.BuyTogetherAddress;
 import com.buy.together.domain.Category;
+import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
+import com.buy.together.domain.ListSearchCriteria;
+import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
 
 @Repository
@@ -22,18 +25,32 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 	@Inject
 	private SqlSession sqlSession;
 	
-	@Override //같이사냥 전체 게시글 조회
-	public List<BuyTogetherDTO> buyTogetherList() throws Exception {
+	@Override //같이사냥 페이징 갯수
+	public int searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
+		
+		return sqlSession.selectOne(namespace+".searchBuyTogetherCount", cri);
+		
+	}
+	
+	@Override//같이사냥 리스트
+	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception {
+		
+		return sqlSession.selectList(namespace+".searchBuyTogetherList", cri);
+		
+	}
 
-		return sqlSession.selectList(namespace+".buyTogetherList");
+	
+	@Override //같이사냥 전체 게시글 조회
+	public List<BuyTogetherDTO> buyTogetherList(MySearchCriteria cri) throws Exception {
+
+		return sqlSession.selectList(namespace+".buyTogetherList",cri);
 			
 	}
 	
-	@Override //게시글의 사진 리스트 조회
+	@Override //같이사냥 게시글의 사진 리스트 조회
 	public List<AttachedPhoto> photoList(Integer buytogether_number) throws Exception {
 	
 		return sqlSession.selectList(namespace+".photoList", buytogether_number);
-	
 	}
 	
 	@Override //카테고리 리스트 조회
@@ -46,6 +63,12 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 	public List<HuntingType> huntingTypeList() throws Exception {
 
 		return sqlSession.selectList(namespace+".huntingTypeList");
+	}
+	
+	@Override //사냥상태 리스트 조회
+	public List<HuntingStatus> huntingStatusList() throws Exception {
+
+		return sqlSession.selectList(namespace+".huntingStatusList");
 	}
 	
 	@Override //같이사냥 게시글 쓰기
@@ -72,4 +95,5 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 		sqlSession.insert(namespace+".buytogetherPhotoInsert", attachedPhoto);
 		
 	}
+	
 }
