@@ -51,19 +51,16 @@ $(document).ready(function(){
 	$("#buytogetherHeader").load("/views/include/header.html");
 	$("#buytogetherFooter").load("/views/include/footer.html");
 	
-	//금액 관련 id 입력하면 자동으로 문자입력제한, 콤마처리
-	inputNumber("price"); 
-	inputNumber("joinin_number");
-
-	//숫자만 입력받게 해주는 함수
-	function inputNumber(id) {
-		var selector="input[id='"+id+"']";
-		$(selector).keypress(function(event) {
-			if(event.which && (event.which < 48 || event.which > 57) ) {
-				event.preventDefault();
-			}
-		});
-	}; 
+	$(".onlyNumber").keyup(function(event) { //사냥 인원, 금액
+	      
+	      if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+	         
+	         var inputVal = $(this).val();
+	         $(this).val(inputVal.replace(/[^0-9]/gi, ''));
+	         
+	      }
+	      
+	 });
 });
 </script>
 </head>
@@ -147,7 +144,7 @@ $(document).ready(function(){
 						<div class="row">
 							<div class="form-group col-md-6">
 								<label class="control-label">참여정원</label> <input type="text"
-									id="joinin_number" class="form-control c-square c-theme" placeholder="숫자만 입력가능"
+									id="joinin_number" class="form-control c-square c-theme onlyNumber" placeholder="숫자만 입력가능"
 									style="text-align: right" name="joinin_number">
 								<label class="control-label" id="joininCheck" style="color: red" hidden="true">*필수 입력사항 입니다.</label>
 							</div>
@@ -156,7 +153,7 @@ $(document).ready(function(){
 						<div class="row">
 							<div class="form-group col-md-6">
 								<label class="control-label">가격</label> <input type="text"
-									id="price" class="form-control c-square c-theme" placeholder="숫자만 입력가능"
+									id="price" class="form-control c-square c-theme onlyNumber" placeholder="숫자만 입력가능"
 									style="text-align: right" name="price">
 								<label class="control-label" id="priceCheck" style="color: red" hidden="true">*필수 입력사항 입니다.</label>
 							</div>
