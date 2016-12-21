@@ -7,18 +7,19 @@ $(document).ready(function (){
 	controller.requestCategoryList();
 	controller.requestHuntingTypeList();
 	controller.requestHuntingStatusList();
-
+	
+	//첫 화면(지도에 해당하는 리스트)
 	var keyword =  $('#keyword').val();
 	var page = 1;
 	var perPageNum = 6;
-	var user_number;
 
 	var scri = {
-			page : page, perPageNum : perPageNum, keyword : keyword, user_number : user_number
+			page : page, perPageNum : perPageNum, keyword : keyword
 	};
 
-	controller.requestListAll(scri);
-
+	controller.listAll(scri);
+	controller.requestBuyTogetherMap(scri);
+	
 	//검색버튼 클릭시
 	$('#search_button').click(function(){
 
@@ -41,14 +42,11 @@ $(document).ready(function (){
 				hunting_status_number : hunting_status_number,
 				buytogether_address_sido : buytogether_address_sido,
 				buytogether_address_sigungu : buytogether_address_sigungu,
-				user_number : user_number,
 				regDate : regDate,
 				keyword : keyword
 		}
-		
-		console.log(scri);
 
-		controller.requestListAll(scri);
+		controller.listAll(scri);
 	});
 
 	//페이징
@@ -76,13 +74,13 @@ $(document).ready(function (){
 				hunting_status_number : hunting_status_number,
 				buytogether_address_sido : buytogether_address_sido,
 				buytogether_address_sigungu : buytogether_address_sigungu,
-				user_number : user_number,
 				regDate : regDate,
 				keyword : keyword
 		}
 		console.log("scri");
 		console.log(scri);
+		controller.listAll(scri);
 		
-		controller.requestListAll(scri);
 	});
+	
 });
