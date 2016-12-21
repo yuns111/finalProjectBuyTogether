@@ -47,9 +47,6 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return searchBuyTogether;
 	}
 	
-<<<<<<< HEAD
-	@Override //카테고리 리스트
-=======
 	@Override //같이사냥 리스트
 	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception {
 
@@ -66,8 +63,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return buyTogether;
 	}
 
-	@Override
->>>>>>> refs/remotes/origin/master
+	@Override //카테고리 리스트
 	public List<Category> categoryList() throws Exception {
 
 		return dao.categoryList();

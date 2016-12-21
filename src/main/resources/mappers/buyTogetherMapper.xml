@@ -14,11 +14,7 @@
 	<!-- 같이사냥 서치카운트 -->
 	<select id="searchBuyTogetherCount" resultType="Integer">
 		select count(bt.buytogether_number)
-<<<<<<< HEAD
 		from user u, buytogether bt
-=======
-		from user u,buytogether bt
->>>>>>> refs/remotes/origin/master
 		left outer join buytogetheraddress addr
 		on addr.buytogether_number = bt.buytogether_number 
 		<where>
@@ -28,32 +24,6 @@
 			</if>
 		</where>
 		<include refid="search"></include>
-	</select>
-	
-
-<<<<<<< HEAD
-	<!-- 같이사냥리스트 -->
-	<select id="searchBuyTogetherList" resultType="com.buy.together.dto.BuyTogetherDTO">
-=======
-	<!-- 같이사냥(지도)리스트 -->
-	<select id="searchBuyTogetherMapList" resultType="com.buy.together.dto.BuyTogetherDTO">
->>>>>>> refs/remotes/origin/master
-	 	<![CDATA[
-        select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude, bt.category_number
-        from  user u, buytogether bt
-        left outer join buytogetheraddress addr on addr.buytogether_number = bt.buytogether_number
-		]]>
-		<where>
-			u.user_number = bt.user_number
-			<if test = "user_number != '' and user_number != 0">
-				and bt.category_number in (select category_number from interest where user_number = #{user_number})
-			</if>
-		</where>
-		<include refid="search"></include>
-		<![CDATA[
-		order by buytogether_number desc
-		limit #{pageStart}, #{perPageNum}
-		]]>
 	</select>
 
 	<!-- 같이사냥(지도)리스트 -->
@@ -74,16 +44,15 @@
 		]]>
 	</select>
 
-<<<<<<< HEAD
-=======
 	<!-- 같이사냥리스트 -->
 	<select id="searchBuyTogetherList" resultType="com.buy.together.dto.BuyTogetherDTO">
 	 	<![CDATA[
         select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude, bt.category_number
-        from  user u, buytogetheraddress addr, buytogether bt
+        from  user u, buytogether bt
+        left outer join buytogetheraddress addr on addr.buytogether_number = bt.buytogether_number
 		]]>
 		<where>
-			u.user_number = bt.user_number and bt.buytogether_number = addr.buytogether_address_number
+			u.user_number = bt.user_number
 			<if test = "user_number != '' and user_number != 0">
 				and bt.category_number in (select category_number from interest where user_number = #{user_number})
 			</if>
@@ -94,7 +63,6 @@
 		limit #{pageStart}, #{perPageNum}
 		]]>
 	</select>
->>>>>>> refs/remotes/origin/master
 	
 	<!-- 같이사냥 카테고리 조회 -->
 	<select id="categoryList" resultType="Category">

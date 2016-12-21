@@ -1,6 +1,5 @@
 function buytogetherDao() {
 	
-<<<<<<< HEAD
 	//유저 관심 카테고리 존재 여부 확인
 	this.listUserInterest = function(user_number) {
 		
@@ -22,8 +21,6 @@ function buytogetherDao() {
 		return result;
 	};
 
-=======
->>>>>>> refs/remotes/origin/master
 	//카테고리 리스트 요청
 	this.listCategoryDao = function() {
 
@@ -179,21 +176,13 @@ function buytogetherDao() {
 	}
 	
 	//같이사냥 리스트(지도)
-<<<<<<< HEAD
 	this.listBuyTogetherMapDao = function(scri){
-=======
-	this.maplistBuyTogetherDao = function(scri){
->>>>>>> refs/remotes/origin/master
 		
 		var parsedResult;
 		
 		$.ajax({
 			type : 'post',
-<<<<<<< HEAD
-			url : '/restBuytogether/listBuyTogether',
-=======
 			url : '/restBuytogether/maplistBuyTogether',
->>>>>>> refs/remotes/origin/master
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"

@@ -11,13 +11,9 @@ $(document).ready(function (){
 	var keyword =  $('#keyword').val();
 	var page = 1;
 	var perPageNum = 6;
-<<<<<<< HEAD
-	var user_number = 9;
-=======
-	var user_number;
->>>>>>> refs/remotes/origin/master
+	var user_number = sessionStorage.getItem("number");
 
-	if(user_number != ''){
+	if(user_number != null){
 		//관심 카테고리가 있는지 확인해서 없으면 전체 리스트를 보여준다
 		console.log(user_number);
 		var interest = controller.requestUserInterest(user_number);
@@ -34,13 +30,10 @@ $(document).ready(function (){
 	cube.init();
 
 	controller.requestListAll(scri);
-<<<<<<< HEAD
 	
 	$('#writeButton').click(function(){
 		controller.requestWrite();
 	});
-=======
->>>>>>> refs/remotes/origin/master
 
 	//검색버튼 클릭시
 	$('#search_button').click(function(){
@@ -68,12 +61,6 @@ $(document).ready(function (){
 				regDate : regDate,
 				keyword : keyword
 		}
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> refs/remotes/origin/master
-		console.log(scri);
 
 		controller.requestListAll(scri);
 	});
@@ -89,10 +76,6 @@ $(document).ready(function (){
 		var buytogether_address_sido = $('#sido').val();
 		var buytogether_address_sigungu = $('#sigungu').val();
 		var regDate = $('#registDate').val();
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
 		var keyword = $('#keyword').val();
 
 		var page = $(this).attr("href");
@@ -110,12 +93,7 @@ $(document).ready(function (){
 				regDate : regDate,
 				keyword : keyword
 		}
-<<<<<<< HEAD
-=======
-		console.log("scri");
-		console.log(scri);
 		
->>>>>>> refs/remotes/origin/master
 		controller.requestListAll(scri);
 	});
 });

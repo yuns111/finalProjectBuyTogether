@@ -15,23 +15,7 @@ public class BuyTogetherController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BuyTogetherController.class);
 
-	//현재 위치 url 경로 
-	@RequestMapping(value ="/buyTogether", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		
-		System.out.println("buyTogetherController");
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		return "/views/buyTogether/buyTogether";
-<<<<<<< HEAD
-	}		
-
 	@RequestMapping(value ="/list", method = RequestMethod.GET)
-	public String requestBuyTogetherList(Locale locale) {
-=======
-	}
-	
-	@RequestMapping(value ="/listCategory", method = RequestMethod.GET)
 	public String requestBuyTogetherList(Locale locale) {
 		
 		System.out.println("buyTogetherController/list");
@@ -42,16 +26,11 @@ public class BuyTogetherController {
 	
 	@RequestMapping(value ="/listMap", method = RequestMethod.GET)
 	public String requestBuyTogetherMapList(Locale locale) {
->>>>>>> refs/remotes/origin/master
 		
 		System.out.println("buyTogetherController/list");
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
-<<<<<<< HEAD
-		return "/views/buyTogether/categorybuytogetherList";
-=======
+	
 		return "/views/buyTogether/mapbuytogetherList";
->>>>>>> refs/remotes/origin/master
 	}
 	
 	@RequestMapping(value ="/write", method = RequestMethod.GET)
