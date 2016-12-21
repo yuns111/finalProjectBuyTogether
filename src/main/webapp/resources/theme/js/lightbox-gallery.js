@@ -5,15 +5,19 @@ function cubphoto() {
 			layoutMode: 'grid',
 			mediaQueries: [{
 				width: 1100,
+				height: 1100,
 				cols: 3
 			}, {
 				width: 800,
+				height: 800,
 				cols: 3
 			}, {
 				width: 500,
+				height: 500,
 				cols: 2
 			}, {
-				width: 320,
+				width: 320, 
+				height: 320,
 				cols: 1
 			}],
 			defaultFilter: '*',

@@ -44,9 +44,25 @@ public class BuyTogetherRestController {
 
 	@Inject
 	private BuyTogetherService service;
+	
+	//유저의 관심 카테고리 등록 여부 확인
+	@RequestMapping(value = "userInterest", method = RequestMethod.POST)
+	public ResponseEntity<Integer> requestUserInterest(int user_number) {
+
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+			entity = new ResponseEntity<>(service.userInterest(user_number), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+		}
+		return entity;
+	}
 
 	@RequestMapping(value = "maplistBuyTogether", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> maplistBuyTogether(@RequestBody ListSearchCriteria scri) {
+	public ResponseEntity<Map<String, Object>> requestMapListBuyTogether(@RequestBody ListSearchCriteria scri) {
 
 		ResponseEntity<Map<String, Object>> entity = null;
 
@@ -75,7 +91,7 @@ public class BuyTogetherRestController {
 	}
 	
 	@RequestMapping(value = "listBuyTogether", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> listBuyTogether(@RequestBody ListSearchCriteria scri) {
+	public ResponseEntity<Map<String, Object>> requestListBuyTogether(@RequestBody ListSearchCriteria scri) {
 
 		ResponseEntity<Map<String, Object>> entity = null;
 
@@ -104,7 +120,7 @@ public class BuyTogetherRestController {
 	}
 
 	@RequestMapping(value = "listCategory", method = RequestMethod.GET)
-	public ResponseEntity<List<Category>> ListCategory() {
+	public ResponseEntity<List<Category>> requestListCategory() {
 
 		ResponseEntity<List<Category>> entity = null;
 
@@ -122,7 +138,7 @@ public class BuyTogetherRestController {
 	}
 
 	@RequestMapping(value = "listHuntingType", method = RequestMethod.GET)
-	public ResponseEntity<List<HuntingType>> ListHuntingType() {
+	public ResponseEntity<List<HuntingType>> requestListHuntingType() {
 
 		ResponseEntity<List<HuntingType>> entity = null;
 
@@ -140,7 +156,7 @@ public class BuyTogetherRestController {
 	}
 	
 	@RequestMapping(value = "listHuntingStatus", method = RequestMethod.GET)
-	public ResponseEntity<List<HuntingStatus>> ListHuntingStatus() {
+	public ResponseEntity<List<HuntingStatus>> requestListHuntingStatus() {
 
 		ResponseEntity<List<HuntingStatus>> entity = null;
 
@@ -225,8 +241,8 @@ public class BuyTogetherRestController {
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "write", method = RequestMethod.POST)
-	public ResponseEntity<Integer> RequestInsert(BuyTogether buytogether) {
+	@RequestMapping(value = "write", method = RequestMethod.POST) //같이사냥 글쓰기
+	public ResponseEntity<Integer> RequestWrite(BuyTogether buytogether) {
 
 		ResponseEntity<Integer> entity = null;
 
@@ -244,7 +260,7 @@ public class BuyTogetherRestController {
 		return entity;
 	}
 	
-	@RequestMapping(value = "addressWrite", method = RequestMethod.POST)
+	@RequestMapping(value = "addressWrite", method = RequestMethod.POST) //같이사냥 글쓰기시 주소 저장
 	public ResponseEntity<String> RequestInsertAddress(BuyTogetherAddress buytogetherAddress) {
 
 		ResponseEntity<String> entity = null;
@@ -262,5 +278,4 @@ public class BuyTogetherRestController {
 		return entity;
 	}
 	
-
 }

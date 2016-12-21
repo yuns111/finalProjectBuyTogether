@@ -11,13 +11,29 @@ $(document).ready(function (){
 	var keyword =  $('#keyword').val();
 	var page = 1;
 	var perPageNum = 6;
-	var user_number;
+	var user_number = sessionStorage.getItem("number");
 
+	if(user_number != null){
+		//관심 카테고리가 있는지 확인해서 없으면 전체 리스트를 보여준다
+		console.log(user_number);
+		var interest = controller.requestUserInterest(user_number);
+		console.log(interest);
+		if(interest <= 0){
+			user_number = 0;
+		}
+	}
+	
 	var scri = {
 			page : page, perPageNum : perPageNum, keyword : keyword, user_number : user_number
 	};
+	var cube = new cubphoto();
+	cube.init();
 
 	controller.requestListAll(scri);
+	
+	$('#writeButton').click(function(){
+		controller.requestWrite();
+	});
 
 	//검색버튼 클릭시
 	$('#search_button').click(function(){
@@ -28,7 +44,7 @@ $(document).ready(function (){
 		var buytogether_address_sido = $('#sido').val();
 		var buytogether_address_sigungu = $('#sigungu').val();
 		var regDate = $('#registDate').val();
-		
+
 		var keyword = $('#keyword').val();
 		var page = 1;
 		var perPageNum = 6;
@@ -45,8 +61,6 @@ $(document).ready(function (){
 				regDate : regDate,
 				keyword : keyword
 		}
-		
-		console.log(scri);
 
 		controller.requestListAll(scri);
 	});
@@ -62,9 +76,8 @@ $(document).ready(function (){
 		var buytogether_address_sido = $('#sido').val();
 		var buytogether_address_sigungu = $('#sigungu').val();
 		var regDate = $('#registDate').val();
-
 		var keyword = $('#keyword').val();
-		
+
 		var page = $(this).attr("href");
 		var perPageNum = 6;
 
@@ -80,8 +93,6 @@ $(document).ready(function (){
 				regDate : regDate,
 				keyword : keyword
 		}
-		console.log("scri");
-		console.log(scri);
 		
 		controller.requestListAll(scri);
 	});

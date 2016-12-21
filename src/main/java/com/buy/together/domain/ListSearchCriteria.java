@@ -68,14 +68,6 @@ public class ListSearchCriteria extends Criteria {
 		this.regDate = regDate;
 	}
 
-	public String getSearchType() {
-		return searchType;
-	}
-
-	public void setSearchType(String searchType) {
-		this.searchType = searchType;
-	}
-
 	public String getKeyword() {
 		return keyword;
 	}
