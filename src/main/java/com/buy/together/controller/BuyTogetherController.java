@@ -22,23 +22,15 @@ public class BuyTogetherController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		return "/views/buyTogether/buyTogether";
-	}	
-
-	@RequestMapping(value = "/footer", method = RequestMethod.GET)
-	public String footer() {
-		
-		return "/views/include/footer";
-		
 	}		
 
 	@RequestMapping(value ="/list", method = RequestMethod.GET)
-	public String list(Locale locale, Model model) {
+	public String requestBuyTogetherList(Locale locale) {
 		
-		System.out.println("buyTogetherController");
+		System.out.println("buyTogetherController/list");
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		return "/views/buyTogether/buytogetherlist";
-
+		return "/views/buyTogether/categorybuytogetherList";
 	}
 	
 	@RequestMapping(value ="/write", method = RequestMethod.GET)

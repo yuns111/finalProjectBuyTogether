@@ -25,8 +25,14 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 	@Inject
 	private SqlSession sqlSession;
 	
+	@Override //유저 관심 카테고리 갯수
+	public Integer userInterestDao(Integer user_number) throws Exception {
+
+		return sqlSession.selectOne(namespace+".userInterestCount",user_number);
+	}
+	
 	@Override //같이사냥 페이징 갯수
-	public int searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
+	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
 		
 		return sqlSession.selectOne(namespace+".searchBuyTogetherCount", cri);
 		

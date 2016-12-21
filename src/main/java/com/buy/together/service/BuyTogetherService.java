@@ -12,7 +12,9 @@ import com.buy.together.dto.BuyTogetherDTO;
 
 public interface BuyTogetherService {
 	
-	public int searchBuyTogetherCount(ListSearchCriteria cri) throws Exception;
+	public Integer userInterest(Integer user_number) throws Exception;
+	
+	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception;
 	
 	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception;
 	

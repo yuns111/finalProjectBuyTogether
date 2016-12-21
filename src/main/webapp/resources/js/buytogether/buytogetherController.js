@@ -3,33 +3,73 @@ $('head').append('<script src=\'/resources/js/buytogether/buytogetherDao.js\'><\
 function buytogetherController() {
 	
 	var dao = new buytogetherDao();
+	
+	//글쓰기 버튼 클릭시 글쓰기 뷰로 이동
+	this.requestWrite = function() {
+		
+		document.location = '/buyTogether/write';
+	}
 
-	this.listAll = function(scri) {
+	//유저의 관심카테고리 존재 여부 확인
+	this.requestUserInterest = function(user_number) {
+		
+		return dao.listUserInterest(user_number);
+	}
+	
+	//같이사냥 목록 요청
+	this.requestListAll = function(scri) {
+		
+		var cube = new cubphoto();
+		cube.destory();
+		$('.buyTogetherList').children().remove();
 		
 		var parsedResult = dao.listBuyTogetherDao(scri);
 		var searchBuyTogether = parsedResult.searchBuyTogether;
-		console.log(searchBuyTogether.length);
-		var str = "";
+		cube.init();
+		
+		
+		if(searchBuyTogether.length == 0) {
+			
+			$("#noItem").show();
+			$('.buyTogetherList').hide();
+			$("#pagination").hide();
+
+			return;
+		}
+		
+		$('.buyTogetherList').show();
 		
 		for(var i=0; i<searchBuyTogether.length; i++){
 			
-			str = str + "<div class='cbp-item' id = 'buyTogetherLi'>";
+			var str = "";
+			
+			if(searchBuyTogether[i].title.length > 14){
+				searchBuyTogether[i].title = searchBuyTogether[i].title.substring(0,14);
+				searchBuyTogether[i].title += "...";
+			}
+			if(searchBuyTogether[i].photo_path[0] == null){
+				searchBuyTogether[i].photo_path[0] = '/resources/img/noImage.png';
+			} else {
+				searchBuyTogether[i].photo_path[0] = "/restBuytogether/displayFile?fileName=" + searchBuyTogether[i].photo_path[0].path;
+			}
+			str = str + "<div class='cbp-item'>";
 			str = str + "<a href='/buytogether/read?buytogether_number=" + searchBuyTogether[i].buyTogether_number;
 			str = str + "'class='cbp-caption'>";
 			str = str + "<div class='cbp-caption-defaultWrap'>";
-			str = str + "<img src='/resources/img/noImage.png' alt=''>";
+			str = str + "<img src='"+searchBuyTogether[i].photo_path[0]+"' alt=''>";
 			str = str + "</div> <div class='cbp-caption-activeWrap'>";
 			str = str + "<div class='cbp-l-caption-alignLeft'>";
 			str = str + "<div class='cbp-l-caption-body'>";
-			str = str + "<div class='cbp-l-caption-title' id='title'>'" + searchBuyTogether[i].title;
+			str = str + "<div class='cbp-l-caption-title' id='title'>" + searchBuyTogether[i].title;
 			str = str + "</div><div class='cbp-l-caption-desc' id='nickname'>by " + searchBuyTogether[i].nickname;
 			str = str + "(" + searchBuyTogether[i].reputation + ")";
 			str = str + "</div></div></div></div></a></div>";
-		}
 			
-		$("#buyTogetherLi").remove();
-		$(".buyTogetherList").html(str);
-
+			cube.addItem(str);
+		}
+		$("#noItem").hide();
+		
+		$("#pagination").show();
 		var pageMaker = parsedResult.pageMaker;
 		console.log(pageMaker);
 		printPaging(pageMaker, $("#pagination"));//페이징
@@ -80,6 +120,7 @@ function buytogetherController() {
 
 	}
 	
+	//페이징
 	var printPaging = function(pageMaker, target){
 
 		var str = "<ul class='c-content-pagination c-theme' id='forRemove'>";

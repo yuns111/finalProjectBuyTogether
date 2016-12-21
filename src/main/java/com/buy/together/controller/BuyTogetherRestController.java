@@ -44,9 +44,28 @@ public class BuyTogetherRestController {
 
 	@Inject
 	private BuyTogetherService service;
+	
+	//유저의 관심 카테고리 등록 여부 확인
+	@RequestMapping(value = "userInterest", method = RequestMethod.POST)
+	public ResponseEntity<Integer> userInterest(int user_number) {
 
+		ResponseEntity<Integer> entity = null;
+		
+		try {
+
+			entity = new ResponseEntity<>(service.userInterest(user_number), HttpStatus.OK);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+		}
+		return entity;
+	}
+	
 	@RequestMapping(value = "listBuyTogether", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> ListTest(@RequestBody ListSearchCriteria scri) {
+	public ResponseEntity<Map<String, Object>> listBuyTogether(@RequestBody ListSearchCriteria scri) {
 
 		ResponseEntity<Map<String, Object>> entity = null;
 
@@ -232,6 +251,8 @@ public class BuyTogetherRestController {
 
 		return entity;
 	}
+	
+	
 
 
 }

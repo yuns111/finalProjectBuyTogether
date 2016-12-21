@@ -22,9 +22,14 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 
 	@Inject
 	private BuyTogetherDao dao;
+	
+	@Override //유저의 관심 카테고리 존재 여부 확인
+	public Integer userInterest(Integer user_number) throws Exception {
+		return dao.userInterestDao(user_number);
+	}
 
-	@Override
-	public int searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
+	@Override //리스트 확인
+	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
 		return dao.searchBuyTogetherCount(cri);
 	}
 	
@@ -42,26 +47,26 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return searchBuyTogether;
 	}
 	
-	@Override
+	@Override //카테고리 리스트
 	public List<Category> categoryList() throws Exception {
 
 		return dao.categoryList();
 	}
 
-	@Override
+	@Override //사냥방식 리스트
 	public List<HuntingType> huntingTypeList() throws Exception {
 
 		return dao.huntingTypeList();
 	}
 	
-	@Override
+	@Override //사냥 상태 리스트
 	public List<HuntingStatus> huntingStatusList() throws Exception {
 
 		return dao.huntingStatusList();
 	}
 
 	@Transactional
-	@Override
+	@Override //같이사낭 쓰기
 	public Integer buyTogetherWrite(BuyTogether buyTogether) throws Exception {
 
 		dao.buyTogetherInsert(buyTogether);
@@ -69,6 +74,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		//입력한 같이사냥 글의 번호를 가져온다.
 		int number = dao.getBuyTogetherNumber(buyTogether);
 
+		//같이사냥 글과 함께 사진 경로까지 입력
 		if(buyTogether.getPath() != null){
 			for(int i=0; i<buyTogether.getPath().length; i++){
 				AttachedPhoto photo = new AttachedPhoto();
@@ -81,7 +87,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return number;
 	}
 
-	@Override
+	@Override //같이사냥 쓰기시 주소 입력
 	public void buyTogetherWriteAddress(BuyTogetherAddress buyTogetherAddress) throws Exception {
 
 		dao.buyTogetherAddressInsert(buyTogetherAddress);

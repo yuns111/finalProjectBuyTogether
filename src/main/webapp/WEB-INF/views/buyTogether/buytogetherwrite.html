@@ -51,7 +51,6 @@ $(document).ready(function(){
 	$("#buytogetherHeader").load("/views/include/header.html");
 	$("#buytogetherFooter").load("/views/include/footer.html");
 	
-	
 	//금액 관련 id 입력하면 자동으로 문자입력제한, 콤마처리
 	inputNumber("price"); 
 	inputNumber("joinin_number");
@@ -69,8 +68,7 @@ $(document).ready(function(){
 </script>
 </head>
 <!-- BEGIN: HEADER 시작-->
-<body
-	class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
 
 	<div id="buytogetherHeader"></div>
 	<!-- END: HEADER -->
@@ -170,17 +168,6 @@ $(document).ready(function(){
 							</div>
 						</div>
 						<div id="tx_trex_container" class="tx-editor-container">
-							<!-- 사이드바 -->
-							<!-- 툴바 - 기본 시작 -->
-							<!--
-				@decsription
-				툴바 버튼의 그룹핑의 변경이 필요할 때는 위치(왼쪽, 가운데, 오른쪽) 에 따라 <li> 아래의 <div>의 클래스명을 변경하면 된다.
-				tx-btn-lbg: 왼쪽, tx-btn-bg: 가운데, tx-btn-rbg: 오른쪽, tx-btn-lrbg: 독립적인 그룹
-
-				드롭다운 버튼의 크기를 변경하고자 할 경우에는 넓이에 따라 <li> 아래의 <div>의 클래스명을 변경하면 된다.
-				tx-slt-70bg, tx-slt-59bg, tx-slt-42bg, tx-btn-43lrbg, tx-btn-52lrbg, tx-btn-57lrbg, tx-btn-71lrbg
-				tx-btn-48lbg, tx-btn-48rbg, tx-btn-30lrbg, tx-btn-46lrbg, tx-btn-67lrbg, tx-btn-49lbg, tx-btn-58bg, tx-btn-46bg, tx-btn-49rbg
-			-->
 							<div id="tx_toolbar_basic" class="tx-toolbar tx-toolbar-basic">
 								<div class="tx-toolbar-boundary">
 									<ul class="tx-bar tx-bar-left">
@@ -575,7 +562,7 @@ $(document).ready(function(){
 						<div class='uploadedList'></div>
 					</div>
 				</form>
-
+				<br><br>
 				<div class="row c-margin-t-30">
 					<div class="form-group col-md-12" role="group">
 						<button onclick='saveContent()'
