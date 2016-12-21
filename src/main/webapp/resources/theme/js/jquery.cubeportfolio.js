@@ -1,7 +1,7 @@
 /*!
  * Cube Portfolio - Responsive jQuery Grid Plugin
  *
- * version: 2.3.1 (7 May, 2015)
+ * version: 2.3.2 (26 May, 2015)
  * require: jQuery v1.7+
  *
  * Copyright 2013-2015, Mihai Buricea (http://scriptpie.com/cubeportfolio/live-preview/)
@@ -10,7 +10,6 @@
  */
 
 (function($, window, document, undefined) {
-
     'use strict';
 
     function CubePortfolio(obj, options, callback) {
@@ -18,9 +17,9 @@
         var t = this,
             initialCls = 'cbp',
             children;
-
         if ($.data(obj, 'cubeportfolio')) {
-            throw new Error('cubeportfolio is already initialized. Destroy it before initialize again!');
+        	console.log(obj);
+        	throw new Error('cubeportfolio is already initialized. Destroy it before initialize again!');
         }
 
         // attached this instance to obj
@@ -1624,6 +1623,7 @@
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -1724,7 +1724,7 @@
 
     CubePortfolio.Plugins.Filters = function(parent) {
 
-        if (parent.options.filters === '' || parent.blocks.length === 0) {
+        if (parent.options.filters === '') {
             return null;
         }
 
@@ -1734,6 +1734,7 @@
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -1935,7 +1936,7 @@
 
     CubePortfolio.Plugins.LoadMore = function(parent) {
 
-        if (parent.options.loadMore === '' || parent.blocks.length === 0) {
+        if (parent.options.loadMore === '') {
             return null;
         }
 
@@ -1945,7 +1946,6 @@
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
-
     'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
@@ -3437,7 +3437,7 @@
         p.lightbox = null;
 
         // LIGHTBOX
-        if (p.$obj.find(p.options.lightboxDelegate).length && !lightboxInit) {
+        if (p.options.lightboxDelegate && !lightboxInit) {
 
             // init only one time @todo
             lightboxInit = true;
@@ -3491,7 +3491,7 @@
         p.singlePage = null;
 
         // SINGLEPAGE
-        if (p.$obj.find(p.options.singlePageDelegate).length && !singlePageInit) {
+        if (p.options.singlePageDelegate && !singlePageInit) {
 
             // init only one time @todo
             singlePageInit = true;
@@ -3545,7 +3545,7 @@
         p.singlePageInline = null;
 
         // SINGLEPAGEINLINE
-        if (p.$obj.find(p.options.singlePageInlineDelegate).length) {
+        if (p.options.singlePageDelegate) {
 
             p.singlePageInline = Object.create(popup);
 
@@ -3586,7 +3586,7 @@
 
         $(document.body).off('click.cbp');
 
-        // @todo - remove thiese from here
+        // @todo - remove these from here
         lightboxInit = false;
         singlePageInit = false;
 
@@ -3613,7 +3613,6 @@
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
-
     'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
@@ -3624,7 +3623,6 @@
          */
         checkInstance: function(method) {
             var t = $.data(this, 'cubeportfolio');
-
             if (!t) {
                 throw new Error('cubeportfolio is not initialized. Initialize it before calling ' + method + ' method!');
             }
@@ -3728,7 +3726,6 @@
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
-
     'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
@@ -3870,13 +3867,11 @@
          */
         appendItems: function(items, callback) {
             var t = CubePortfolio.Private.checkInstance.call(this, 'appendItems');
-
-            if (t.isAnimating) {
+            /*if (t.isAnimating) {
                 return;
-            }
-
+            }*/
+            
             t.isAnimating = true;
-
             if (t.singlePageInline && t.singlePageInline.isOpen) {
                 t.singlePageInline.close('promise', {
                     callback: function() {
@@ -3966,6 +3961,7 @@ jQuery.expr[':'].uncached = function(obj) {
 }());
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4054,7 +4050,7 @@ jQuery.expr[':'].uncached = function(obj) {
 
     CubePortfolio.Plugins.AnimationClassic = function(parent) {
 
-        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['boxShadow', 'fadeOut', 'flipBottom', 'flipOut', 'quicksand', 'scaleSides', 'skew']) < 0 || parent.blocks.length === 0) {
+        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['boxShadow', 'fadeOut', 'flipBottom', 'flipOut', 'quicksand', 'scaleSides', 'skew']) < 0) {
             return null;
         }
 
@@ -4064,6 +4060,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4138,7 +4135,7 @@ jQuery.expr[':'].uncached = function(obj) {
 
     CubePortfolio.Plugins.AnimationClone = function(parent) {
 
-        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['fadeOutTop', 'slideLeft', 'sequentially']) < 0 || parent.blocks.length === 0) {
+        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['fadeOutTop', 'slideLeft', 'sequentially']) < 0) {
             return null;
         }
 
@@ -4148,6 +4145,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4231,7 +4229,7 @@ jQuery.expr[':'].uncached = function(obj) {
 
     CubePortfolio.Plugins.AnimationCloneDelay = function(parent) {
 
-        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['3dflip', 'flipOutDelay', 'foldLeft', 'frontRow', 'rotateRoom', 'rotateSides', 'scaleDown', 'slideDelay', 'unfold']) < 0 || parent.blocks.length === 0) {
+        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['3dflip', 'flipOutDelay', 'foldLeft', 'frontRow', 'rotateRoom', 'rotateSides', 'scaleDown', 'slideDelay', 'unfold']) < 0) {
             return null;
         }
 
@@ -4241,6 +4239,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4305,7 +4304,7 @@ jQuery.expr[':'].uncached = function(obj) {
 
     CubePortfolio.Plugins.AnimationWrapper = function(parent) {
 
-        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['bounceBottom', 'bounceLeft', 'bounceTop', 'moveLeft']) < 0 || parent.blocks.length === 0) {
+        if (!CubePortfolio.Private.modernBrowser || $.inArray(parent.options.animationType, ['bounceBottom', 'bounceLeft', 'bounceTop', 'moveLeft']) < 0) {
             return null;
         }
 
@@ -4315,6 +4314,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4407,7 +4407,7 @@ jQuery.expr[':'].uncached = function(obj) {
 
     CubePortfolio.Plugins.CaptionExpand = function(parent) {
 
-        if (parent.options.caption !== 'expand' || parent.blocks.length === 0) {
+        if (parent.options.caption !== 'expand') {
             return null;
         }
 
@@ -4417,6 +4417,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4461,6 +4462,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4499,6 +4501,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 
@@ -4537,6 +4540,7 @@ jQuery.expr[':'].uncached = function(obj) {
 })(jQuery, window, document);
 
 (function($, window, document, undefined) {
+    'use strict';
 
     var CubePortfolio = $.fn.cubeportfolio.Constructor;
 

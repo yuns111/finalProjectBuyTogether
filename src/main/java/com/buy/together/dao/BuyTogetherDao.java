@@ -14,7 +14,9 @@ import com.buy.together.dto.BuyTogetherDTO;
 
 public interface BuyTogetherDao {
 	
-	public int searchBuyTogetherCount(ListSearchCriteria cri) throws Exception;
+	public Integer userInterestDao(Integer user_number) throws Exception;
+	
+	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception;
 	
 	public List<BuyTogetherDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception;
 		
