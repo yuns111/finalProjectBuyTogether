@@ -53,7 +53,29 @@ public class BuyTogetherRestController {
 		
 		try {
 
+<<<<<<< HEAD
 			entity = new ResponseEntity<>(service.userInterest(user_number), HttpStatus.OK);
+=======
+	@RequestMapping(value = "maplistBuyTogether", method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> maplistBuyTogether(@RequestBody ListSearchCriteria scri) {
+
+		ResponseEntity<Map<String, Object>> entity = null;
+
+		try {
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			
+			int searchBuyTogetherCount = service.searchBuyTogetherCount(scri);
+			pageMaker.setTotalCount(searchBuyTogetherCount);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			List<BuyTogetherDTO> searchBuyTogether = service.searchBuyTogetherList(scri);
+			map.put("searchBuyTogether", searchBuyTogether);
+			map.put("pageMaker", pageMaker);
+			
+			entity = new ResponseEntity<>(map, HttpStatus.OK);
+>>>>>>> refs/remotes/origin/master
 
 		} catch (Exception e) {
 
@@ -252,7 +274,10 @@ public class BuyTogetherRestController {
 		return entity;
 	}
 	
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> refs/remotes/origin/master
 
 }

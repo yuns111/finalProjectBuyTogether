@@ -18,9 +18,9 @@ public interface BuyTogetherDao {
 	
 	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception;
 	
-	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception;
+	public List<BuyTogetherDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception;
 		
-	public List<BuyTogetherDTO> buyTogetherList(MySearchCriteria cri) throws Exception;
+	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception;
 	
 	public List<AttachedPhoto> photoList(Integer buytogether_number) throws Exception;
 	
@@ -38,4 +38,5 @@ public interface BuyTogetherDao {
 	
 	public void buyTogetherPhotoInsert(AttachedPhoto AttachedPhoto) throws Exception;
 
+	
 }

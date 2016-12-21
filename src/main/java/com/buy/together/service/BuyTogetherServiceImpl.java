@@ -33,10 +33,10 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return dao.searchBuyTogetherCount(cri);
 	}
 	
-	@Override//개설한 같이사냥
-	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception {
+	@Override//같이사냥 지도리스트
+	public List<BuyTogetherDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception {
 		
-		List<BuyTogetherDTO> searchBuyTogether = dao.searchBuyTogetherList(cri);
+		List<BuyTogetherDTO> searchBuyTogether = dao.searchBuyTogetherMapList(cri);
 
 		for(int i = 0; i<searchBuyTogether.size(); i++){
 			List<AttachedPhoto> attachedPhotos = dao.photoList(searchBuyTogether.get(i).getBuyTogether_number());
@@ -47,7 +47,27 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return searchBuyTogether;
 	}
 	
+<<<<<<< HEAD
 	@Override //카테고리 리스트
+=======
+	@Override //같이사냥 리스트
+	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception {
+
+		List<BuyTogetherDTO> buyTogether = dao.searchBuyTogetherList(cri);
+
+		for(int i = 0; i<buyTogether.size(); i++) {
+
+			List<AttachedPhoto> attachedPhotos = dao.photoList(buyTogether.get(i).getBuyTogether_number());
+
+			buyTogether.get(i).setPhoto_path(attachedPhotos);
+
+		}
+
+		return buyTogether;
+	}
+
+	@Override
+>>>>>>> refs/remotes/origin/master
 	public List<Category> categoryList() throws Exception {
 
 		return dao.categoryList();
