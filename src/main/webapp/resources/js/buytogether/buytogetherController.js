@@ -19,14 +19,18 @@ function buytogetherController() {
 	//같이사냥 목록 요청
 	this.requestListAll = function(scri) {
 
+		//큐브를 삭제
 		var cube = new cubphoto();
 		cube.destory();
 		$('.buyTogetherList').children().remove();
 		
 		var parsedResult = dao.listBuyTogetherDao(scri);
 		var searchBuyTogether = parsedResult.searchBuyTogether;
+		
+		//초기화
 		cube.init();
 		
+		//같이사냥 글이 없으면 해당 글 없음 화면에 표시
 		if(searchBuyTogether.length == 0) {
 			
 			$("#noItem").show();
@@ -38,6 +42,7 @@ function buytogetherController() {
 		
 		$('.buyTogetherList').show();
 		
+		//리스트 붙여줌
 		for(var i=0; i<searchBuyTogether.length; i++){
 			
 			var str = "";
@@ -75,44 +80,44 @@ function buytogetherController() {
 		
 	}
 
-//	카테고리 리스트 조회
+	//카테고리 리스트 조회
 	this.requestCategoryList = function() {
 
 		dao.listCategoryDao();
 	}
 
-//	사냥방식 리스트 조회
+	//사냥방식 리스트 조회
 	this.requestHuntingTypeList = function() {
 
 		dao.listHuntingTypeDao();
 	}
 
-//	사냥상태 리스트 조회
+	//사냥상태 리스트 조회
 	this.requestHuntingStatusList = function() {
 
 		dao.listHuntingStatusDao();
 	}
 
-//	첨부사진 경로 받아옴
+	//첨부사진 경로 받아옴
 	this.requestPhotoPath = function(formData) {
 
 		dao.savePhotoPath(formData);
 
 	}
 
-//	첨부사진 삭제
+	//첨부사진 삭제
 	this.requestPhotoDelete = function(photo) {
 
 		dao.deletePhotoDao(photo);
 	}
 
-//	같이사냥 게시글 저장
+	//같이사냥 게시글 저장
 	this.requestSaveBuyTogether = function(buytogether, buytogetherAddress) {
 
 		dao.insertDao(buytogether, buytogetherAddress);
 	}
 
-//	같이사냥 리스트(map)
+	//같이사냥 리스트(map)
 	this.requestBuyTogetherMap = function(scri) {
 
 		var parsedResult = dao.listBuyTogetherDao(scri);
@@ -121,7 +126,7 @@ function buytogetherController() {
 
 	}
 
-//	페이징
+	//페이징
 	var printPaging = function(pageMaker, target){
 
 		var str = "<ul class='c-content-pagination c-theme' id='forRemove'>";
