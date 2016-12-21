@@ -11,55 +11,59 @@ function validForm(editor) {
 	
 	if($('#title').val() == '') {
 		
-		alert("제목을 입력하세요");
-		
 		$('#title').focus(); 
+		$('#titleCheck').show();
 		return;
-	}
-	if($('#address').val() == '') {
 		
-		alert("주소를 입력하세요");
-		
-		$('#address').focus(); 
-		return;
+	} else {
+		$('#titleCheck').hide();
 	}
 	if($('#category_number').val() == '') {
 		
-		alert("카테고리를 선택하세요");
-		
 		$('#category_number').focus(); 
+		$('#categoryCheck').show();
 		return;
+		
+	} else {
+		$('#categoryCheck').hide();
 	}
 	if($('#huntingType').val() == '') {
 		
-		alert("사냥방식 선택하세요");
-		
 		$('#huntingType').focus(); 
+		$('#huntingTypeCheck').show();
 		return;
+		
+	} else {
+		$('#huntingTypeCheck').hide();
 	}
 	if($('#duedate').val() == '') {
 		
-		alert("마감일을 입력세요");
-		
 		$('#duedate').focus(); 
+		$('#dueDateCheck').show();
 		return;
+		
+	} else {
+		$('#dueDateCheck').hide();
 	}
 	if($('#joinin_number').val() == '') {
 		
-		alert("참여정원을 입력하세요");
-		
 		$('#joinin_number').focus(); 
+		$('#joininCheck').show();
 		return;
+		
+	} else {
+		$('#joininCheck').hide();
 	}
 	
 	if($('#price').val() == '') {
 		
-		alert("가격을 입력하세요");
-		
 		$('#price').focus(); 
+		$('#priceCheck').show();
 		return;
+		
+	} else {
+		$('#priceCheck').hide();
 	}
-
 	return true;
 }
 

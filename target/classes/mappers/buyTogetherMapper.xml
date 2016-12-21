@@ -4,8 +4,6 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.buy.together.mappers.buyTogetherMapper">
-<<<<<<< HEAD
-=======
 
 	<!-- 같이사냥 서치카운트 -->
 	<select id="searchBuyTogetherCount" resultType="int">
@@ -16,7 +14,7 @@
 		<include refid="search"></include>
 	</select>
 
-	<!-- 같이사냥리스트 -->
+	<!-- 같이사냥(지도)리스트 -->
 	<select id="searchBuyTogetherList" resultType="com.buy.together.dto.BuyTogetherDTO">
 	 	<![CDATA[
         select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude
@@ -33,7 +31,6 @@
 		limit #{pageStart}, #{perPageNum}
 		]]>
 	</select>
->>>>>>> b1a152601c70e1bc054193deb7ecf8b9dfcd1abe
 
 	<!-- 같이사냥 리스트 조회 -->
 	<select id="buyTogetherList" resultType="com.buy.together.dto.BuyTogetherDTO">
@@ -60,26 +57,19 @@
 		from huntingtype
 	</select>
 	
-<<<<<<< HEAD
-=======
 	<!-- 같이사냥 사냥상태 조회 -->
 	<select id="huntingStatusList" resultType="HuntingStatus">
 		select *
 		from huntingstatus
 	</select>
 	
->>>>>>> b1a152601c70e1bc054193deb7ecf8b9dfcd1abe
 	<!-- 같이사냥 게시글의 사진조회 -->
 	<select id="photoList" resultType="attachedPhoto">
 		select *
 		from attachedphoto 
-		where board_type_number = 5 and board_number = #{buytogether_number}
+		where board_type_number = 5 and buytogether_number = #{buytogether_number}
 		order by photo_number desc
 	</select>
-<<<<<<< HEAD
-=======
-
->>>>>>> b1a152601c70e1bc054193deb7ecf8b9dfcd1abe
 	
 	<!-- 같이사냥 글쓰기 1.게시글쓰기 -->
 	<insert id="buytogetherInsert">
