@@ -5,7 +5,7 @@ function faqController(){
 	var dao = new faqDao();
 
 	//FAQ [전체보기] 리스트
-	this.listAll = function(){
+	this.requestListAll = function(){
 
 		var data = dao.listAllDao();
 
@@ -14,7 +14,7 @@ function faqController(){
 	}
 
 	//FAQ [회원관련] 리스트
-	this.listUser = function(){
+	this.requestListUser = function(){
 
 		var data = dao.listUserDao();
 
@@ -23,7 +23,7 @@ function faqController(){
 	}
 
 	//FAQ [사냥관련] 리스트
-	this.listBuy = function(){
+	this.requestListBuy = function(){
 
 		var data = dao.listBuyDao();
 
@@ -32,7 +32,7 @@ function faqController(){
 	}
 
 	//FAQ [정보관련] 리스트
-	this.listInfo = function(){
+	this.requestListInfo = function(){
 
 		var data = dao.listInfoDao();
 
@@ -42,7 +42,7 @@ function faqController(){
 
 
 	//FAQ [고객센터] 리스트
-	this.listCenter = function(){
+	this.requestListCenter = function(){
 
 		var data = dao.listCenterDao();
 
