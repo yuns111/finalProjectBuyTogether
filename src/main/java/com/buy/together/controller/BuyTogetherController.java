@@ -39,7 +39,7 @@ public class BuyTogetherController {
 		System.out.println("buyTogetherController/write");
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		return "/views/buyTogether/buytogetherWrite";
+		return "/views/buyTogether/buytogetherwrite";
 	}
 	
 }
