@@ -462,7 +462,7 @@
    <!-- 삭제 수정 버튼 -->                    
    <div class="col-md-3 col-ms-3 c-product-rating c-right" data-comment-number='{{comment_number}}' data-comment-content='{{comment_content}}'">
      
-          <a href="/buyTogether/buytogether" class="deleteBtn"><button type="button" class="btn btn-xs btn-primary">삭제</button></a>
+          <input type="button" class="btn btn-xs btn-primary deleteBtn" value="삭제" />
 		  <input type="button" class="btn btn-xs btn-primary updateBtn" value="수정" id="updateBtn_a" />
 
    </div>                                
@@ -471,7 +471,7 @@
 <div class="c-product-review-content" id="recommentList_Btn_A" data-comment-number='{{comment_number}}'>
 
 	<!-- 아이콘 , 날짜 , 신고버튼 -->
-        <label class="c-theme-font c-font-14"><span class="glyphicon glyphicon-user"></span>{{nickname}},&nbsp;
+        <label class="c-theme-font c-font-14"><span class="glyphicon glyphicon-user"></span>{{nickname}}&nbsp;
             {{dateHelper comment_writedate}}&nbsp;   
 			<span>
 				<input class="btn btn-default btn-xs report_btn" type="button" value="신고"  />
@@ -534,9 +534,9 @@
  </div>
  <div class="c-product-review-content recommentList_Btn_a" data-comment-number='{{comment_number}}'>
                                  
-    <label class="c-theme-font c-font-14"><span class="glyphicon glyphicon-user"></span>{{nickname}},&nbsp;             
+    <label class="c-theme-font c-font-14"><span class="glyphicon glyphicon-user"></span>{{nickname}}&nbsp;             
              {{dateHelper comment_writedate}}&nbsp;   
-	<span><a href="#" class="btn btn-default btn-xs">신고</a></span></label>
+	<span><a href="#" class="btn btn-default btn-xs report_btn">신고</a></span></label>
 
     <button type="button" id="recommentList_Btn_B" class="btn btn-default btn-xs recommentList_Btn_B" data-comment-number='{{comment_number}}' data-toggle="collapse" data-target="#1{{comment_number}}">답글</button>
     
@@ -568,7 +568,7 @@
 </div>
 </script>
 
-	<!-- 권한 답글  리스트 -->
+	<!-- 참여자 답글  리스트 -->
 	<script type="text/x-handlebars-template" class="recommentTemplate_B">
 {{#each.}}
 <div id="recommentLi_b">
@@ -576,15 +576,15 @@
    <div class="col-md-9 col-ms-9">
         
         <label class="c-theme-font c-font-14"><span class="glyphicon glyphicon-user"></span>{{nickname}},&nbsp;
- 			{{dateHelper comment_writedate}},&nbsp;   
-		<span><a href="#" class="btn btn-default btn-xs">신고</a></span></label> </label>
+ 			{{dateHelper comment_writedate}}&nbsp;   
+		<span data-comment-number='{{comment_number}}'><a href="#" class="btn btn-default btn-xs recommentReport_btn">신고</a></span></label> </label>
 
         <textarea readonly id="recomment_content_B" rows="3" style="border: none; width:100%;"> {{comment_content}} </textarea>
             
    </div>                               
    <div class="col-md-3 col-ms-3 c-product-rating c-right" id="recomment_number" data-comment-number='{{comment_number}}' data-comment-content='{{comment_content}}'">
         
-        <a href="/buyTogether/buytogether" class="deleteBtn"><button type="button" class="btn btn-xs btn-primary">삭제</button></a>
+        <input type="button" class="btn btn-xs btn-primary deleteBtn" value="삭제" />
         <input type="button" class="btn btn-xs btn-primary recomment_updateBtn_B" value="수정" id="recomment_updateBtn_B" />
 
    </div>                                 
@@ -603,14 +603,14 @@
         
         <label class="c-theme-font c-font-14"><span class="glyphicon glyphicon-user"></span>{{nickname}},&nbsp;
             {{dateHelper comment_writedate}},&nbsp;   
-		<span><a href="#" class="btn btn-default btn-xs">신고</a></span></label> </label>
+		<span data-comment-number='{{comment_number}}'><a href="#" class="btn btn-default btn-xs recommentReport_btn">신고</a></span></label> </label>
 
         <textarea readonly id="recomment_content_A" rows="3" style="border: none; width:100%;"> {{comment_content}} </textarea>
             
    </div>                               
    <div class="col-md-3 col-ms-3 c-product-rating c-right" id="recomment_number_a" data-comment-number='{{comment_number}}' data-comment-content='{{comment_content}}'">
         
-        <a href="/buyTogether/buytogether" class="deleteBtn"><button type="button" class="btn btn-xs btn-primary">삭제</button></a>
+        <a href="/buyTogether/list" class="deleteBtn"><button type="button" class="btn btn-xs btn-primary">삭제</button></a>
         <input type="button" class="btn btn-xs btn-primary recomment_updateBtn_A" value="수정" id="recomment_updateBtn_A" />
 
    </div>                                 

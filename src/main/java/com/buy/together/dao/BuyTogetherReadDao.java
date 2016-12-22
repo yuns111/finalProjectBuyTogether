@@ -39,4 +39,6 @@ public interface BuyTogetherReadDao {
 	
 	public void sendReport(DeclareBoard declareBoard) throws Exception;
 	
+	public Integer buytogetherCheckDao(Integer buytogether_number, Integer user_number) throws Exception;
+	
 }

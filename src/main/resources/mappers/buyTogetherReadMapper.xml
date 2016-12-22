@@ -127,6 +127,13 @@
 		values(#{buytogether_number}, #{type_number}, #{declare_category_number}, #{user_number}, #{declare_reason}, #{declare_status});
 	</insert>
 	
+	<!-- 같이사냥 확인 -->
+	<select id="buytogetherCheck" parameterType="java.util.Map" resultType = "int">
+		select joinin_number 
+		from joinin
+		where buytogether_number = #{buytogether_number} and user_number = #{user_number};
+	</select>
+	
 </mapper>
 
 

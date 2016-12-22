@@ -202,5 +202,18 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 		
 	}
 
+	// 같이사냥 확인
+	@Override
+	public Integer buytogetherCheckDao(Integer buytogether_number, Integer user_number) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("buytogether_number", buytogether_number);
+		map.put("user_number", user_number);
+		
+		return sqlSession.selectOne(namespace+".buytogetherCheck", map);
+		
+	}
+
 
 }

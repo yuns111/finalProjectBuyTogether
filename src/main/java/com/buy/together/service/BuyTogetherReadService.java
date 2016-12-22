@@ -39,4 +39,6 @@ public interface BuyTogetherReadService {
 	
 	public void registReport(DeclareBoard declareBoard) throws Exception;
 	
+	public Integer buytogetherCheck(Integer buytogether_number, Integer user_number) throws Exception;
+	
 }

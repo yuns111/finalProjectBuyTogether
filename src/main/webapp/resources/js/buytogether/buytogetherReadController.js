@@ -8,7 +8,7 @@ function buytogetherReadController() {
 	// 같이사냥 조회
 	this.requestRead = function(buytogether_number) {
 		
-		dao.ReadDao(buytogether_number);
+		dao.readDao(buytogether_number);
 	
 	}
 
@@ -41,9 +41,9 @@ function buytogetherReadController() {
 	}
 
 	// 같이사냥 삭제 부분
-	this.requestCommentDelete = function(comment_number){
+	this.requestCommentDelete = function(buytogether_number, comment_number){
 
-		dao.commentDeleteDao(comment_number);
+		dao.commentDeleteDao(buytogether_number, comment_number);
 
 	}
 

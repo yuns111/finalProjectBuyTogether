@@ -2,11 +2,11 @@
 function buytogetherReadDao() {
 
 	// 같이사냥 글 조회
-	this.ReadDao = function(buytogether_number) {
+	this.readDao = function(buytogether_number) {
 
 		$.ajax({
 			type : 'get',
-			url : '/restBuytogetherRead/read/'  + buytogether_number ,
+			url : '/restBuytogetherRead/read/' + buytogether_number,
 			async : false,
 			headers : {
 				"Content-type" : "application/json",
@@ -228,8 +228,8 @@ function buytogetherReadDao() {
 
 	}
 
-	//	같이 사냥 댓글 삭제(댓글 번호, 부모 댓글 번호)
-	this.commentDeleteDao = function(comment_number){
+	//	같이 사냥 댓글 삭제
+	this.commentDeleteDao = function(buytogether_number, comment_number){
 
 		$.ajax({
 			type: 'delete',
@@ -246,11 +246,13 @@ function buytogetherReadDao() {
 				if(data == "success"){
 
 					alert("댓글이 삭제 되었습니다.");
+					document.location.href='/buyTogether/read?buytogether_number=' + buytogether_number;
 
 				} else {
 
 					alert("댓글 삭제가 실패함");
-
+					document.location.href='/buyTogether/read?buytogether_number=' + buytogether_number;
+					
 				}
 			}
 
@@ -260,7 +262,7 @@ function buytogetherReadDao() {
 
 	// 같이 사냥 댓글 수정(댓글 번호, 유저번호, 내용)
 	this.commentUpdateDao = function(buytogether_number, comment_number, comment_content, comment_type_number){
-
+		
 		$.ajax({
 			type: 'put',
 			url: '/restBuytogetherRead/' + comment_number,
@@ -285,7 +287,7 @@ function buytogetherReadDao() {
 
 					} else if(comment_type_number == 2){
 
-						alert("권한 댓글이 수정 되었습니다.");
+						alert("참여자 댓글이 수정 되었습니다.");
 						getPageTap2("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number);
 
 					}
@@ -445,7 +447,7 @@ function buytogetherReadDao() {
 
 		$.ajax({
 			type: 'post',
-			url: '/restBuytogetherRead/buytoegetherCheck/' + buytogether_number + "/" + user_number,
+			url: '/restBuytogetherRead/buytogetherCheck/' + buytogether_number + "/" + user_number,
 			async : false,
 			headers: {
 
@@ -456,10 +458,12 @@ function buytogetherReadDao() {
 			success: function(data){
 				if(data == "success") {
 					
+					alert("true = " + data);
 					result = true;
 					
 				} else if(data == "fail"){
 					
+					alert("false = " + data);
 					result = false;
 					
 				}

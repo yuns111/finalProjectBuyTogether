@@ -111,6 +111,7 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 
+	// 찜하기 취소
 	@Override
 	public void deleteDip(Integer buytogether_number, Integer user_number) throws Exception {
 		
@@ -118,12 +119,14 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 	
+	// 찜 확인
 	@Override
 	public Integer checkDip(Integer buytogether_number, Integer user_number) throws Exception {
 		
 		return dao.checkDip(buytogether_number, user_number);
 	}
 
+	// 신고
 	@Override
 	public Comment report(Integer buytogether_number, Integer comment_number) throws Exception {
 		
@@ -131,10 +134,19 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 
+	// 신고하기
 	@Override
 	public void registReport(DeclareBoard declareBoard) throws Exception {
 		
 		dao.sendReport(declareBoard);
+		
+	}
+
+	// 같이사냥 확인
+	@Override
+	public Integer buytogetherCheck(Integer buytogether_number, Integer user_number) throws Exception {
+		
+		return dao.buytogetherCheckDao(buytogether_number, user_number);
 		
 	}
 
