@@ -62,7 +62,7 @@ public class UserRestController {
 	
 	//회원 DB 삭제
 	@RequestMapping(value="/remove", method = RequestMethod.POST)
-	public ResponseEntity<String> requestBasicInfo(@RequestBody User user) {
+	public ResponseEntity<String> requestRemove(@RequestBody User user) {
 		
 		ResponseEntity<String> entity = null;
 		String result = null;

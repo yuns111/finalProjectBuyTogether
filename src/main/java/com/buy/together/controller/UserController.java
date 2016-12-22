@@ -28,4 +28,12 @@ public class UserController {
 		
 	}
 	
+	//마이페이지 조회 화면 호출
+	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+	public String requestMyPage() throws Exception {
+		
+		return "/views/user/myPageRead";
+		
+	}
+	
 }
