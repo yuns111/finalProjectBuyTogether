@@ -9,7 +9,6 @@ public class ListSearchCriteria extends Criteria {
 	private String buytogether_address_sigungu;
 	private int regDate;
 	private int user_number;
-	private String searchType;
 	private String keyword;
 
 	public int getCategory_number() {
