@@ -37,18 +37,23 @@ public class ScoreUserInfo {
 	public int getScore() {
 		return score;
 	}
+	
 	public void setScore(int score) {
 		this.score = score;
 	}
+	
 	public int getScore_user_number() {
 		return score_user_number;
 	}
+	
 	public void setScore_user_number(int score_user_number) {
 		this.score_user_number = score_user_number;
 	}
+	
 	public int getBuyTogetherNumber() {
 		return buyTogetherNumber;
 	}
+	
 	public void setBuyTogetherNumber(int buyTogetherNumber) {
 		this.buyTogetherNumber = buyTogetherNumber;
 	}

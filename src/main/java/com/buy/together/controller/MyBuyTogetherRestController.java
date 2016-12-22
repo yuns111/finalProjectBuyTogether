@@ -33,8 +33,8 @@ public class MyBuyTogetherRestController {
 	private MyBuyTogetherService service;
 
 	/*---------------------------------------개설한 같이사냥--------------------------------------*/
-	@RequestMapping(value = "openBuyTogether/", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> openBuyTogether(@RequestBody MySearchCriteria scri) {
+	@RequestMapping(value = "requestOpenBuyTogether/", method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> requestOpenBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
 		try {
 			PageMaker pageMaker = new PageMaker();
@@ -61,8 +61,8 @@ public class MyBuyTogetherRestController {
 	}
 
 	/*---------------------------참여한 같이사냥------------------------------*/	
-	@RequestMapping(value = "joinBuyTogether/", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> joinBuyTogether(@RequestBody MySearchCriteria scri) {
+	@RequestMapping(value = "requestJoinBuyTogether/", method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> requestjoinBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
 		System.out.println("잘받았나?"+scri);
 		try {
@@ -93,8 +93,8 @@ public class MyBuyTogetherRestController {
 
 
 	/*---------------------------완료한 같이사냥------------------------------*/
-	@RequestMapping(value = "doneBuyTogether/", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> doneBuyTogether(@RequestBody MySearchCriteria scri) {
+	@RequestMapping(value = "requestDoneBuyTogether/", method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> requestDoneBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
 		System.out.println("잘받았나?"+scri);
 		try {
@@ -123,8 +123,8 @@ public class MyBuyTogetherRestController {
 	}
 
 	/*---------------------------(개설한)유저목록 가져오기------------------------------*/
-	@RequestMapping(value = "openReputation/{buyTogetherNumber}", method = RequestMethod.GET)
-	public ResponseEntity<List<JoinUserInfo>> openReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
+	@RequestMapping(value = "requestOpenReputation/{buyTogetherNumber}", method = RequestMethod.GET)
+	public ResponseEntity<List<JoinUserInfo>> requestOpenReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
 		ResponseEntity<List<JoinUserInfo>> entity = null;
 		try {
 
@@ -144,8 +144,8 @@ public class MyBuyTogetherRestController {
 	}
 
 	/*---------------------------(개설한)평판점수 보내기------------------------------*/
-	@RequestMapping(value = "reputationScore", method = RequestMethod.POST)
-	public ResponseEntity<String> requestReputationScore (String[] scoreUserInfoList)	{
+	@RequestMapping(value = "requestReputationScore", method = RequestMethod.POST)
+	public ResponseEntity<String> requestRequestReputationScore (String[] scoreUserInfoList)	{
 		
 		ResponseEntity<String> entity = null;
 
@@ -162,9 +162,29 @@ public class MyBuyTogetherRestController {
 
 		return entity;
 	}
+
+	/*---------------------------(개설한) 1인 평판점수 보내기------------------------------*/
+	@RequestMapping(value = "requestReputationScoreForOne", method = RequestMethod.POST)
+	public ResponseEntity<String> requestReputationScoreForOne (String[] scoreUserInfoList)	{
+		
+		ResponseEntity<String> entity = null;
+
+		try {
+
+			service.scoreUserInfoForOne(scoreUserInfoList);
+
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
 	
 	/*---------------------------같이사냥 완료하기------------------------------*/
-	@RequestMapping(value = "finishBuyTogether/{buyTogetherNumber}", method = RequestMethod.GET)
+	@RequestMapping(value = "requestFinishBuyTogether/{buyTogetherNumber}", method = RequestMethod.GET)
 	public ResponseEntity<String> requestFinishBuyTogether(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
 		ResponseEntity<String> entity = null;
 		System.out.println("여긴 오니?");
@@ -184,8 +204,8 @@ public class MyBuyTogetherRestController {
 	}
 	
 	/*---------------------------(참여한)유저목록 가져오기------------------------------*/
-	@RequestMapping(value = "joinReputation/{buyTogetherNumber}", method = RequestMethod.GET)
-	public ResponseEntity<JoinUserInfo> joinReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber
+	@RequestMapping(value = "requestJoinReputation/{buyTogetherNumber}", method = RequestMethod.GET)
+	public ResponseEntity<JoinUserInfo> requestJoinReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber
 		) {
 		ResponseEntity<JoinUserInfo> entity = null;
 		try {
@@ -206,7 +226,7 @@ public class MyBuyTogetherRestController {
 	}
 
 	/*---------------------------(참여한)평판점수 보내기------------------------------*/
-	@RequestMapping(value = "reputationScoreForJoiner/{scored_user_number}/{score}/{score_user_number}/{buyTogetherNumber}", method = RequestMethod.GET)
+	@RequestMapping(value = "requestReputationScoreForJoiner/{scored_user_number}/{score}/{score_user_number}/{buyTogetherNumber}", method = RequestMethod.GET)
 	public ResponseEntity<String> requestReputationScoreForeJoiner (@PathVariable int scored_user_number, @PathVariable int score,
 			@PathVariable int score_user_number, @PathVariable int buyTogetherNumber){
 		ResponseEntity<String> entity = null;

@@ -38,7 +38,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 
 		for(int i = 0; i < myBuyTogetherList.size(); i++){//리스트에서 buyTogether_number 뽑아내기 위함.
 
-			int myBuyTogetherNumber = myBuyTogetherList.get(i).getBuyTogether_number();
+			int myBuyTogetherNumber = myBuyTogetherList.get(i).getBuytogether_number();
 			
 			//참여유저번호 조회
 			List<Integer> joinUserNumbersList = sqlSession.selectList(namespace+".searchJoinUser", myBuyTogetherNumber);
@@ -77,7 +77,8 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 
 	}
 
-	@Override//
+	//참여한 같이사냥 
+	@Override
 	public List<BuyTogetherDTO> searchJoinBuyTogether(MySearchCriteria cri) throws Exception {
 
 		boolean beOrNot = true;
@@ -85,7 +86,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 		List<BuyTogetherDTO> myBuyTogetherList = sqlSession.selectList(namespace+".searchJoinBuyTogether", cri);
 		
 		for(int i = 0; i < myBuyTogetherList.size(); i++){
-			int buyTogetherNumber = myBuyTogetherList.get(i).getBuyTogether_number();
+			int buyTogetherNumber = myBuyTogetherList.get(i).getBuytogether_number();
 			int joinUserNumber = sqlSession.selectOne(namespace+".readUserNumber", buyTogetherNumber);//개설한 유저정보임
 			int user_number = cri.getUser_number();//참여한 유저 정보임.
 			Reputation reputation = new Reputation(joinUserNumber, user_number, buyTogetherNumber);//점수매김받을유저,점수매기는유저,같이사냥번호 순 
@@ -140,7 +141,6 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 			ScoreUserInfo scoreUserInfoOne = new ScoreUserInfo(scored_user_number, score);
 			sqlSession.update(namespace+".scoreReputation", scoreUserInfoOne);
 		}
-		
 	}
 
 	//평판 기록 남기기

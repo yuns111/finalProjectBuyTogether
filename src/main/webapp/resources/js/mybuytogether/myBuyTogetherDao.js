@@ -29,7 +29,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : '/restBuytogether/openBuyTogether/',
+			url : '/restBuytogether/requestOpenBuyTogether/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"
@@ -37,7 +37,7 @@ function myBuyTogetherDao() {
 			dataType : 'text',
 			data : JSON.stringify(scri),
 			success : function(result) {
-				alert(result);
+				
 				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
 				var parsedResult = JSON.parse(result);
 				var searchMyBuyTogether = parsedResult.searchMyBuyTogether;
@@ -63,7 +63,7 @@ function myBuyTogetherDao() {
 	this.openReputationBtn = function(buyTogetherNumber){
 		
 		$.ajaxSettings.async = false;
-		$.getJSON("/restBuytogether/openReputation/"+buyTogetherNumber, function(data){
+		$.getJSON("/restBuytogether/requestOpenReputation/"+buyTogetherNumber, function(data){
 			
 			var ListTemplate = Handlebars.compile($('#openUserInfo').html());
 			var html1 = ListTemplate(data);
@@ -85,7 +85,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : '/restBuytogether/reputationScore',
+			url : '/restBuytogether/requestReputationScore',
 			header : {
 				'Accept': 'application/json',
 				"ContentType" : "application/json",
@@ -95,29 +95,44 @@ function myBuyTogetherDao() {
 			data : {"scoreUserInfoList" : scoreUserInfoList},
 			success : function(result){
 				
-				var keyword = "";
-				var page = 1;
-				var perPageNum = 3;
-				var searchType = 't';
-				var user_number = 2;
+			}
+		});
+		
+	};
 
-				scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
-				
-				
+	//(개설한) 같이사냥 1인 평판매기기
+	this.ScoreUserInfoForOne = function(scoreUserInfoList){
+		alert(JSON.stringify(scoreUserInfoList));
+		
+		$.ajaxSettings.traditional = true;
+		
+		var scri;
+		
+		$.ajax({
+			async : false,
+			type : 'post',
+			url : '/restBuytogether/requestReputationScoreForOne',
+			header : {
+				'Accept': 'application/json',
+				"ContentType" : "application/json",
+				"X-HTTP-Method-Override" : "POST"
+			},
+			dataType : 'text',
+			data : {"scoreUserInfoList" : scoreUserInfoList},
+			success : function(result){
 				
 			}
 		});
-		var controller = new myBuyTogetherController();
-		controller.openBuyTogether(scri);
+		
+		
 	};
-
 	//같이사냥 완료하기 
 	this.finishBuyTogether = function(buyTogetherNumber){
 		
 		$.ajax({
 			async : false,
 			type : 'get',
-			url : '/restBuytogether/finishBuyTogether/'+buyTogetherNumber,
+			url : '/restBuytogether/requestFinishBuyTogether/'+buyTogetherNumber,
 			header : {
 				'Accept': 'application/json',
 				"ContentType" : "application/json",
@@ -128,7 +143,7 @@ function myBuyTogetherDao() {
 				
 				var keyword = "";
 				var page = 1;
-				var perPageNum = 3;
+				var perPageNum = 1;
 				var searchType = 't';
 				var user_number = 2;
 
@@ -147,7 +162,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : '/restBuytogether/joinBuyTogether/',
+			url : '/restBuytogether/requestJoinBuyTogether/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"
@@ -181,7 +196,7 @@ function myBuyTogetherDao() {
 	this.joinReputationBtn = function(buyTogetherNumber){
 		var dataPlate;
 		$.ajaxSettings.async = false;
-		$.getJSON("/restBuytogether/joinReputation/"+buyTogetherNumber, function(data){
+		$.getJSON("/restBuytogether/requestJoinReputation/"+buyTogetherNumber, function(data){
 			
 			alert(JSON.stringify(data))
 			
@@ -199,7 +214,7 @@ function myBuyTogetherDao() {
 		
 		$.ajax({
 			type : 'get',
-			url : '/restBuytogether/reputationScoreForJoiner/'+scored_user_number+'/'+score+'/'+score_user_number+'/'+buyTogetherNumber,
+			url : '/restBuytogether/requestReputationScoreForJoiner/'+scored_user_number+'/'+score+'/'+score_user_number+'/'+buyTogetherNumber,
 			header : {
 				'Accept': 'application/json',
 				"ContentType" : "application/json",
@@ -207,16 +222,6 @@ function myBuyTogetherDao() {
 			},
 			dataType : 'text',
 			success : function(result){
-				
-				var keyword = "";
-				var page = 1;
-				var perPageNum = 3;
-				var searchType = 't';
-				var user_number = 2;
-
-				var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
-				var controller = new myBuyTogetherController();
-				controller.joinBuyTogether(scri);
 				
 			}
 		});
@@ -227,7 +232,7 @@ function myBuyTogetherDao() {
 
 		$.ajax({
 			type : 'post',
-			url : '/restBuytogether/doneBuyTogether/',
+			url : '/restBuytogether/requestDoneBuyTogether/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"

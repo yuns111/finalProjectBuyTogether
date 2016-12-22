@@ -27,11 +27,11 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		List<BuyTogetherDTO> searchOpenBuyTogether = dao.searchOpenBuyTogether(cri);
 
 		for(int i = 0; i<searchOpenBuyTogether.size(); i++){
-			List<AttachedPhoto> attachedPhotos = dao.photoList(searchOpenBuyTogether.get(i).getBuyTogether_number());
+			List<AttachedPhoto> attachedPhotos = dao.photoList(searchOpenBuyTogether.get(i).getBuytogether_number());
 
-			searchOpenBuyTogether.get(i).setPath(attachedPhotos);
+			searchOpenBuyTogether.get(i).setPhoto_path(attachedPhotos);
 			searchOpenBuyTogether.get(i).setFinishOrNot(false);
-			
+
 		}
 
 		return searchOpenBuyTogether;
@@ -43,9 +43,9 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		List<BuyTogetherDTO> searchJoinBuyTogether = dao.searchJoinBuyTogether(cri);
 
 		for(int i = 0; i<searchJoinBuyTogether.size(); i++){
-			List<AttachedPhoto> attachedPhotos = dao.photoList(searchJoinBuyTogether.get(i).getBuyTogether_number());
+			List<AttachedPhoto> attachedPhotos = dao.photoList(searchJoinBuyTogether.get(i).getBuytogether_number());
 
-			searchJoinBuyTogether.get(i).setPath(attachedPhotos);
+			searchJoinBuyTogether.get(i).setPhoto_path(attachedPhotos);
 			searchJoinBuyTogether.get(i).setFinishOrNot(false);
 		}
 
@@ -58,9 +58,9 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		List<BuyTogetherDTO> searchDoneBuyTogether = dao.searchDoneBuyTogether(cri);
 
 		for(int i = 0; i<searchDoneBuyTogether.size(); i++){
-			List<AttachedPhoto> attachedPhotos = dao.photoList(searchDoneBuyTogether.get(i).getBuyTogether_number());
+			List<AttachedPhoto> attachedPhotos = dao.photoList(searchDoneBuyTogether.get(i).getBuytogether_number());
 
-			searchDoneBuyTogether.get(i).setPath(attachedPhotos);
+			searchDoneBuyTogether.get(i).setPhoto_path(attachedPhotos);
 			searchDoneBuyTogether.get(i).setBeOrNot(true);
 			searchDoneBuyTogether.get(i).setFinishOrNot(true);
 		}
@@ -68,11 +68,13 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		return searchDoneBuyTogether;
 	}
 
+	//페이지 번호 카운트
 	@Override
 	public int searchMyBuyTogetherCount(MySearchCriteria cri) throws Exception {
 		return dao.searchMyBuyTogetherCount(cri);
 	}
 
+	//평판 주기 위해 참여유저 조회
 	@Override
 	public List<JoinUserInfo> openReputaion(int buyTogetherNumber) throws Exception {
 
@@ -92,21 +94,39 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		int score_user_number;
 		int buyTogetherNumber;
 
-		if(scoreUserInfoList.length != 4){
-			for(int i = 0; i<scoreUserInfoList.length; i++){
-				str = scoreUserInfoList[i].split(",");//str = [],[],[],[];
-				System.out.println("str0"+str[0]);
-				System.out.println("str0"+str[1]);
-				System.out.println("str0"+str[2]);
-				System.out.println("str0"+str[3]);
-				scored_user_number = Integer.parseInt(str[0]);
-				score = Integer.parseInt(str[1]);
-				score_user_number = Integer.parseInt(str[2]);
-				buyTogetherNumber = Integer.parseInt(str[3]);
-				ScoreUserInfo scoreUserInfo = new ScoreUserInfo(scored_user_number, score, score_user_number, buyTogetherNumber);
-				ScoreUserInfoList.add(scoreUserInfo);
-			}
+		for(int i = 0; i<scoreUserInfoList.length; i++){
+			str = scoreUserInfoList[i].split(",");//str = [],[],[],[];
+			System.out.println("str0"+str[0]);
+			System.out.println("str0"+str[1]);
+			System.out.println("str0"+str[2]);
+			System.out.println("str0"+str[3]);
+			scored_user_number = Integer.parseInt(str[0]);
+			score = Integer.parseInt(str[1]);
+			score_user_number = Integer.parseInt(str[2]);
+			buyTogetherNumber = Integer.parseInt(str[3]);
+			ScoreUserInfo scoreUserInfo = new ScoreUserInfo(scored_user_number, score, score_user_number, buyTogetherNumber);
+			ScoreUserInfoList.add(scoreUserInfo);
+
 		} 
+
+		dao.scoreReputation(ScoreUserInfoList);
+		dao.reputationLog(ScoreUserInfoList);
+
+	}
+
+	//(개설한) 1인 평판매기기 
+	@Override
+	public void scoreUserInfoForOne(String[] scoreUserInfoList) throws Exception {
+
+		List<ScoreUserInfo> ScoreUserInfoList = new ArrayList<ScoreUserInfo>();
+
+		int scored_user_number = Integer.parseInt(scoreUserInfoList[0]);
+		int score = Integer.parseInt(scoreUserInfoList[1]);
+		int score_user_number = Integer.parseInt(scoreUserInfoList[2]);
+		int buyTogetherNumber = Integer.parseInt(scoreUserInfoList[3]);
+		System.out.println(scored_user_number+"/"+score+"/"+score_user_number+"/"+buyTogetherNumber);
+		ScoreUserInfo scoreUserInfo = new ScoreUserInfo(scored_user_number, score, score_user_number, buyTogetherNumber);
+		ScoreUserInfoList.add(scoreUserInfo);
 
 		dao.scoreReputation(ScoreUserInfoList);
 		dao.reputationLog(ScoreUserInfoList);
@@ -128,7 +148,7 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		return dao.joinReputation(buyTogetherNumber);
 	}
 
-	//개설한(평판매기기)
+	//참여한(평판매기기)
 	@Transactional
 	@Override
 	public void scoreUserInfoForJoiner(ScoreUserInfo scoreUserInfo) throws Exception {
@@ -136,5 +156,6 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		dao.scoreReputationForJoiner(scoreUserInfo);
 		dao.reputationLogForJoiner(scoreUserInfo);
 	}
+
 
 }

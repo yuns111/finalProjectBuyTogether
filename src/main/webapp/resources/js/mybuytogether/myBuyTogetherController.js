@@ -5,28 +5,25 @@ function myBuyTogetherController() {
 	var dao = new myBuyTogetherDao();
 
 	//개설한 같이사냥 
-	this.openBuyTogether = function(scri) {
+	this.requestOpenBuyTogether = function(scri) {
 
 		dao.openBuyTogether(scri);
-
 	}
 
 	//참여한 같이사냥
-	this.joinBuyTogether = function(scri) {
+	this.requestJoinBuyTogether = function(scri) {
 
 		dao.joinBuyTogether(scri);
-
 	}
 
 	//완료한 같이사냥
-	this.doneBuyTogether = function(scri) {
+	this.requestDoneBuyTogether = function(scri) {
 
 		dao.doneBuyTogether(scri);
-
 	}
 	
 	//(개설한)평판매길 유저 정보 가져오기
-	this.openReputationBtn = function(buyTogetherNumber){
+	this.requestOpenReputationBtn = function(buyTogetherNumber){
 		
 		dao.openReputationBtn(buyTogetherNumber);
 	} 
@@ -37,6 +34,11 @@ function myBuyTogetherController() {
 		dao.scoreUserInfo(scoreUserInfoList);
 	}
 	
+	//(개설한)1인 평판매기기
+	this.requestScoreUserInfoForOne = function(scoreUserInfoList){
+		dao.ScoreUserInfoForOne(scoreUserInfoList);
+	}
+	
 	//같이사냥 완료하기
 	this.requestFinishBuyTogether = function(buyTogetherNumber){
 		
@@ -44,7 +46,7 @@ function myBuyTogetherController() {
 	}
 	
 	//(참여한)평판매길 유저 정보 가져오기
-	this.joinReputationBtn = function(buyTogetherNumber){
+	this.requestJoinReputationBtn = function(buyTogetherNumber){
 		
 		var html1 = dao.joinReputationBtn(buyTogetherNumber);
 		return html1;
@@ -55,5 +57,7 @@ function myBuyTogetherController() {
 		
 		dao.ScoreUserInfoForJoiner(scored_user_number, score, score_user_number, buyTogetherNumber);
 	}
+	
+	
 	
 }

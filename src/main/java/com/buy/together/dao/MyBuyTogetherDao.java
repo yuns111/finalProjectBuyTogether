@@ -33,4 +33,6 @@ public interface MyBuyTogetherDao {
 	public void scoreReputationForJoiner(ScoreUserInfo scoreUserInfo) throws Exception;
 	
 	public void reputationLogForJoiner(ScoreUserInfo scoreUserInfo) throws Exception;
+	
+	
 }

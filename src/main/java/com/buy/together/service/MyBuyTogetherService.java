@@ -26,4 +26,6 @@ public interface MyBuyTogetherService {
 	public JoinUserInfo joinReputaion(int buyTogetherNumber) throws Exception;
 	
 	public void scoreUserInfoForJoiner(ScoreUserInfo scoreUserInfo) throws Exception;
+	
+	public void scoreUserInfoForOne(String[] scoreUserInfoList) throws Exception;
 }

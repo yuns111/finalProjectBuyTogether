@@ -1,7 +1,5 @@
 package com.buy.together.domain;
 
-import java.util.ArrayList;
-
 public class Reputation {
 
 	private int user_number;
@@ -18,18 +16,23 @@ public class Reputation {
 	public int getUser_number() {
 		return user_number;
 	}
+	
 	public void setUser_number(int user_number) {
 		this.user_number = user_number;
 	}
+	
 	public int getJoinUserNumber() {
 		return joinUserNumber;
 	}
+	
 	public void setJoinUserNumber(int joinUserNumber) {
 		this.joinUserNumber = joinUserNumber;
 	}
+	
 	public int getMyBuyTogetherNumber() {
 		return MyBuyTogetherNumber;
 	}
+	
 	public void setMyBuyTogetherNumber(int myBuyTogetherNumber) {
 		MyBuyTogetherNumber = myBuyTogetherNumber;
 	}

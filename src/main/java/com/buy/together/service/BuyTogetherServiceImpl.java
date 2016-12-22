@@ -34,7 +34,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		List<BuyTogetherDTO> searchBuyTogether = dao.searchBuyTogetherList(cri);
 
 		for(int i = 0; i<searchBuyTogether.size(); i++){
-			List<AttachedPhoto> attachedPhotos = dao.photoList(searchBuyTogether.get(i).getBuyTogether_number());
+			List<AttachedPhoto> attachedPhotos = dao.photoList(searchBuyTogether.get(i).getBuytogether_number());
 
 			searchBuyTogether.get(i).setPhoto_path(attachedPhotos);
 		}

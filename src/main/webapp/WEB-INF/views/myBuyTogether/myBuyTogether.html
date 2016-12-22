@@ -3,26 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <title>MyBuyTogether</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+<!---------------------공통스크립트--------------------->
+<link rel="shortcut icon" href="/resources/theme/css/favicon.ico" type="image/x-icon"/> 
+
+<link href="/resources/theme/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/css/default.css" rel="stylesheet" id="style_theme" type="text/css" />
+<link href="/resources/theme/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/plugin/animate.css" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/plugin/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/plugin/plugins.css" rel="stylesheet" type="text/css" />
+<script src="/resources/theme/js/app.js" type="text/javascript"></script>
+<script src="/resources/theme/js/components.js" type="text/javascript"></script>
+<script src="/resources/theme/js/components-shop.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/resources/theme/font/NotoKRRegular.css" type="text/css">
+<link rel="stylesheet" href="/resources/theme/font/simple-line-icons.css" type="text/css">
+<link rel="stylesheet" href="/resources/theme/font/font-awesome.css" type="text/css">
+<!--------------------페이지 설정------------------------------>
+
+<script src="/resources/bootstrap/js/jquery-3.1.1.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/resources/bootstrap-3.3.7-dist/css/bootstrap.css">
 <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- <script>var iNew = jQuery.noConflict());</script> -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<!-- <script>var iOld = jQuery.noConflict());</script> -->
-<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script> -->
-
-
-
+<script src="/resources/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
 <!--  핸들바를 쓰기 위한 스크립트!!! -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-
-
 <!-- 장고관련 스크립트 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -30,18 +40,16 @@
 <meta content="" name="description" />
 <meta content="" name="author" />
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#buytogetherHeader").load("/views/header.html");
-		$("#buytogetherFooter").load("/views/footer.html");
-	});
+<script>
+$(document).ready(function() {
+	
+	$("#buytogetherHeader").load("/views/include/header.html");
+	$("#buytogetherFooter").load("/views/include/footer.html");
+	
+});
 </script>
 <script src="/resources/js/mybuytogether/myBuyTogetherEventHandler.js"></script>
-<script>
-	$('#myModal').on('shown.bs.modal', function() {
-		$('#myInput').focus()
-	})
-</script>
+
 </head>
 
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
@@ -90,7 +98,7 @@
 										<option value="tcw">제목&내용&작성자</option>
 									</select>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-5">
 									<input type="text" class="c-square c-theme input-lg"
 										id="keyword">
 									<button id="search" type="submit"
@@ -98,12 +106,10 @@
 										<i class="fa fa-search"></i>Search
 									</button>
 								</div>
-								<div class="col-md-offset-2"></div>
+								<div class="col-md-offset-1"></div>
 							</div>
 						</div>
 					</div>
-
-
 
 					<br>
 
@@ -176,7 +182,7 @@
                    	<a href="shop-product-details.html" class="btn btn-md c-btn-grey-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">보기</a>
                 </div>
             </div>
-        	<div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 330px; background-image: url({{imageHelper path}}); id="buyTogether_number">
+        	<div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 330px; background-image: url({{imageHelper photo_path}}); id="buyTogether_number">
 			</div>
         </div>
 
@@ -199,9 +205,9 @@
 							data-toggle="modal" data-target="#myModal" style="{{visibleOrNot beOrNot}}">평판주기
 				</a>
 
-				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="!important">
-					<div class="modal-dialog" style="!important">
-						<div class="modal-content c-square" style="!important">
+				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content c-square">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">×</span>

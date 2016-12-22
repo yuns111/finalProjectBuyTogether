@@ -11,7 +11,7 @@ $(document).ready(function (){
 
 	var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 	var controller = new myBuyTogetherController();
-	controller.openBuyTogether(scri);
+	controller.requestOpenBuyTogether(scri);
 
 	//개설한 같이사냥(클릭시)
 	$('#openBuyTogether').click(function(){
@@ -24,7 +24,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.openBuyTogether(scri);
+		controller.requestOpenBuyTogether(scri);
 		
 	});
 
@@ -39,7 +39,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.openBuyTogether(scri);
+		controller.requestOpenBuyTogether(scri);
 		
 	});
 
@@ -56,7 +56,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.openBuyTogether(scri);
+		controller.requestOpenBuyTogether(scri);
 		
 	});
 
@@ -71,7 +71,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.joinBuyTogether(scri);
+		controller.requestJoinBuyTogether(scri);
 		
 	});
 
@@ -86,7 +86,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.joinBuyTogether(scri);
+		controller.requestJoinBuyTogether(scri);
 		
 	});
 
@@ -103,7 +103,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.joinBuyTogether(scri);
+		controller.requestJoinBuyTogether(scri);
 		
 	});
 
@@ -118,7 +118,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.doneBuyTogether(scri);
+		controller.requestDoneBuyTogether(scri);
 		
 	});
 
@@ -133,7 +133,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.doneBuyTogether(scri);
+		controller.requestDoneBuyTogether(scri);
 		
 	});
 
@@ -150,7 +150,7 @@ $(document).ready(function (){
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
-		controller.doneBuyTogether(scri);
+		controller.requestDoneBuyTogether(scri);
 	});
 	
 	//개설한 같이사냥에서 같이사냥 번호로 유저 정보를 받아와야 함.
@@ -159,7 +159,7 @@ $(document).ready(function (){
 		event.preventDefault();
 		var buyTogetherNumber = $(this).parent().parent().parent().parent().children('input').val();
 		
-		controller.openReputationBtn(buyTogetherNumber);
+		controller.requestOpenReputationBtn(buyTogetherNumber);
 	});
 	
 	//참여한 같이사냥에서 같이사냥 번호로 유저 정보를 받아와야 함.
@@ -168,7 +168,7 @@ $(document).ready(function (){
 		event.preventDefault();
 		var buyTogetherNumber = $(this).parent().parent().parent().parent().children('input').val();
 		
-		var data = controller.joinReputationBtn(buyTogetherNumber);
+		var data = controller.requestJoinReputationBtn(buyTogetherNumber);
 		var ListTemplate = Handlebars.compile($('#joinUserInfo').html());
 		var html1 = ListTemplate(data);
 		$(this).parent().children().children().children().children('.modal-body').html(html1);
@@ -199,11 +199,36 @@ $(document).ready(function (){
             }
             
         });
-		if(scoreUserInfoList.length == $(this).parent().parent().children('.modal-body').children('.reputationRows').length){
+		if((scoreUserInfoList.length == 1) && (scoreUserInfoList.length == $(this).parent().parent().children('.modal-body').children('.reputationRows').length)){
+			controller.requestScoreUserInfoForOne(scoreUserInfoList);
 		
-		controller.requestScoreUserInfo(scoreUserInfoList);
+			var keyword = $('#keyword').val();
+			var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
+			sibling('#openBuyTogetherPaging').children().children('.active').val;
+			var perPageNum = 1;
+			var searchType = $('#searchType').val();
+			var user_number = 2;
+
+			scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
+			controller.requestOpenBuyTogether(scri);
+			
 		} else {
-			alert("모든 유저의 평판을 주어야 합니다.")
+			if(scoreUserInfoList.length == $(this).parent().parent().children('.modal-body').children('.reputationRows').length){
+				controller.requestScoreUserInfo(scoreUserInfoList);
+				
+				var keyword = $('#keyword').val();
+				var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
+				sibling('#openBuyTogetherPaging').children().children('.active').val;
+				var perPageNum = 1;
+				var searchType = $('#searchType').val();
+				var user_number = 2;
+
+				scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
+				controller.requestOpenBuyTogether(scri);
+				
+			} else {
+				alert("모든 유저의 평판을 주어야 합니다.");
+			}
 		}
 	});
 	
@@ -225,6 +250,16 @@ $(document).ready(function (){
 		if(score !== undefined){
 			
 		controller.requestScoreUserInfoForJoiner(scored_user_number, score, score_user_number, buyTogetherNumber);
+		
+		var keyword = $('#keyword').val();
+		var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
+		sibling('#joinBuyTogetherPaging').children().children('.active').val;
+		var perPageNum = 1;
+		var searchType = $('#searchType').val();
+		var user_number = 2;
+
+		scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
+		controller.requestOpenBuyTogether(scri);
         }
 	});
 	
