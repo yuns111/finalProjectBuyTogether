@@ -41,13 +41,14 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: url("../img/cbp-loading.gif") no-repeat scroll center center transparent; }
+    background: url("/resources/img/cbp-loading.gif") no-repeat scroll center center transparent; }
   .cbp > * {
     visibility: hidden; }
   .cbp .cbp-item {
-    position: absolute;
+    position: inherit;
     top: 0;
     left: 0;
+    /* width: 350px; */
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -144,7 +145,7 @@
   display: block; }
 
 .cbp-caption-activeWrap {
-  background-color: #282727; }
+  background-color: #2364F8; }
 
 .cbp-caption-active .cbp-caption, .cbp-caption-active .cbp-caption-defaultWrap, .cbp-caption-active .cbp-caption-activeWrap {
   width: 100%;
@@ -168,7 +169,7 @@
 
 .cbp-l-caption-desc {
   /* @editable properties */
-  color: #aaa;
+  color: #400040;
   font: 400 12px/16px "Open Sans", sans-serif; }
 
 .cbp-l-caption-text {
@@ -285,7 +286,7 @@
 .cbp-caption-minimal .cbp-caption-activeWrap {
   top: 0;
   /* @editable properties */
-  background-color: black;
+  background-color: #2364F8;
   background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
@@ -308,7 +309,7 @@
 .cbp-caption-overlayBottom .cbp-caption-activeWrap {
   /*@editable properties */
   height: 60px;
-  background-color: #181616;
+  background-color: #2364F8;
   background-color: rgba(24, 22, 22, 0.7);
   -webkit-transition: -webkit-transform .6s cubic-bezier(.19, 1, .22, 1);
   transition: transform .6s cubic-bezier(.19, 1, .22, 1); }
