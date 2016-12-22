@@ -32,7 +32,6 @@ public class FaqRestController {
 		ResponseEntity<List<Board>> entity = null;
 		
 		try{
-			logger.info("전체.");
 			
 			entity = new ResponseEntity<List<Board>>(service.faqAllList() , HttpStatus.OK);
 			
@@ -53,7 +52,6 @@ public class FaqRestController {
 		ResponseEntity<List<Board>> entity = null;
 		
 		try{
-			logger.info("회원관련.");
 			
 			entity = new ResponseEntity<List<Board>>(service.faqUserList() , HttpStatus.OK);
 			
@@ -74,7 +72,6 @@ public class FaqRestController {
 		ResponseEntity<List<Board>> entity = null;
 		
 		try{
-			logger.info("사냥관련.");
 			
 			entity = new ResponseEntity<List<Board>>(service.faqBuyList() , HttpStatus.OK);
 			
@@ -95,7 +92,6 @@ public class FaqRestController {
 		ResponseEntity<List<Board>> entity = null;
 		
 		try{
-			logger.info("정보관련.");
 			
 			entity = new ResponseEntity<List<Board>>(service.faqInfoList() , HttpStatus.OK);
 			
@@ -116,7 +112,6 @@ public class FaqRestController {
 		ResponseEntity<List<Board>> entity = null;
 		
 		try{
-			logger.info("고객센터.");
 			
 			entity = new ResponseEntity<List<Board>>(service.faqCenter() , HttpStatus.OK);
 			

@@ -18,7 +18,7 @@ $(document).ready(function(){
 		var div_all = tab_content.children().eq(0);
 		var faqAllList = div_all.children();
 
-		var data = controller.listAll();
+		var data = controller.requestListAll();
 
 		var allTemplate = Handlebars.compile($('#faqListAllTemplate').html());
 
@@ -39,7 +39,7 @@ $(document).ready(function(){
 		var div_user = tab_content.children().eq(1);
 		var faqUserList = div_user.children();
 
-		var data = controller.listUser();
+		var data = controller.requestListUser();
 
 		var usertTemplate = Handlebars.compile($("#faqListUserTemplate").html());
 
@@ -60,7 +60,7 @@ $(document).ready(function(){
 		var div_buy = tab_content.children().eq(2);
 		var faqBuyList = div_buy.children();
 
-		var data = controller.listBuy();
+		var data = controller.requestListBuy();
 
 		var buytTemplate = Handlebars.compile($("#faqListBuyTemplate").html());
 
@@ -82,7 +82,7 @@ $(document).ready(function(){
 		var div_info = tab_content.children().eq(3);
 		var faqInfoList = div_info.children();
 
-		var data = controller.listInfo();
+		var data = controller.requestListInfo();
 
 		var infoTemplate = Handlebars.compile($('#faqListInfoTemplate').html());
 
@@ -103,7 +103,7 @@ $(document).ready(function(){
 		var div_customer = tab_content.children().eq(4);
 		var faqCustomerList = div_customer.children();
 
-		var data = controller.listCenter();
+		var data = controller.requestListCenter();
 
 		var customerCenterTemplate = Handlebars.compile($('#faqListCenterTemplate').html());
 

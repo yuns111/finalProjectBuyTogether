@@ -16,7 +16,7 @@ public class FaqController {
 	private static final Logger logger = LoggerFactory.getLogger(FaqController.class);
 
 	@RequestMapping(value ="/faq", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String requestFaq(Locale locale, Model model) {
 
 		return "/views/customerCenter/faq";
 	}

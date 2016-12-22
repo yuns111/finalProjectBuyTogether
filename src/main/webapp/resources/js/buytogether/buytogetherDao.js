@@ -1,5 +1,26 @@
 function buytogetherDao() {
 	
+	//유저 관심 카테고리 존재 여부 확인
+	this.listUserInterest = function(user_number) {
+		
+		var result;
+		
+		$.ajax({
+			
+			url:'/restBuytogether/userInterest',
+			type: 'post',
+			data: {user_number : user_number},
+			dataType: 'text',
+			async : false,
+			success: function(data){
+
+				result = data;
+			}
+		});
+		
+		return result;
+	};
+
 	//카테고리 리스트 요청
 	this.listCategoryDao = function() {
 
@@ -155,7 +176,7 @@ function buytogetherDao() {
 	}
 	
 	//같이사냥 리스트(지도)
-	this.maplistBuyTogetherDao = function(scri){
+	this.listBuyTogetherMapDao = function(scri){
 		
 		var parsedResult;
 		
