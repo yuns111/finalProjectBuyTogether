@@ -7,7 +7,7 @@ $(document).ready(function (){
 	var page = 1;
 	var perPageNum = 1;
 	var searchType = $('#searchType').val();
-	var user_number = 2;
+	var user_number = sessionStorage.getItem("number");
 
 	var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 	var controller = new myBuyTogetherController();
@@ -20,7 +20,7 @@ $(document).ready(function (){
 		var page = 1;
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -35,7 +35,7 @@ $(document).ready(function (){
 		var page = 1;
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -52,7 +52,7 @@ $(document).ready(function (){
 		var page = $(this).attr("href");
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -67,7 +67,7 @@ $(document).ready(function (){
 		var page = 1;
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -82,7 +82,7 @@ $(document).ready(function (){
 		var page = 1;
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -99,7 +99,7 @@ $(document).ready(function (){
 		var page = $(this).attr("href");
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -114,7 +114,7 @@ $(document).ready(function (){
 		var page = 1;
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -129,7 +129,7 @@ $(document).ready(function (){
 		var page = 1;
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -146,7 +146,7 @@ $(document).ready(function (){
 		var page = $(this).attr("href");
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
-		var user_number = 2;
+		var user_number = sessionStorage.getItem("number");;
 
 		var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 		
@@ -157,8 +157,7 @@ $(document).ready(function (){
 	$('#openBuyTogetherList').on('click', '.reputationBtn', function(event){
 		
 		event.preventDefault();
-		var buyTogetherNumber = $(this).parent().parent().parent().parent().children('input').val();
-		
+		var buyTogetherNumber = $(this).parent().parent().parent().parent().children('.buyTogetherNumber').val();
 		controller.requestOpenReputationBtn(buyTogetherNumber);
 	});
 	
@@ -166,7 +165,7 @@ $(document).ready(function (){
 	$('#joinBuyTogetherList').on('click', '.reputationBtn', function(event){
 		
 		event.preventDefault();
-		var buyTogetherNumber = $(this).parent().parent().parent().parent().children('input').val();
+		var buyTogetherNumber = $(this).parent().parent().parent().parent().children('.buyTogetherNumber').val();
 		
 		var data = controller.requestJoinReputationBtn(buyTogetherNumber);
 		var ListTemplate = Handlebars.compile($('#joinUserInfo').html());
@@ -204,7 +203,7 @@ $(document).ready(function (){
 		
 			var keyword = $('#keyword').val();
 			var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
-			sibling('#openBuyTogetherPaging').children().children('.active').val;
+			siblings('#openBuyTogetherPaging').children().children('.active').val;
 			var perPageNum = 1;
 			var searchType = $('#searchType').val();
 			var user_number = 2;
@@ -218,7 +217,7 @@ $(document).ready(function (){
 				
 				var keyword = $('#keyword').val();
 				var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
-				sibling('#openBuyTogetherPaging').children().children('.active').val;
+				siblings('#openBuyTogetherPaging').children().children('.active').val;
 				var perPageNum = 1;
 				var searchType = $('#searchType').val();
 				var user_number = 2;
@@ -253,13 +252,13 @@ $(document).ready(function (){
 		
 		var keyword = $('#keyword').val();
 		var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
-		sibling('#joinBuyTogetherPaging').children().children('.active').val;
+		siblings('#joinBuyTogetherPaging').children().children('.active').val;
 		var perPageNum = 1;
 		var searchType = $('#searchType').val();
 		var user_number = 2;
 
 		scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
-		controller.requestOpenBuyTogether(scri);
+		controller.requestJoinBuyTogether(scri);
         }
 	});
 	

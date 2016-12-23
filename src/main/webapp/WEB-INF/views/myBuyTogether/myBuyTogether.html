@@ -81,7 +81,6 @@ $(document).ready(function() {
 
 					<br>
 
-
 					<!-- --------------------------------------------검색창------------------------------------------- -->
 					<div class="container c-shop-advanced-search-1 c-center">
 						<div class="col-md-12 c-center">
@@ -165,7 +164,23 @@ $(document).ready(function() {
 
 
 	</div>
-
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 	<!-- ----------------------------------핸들바----------------------------------- -->
@@ -174,7 +189,7 @@ $(document).ready(function() {
 
 {{#each.}}
 <div class="col-md-3 col-sm-6 c-margin-b-20 myBuyTogetherLi">
-	<input type="hidden" class ="buyTogetherNumber" value="{{buyTogether_number}}">
+	<input type="hidden" class ="buyTogetherNumber" value="{{buytogether_number}}">
     <div class="c-content-product-2 c-bg-white">
        	<div class="c-content-overlay">
            	<div class="c-overlay-wrapper">

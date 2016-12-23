@@ -125,7 +125,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 	//평판주려고 참여유저 조회 
 	@Override
 	public List<JoinUserInfo> openReputation(int buyTogetherNumber) throws Exception {
-		
+		System.out.println("디에이오 오갔지"+buyTogetherNumber);
 		return sqlSession.selectList(namespace+".openReputation", buyTogetherNumber);
 	}
 

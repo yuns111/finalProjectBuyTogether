@@ -77,8 +77,11 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 	//평판 주기 위해 참여유저 조회
 	@Override
 	public List<JoinUserInfo> openReputaion(int buyTogetherNumber) throws Exception {
-
-		return dao.openReputation(buyTogetherNumber);
+		List<JoinUserInfo> joinUser_list = dao.openReputation(buyTogetherNumber);
+		for(int i = 0; i< joinUser_list.size(); i++){
+			joinUser_list.get(i).setBuyTogetherNumber(buyTogetherNumber);
+		}
+		return joinUser_list;
 	}
 
 	//평판매기기

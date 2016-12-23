@@ -29,7 +29,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : '/restBuytogether/requestOpenBuyTogether/',
+			url : '/restMyBuytogether/requestOpenBuyTogether/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"
@@ -37,7 +37,7 @@ function myBuyTogetherDao() {
 			dataType : 'text',
 			data : JSON.stringify(scri),
 			success : function(result) {
-				
+				alert(result);
 				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
 				var parsedResult = JSON.parse(result);
 				var searchMyBuyTogether = parsedResult.searchMyBuyTogether;
@@ -62,15 +62,25 @@ function myBuyTogetherDao() {
 	
 	this.openReputationBtn = function(buyTogetherNumber){
 		
-		$.ajaxSettings.async = false;
-		$.getJSON("/restBuytogether/requestOpenReputation/"+buyTogetherNumber, function(data){
-			
-			var ListTemplate = Handlebars.compile($('#openUserInfo').html());
-			var html1 = ListTemplate(data);
-			
-			$(".modal-body").html(html1);
-			
-			
+		var dataPlate;
+		
+		$.ajax({
+			async : false,
+			type : 'get',
+			url : '/restMyBuytogether/requestOpenReputation/'+buyTogetherNumber,
+			header : {
+				'Accept': 'application/json',
+				"ContentType" : "application/json",
+				"X-HTTP-Method-Override" : "GET"
+			},
+			dataType : 'text',
+			success : function(data){
+				var parsedData = JSON.parse(data);
+				var ListTemplate = Handlebars.compile($('#openUserInfo').html());
+				var html1 = ListTemplate(parsedData);
+				
+				$(".modal-body").html(html1);
+			}
 		});
 	};
 	
@@ -85,7 +95,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : '/restBuytogether/requestReputationScore',
+			url : '/restMyBuytogether/requestReputationScore',
 			header : {
 				'Accept': 'application/json',
 				"ContentType" : "application/json",
@@ -111,7 +121,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : '/restBuytogether/requestReputationScoreForOne',
+			url : '/restMyBuytogether/requestReputationScoreForOne',
 			header : {
 				'Accept': 'application/json',
 				"ContentType" : "application/json",
@@ -132,7 +142,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'get',
-			url : '/restBuytogether/requestFinishBuyTogether/'+buyTogetherNumber,
+			url : '/restMyBuytogether/requestFinishBuyTogether/'+buyTogetherNumber,
 			header : {
 				'Accept': 'application/json',
 				"ContentType" : "application/json",
@@ -140,16 +150,16 @@ function myBuyTogetherDao() {
 			},
 			dataType : 'text',
 			success : function(result){
-				
+				alert("finish돌아와?"+result);
 				var keyword = "";
 				var page = 1;
 				var perPageNum = 1;
 				var searchType = 't';
-				var user_number = 2;
+				var user_number = sessionStorage.getItem("number");
 
 				var scri = {page : page, perPageNum : perPageNum, searchType : searchType, keyword : keyword, user_number : user_number}
 				var controller = new myBuyTogetherController();
-				controller.openBuyTogether(scri);
+				controller.requestOpenBuyTogether(scri);
 				
 			}
 		});
@@ -162,7 +172,7 @@ function myBuyTogetherDao() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : '/restBuytogether/requestJoinBuyTogether/',
+			url : '/restMyBuytogether/requestJoinBuyTogether/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"
@@ -196,7 +206,7 @@ function myBuyTogetherDao() {
 	this.joinReputationBtn = function(buyTogetherNumber){
 		var dataPlate;
 		$.ajaxSettings.async = false;
-		$.getJSON("/restBuytogether/requestJoinReputation/"+buyTogetherNumber, function(data){
+		$.getJSON("/restMyBuytogether/requestJoinReputation/"+buyTogetherNumber, function(data){
 			
 			alert(JSON.stringify(data))
 			
@@ -214,7 +224,7 @@ function myBuyTogetherDao() {
 		
 		$.ajax({
 			type : 'get',
-			url : '/restBuytogether/requestReputationScoreForJoiner/'+scored_user_number+'/'+score+'/'+score_user_number+'/'+buyTogetherNumber,
+			url : '/restMyBuytogether/requestReputationScoreForJoiner/'+scored_user_number+'/'+score+'/'+score_user_number+'/'+buyTogetherNumber,
 			header : {
 				'Accept': 'application/json',
 				"ContentType" : "application/json",
@@ -232,7 +242,7 @@ function myBuyTogetherDao() {
 
 		$.ajax({
 			type : 'post',
-			url : '/restBuytogether/requestDoneBuyTogether/',
+			url : '/restMyBuytogether/requestDoneBuyTogether/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"

@@ -31,12 +31,9 @@ public class BuyTogetherDTO {
 	private int comment_number;
 	private String gender;
 	private int joinin_user;
-<<<<<<< HEAD
 	private boolean beOrNot;
 	private boolean finishOrNot;
 
-=======
->>>>>>> 8cf220ba92ebda210deebf0204ff5b51d5cd0398
 
 	public BuyTogetherDTO() {
 
@@ -234,7 +231,6 @@ public class BuyTogetherDTO {
 		this.joinin_user = joinin_user;
 	}
 
-<<<<<<< HEAD
 	public boolean isBeOrNot() {
 		return beOrNot;
 	}
@@ -251,7 +247,5 @@ public class BuyTogetherDTO {
 		this.finishOrNot = finishOrNot;
 	}
 
-=======
->>>>>>> 8cf220ba92ebda210deebf0204ff5b51d5cd0398
 }
 

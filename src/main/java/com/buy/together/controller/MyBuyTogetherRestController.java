@@ -24,7 +24,7 @@ import com.buy.together.dto.BuyTogetherDTO;
 import com.buy.together.service.MyBuyTogetherService;
 
 @RestController
-@RequestMapping("/restBuytogether/*")
+@RequestMapping("/restMyBuytogether/*")
 public class MyBuyTogetherRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MyBuyTogetherRestController.class);
@@ -124,21 +124,15 @@ public class MyBuyTogetherRestController {
 
 	/*---------------------------(개설한)유저목록 가져오기------------------------------*/
 	@RequestMapping(value = "requestOpenReputation/{buyTogetherNumber}", method = RequestMethod.GET)
-	public ResponseEntity<List<JoinUserInfo>> requestOpenReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
+	public ResponseEntity<List<JoinUserInfo>> requestOpenReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber){
 		ResponseEntity<List<JoinUserInfo>> entity = null;
 		try {
-
+			System.out.println("여긴 도착했고");
 			List<JoinUserInfo> joinUser_list = service.openReputaion(buyTogetherNumber);
-			for(int i = 0; i< joinUser_list.size(); i++){
-				joinUser_list.get(i).setBuyTogetherNumber(buyTogetherNumber);
-			}
-			entity = new ResponseEntity<>(joinUser_list, HttpStatus.OK);
-
+			entity = new ResponseEntity<List<JoinUserInfo>>(joinUser_list, HttpStatus.OK);
 		} catch (Exception e) {
-
 			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
+			entity = new ResponseEntity<List<JoinUserInfo>>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
