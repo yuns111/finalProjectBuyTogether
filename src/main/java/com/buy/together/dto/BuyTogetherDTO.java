@@ -31,13 +31,10 @@ public class BuyTogetherDTO {
 	private int comment_number;
 	private String gender;
 	private int joinin_user;
-<<<<<<< HEAD
 	private boolean beOrNot;
 	private boolean finishOrNot;
-
-=======
 	private String comment_content;
->>>>>>> 8ec1fa76833cc2297af5f18592a18a2b3bd058eb
+
 
 	public BuyTogetherDTO() {
 
@@ -235,7 +232,6 @@ public class BuyTogetherDTO {
 		this.joinin_user = joinin_user;
 	}
 
-<<<<<<< HEAD
 	public boolean isBeOrNot() {
 		return beOrNot;
 	}
@@ -250,14 +246,14 @@ public class BuyTogetherDTO {
 
 	public void setFinishOrNot(boolean finishOrNot) {
 		this.finishOrNot = finishOrNot;
-=======
+	}
 	public String getComment_content() {
 		return comment_content;
 	}
 
 	public void setComment_content(String comment_content) {
 		this.comment_content = comment_content;
->>>>>>> 8ec1fa76833cc2297af5f18592a18a2b3bd058eb
+
 	}
 
 }
