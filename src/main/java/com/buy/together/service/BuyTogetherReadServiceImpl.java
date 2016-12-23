@@ -96,10 +96,10 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 
 	// 같이사냥 버튼
 	@Override
-	public void registBuytogether(Integer user_number, Integer matching_status_number, Integer buytogether_number)
+	public void registBuytogether(Integer user_number, Integer buytogether_number)
 			throws Exception {
 
-		dao.registBuytogether(user_number, matching_status_number, buytogether_number);
+		dao.registBuytogether(user_number, buytogether_number);
 
 	}
 
@@ -111,6 +111,7 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 
+	// 찜하기 취소
 	@Override
 	public void deleteDip(Integer buytogether_number, Integer user_number) throws Exception {
 		
@@ -118,23 +119,41 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 	
+	// 찜 확인
 	@Override
 	public Integer checkDip(Integer buytogether_number, Integer user_number) throws Exception {
 		
 		return dao.checkDip(buytogether_number, user_number);
 	}
 
+	// 신고
 	@Override
-	public Comment report(Integer buytogether_number, Integer comment_number) throws Exception {
+	public BuyTogetherDTO report(Integer buytogether_number, Integer comment_number) throws Exception {
 		
 		return dao.reportDao(buytogether_number, comment_number);
 		
 	}
 
+	// 신고하기
 	@Override
 	public void registReport(DeclareBoard declareBoard) throws Exception {
 		
 		dao.sendReport(declareBoard);
+		
+	}
+
+	// 같이사냥 확인
+	@Override
+	public Integer buytogetherCheck(Integer buytogether_number, Integer user_number) throws Exception {
+		
+		return dao.buytogetherCheckDao(buytogether_number, user_number);
+		
+	}
+
+	@Override
+	public void cancleBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
+		
+		dao.cancleBuytogetherDao(buytogether_number, user_number);
 		
 	}
 

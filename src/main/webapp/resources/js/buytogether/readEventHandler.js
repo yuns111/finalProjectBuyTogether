@@ -8,8 +8,8 @@ $(document).ready(function() {
 	var buytogether_number =  $(location).attr('search');
 	var searchKeyword = buytogether_number.split("?buytogether_number=");
 	buytogether_number = searchKeyword[1];
-	
-	
+
+
 	var controller = new buytogetherReadController();
 
 	controller.requestRead(buytogether_number);
@@ -19,7 +19,7 @@ $(document).ready(function() {
 	$("#buytogetherFooter").load("/views/include/footer.html");
 
 	// 찜확인 후 하트 색 변경
-	var dip = controller.requestCheckDip(buytogether_number,7);
+	var dip = controller.requestCheckDip(buytogether_number, 7);
 
 	if(dip == true) {
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 	});
 
-	// 전체권한 댓글 Tap
+	// 전체 댓글 Tap
 	$("#tapAllList").on("click", function() {
 
 		//전체참여 번호
@@ -77,7 +77,7 @@ $(document).ready(function() {
 			//글내용 불러오기
 			var comment_content = textarea.val();
 
-			controller.requestCommentInsert(comment_content, comment_type_number, buytogether_number, user_number);
+			controller.requestCommentInsert(buytogether_number, comment_type_number, user_number, comment_content);
 
 		});
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 				$(this).attr("value", "수정");
 				textarea.attr("readonly", true);
 
-				controller.requestCommentUpdate(comment_number, comment_content, comment_type_number);
+				controller.requestCommentUpdate(buytogether_number, comment_number, comment_content, comment_type_number);
 
 			}
 
@@ -142,7 +142,7 @@ $(document).ready(function() {
 				$(this).attr("value", "수정");
 				textarea.attr("readonly", true);
 
-				controller.requestCommentUpdate(comment_number, comment_content, comment_type_number);
+				controller.requestCommentUpdate(buytogether_number, comment_number, comment_content, comment_type_number);
 
 			}
 
@@ -159,25 +159,25 @@ $(document).ready(function() {
 			var div = $(this).next();
 			var div1 = div.children().eq(0);
 
-			if (comment_number == data[0].comment_parent_number) {
+			if (data == '') {
 
-				var template_recomment = Handlebars.compile($('#recommentTemplate_A').html());
+			} else {
 
-				var html_recomment = template_recomment(data);
+				if (comment_number == data[0].comment_parent_number) {
 
-				div1.children("#recommentLi_a").remove();
+					var template_recomment = Handlebars.compile($('#recommentTemplate_A').html());
 
-				div1.html(html_recomment);
+					var html_recomment = template_recomment(data);
 
-			} else if (comment_number !== data[0].comment_parent_number) {
+					div1.children("#recommentLi_a").remove();
 
-				alert("답글이 존재하지 없습니다.");
+					div1.html(html_recomment);
 
+				} 
 			}
 		});
 
-		controller.requestCommentList(buytogether_number, comment_type_number);
-
+		var data = controller.requestCommentList(buytogether_number, comment_type_number);
 	});
 
 	// 참여자 댓글 Tap
@@ -186,10 +186,10 @@ $(document).ready(function() {
 		// 참여자 Tap 번호
 		var comment_type_number = 2;
 		// 유저번호
-		var user_number = 6;
+		var user_number = 4;
 
 		// 같이사냥 참여자 확인(게시판번호, 유저번호)
-		var buytoegetherCheck = controller.requestBuytoegetherCheck(buytogether_number, 10);
+		var buytoegetherCheck = controller.requestBuytoegetherCheck(buytogether_number, user_number);
 
 		if(buytoegetherCheck == true){
 
@@ -297,7 +297,8 @@ $(document).ready(function() {
 			});
 
 
-			controller.requestCommentList(buytogether_number, comment_type_number);
+			var data = controller.requestCommentList(buytogether_number, comment_type_number);
+
 
 
 		} else if(buytoegetherCheck == false){
@@ -313,7 +314,8 @@ $(document).ready(function() {
 
 		var reply = $(this).parent();
 		var comment_number = reply.attr("data-comment-number");
-		controller.requestCommentDelete(comment_number);
+
+		controller.requestCommentDelete(buytogether_number, comment_number);
 
 	});
 
@@ -323,7 +325,7 @@ $(document).ready(function() {
 		var reply = $(this).parent();
 		var comment_number = reply.attr("data-comment-number");
 
-		controller.requestCommentDelete(comment_number);
+		controller.requestCommentDelete(buytogether_number, comment_number);
 
 	});
 
@@ -350,7 +352,7 @@ $(document).ready(function() {
 
 	});
 
-	// 신고 버튼 팝업창
+	// 댓글 신고 버튼 팝업창
 	$(document).on("click", ".report_btn", function() {
 
 		// 댓글번호
@@ -359,82 +361,71 @@ $(document).ready(function() {
 		var div_comment = label.parent();
 		var comment_number = div_comment.attr("data-comment-number");
 
-		// template + data를 buytogetherPopup에 뿌려준다.
-		var data = controller.requestCommentReport(buytogether_number, comment_number);
-
-		/*sendMessage(data);
-
-		var reportsTemplate = Handlebars.compile($(".reportsTemplate").html());
-
-		var reportHtml = reportsTemplate(data);
-
-		alert("중간 데이터 = " + reportHtml);
-
-		var report1 = $("#reports").html(reportHtml);*/
-
-		window.open("buytogetherPopup.html", "report", "width=600, height=670, left=100, top=50");
+		window.open("/buyTogether/buytogetherPopup?buytogether_number="+buytogether_number+"&comment_number="+comment_number,
+				"report", "width=600, height=670, left=100, top=50");
 
 	});
-	
+
+	// 답글 신고 버튼 팝업창
+	$(document).on("click", ".recommentReport_btn", function() {
+
+		// 댓글번호
+		var span = $(this).parent();
+		var comment_number = span.attr("data-comment-number");
+
+		window.open("/buyTogether/buytogetherPopup?buytogether_number="+buytogether_number+"&comment_number="+comment_number,
+				"report", "width=600, height=670, left=100, top=50");
+
+	});
+
 	//같이 사냥 버튼 클릭
 	$(document).on("click", ".buytogetherBtn .buy_together_btn", function() {
-
-		//임시 값
-		var matching_status_number = 1;
+		
 		var user_number = 5;
 
-		controller.requestRegistBuytogether(buytogether_number, matching_status_number, user_number);
+		var result = controller.requestBuytogetherCheck(buytogether_number,user_number);
 
+		if(result == '') {
+			$("#myModal").modal({'show' : true});
+			controller.requestRegistBuytogether(buytogether_number, user_number);
+		} else {
+			$("#myModal1").modal({'show' : true});
+			
+		}
+		
 	});
 	
-	//같이사냥 신고페이지 신고버튼 이벤트
-	$(document).on("click", "#report_btn", function() {
-
-		//임의값 test 용
+	//같이 사냥 취소하기 버튼 클릭
+	$(document).on("click", "#cancel", function() {
+	
 		var user_number = 5;
+		
+		controller.requestCancleBuytogether(buytogether_number,user_number);
+		
+	});
 
-		// 고정값
-		if ($(':radio[name="optradio"]:checked').is(":checked") == true) {
 
-			var declare_category_number = $(':radio[name="optradio"]:checked').val();
+	// URL 복사
+	$(document).on("click", "#urlCopy", function copy_trackback() {
+
+		var IE = (document.all)?true:false;
+		var url = $(location).attr('href');
+
+		if (IE) {
+
+			if(confirm("이 글의 트랙백 주소를 클립보드에 복사하시겠습니까?")){
+
+				window.clipboardData.setData("Text", url);
+
+			}
+
+		} else {
+
+			temp = prompt("이 글의 트랙백 주소입니다. Ctrl+C를 눌러 클립보드로 복사하세요", url);
 
 		}
 
-		var declare_reason = $("#text").val();
-		var type_number = 1;
-		var declare_status = "false";
-
-		var reportData = {
-				buytogether_number : buytogether_number,
-				user_number : user_number,
-				declare_category_number : declare_category_number,
-				type_number : type_number,
-				declare_reason : declare_reason,
-				declare_status : declare_status
-		};
-
-		controller.requestSendReport(reportData);
-
 	});
 
+
 });
-
-/*//데이터 전달
-function sendMessage(data){
-
-	window.postMessage(data, "buytogetherPopup.html");
-
-}
-
-//데이터 수신
-window.onmessage = function(data){
-
-	var reportsTemplate = Handlebars.compile($(".reportsTemplate").html());
-
-	var reportHtml = reportsTemplate(data);
-
-	alert("중간 데이터 = " + reportHtml);
-
-	$("#reports").html(reportHtml);
-
-}*/
