@@ -197,35 +197,64 @@ function buytogetherReadDao() {
 	// 같이 사냥 댓글 리스트
 	this.commentListDao = function(buytogether_number, comment_type_number){
 
+		var reData;
+
 		if(comment_type_number == 1){
 
-			$.getJSON("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number, function(data) {
+			$.ajax({
+				type : 'get',
+				url : '/restBuytogetherRead/commentList/' + buytogether_number + "/" + comment_type_number,
+				async : false,
+				headers : {
+					"Content-type" : "application/json",
+					"X-HTTP-Method-Override": "GET"
+				},
+				dataType : 'json',
+				success : function(data){
 
-				var template3 = Handlebars.compile($('.commentTemplate').html());
+					var commentTemplate = Handlebars.compile($('.commentTemplate').html());
 
-				var html3 = template3(data);
+					var commentHtml = commentTemplate(data);
 
-				$(".commentLi").remove();
+					$(".commentLi").remove();
 
-				$("#comment_List").html(html3);
+					$("#comment_List").html(commentHtml);
+
+					reData = data;
+
+				}
 
 			});
 
 		} else if(comment_type_number == 2){
 
-			$.getJSON("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number, function(data) {
+			$.ajax({
+				type : 'get',
+				url : '/restBuytogetherRead/commentList/' + buytogether_number + "/" + comment_type_number,
+				async : false,
+				headers : {
+					"Content-type" : "application/json",
+					"X-HTTP-Method-Override": "GET"
+				},
+				dataType : 'json',
+				success : function(data){
 
-				var template4 = Handlebars.compile($('.commentTemplate2').html());
+					var commentTmplate2 = Handlebars.compile($('.commentTemplate2').html());
 
-				var html4 = template4(data);
+					var commentHtml = commentTmplate2(data);
 
-				$(".commentLi2").remove();
+					$(".commentLi2").remove();
 
-				$("#comment_List2").html(html4);
+					$("#comment_List2").html(commentHtml);
+
+					reData = data;
+
+				}
 
 			});
 		}
 
+		return reData;
 	}
 
 	//	같이 사냥 댓글 삭제
@@ -252,7 +281,7 @@ function buytogetherReadDao() {
 
 					alert("댓글 삭제가 실패함");
 					document.location.href='/buyTogether/read?buytogether_number=' + buytogether_number;
-					
+
 				}
 			}
 
@@ -262,7 +291,7 @@ function buytogetherReadDao() {
 
 	// 같이 사냥 댓글 수정(댓글 번호, 유저번호, 내용)
 	this.commentUpdateDao = function(buytogether_number, comment_number, comment_content, comment_type_number){
-		
+
 		$.ajax({
 			type: 'put',
 			url: '/restBuytogetherRead/' + comment_number,
@@ -457,15 +486,13 @@ function buytogetherReadDao() {
 			dataType: 'text',
 			success: function(data){
 				if(data == "success") {
-					
-					alert("true = " + data);
+
 					result = true;
-					
+
 				} else if(data == "fail"){
-					
-					alert("false = " + data);
+
 					result = false;
-					
+
 				}
 			}
 

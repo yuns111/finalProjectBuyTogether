@@ -36,7 +36,7 @@ function buytogetherReadController() {
 	// 같이사냥 댓글 리스트 부분
 	this.requestCommentList = function(buytogether_number, comment_type_number){
 
-		dao.commentListDao(buytogether_number, comment_type_number);
+		return dao.commentListDao(buytogether_number, comment_type_number);
 
 	}
 

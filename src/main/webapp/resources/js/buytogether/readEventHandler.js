@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 	});
 
-	// 전체권한 댓글 Tap
+	// 전체 댓글 Tap
 	$("#tapAllList").on("click", function() {
 
 		//전체참여 번호
@@ -176,7 +176,26 @@ $(document).ready(function() {
 			}
 		});
 
-		controller.requestCommentList(buytogether_number, comment_type_number);
+		var data = controller.requestCommentList(buytogether_number, comment_type_number);
+
+		// 로그인한 사용자의 수정 삭제 버튼만 보이게
+		for(var i = 0; i < data.length; i++){
+
+			if(user_number == data[i].user_number){
+
+				alert("user_number = " + user_number);
+				alert("data[i].user_number = " + data[i].user_number);
+				$(".deleteBtn").show();
+				$(".updateBtn").show();
+
+			} else {
+
+				$(".deleteBtn").hide();
+				$(".updateBtn").hide();
+
+			}
+
+		}
 
 	});
 
@@ -297,8 +316,26 @@ $(document).ready(function() {
 			});
 
 
-			controller.requestCommentList(buytogether_number, comment_type_number);
+			var data = controller.requestCommentList(buytogether_number, comment_type_number);
 
+			// 댓글 남긴 유저의 버튼만 나오게
+			for(var i = 0; i < data.length; i++){
+
+				if(user_number == data[i].user_number){
+
+					alert("로그인");
+					$(".deleteBtn").show();
+					$(".updateBtn").show();
+
+				} else {
+
+					alert("비로그인");
+					$(".deleteBtn").hide();
+					$(".updateBtn").hide();
+
+				}
+
+			}
 
 		} else if(buytoegetherCheck == false){
 
