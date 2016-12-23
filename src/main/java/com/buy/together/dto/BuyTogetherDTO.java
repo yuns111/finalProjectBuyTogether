@@ -31,6 +31,7 @@ public class BuyTogetherDTO {
 	private int comment_number;
 	private String gender;
 	private int joinin_user;
+	private String comment_content;
 
 	public BuyTogetherDTO() {
 
@@ -226,6 +227,14 @@ public class BuyTogetherDTO {
 
 	public void setJoinin_user(int joinin_user) {
 		this.joinin_user = joinin_user;
+	}
+
+	public String getComment_content() {
+		return comment_content;
+	}
+
+	public void setComment_content(String comment_content) {
+		this.comment_content = comment_content;
 	}
 
 }

@@ -90,8 +90,8 @@
 	
 	<!-- 같이사냥 버튼 클릭 -->
 	<insert id="registBuytogether" parameterType="java.util.Map">
-		insert into joinin(user_number, matching_status_number, buytogether_number)
-		values(#{user_number}, #{matching_status_number}, #{buytogether_number});
+		insert into joinin(user_number, buytogether_number)
+		values(#{user_number}, #{buytogether_number});
 	</insert>
 	
 	<!-- 같이사냥 찜하기 버튼 -->
@@ -112,9 +112,9 @@
 		where user_number = #{user_number} and buytogether_number = #{buytogether_number};
 	</select>
 	
-	<!-- 같이사냥 신고 내용 / 작성자  data -->
-	<select id="report" parameterType="java.util.Map" resultType = "Comment">
-		select c.buytogether_number, c.comment_number, u.nickname, c.comment_content, c.user_number, c.comment_type_number 
+	<!-- 같이사냥 신고 당한 내용 / 작성자(닉네임)  data -->
+	<select id="report" parameterType="java.util.Map" resultType = "com.buy.together.dto.BuyTogetherDTO">
+		select c.buytogether_number, c.comment_number, u.nickname, c.comment_content
 		from user u, comment c
 		where u.user_number = c.user_number 
 		and c.comment_number = #{comment_number}
@@ -123,16 +123,21 @@
 	
 	<!-- 같이사냥 신고 내역 입력 -->
 	<insert id="sendReport">
-		insert into declareboard(buytogether_number, type_number, declare_category_number, user_number, declare_reason, declare_status)
-		values(#{buytogether_number}, #{type_number}, #{declare_category_number}, #{user_number}, #{declare_reason}, #{declare_status});
+		insert into declareboard(buytogether_number, type_number, comment_number, declare_category_number, user_number, declare_reason)
+		values(#{buytogether_number}, 2, #{comment_number}, #{declare_category_number}, #{user_number}, #{declare_reason});
 	</insert>
 	
 	<!-- 같이사냥 확인 -->
-	<select id="buytogetherCheck" parameterType="java.util.Map" resultType = "int">
-		select joinin_number 
+	<select id="buytogetherCheck" parameterType="java.util.Map" resultType = "Integer">
+		select joinin_number
 		from joinin
 		where buytogether_number = #{buytogether_number} and user_number = #{user_number};
 	</select>
+	
+	<!-- 같이사냥 취소 버튼 -->
+	<delete id="cancleBuytogether" parameterType="java.util.Map">
+		delete from joinin where user_number = #{user_number} and buytogether_number = #{buytogether_number};
+	</delete>
 	
 </mapper>
 

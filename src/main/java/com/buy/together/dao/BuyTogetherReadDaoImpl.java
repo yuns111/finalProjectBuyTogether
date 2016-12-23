@@ -130,13 +130,12 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 
 	// 같이사냥 버튼 
 	@Override
-	public void registBuytogether(Integer user_number, Integer matching_status_number, Integer buytogether_number)
+	public void registBuytogether(Integer user_number, Integer buytogether_number)
 			throws Exception {
 
 		Map<String, Object> map = new HashMap<>();
 
 		map.put("user_number", user_number);
-		map.put("matching_status_number", matching_status_number);
 		map.put("buytogether_number", buytogether_number);
 
 		sqlSession.insert(namespace+".registBuytogether", map);
@@ -184,7 +183,7 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 
 	// 신고 당한 사람 내용 / 닉네임 
 	@Override
-	public Comment reportDao(Integer buytogether_number, Integer comment_number) throws Exception {
+	public BuyTogetherDTO reportDao(Integer buytogether_number, Integer comment_number) throws Exception {
 		
 		Map<String, Object> map = new HashMap<>();
 
@@ -212,6 +211,18 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 		map.put("user_number", user_number);
 		
 		return sqlSession.selectOne(namespace+".buytogetherCheck", map);
+		
+	}
+
+	@Override
+	public void cancleBuytogetherDao(Integer buytogether_number, Integer user_number) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+
+		map.put("buytogether_number", buytogether_number);
+		map.put("user_number", user_number);
+		
+		sqlSession.delete(namespace+".cancleBuytogether", map);
 		
 	}
 

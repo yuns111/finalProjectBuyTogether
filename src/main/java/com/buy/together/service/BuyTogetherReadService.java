@@ -27,7 +27,7 @@ public interface BuyTogetherReadService {
 	
 	public List<Comment> recommentList(Integer comment_number, Integer comment_type_number) throws Exception;
 	
-	public void registBuytogether(Integer user_number, Integer matching_status_number, Integer buytogether_number) throws Exception;
+	public void registBuytogether(Integer user_number, Integer buytogether_number) throws Exception;
 	
 	public void registDip(Integer buytogether_number, Integer user_number) throws Exception;
 	
@@ -35,10 +35,12 @@ public interface BuyTogetherReadService {
 	
 	public Integer checkDip(Integer buytogether_number, Integer user_number) throws Exception;
 	
-	public Comment report(Integer buytogether_number, Integer comment_number) throws Exception;
+	public BuyTogetherDTO report(Integer buytogether_number, Integer comment_number) throws Exception;
 	
 	public void registReport(DeclareBoard declareBoard) throws Exception;
 	
 	public Integer buytogetherCheck(Integer buytogether_number, Integer user_number) throws Exception;
+	
+	public void cancleBuytogether(Integer buytogether_number, Integer user_number) throws Exception;
 	
 }

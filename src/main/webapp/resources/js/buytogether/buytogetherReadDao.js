@@ -1,4 +1,3 @@
-
 function buytogetherReadDao() {
 
 	// 같이사냥 글 조회
@@ -333,11 +332,13 @@ function buytogetherReadDao() {
 	}
 
 	// 같이사냥 버튼
-	this.registBuytogetherDao = function(buytogether_number, matching_status_number, user_number){
+	this.registBuytogetherDao = function(buytogether_number, user_number){
 
+		var result;
+		
 		$.ajax({
 			type : "post",
-			url : "/restBuytogetherRead/buytogetherBtn/" + buytogether_number + "/" + matching_status_number + "/" + user_number,
+			url : "/restBuytogetherRead/buytogetherBtn/" + buytogether_number  + "/" + user_number,
 			async : false,
 			headers : {
 				"Content-type" : "application/json",
@@ -345,15 +346,17 @@ function buytogetherReadDao() {
 			},
 			dataType: 'text',
 			success: function(data){
-
-
+				
+				result = data;
+				
 			}
+			
 		});
+		return result;
 	}
 
 	// 같이사냥 찜하기 버튼
 	this.dipBtnDao = function(buytogether_number, user_number){
-
 
 		$.ajax({
 			type : "post",
@@ -366,11 +369,9 @@ function buytogetherReadDao() {
 			dataType: 'text',
 			success: function(data){
 
-
 			}
+			
 		});
-
-
 	}
 
 	// 같이사냥 찜하기 취소 버튼
@@ -387,12 +388,9 @@ function buytogetherReadDao() {
 			},
 			dataType: 'text',
 			success: function(data){
-
-
 			}
 
 		});
-
 	}
 
 	// 해당글이 찜 되어있는지 확인
@@ -424,9 +422,8 @@ function buytogetherReadDao() {
 	// 댓글 신고 작성자  / 내용 가지고오기
 	this.commentReportDao = function(buytogether_number, comment_number){
 
-		var data;
-
 		$.ajax({
+			
 			type : 'get',
 			url : '/restBuytogetherRead/commentReport/' + buytogether_number + "/" + comment_number,
 			async : false,
@@ -436,14 +433,17 @@ function buytogetherReadDao() {
 			},
 			dataType : 'json',
 			success : function(result){
+				
+				var reportsTemplate = Handlebars.compile($(".reportsTemplate").html());
 
-				data = result;
+				var reportHtml = reportsTemplate(result);
+
+				$("#reports").html(reportHtml);
 
 			}
 
 		});
 
-		return data;
 
 	}
 
@@ -465,12 +465,15 @@ function buytogetherReadDao() {
 				alert("성공");
 
 			}
+			
 		});
+		
+		return
 
 	}
 
 	// 같이사냥 참여자 확인
-	this.buytoegetherCheckDao = function(buytogether_number, user_number){
+	this.buytogetherCheckDao = function(buytogether_number, user_number){
 
 		var result = false;
 
@@ -501,6 +504,25 @@ function buytogetherReadDao() {
 		return result;
 
 	}
+	
+	this.cancleBuytogetherDao = function(buytogether_number, user_number){
+		
+		$.ajax({
+			type: 'delete',
+			url: '/restBuytogetherRead/cancleBuytogether/' + buytogether_number + "/" + user_number,
+			async : false,
+			headers: {
+
+				"Content-type" : "application/json",
+				"X-HTTP-Method-Override": "DELETE"
+			},
+			dataType: 'text',
+			success: function(data){
+			}
+
+		});
+		
+	}
 
 }
 
@@ -516,6 +538,7 @@ function getPageTap1(pageInfo){
 		$(".commentLi").remove();
 
 		$("#comment_List").html(html3);
+		
 	});
 
 }

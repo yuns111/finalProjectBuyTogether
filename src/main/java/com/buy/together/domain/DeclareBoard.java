@@ -7,6 +7,7 @@ public class DeclareBoard {
 	private int type_number;
 	private int declare_category_number;
 	private int user_number;
+	private int comment_number;
 	private String declare_reason;
 	private String declare_photo;
 	private Boolean declare_status;
@@ -53,6 +54,14 @@ public class DeclareBoard {
 
 	public void setUser_number(int user_number) {
 		this.user_number = user_number;
+	}
+
+	public int getComment_number() {
+		return comment_number;
+	}
+
+	public void setComment_number(int comment_number) {
+		this.comment_number = comment_number;
 	}
 
 	public String getDeclare_reason() {

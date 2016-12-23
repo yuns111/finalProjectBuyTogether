@@ -81,9 +81,9 @@ function buytogetherReadController() {
 	}
 
 	// 같이사냥 버튼
-	this.requestRegistBuytogether = function(buytogether_number, matching_status_number, user_number){
+	this.requestRegistBuytogether = function(buytogether_number, user_number){
 
-		dao.registBuytogetherDao(buytogether_number, matching_status_number, user_number);
+		return dao.registBuytogetherDao(buytogether_number, user_number);
 
 	}
 
@@ -110,22 +110,29 @@ function buytogetherReadController() {
 	// 같이사냥 댓글 신고버튼
 	this.requestCommentReport = function(buytogether_number, comment_number){
 
-		var data = dao.commentReportDao(buytogether_number, comment_number);
+		dao.commentReportDao(buytogether_number, comment_number);
 		
-		return data;
+
 	}
 	
 	// 신고페이지 신고버튼 클릭
 	this.requestSendReport = function(reportData){
 		
-		dao.sendReportDao(reportData);
+		return dao.sendReportDao(reportData);
 			
 	}
 	
 	// 같이사냥 참여자 확인
-	this.requestBuytoegetherCheck = function(buytogether_number, user_number){
+	this.requestBuytogetherCheck = function(buytogether_number, user_number){
 		
-		return dao.buytoegetherCheckDao(buytogether_number, user_number);
+		return dao.buytogetherCheckDao(buytogether_number, user_number);
+		
+	}
+	
+	// 같이사냥 취소 버튼
+	this.requestCancleBuytogether = function(buytogether_number, user_number){
+
+		dao.cancleBuytogetherDao(buytogether_number, user_number);
 		
 	}
 
