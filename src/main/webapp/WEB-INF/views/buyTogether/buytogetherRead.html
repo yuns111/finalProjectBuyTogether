@@ -406,7 +406,7 @@ function sharing(){
 				<div class="col-md-4 col-xs-4 buytogetherBtn">
 					<br><br>
 
-					 <button class="btn btn-md c-btn-white c-font-uppercase c-btn-square c-btn-border-1x buy_together_btn" data-toggle="modal" >BUY TOGETHER</button>
+					 <input type="button" class="btn btn-md c-btn-white c-font-uppercase c-btn-square c-btn-border-1x buy_together_btn" data-toggle="modal" id="buy_together_btn" value="BUY TOGETHER" />
 
 		<!-- modal -->
         	<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -423,6 +423,7 @@ function sharing(){
                 	</div>
             	</div>
       		</div>
+
 			<div class="modal fade bs-example-modal-sm" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
               	<div class="modal-dialog modal-md">
                   	<div class="modal-content">
@@ -438,6 +439,21 @@ function sharing(){
                 	</div>
             	</div>
       		</div>	
+
+			<div class="modal fade bs-example-modal-sm" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+              	<div class="modal-dialog modal-md">
+                  	<div class="modal-content">
+                        <div class="modal-body" id="modal-body">
+                          	<p class="c-font-red" id="msg">
+								<span class="c-font-15">같이사냥 참여자 명단</span>
+							</p>
+                        </div>
+                        <div class="modal-footer">
+                        	<button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-bold c-btn-uppercase" data-dismiss="modal">Close</button>
+                    	</div>
+                	</div>
+            	</div>
+      		</div>
 
 
 				</div>

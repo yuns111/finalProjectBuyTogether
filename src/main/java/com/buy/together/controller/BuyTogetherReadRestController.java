@@ -329,8 +329,6 @@ public class BuyTogetherReadRestController {
 	@RequestMapping(value = "sendReport/", method = RequestMethod.POST)
 	public ResponseEntity<String> requestSendReport(@RequestBody DeclareBoard declareBoard){
 
-		System.out.println("declareBoard = " + declareBoard.getBuytogether_number());
-
 		ResponseEntity<String> entity = null;
 
 		try{

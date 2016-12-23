@@ -3,6 +3,8 @@ function buytogetherReadDao() {
 	// 같이사냥 글 조회
 	this.readDao = function(buytogether_number) {
 
+		var re;
+		
 		$.ajax({
 			type : 'get',
 			url : '/restBuytogetherRead/read/' + buytogether_number,
@@ -20,9 +22,13 @@ function buytogetherReadDao() {
 
 				$("#buyTogetherListOne").html(listOneHtml);
 
+				re = data;
 			}
 
 		});
+
+		return re;
+		
 	}
 
 	// 같이사냥 게시글 삭제
@@ -410,7 +416,13 @@ function buytogetherReadDao() {
 			dataType: 'text',
 			success: function(data){
 				if(data == "success") {
+					
 					result = true;
+					
+				} else if(data == "fail"){
+					
+					result = false;
+					
 				}
 			}
 
