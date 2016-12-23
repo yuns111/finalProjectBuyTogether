@@ -34,6 +34,7 @@ public class BuyTogetherDTO {
 	private boolean beOrNot;
 	private boolean finishOrNot;
 	private String comment_content;
+	private int user_number;
 
 
 	public BuyTogetherDTO() {
@@ -254,6 +255,14 @@ public class BuyTogetherDTO {
 	public void setComment_content(String comment_content) {
 		this.comment_content = comment_content;
 
+	}
+
+	public int getUser_number() {
+		return user_number;
+	}
+
+	public void setUser_number(int user_number) {
+		this.user_number = user_number;
 	}
 
 }

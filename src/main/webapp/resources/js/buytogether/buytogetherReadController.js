@@ -8,7 +8,7 @@ function buytogetherReadController() {
 	// 같이사냥 조회
 	this.requestRead = function(buytogether_number) {
 		
-		dao.readDao(buytogether_number);
+		return dao.readDao(buytogether_number);
 	
 	}
 

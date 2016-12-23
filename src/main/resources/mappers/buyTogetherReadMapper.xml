@@ -17,7 +17,7 @@
 	<!-- 같이사냥 조회 -->
 	<select id="read" resultType="com.buy.together.dto.BuyTogetherDTO">
 		select bt.title, bt.content,
-		bt.buytogether_number, bt.duedate, u.nickname, u.gender, u.reputation,
+		bt.user_number, bt.buytogether_number, bt.duedate, u.nickname, u.gender, u.reputation,
 		bt.price, bt.buytogether_number ,ba.buytogether_address_sido,
 		ba.buytogether_address_sigungu, ba.buytogether_address_road_address,
 		ba.buytogether_address_detail, bt.writedate, bt.duedate,
@@ -106,10 +106,10 @@
 	</delete>
 	
 	<!-- 같이사냥 찜하기 확인 -->
-	<select id="checkDip" parameterType="java.util.Map" resultType = "int">
+	<select id="checkDip" parameterType="java.util.Map" resultType = "Integer">
 		select dip_number
 		from dip 
-		where user_number = #{user_number} and buytogether_number = #{buytogether_number};
+		where buytogether_number = #{buytogether_number} and user_number = #{user_number};
 	</select>
 	
 	<!-- 같이사냥 신고 당한 내용 / 작성자(닉네임)  data -->
