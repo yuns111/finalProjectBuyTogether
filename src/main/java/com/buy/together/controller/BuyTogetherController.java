@@ -5,7 +5,6 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -59,5 +58,15 @@ public class BuyTogetherController {
 
 		return "/views/buyTogether/buytogetherRead";
 
+	}
+	
+	//글수정
+	@RequestMapping(value ="/update", method = RequestMethod.GET)
+	public String requestBuyTogetherUpdate(Locale locale) {
+		
+		System.out.println("buyTogetherController/write");
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		return "/views/buyTogether/buytogetherupdate";
 	}
 }

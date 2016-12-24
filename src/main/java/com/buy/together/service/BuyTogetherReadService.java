@@ -2,7 +2,6 @@ package com.buy.together.service;
 
 import java.util.List;
 
-import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.Comment;
 import com.buy.together.domain.DeclareBoard;
 import com.buy.together.dto.BuyTogetherDTO;
@@ -13,8 +12,6 @@ public interface BuyTogetherReadService {
 	
 	public void deleteBuytogether(Integer buytogether_number, Integer user_number) throws Exception;
 	
-	public List<AttachedPhoto> buyTogetherImage(Integer buytogether_number) throws Exception;
-
 	public List<Comment> commentList(Integer buytogether_number, Integer comment_type_number) throws Exception;
 	
 	public void registComment(Comment comment) throws Exception;

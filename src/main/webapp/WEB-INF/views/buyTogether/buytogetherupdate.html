@@ -8,6 +8,7 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
 <!---------------------공통스크립트--------------------->
+<link rel="shortcut icon" href="/resources/theme/css/favicon.ico" type="image/x-icon"/>
 <script src="/resources/bootstrap/js/jquery-3.1.1.min.js"></script>
 <link href="/resources/theme/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
 <link href="/resources/theme/css/default.css" rel="stylesheet" id="style_theme" type="text/css" />
@@ -28,7 +29,7 @@
 <!-- 필수 js -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-<script src="/resources/js/buytogether/writeEventHandler.js"></script>
+<script src="/resources/js/buytogether/updateEventHandler.js"></script>
 <script src="/resources/js/buytogether/editor.js"></script>
 <script src="/resources/daumeditor/js/jquery.serializejson.min.js"></script>
 <!-- 다음에디터 -->
@@ -75,7 +76,7 @@ $(document).ready(function(){
 			<div class="c-layout-sidebar-content ">
 				<!-- BEGIN: PAGE CONTENT -->
 				<div class="c-content-title-1">
-					<h3 class="c-font-uppercase c-font-bold">Write BuyTogether</h3>
+					<h3 class="c-font-uppercase c-font-bold">Update BuyTogether</h3>
 					<div class="c-line-left"></div>
 				</div>
 				<form name="tx_editor_form" id="tx_editor_form"
@@ -117,7 +118,13 @@ $(document).ready(function(){
 									<div class="form-group col-md-6">
 										<label class="control-label">카테고리</label> <select
 											class="form-control c-square c-theme" id="category_number"
-											name="category_number"></select>
+											name="category_number">
+											<option>선택해주세요</option>
+											<option value="1">식품</option>
+											<option value="2">뷰티</option>
+											<option value="3">생활용품</option>
+											<option value="4">의류/악세서리</option>
+											<option value="5">기타</option></select>
 										<label class="control-label" id="categoryCheck" style="color: red" hidden="true">*필수 선택사항 입니다.</label>
 									</div>
 									<div class="col-md-6">
@@ -134,7 +141,11 @@ $(document).ready(function(){
 							<div class="form-group col-md-6">
 								<label class="control-label">사냥방식</label> <select
 									class="form-control c-square c-theme" id="hunting_type_number"
-									name="hunting_type_number"></select>
+									name="hunting_type_number">
+									<option>선택해주세요</option>
+									<option value="1">온라인</option>
+									<option value="2">오프라인</option>
+									</select>
 								<label class="control-label" id="huntingTypeCheck" style="color: red" hidden="true">*필수 선택사항 입니다.</label>
 							</div>
 						</div>
@@ -561,8 +572,8 @@ $(document).ready(function(){
 				<div class="row c-margin-t-30">
 					<div class="form-group col-md-12" role="group">
 						<button onclick='saveContent()'
-							class="btn btn-lg c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">글쓰기</button>
-						<button onclick="document.location.href='/buyTogether/list';"
+							class="btn btn-lg c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">수정완료</button>
+						<button id="cancle"
 							class="btn btn-lg btn-default c-btn-square c-btn-uppercase c-btn-bold">취소</button>
 					</div>
 				</div>
@@ -573,6 +584,23 @@ $(document).ready(function(){
 		<!-- buytogetherwrite body end -->
 		<!-- END: BODY 끝 -->
 	</div>
+	
+		<!-- modal -->
+      	<div class="modal fade bs-example-modal-sm" id="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            	<div class="modal-dialog modal-md	">
+                	<div class="modal-content">
+                      <div class="modal-body" id="modal-body">
+                        	<p class="c-font-red" id="msg">
+						<span class="c-font-15">수정 중 오류가 발생했어요 다시 시도해주세요</span>
+					</p>
+                      </div>
+                      <div class="modal-footer">
+                      	<button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-bold c-btn-uppercase" data-dismiss="modal">Close</button>
+                  	</div>
+              	</div>
+          	</div>
+   		</div>
+	
 	<!-- BEGIN: FOOTER 시작 -->
 	<div id="buytogetherFooter"></div>
 	

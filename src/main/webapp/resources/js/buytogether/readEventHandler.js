@@ -112,19 +112,10 @@ $(document).ready(function() {
 
 		if ($(this).val() == "UPDATE") {
 
-			$(this).attr("value", "UPDATING");
-
-			// 수정페이지로 전환
-			/*var url = "/buyTogether/updateBuytogether/";
-			$(location).attr('href',url);*/
-
-		} else {
-
-			$(this).attr("value", "UPDATE");
-
-			/*controller.requestBuytogetherUpdate(buytogether_number, user_number);*/
+			var url = "/buyTogether/update?buytogether_number="+buytogether_number; 
+					
+			$(location).attr('href',url);
 		}
-
 	});
 
 	// 전체 댓글 Tap
@@ -479,6 +470,5 @@ $(document).ready(function() {
 		}
 
 	});
-
 
 });

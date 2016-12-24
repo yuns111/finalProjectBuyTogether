@@ -4,7 +4,7 @@ public class ListSearchCriteria extends Criteria {
 
 	private int category_number;
 	private int hunting_type_number;
-	private int hunting_status_number;
+	private int status_number;
 	private String buytogether_address_sido;
 	private String buytogether_address_sigungu;
 	private int regDate;
@@ -28,12 +28,12 @@ public class ListSearchCriteria extends Criteria {
 		this.hunting_type_number = hunting_type_number;
 	}
 
-	public int getHunting_status_number() {
-		return hunting_status_number;
+	public int getStatus_number() {
+		return status_number;
 	}
 
-	public void setHunting_status_number(int hunting_status_number) {
-		this.hunting_status_number = hunting_status_number;
+	public void setStatus_number(int status_number) {
+		this.status_number = status_number;
 	}
 
 	public String getBuytogether_address_sido() {
@@ -66,6 +66,14 @@ public class ListSearchCriteria extends Criteria {
 
 	public void setRegDate(int regDate) {
 		this.regDate = regDate;
+	}
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
 	}
 
 	public String getKeyword() {
