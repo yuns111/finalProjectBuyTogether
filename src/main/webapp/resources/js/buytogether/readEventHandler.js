@@ -22,7 +22,7 @@ $(document).ready(function() {
 	var readData = controller.requestRead(buytogether_number);
 
 	// 임의값
-	var user_number = 2;
+	var user_number = 10;
 
 	// 같이사냥 참여자 확인
 	var data = controller.requestBuytogetherCheck(buytogether_number, user_number);
@@ -31,14 +31,14 @@ $(document).ready(function() {
 	if(data == true && user_number == readData.user_number){
 
 		$("#buy_together_btn").attr("value", "CHECK PLEASE");
-		$("#buy_together_btn").attr("id", "buy_together_btn_check");
+		$("#buy_together_btn").attr("class", "buy_together_btn_check");
 		
-		// 게시판 주인 CHECK 클릭시 모달 창
-		$(document).on("click", ".buy_together_btn_check", function() {
+		/*// 게시판 주인 CHECK 클릭시 모달 창
+		$(document).on("click", "#buy_together_btn_check", function() {
 
 			$("#myModal2").modal({'show' : true});
 
-			/*if(result == '') {
+			if(result == '') {
 
 				$("#myModal2").modal({'show' : true});
 				controller.requestRegistBuytogether(buytogether_number, user_number);
@@ -47,9 +47,9 @@ $(document).ready(function() {
 
 				$("#myModal1").modal({'show' : true});
 
-			}*/
+			}
 
-		});
+		});*/
 
 	} else {
 
