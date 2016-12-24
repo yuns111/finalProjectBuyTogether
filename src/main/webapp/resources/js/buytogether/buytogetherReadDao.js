@@ -1,12 +1,13 @@
-
 function buytogetherReadDao() {
 
 	// 같이사냥 글 조회
-	this.ReadDao = function(buytogether_number) {
+	this.readDao = function(buytogether_number) {
 
+		var re;
+		
 		$.ajax({
 			type : 'get',
-			url : '/restBuytogetherRead/read/'  + buytogether_number ,
+			url : '/restBuytogetherRead/read/' + buytogether_number,
 			async : false,
 			headers : {
 				"Content-type" : "application/json",
@@ -21,9 +22,13 @@ function buytogetherReadDao() {
 
 				$("#buyTogetherListOne").html(listOneHtml);
 
+				re = data;
 			}
 
 		});
+
+		return re;
+		
 	}
 
 	// 같이사냥 게시글 삭제
@@ -197,39 +202,68 @@ function buytogetherReadDao() {
 	// 같이 사냥 댓글 리스트
 	this.commentListDao = function(buytogether_number, comment_type_number){
 
+		var reData;
+
 		if(comment_type_number == 1){
 
-			$.getJSON("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number, function(data) {
+			$.ajax({
+				type : 'get',
+				url : '/restBuytogetherRead/commentList/' + buytogether_number + "/" + comment_type_number,
+				async : false,
+				headers : {
+					"Content-type" : "application/json",
+					"X-HTTP-Method-Override": "GET"
+				},
+				dataType : 'json',
+				success : function(data){
 
-				var template3 = Handlebars.compile($('.commentTemplate').html());
+					var commentTemplate = Handlebars.compile($('.commentTemplate').html());
 
-				var html3 = template3(data);
+					var commentHtml = commentTemplate(data);
 
-				$(".commentLi").remove();
+					$(".commentLi").remove();
 
-				$("#comment_List").html(html3);
+					$("#comment_List").html(commentHtml);
+
+					reData = data;
+
+				}
 
 			});
 
 		} else if(comment_type_number == 2){
 
-			$.getJSON("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number, function(data) {
+			$.ajax({
+				type : 'get',
+				url : '/restBuytogetherRead/commentList/' + buytogether_number + "/" + comment_type_number,
+				async : false,
+				headers : {
+					"Content-type" : "application/json",
+					"X-HTTP-Method-Override": "GET"
+				},
+				dataType : 'json',
+				success : function(data){
 
-				var template4 = Handlebars.compile($('.commentTemplate2').html());
+					var commentTmplate2 = Handlebars.compile($('.commentTemplate2').html());
 
-				var html4 = template4(data);
+					var commentHtml = commentTmplate2(data);
 
-				$(".commentLi2").remove();
+					$(".commentLi2").remove();
 
-				$("#comment_List2").html(html4);
+					$("#comment_List2").html(commentHtml);
+
+					reData = data;
+
+				}
 
 			});
 		}
 
+		return reData;
 	}
 
-	//	같이 사냥 댓글 삭제(댓글 번호, 부모 댓글 번호)
-	this.commentDeleteDao = function(comment_number){
+	//	같이 사냥 댓글 삭제
+	this.commentDeleteDao = function(buytogether_number, comment_number){
 
 		$.ajax({
 			type: 'delete',
@@ -246,10 +280,12 @@ function buytogetherReadDao() {
 				if(data == "success"){
 
 					alert("댓글이 삭제 되었습니다.");
+					document.location.href='/buyTogether/read?buytogether_number=' + buytogether_number;
 
 				} else {
 
 					alert("댓글 삭제가 실패함");
+					document.location.href='/buyTogether/read?buytogether_number=' + buytogether_number;
 
 				}
 			}
@@ -285,7 +321,7 @@ function buytogetherReadDao() {
 
 					} else if(comment_type_number == 2){
 
-						alert("권한 댓글이 수정 되었습니다.");
+						alert("참여자 댓글이 수정 되었습니다.");
 						getPageTap2("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number);
 
 					}
@@ -302,11 +338,13 @@ function buytogetherReadDao() {
 	}
 
 	// 같이사냥 버튼
-	this.registBuytogetherDao = function(buytogether_number, matching_status_number, user_number){
+	this.registBuytogetherDao = function(buytogether_number, user_number){
 
+		var result;
+		
 		$.ajax({
 			type : "post",
-			url : "/restBuytogetherRead/buytogetherBtn/" + buytogether_number + "/" + matching_status_number + "/" + user_number,
+			url : "/restBuytogetherRead/buytogetherBtn/" + buytogether_number  + "/" + user_number,
 			async : false,
 			headers : {
 				"Content-type" : "application/json",
@@ -314,15 +352,17 @@ function buytogetherReadDao() {
 			},
 			dataType: 'text',
 			success: function(data){
-
-
+				
+				result = data;
+				
 			}
+			
 		});
+		return result;
 	}
 
 	// 같이사냥 찜하기 버튼
 	this.dipBtnDao = function(buytogether_number, user_number){
-
 
 		$.ajax({
 			type : "post",
@@ -335,11 +375,9 @@ function buytogetherReadDao() {
 			dataType: 'text',
 			success: function(data){
 
-
 			}
+			
 		});
-
-
 	}
 
 	// 같이사냥 찜하기 취소 버튼
@@ -356,12 +394,9 @@ function buytogetherReadDao() {
 			},
 			dataType: 'text',
 			success: function(data){
-
-
 			}
 
 		});
-
 	}
 
 	// 해당글이 찜 되어있는지 확인
@@ -372,80 +407,6 @@ function buytogetherReadDao() {
 		$.ajax({
 			type: 'post',
 			url: '/restBuytogetherRead/checkDip/' + buytogether_number + "/" + user_number,
-			async : false,
-			headers: {
-
-				"Content-type" : "application/json",
-				"X-HTTP-Method-Override": "post"
-			},
-			dataType: 'text',
-			success: function(data){
-				if(data == "success") {
-					result = true;
-				}
-			}
-
-		});
-
-		return result;
-	}
-
-	// 댓글 신고 작성자  / 내용 가지고오기
-	this.commentReportDao = function(buytogether_number, comment_number){
-
-		var data;
-
-		$.ajax({
-			type : 'get',
-			url : '/restBuytogetherRead/commentReport/' + buytogether_number + "/" + comment_number,
-			async : false,
-			headers : {
-				"Content-type" : "application/json",
-				"X-HTTP-Method-Override": "GET"
-			},
-			dataType : 'json',
-			success : function(result){
-
-				data = result;
-
-			}
-
-		});
-
-		return data;
-
-	}
-
-	// 신고페이지 신고하기버튼 이벤트
-	this.sendReportDao = function(reportData){
-
-		$.ajax({
-			type : "post",
-			url : "/restBuytogetherRead/sendReport/",
-			async : false,
-			headers : {
-				"Content-type" : "application/json",
-				"X-HTTP-Method-Override": "POST"
-			},
-			dataType: 'text',
-			data: JSON.stringify(reportData),
-			success: function(data){
-
-				alert("성공");
-
-			}
-		});
-
-	}
-
-	// 같이사냥 참여자 확인
-	this.buytoegetherCheckDao = function(buytogether_number, user_number){
-
-		var result = false;
-
-		$.ajax({
-			type: 'post',
-			url: '/restBuytogetherRead/buytoegetherCheck/' + buytogether_number + "/" + user_number,
 			async : false,
 			headers: {
 
@@ -468,7 +429,111 @@ function buytogetherReadDao() {
 		});
 
 		return result;
+	}
 
+	// 댓글 신고 작성자  / 내용 가지고오기
+	this.commentReportDao = function(buytogether_number, comment_number){
+
+		$.ajax({
+			
+			type : 'get',
+			url : '/restBuytogetherRead/commentReport/' + buytogether_number + "/" + comment_number,
+			async : false,
+			headers : {
+				"Content-type" : "application/json",
+				"X-HTTP-Method-Override": "GET"
+			},
+			dataType : 'json',
+			success : function(result){
+				
+				var reportsTemplate = Handlebars.compile($(".reportsTemplate").html());
+
+				var reportHtml = reportsTemplate(result);
+
+				$("#reports").html(reportHtml);
+
+			}
+
+		});
+
+
+	}
+
+	// 신고페이지 신고하기버튼 이벤트
+	this.sendReportDao = function(reportData){
+
+		$.ajax({
+			type : "post",
+			url : "/restBuytogetherRead/sendReport/",
+			async : false,
+			headers : {
+				"Content-type" : "application/json",
+				"X-HTTP-Method-Override": "POST"
+			},
+			dataType: 'text',
+			data: JSON.stringify(reportData),
+			success: function(data){
+
+				alert("성공");
+
+			}
+			
+		});
+		
+		return
+
+	}
+
+	// 같이사냥 참여자 확인
+	this.buytogetherCheckDao = function(buytogether_number, user_number){
+
+		var result = false;
+
+		$.ajax({
+			type: 'post',
+			url: '/restBuytogetherRead/buytogetherCheck/' + buytogether_number + "/" + user_number,
+			async : false,
+			headers: {
+
+				"Content-type" : "application/json",
+				"X-HTTP-Method-Override": "post"
+			},
+			dataType: 'text',
+			success: function(data){
+				if(data == "success") {
+
+					result = true;
+
+				} else if(data == "fail"){
+
+					result = false;
+
+				}
+			}
+
+		});
+
+		return result;
+
+	}
+	
+	this.cancleBuytogetherDao = function(buytogether_number, user_number){
+		
+		$.ajax({
+			type: 'delete',
+			url: '/restBuytogetherRead/cancleBuytogether/' + buytogether_number + "/" + user_number,
+			async : false,
+			headers: {
+
+				"Content-type" : "application/json",
+				"X-HTTP-Method-Override": "DELETE"
+			},
+			dataType: 'text',
+			success: function(data){
+			}
+
+		});
+		
 	}
 
 }
@@ -485,6 +550,7 @@ function getPageTap1(pageInfo){
 		$(".commentLi").remove();
 
 		$("#comment_List").html(html3);
+		
 	});
 
 }

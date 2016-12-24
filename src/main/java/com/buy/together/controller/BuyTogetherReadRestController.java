@@ -176,7 +176,7 @@ public class BuyTogetherReadRestController {
 
 	// 답글 쓰기 부분
 	@RequestMapping(value = "recommentInsert", method = RequestMethod.POST)
-	public ResponseEntity<String> recommentRegist(@RequestBody Comment comment) {
+	public ResponseEntity<String> requestRecommentRegist(@RequestBody Comment comment) {
 
 		ResponseEntity<String> entity = null;
 
@@ -194,7 +194,7 @@ public class BuyTogetherReadRestController {
 
 	// 답글 리스트 부분
 	@RequestMapping(value = "recommentList/{comment_number}/{comment_type_number}", method = RequestMethod.GET)
-	public ResponseEntity<List<Comment>> recommentList(@PathVariable("comment_number") Integer comment_number, @PathVariable("comment_type_number") Integer comment_type_number){
+	public ResponseEntity<List<Comment>> requestRecommentList(@PathVariable("comment_number") Integer comment_number, @PathVariable("comment_type_number") Integer comment_type_number){
 
 		ResponseEntity<List<Comment>> entity = null;
 
@@ -213,13 +213,13 @@ public class BuyTogetherReadRestController {
 	}
 
 	// 같이사냥 버튼
-	@RequestMapping(value = "buytogetherBtn/{buytogether_number}/{matching_status_number}/{user_number}", method = RequestMethod.POST)
-	public ResponseEntity<String> requestBuytogetherBtn(@PathVariable("buytogether_number") Integer buytogether_number, @PathVariable("matching_status_number") Integer matching_status_number, @PathVariable("user_number") Integer user_number){
+	@RequestMapping(value = "buytogetherBtn/{buytogether_number}/{user_number}", method = RequestMethod.POST)
+	public ResponseEntity<String> requestBuytogetherBtn(@PathVariable("buytogether_number") Integer buytogether_number, @PathVariable("user_number") Integer user_number){
 
 		ResponseEntity<String> entity = null;
 
 		try{
-			service.registBuytogether(user_number, matching_status_number, buytogether_number);
+			service.registBuytogether(user_number, buytogether_number);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		}catch (Exception e){
@@ -273,7 +273,7 @@ public class BuyTogetherReadRestController {
 
 	}
 
-	// 찜하기 취소버튼
+	// 찜한 거 확인
 	@RequestMapping(value = "checkDip/{buytogether_number}/{user_number}", method = RequestMethod.POST)
 	public ResponseEntity<String> requestCheckDip(@PathVariable("buytogether_number") Integer buytogether_number, @PathVariable("user_number") Integer user_number){
 
@@ -282,13 +282,18 @@ public class BuyTogetherReadRestController {
 		try{
 
 			int dip_number = service.checkDip(buytogether_number, user_number);
-			
+
 			if(dip_number > 0){
+				
 				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+				
 			} else {
+				
 				entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+				
 			}
-		}catch (Exception e){
+			
+		} catch (Exception e){
 
 			e.printStackTrace();
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -298,49 +303,101 @@ public class BuyTogetherReadRestController {
 		return entity;
 
 	}
-	
+
 	// 댓글 신고 내용 / 작성자
 	@RequestMapping(value = "commentReport/{buytogether_number}/{comment_number}" , method = RequestMethod.GET)
-	public ResponseEntity<Comment> report(@PathVariable("buytogether_number") Integer buytogether_number,@PathVariable("comment_number") Integer comment_number ){
-		
-		ResponseEntity<Comment> entity = null;
-		
+	public ResponseEntity<BuyTogetherDTO> requestReport(@PathVariable("buytogether_number") Integer buytogether_number,@PathVariable("comment_number") Integer comment_number ){
+
+		ResponseEntity<BuyTogetherDTO> entity = null;
+
 		try{
 
-			entity = new ResponseEntity<Comment>(service.report(buytogether_number, comment_number), HttpStatus.OK);
+			entity = new ResponseEntity<BuyTogetherDTO>(service.report(buytogether_number, comment_number), HttpStatus.OK);
 
 		}catch (Exception e){
 
 			e.printStackTrace();
-			entity = new ResponseEntity<Comment>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<BuyTogetherDTO>(HttpStatus.BAD_REQUEST);
+			
 		}
-		
+
 		return entity;
-		
+
 	}
-	
+
 	// 댓글 페이지 신고버튼 이벤트
 	@RequestMapping(value = "sendReport/", method = RequestMethod.POST)
 	public ResponseEntity<String> requestSendReport(@RequestBody DeclareBoard declareBoard){
-		
-		System.out.println("declareBoard = " + declareBoard.getBuytogether_number());
-		
+
 		ResponseEntity<String> entity = null;
-		
+
 		try{
-			
+
 			service.registReport(declareBoard);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		}catch (Exception e){
-			
+
 			e.printStackTrace();
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-			
+
 		}
-		
+
 		return entity;
 	}
+
+	// 같이사냥 참여자 확인
+	@RequestMapping(value = "buytogetherCheck/{buytogether_number}/{user_number}", method = RequestMethod.POST)
+	public ResponseEntity<String> requestBuytogetherCheck(@PathVariable("buytogether_number") Integer buytogether_number, @PathVariable("user_number") Integer user_number){
+
+		ResponseEntity<String> entity = null;
+
+		try{
+
+			int check_number = service.buytogetherCheck(buytogether_number, user_number);
+
+			if(check_number > 0){
+
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+
+			} else {
+
+				entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+
+			}
+
+		}catch (Exception e){
+
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
+		}
+
+		return entity;
+
+	}
 	
+	// 같이사냥 취소 버튼
+	@RequestMapping(value = "cancleBuytogether/{buytogether_number}/{user_number}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> requestCancleBuytogether(@PathVariable("buytogether_number") Integer buytogether_number, @PathVariable("user_number") Integer user_number){
+
+		ResponseEntity<String> entity = null;
+
+		try{
+
+			service.cancleBuytogether(buytogether_number, user_number);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+
+		}catch (Exception e){
+
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
+		}
+
+		return entity;
+
+	}
+
 
 }
