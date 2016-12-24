@@ -150,10 +150,26 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 
+	// 같이사냥 취소하기
 	@Override
 	public void cancleBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
 		
 		dao.cancleBuytogetherDao(buytogether_number, user_number);
+		
+	}
+
+	// 사냥 참여자 리스트
+	@Override
+	public List<BuyTogetherDTO> joininList(Integer buytogether_number) throws Exception {
+		
+		return dao.joininListDao(buytogether_number);
+		
+	}
+
+	@Override
+	public void joinCheck(Integer joinCheck_userNumber) throws Exception {
+		
+		dao.joinCheckDao(joinCheck_userNumber);
 		
 	}
 

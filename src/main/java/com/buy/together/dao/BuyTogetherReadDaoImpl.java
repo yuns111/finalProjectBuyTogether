@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.sql.rowset.serial.SerialStruct;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -214,6 +215,7 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 		
 	}
 
+	// 같이사냥 취소
 	@Override
 	public void cancleBuytogetherDao(Integer buytogether_number, Integer user_number) throws Exception {
 		
@@ -223,6 +225,22 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 		map.put("user_number", user_number);
 		
 		sqlSession.delete(namespace+".cancleBuytogether", map);
+		
+	}
+
+	// 사냥 참여자 리스트
+	@Override
+	public List<BuyTogetherDTO> joininListDao(Integer buytogether_number) throws Exception {
+			
+		return sqlSession.selectList(namespace+".joininList" , buytogether_number);
+		
+	}
+
+	// 사냥 참여자 선택 등록 
+	@Override
+	public void joinCheckDao(Integer joinCheck_userNumber) throws Exception {
+		
+		sqlSession.update(namespace+".joinCheck", joinCheck_userNumber);
 		
 	}
 

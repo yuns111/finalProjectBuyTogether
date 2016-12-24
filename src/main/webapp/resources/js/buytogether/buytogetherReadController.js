@@ -135,5 +135,19 @@ function buytogetherReadController() {
 		dao.cancleBuytogetherDao(buytogether_number, user_number);
 		
 	}
+	
+	// 사냥 참여 리스트
+	this.requestJoininList = function(buytogether_number){
+		
+		dao.joininListDao(buytogether_number);
+		
+	}
+	
+	// 참여자 선택 버튼
+	this.requestJoinCheckBtn = function(joinCheck_userNumber){
+		
+		dao.joinCheckBtnDao(joinCheck_userNumber);
+		
+	}
 
 }

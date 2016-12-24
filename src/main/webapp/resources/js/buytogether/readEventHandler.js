@@ -20,9 +20,10 @@ $(document).ready(function() {
 
 	// BUYTOGETHER READ PAGE
 	var readData = controller.requestRead(buytogether_number);
+	$('#contentHTML').html(readData.content);
 
 	// 임의값
-	var user_number = 10;
+	var user_number = 2;
 
 	// 같이사냥 참여자 확인
 	var data = controller.requestBuytogetherCheck(buytogether_number, user_number);
@@ -31,14 +32,45 @@ $(document).ready(function() {
 	if(data == true && user_number == readData.user_number){
 
 		$("#buy_together_btn").attr("value", "CHECK PLEASE");
-		$("#buy_together_btn").attr("class", "buy_together_btn_check");
-		
-		/*// 게시판 주인 CHECK 클릭시 모달 창
+		$("#buy_together_btn").attr("id", "buy_together_btn_check");
+
+		// 게시판 주인 CHECK 클릭시 모달 창
 		$(document).on("click", "#buy_together_btn_check", function() {
 
+			// 참여자 리스트 부
+			controller.requestJoininList(buytogether_number);
 			$("#myModal2").modal({'show' : true});
 
-			if(result == '') {
+
+			//참여자 전체 선택
+			$('[name=checkAll]').click(function () {
+
+				$('[name=check]:checked').is((":checked") == true) 
+					alert("성공");
+				
+			});
+
+			// 참여자 선택(checkBox)
+			$('[name=check]').click(function () {
+
+				$('[name=check]:checked').each(function () {
+
+					alert('selected: ' + $(this).attr("data-user_number"));
+					var joinCheck_userNumber = $(this).attr("data-user_number");
+					
+					
+					// 선택한 참여자 선택 버튼
+					$('#joinCheck').click(function(){
+						
+						controller.requestJoinCheckBtn(joinCheck_userNumber);
+						
+					});
+
+				});
+
+			});
+
+			/*if(result == '') {
 
 				$("#myModal2").modal({'show' : true});
 				controller.requestRegistBuytogether(buytogether_number, user_number);
@@ -47,9 +79,9 @@ $(document).ready(function() {
 
 				$("#myModal1").modal({'show' : true});
 
-			}
+			}*/
 
-		});*/
+		});
 
 	} else {
 
