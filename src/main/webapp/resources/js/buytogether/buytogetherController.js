@@ -112,9 +112,63 @@ function buytogetherController() {
 	}
 
 	//같이사냥 게시글 저장
-	this.requestSaveBuyTogether = function(buytogether, buytogetherAddress) {
+	this.requestSaveBuyTogether = function(buytogether) {
 
-		dao.insertDao(buytogether, buytogetherAddress);
+		dao.insertDao(buytogether);
+	}
+	
+	//같이사냥 해당 글 정보를 가져옴
+	this.requestReadOneBuyTogether = function(buytogether_number) {
+
+		var data = dao.readOneDao(buytogether_number);
+
+		var dateObj = new Date(data.buytogether.dueDate);
+		var year = dateObj.getFullYear();
+		var month = dateObj.getMonth() + 1;
+		var date = dateObj.getDate();
+		var duedate = year+"/"+month+"/"+date;
+		console.log(data);
+		$("#title").val(data.buytogether.title);
+		if(data.buyTogetherAddress != null){
+			$("#address").val(data.buyTogetherAddress.buyTogether_address_road_address);
+			$("#address_detail").val(data.buyTogetherAddress.buyTogether_address_detail);
+		}
+		$("#duedate").val(duedate);
+		$("#joinin_number").val(data.buytogether.joinin_number);
+		$("#price").val(data.buytogether.price);
+		$("#content").val(data.buytogether.content);
+		$('#category_number option[value=' + data.buytogether.category_number + ']').attr('selected', true);
+		$('#hunting_type_number option[value=' + data.buytogether.hunting_type_number + ']').attr('selected', true);
+		Editor.modify({
+			"content": data.buytogether.content
+		});
+		for(var i=0;i<data.buytogether.path.length; i++){
+			
+			var str="<div class='col-md-3'>";
+			str = str + "<img src='/restBuytogether/displayFile?fileName=" + data.buytogether.path[i] +"'/>";
+			str = str + "<div class='mailbox-attachment-info'>"+data.buytogether.path[i].substr(data.buytogether.path[i].indexOf("_",14)+1);
+			str = str + " <small class='btn btn-default btn-xs delbtn' data-src=" + data.buytogether.path[i] + ">X</small></div></div>";
+
+			$(".uploadedList").append(str);
+		}
+		
+		return data;
+	}
+	
+	//같이사냥 글 수정
+	this.requestUpdateBuyTogether = function(buytogetherUpdate) {
+	
+		var result = dao.UpdateBuyTogetherDao(buytogetherUpdate);
+		
+		if(result == 'success') {
+			
+			window.location = '/buyTogether/read?buytogether_number=' + buytogetherUpdate.buyTogether_number;
+
+		} else {
+			
+			$(".modal").modal({'show' : true});
+		}
+		
 	}
 
 	//같이사냥 리스트(map)

@@ -359,20 +359,8 @@ $(document).ready(function() {
 		var div_comment = label.parent();
 		var comment_number = div_comment.attr("data-comment-number");
 
-		// template + data를 buytogetherPopup에 뿌려준다.
-		var data = controller.requestCommentReport(buytogether_number, comment_number);
-
-		/*sendMessage(data);
-
-		var reportsTemplate = Handlebars.compile($(".reportsTemplate").html());
-
-		var reportHtml = reportsTemplate(data);
-
-		alert("중간 데이터 = " + reportHtml);
-
-		var report1 = $("#reports").html(reportHtml);*/
-
-		window.open("buytogetherPopup.html", "report", "width=600, height=670, left=100, top=50");
+		window.open("/buyTogether/buytogetherPopup?buytogether_number="+buytogether_number+"&comment_number="+comment_number,
+				"report", "width=600, height=670, left=100, top=50");
 
 	});
 	
@@ -387,35 +375,6 @@ $(document).ready(function() {
 
 	});
 	
-	//같이사냥 신고페이지 신고버튼 이벤트
-	$(document).on("click", "#report_btn", function() {
-
-		//임의값 test 용
-		var user_number = 5;
-
-		// 고정값
-		if ($(':radio[name="optradio"]:checked').is(":checked") == true) {
-
-			var declare_category_number = $(':radio[name="optradio"]:checked').val();
-
-		}
-
-		var declare_reason = $("#text").val();
-		var type_number = 1;
-		var declare_status = "false";
-
-		var reportData = {
-				buytogether_number : buytogether_number,
-				user_number : user_number,
-				declare_category_number : declare_category_number,
-				type_number : type_number,
-				declare_reason : declare_reason,
-				declare_status : declare_status
-		};
-
-		controller.requestSendReport(reportData);
-
-	});
 
 });
 

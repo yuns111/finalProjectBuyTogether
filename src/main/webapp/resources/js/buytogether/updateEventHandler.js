@@ -1,5 +1,8 @@
 $('head').append('<script src=\'/resources/js/buytogether/buytogetherController.js\'><\/script>');
-var buytogether = {};
+var buytogetherUpdate = {};
+var beforeAddress;
+var beforeAddress_detail;
+var buytogether_number;
 
 function execDaumPostcode() {
 	
@@ -51,11 +54,11 @@ function execDaumPostcode() {
 					
 				}
 				
-				buytogether.buyTogether_address_sido = data.sido;
-				buytogether.buyTogether_address_sigungu = data.sigungu;
-				buytogether.buyTogether_address_road_address = data.roadAddress;
-				buytogether.longitude = longitude;
-				buytogether.latitude = latitude;
+				buytogetherUpdate.buyTogether_address_sido = data.sido;
+				buytogetherUpdate.buyTogether_address_sigungu = data.sigungu;
+				buytogetherUpdate.buyTogether_address_road_address = data.roadAddress;
+				buytogetherUpdate.longitude = longitude;
+				buytogetherUpdate.latitude = latitude;
 			});
 		
 		}
@@ -63,6 +66,8 @@ function execDaumPostcode() {
 }
 
 function saveFunction() {
+	
+	var controller = new buytogetherController();
 	
 	var str = "";
 	$(".uploadedList .delbtn").each(function(index) {
@@ -75,29 +80,42 @@ function saveFunction() {
 	$('#tx_editor_form').append(str);
 	
 	var data = $('#tx_editor_form').serializeJSON();
-	
-	buytogether.title = data.title;
-	buytogether.content = data.content;
-	buytogether.duedate = data.duedate;
-	buytogether.joinin_number = data.joinin_number;
-	buytogether.price = data.price;
-	buytogether.category_number = data.category_number
-	buytogether.user_number = sessionStorage.getItem("number");
-	buytogether.hunting_type_number = data.hunting_type_number;
-	buytogether.path = data.files;
-	buytogether.buyTogether_address_detail = data.address_detail;
-	
-	var controller = new buytogetherController();
-	controller.requestSaveBuyTogether(buytogether);
+
+	buytogetherUpdate.buyTogether_number = buytogether_number;
+	buytogetherUpdate.title = data.title;
+	buytogetherUpdate.content = data.content;
+	buytogetherUpdate.duedate = data.duedate;
+	buytogetherUpdate.joinin_number = data.joinin_number;
+	buytogetherUpdate.price = data.price;
+	buytogetherUpdate.category_number = data.category_number;
+	buytogetherUpdate.hunting_type_number = data.hunting_type_number;
+	buytogetherUpdate.path = data.files;
+	buytogetherUpdate.buyTogether_address_detail = data.address_detail;
+
+	console.log(buytogetherUpdate)
+	controller.requestUpdateBuyTogether(buytogetherUpdate);
 }
 
 $(document).ready(function (){
-
-	var count = 0;
+	
 	var controller = new buytogetherController();
 
-	controller.requestCategoryList();
-	controller.requestHuntingTypeList();
+	buytogether_number = $(location).attr('search');
+	var searchKeyword = buytogether_number.split("?buytogether_number=");
+	buytogether_number = searchKeyword[1];
+	
+	//전체 데이터 반환
+	var data = controller.requestReadOneBuyTogether(buytogether_number);
+	var count = data.buytogether.path.length;
+	
+	//주소 미리 저장
+	if(data.buyTogetherAddress != null) {
+		buytogetherUpdate.buyTogether_address_sido = data.buyTogetherAddress.buyTogether_address_sido;
+		buytogetherUpdate.buyTogether_address_sigungu = data.buyTogetherAddress.buyTogether_address_sigungu;
+		buytogetherUpdate.buyTogether_address_road_address = data.buyTogetherAddress.buyTogether_address_road_address;
+		buytogetherUpdate.longitude = data.buyTogetherAddress.longitude;
+		buytogetherUpdate.latitude = data.buyTogetherAddress.latitude;
+	}
 	
 	//같이사냥 글쓰기
 	$("#duedate").datepicker({
@@ -166,7 +184,7 @@ $(document).ready(function (){
 		
 		controller.requestPhotoDelete(that);
 		count--;
-		
 	});
+	
 });
 
