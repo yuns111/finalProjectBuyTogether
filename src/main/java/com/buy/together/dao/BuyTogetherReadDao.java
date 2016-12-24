@@ -13,7 +13,7 @@ public interface BuyTogetherReadDao {
 	
 	public BuyTogetherDTO buyTogetherRead(Integer buytogether_number) throws Exception;
 	
-	public void deleteBuytogether(Integer buytogether_number, Integer user_number) throws Exception;
+	public void deleteBuytogether(Integer buytogether_number) throws Exception;
 
 	public List<Comment> commentList(Integer buytogether_number, Integer comment_type_number) throws Exception;
 	

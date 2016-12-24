@@ -106,11 +106,13 @@ function buytogetherDao() {
 			type: 'POST',
 			data: {fileName: photo.attr("data-src")},
 			dataType: 'text',
+			async : false,
 			success: function(data){
 
-				result=data;
+				result = data;
 			}
 		});
+		console.log("!" + result);
 		return result;
 	}
 
@@ -131,7 +133,7 @@ function buytogetherDao() {
 				content : buytogether.content,
 				path : buytogether.path,
 				duedate : buytogether.duedate,
-				joinin_number : buytogether.joinin_number,
+				join_number : buytogether.join_number,
 				price : buytogether.price,
 				user_number : 4,
 				category_number : buytogether.category_number,
@@ -180,8 +182,9 @@ function buytogetherDao() {
 	//같이사냥 글 수정
 	this.UpdateBuyTogetherDao = function(buytogetherUpdate) {
 		
+		console.log("1 "+buytogetherUpdate.join_number);
+		console.log("2 "+buytogetherUpdate.price);
 		var result;
-		
 		$.ajax({
 			type: 'post',
 			url : '/restBuytogether/update',
@@ -196,7 +199,7 @@ function buytogetherDao() {
 				content : buytogetherUpdate.content,
 				path : buytogetherUpdate.path,
 				duedate : buytogetherUpdate.duedate,
-				joinin_number : buytogetherUpdate.joinin_number,
+				join_number : buytogetherUpdate.join_number,
 				price : buytogetherUpdate.price,
 				category_number : buytogetherUpdate.category_number,
 				hunting_type_number : buytogetherUpdate.hunting_type_number,

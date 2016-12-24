@@ -41,9 +41,9 @@ function buytogetherReadController() {
 	}
 
 	// 같이사냥 게시판 삭제
-	this.requestBuytogetherDelete = function(buytogether_number, user_number){
+	this.requestBuytogetherDelete = function(buytogether_number){
 
-		dao.buytogetherDeleteDao(buytogether_number, user_number, photoPath);
+		dao.buytogetherDeleteDao(buytogether_number, photoPath);
 
 	}
 

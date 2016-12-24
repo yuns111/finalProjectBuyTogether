@@ -84,9 +84,9 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 
 	// 게시판 삭제
 	@Override
-	public void deleteBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
+	public void deleteBuytogether(Integer buytogether_number) throws Exception {
 
-		dao.deleteBuytogether(buytogether_number, user_number);
+		dao.deleteBuytogether(buytogether_number);
 
 	}
 

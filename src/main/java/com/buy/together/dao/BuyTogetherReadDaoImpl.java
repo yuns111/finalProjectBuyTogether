@@ -118,14 +118,9 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 
 	// 같이사냥 게시판 삭제
 	@Override
-	public void deleteBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
+	public void deleteBuytogether(Integer buytogether_number) throws Exception {
 
-		Map<String, Object> map = new HashMap<>();
-
-		map.put("buytogether_number", buytogether_number);
-		map.put("user_number", user_number);
-
-		sqlSession.delete(namespace+".deleteBuytogether", map);
+		sqlSession.delete(namespace+".deleteBuytogether", buytogether_number);
 
 	}
 

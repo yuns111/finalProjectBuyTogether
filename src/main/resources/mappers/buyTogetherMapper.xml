@@ -134,7 +134,7 @@
 		update buytogether
 		set title = #{title}, content = #{content}, category_number = #{category_number},
 			hunting_type_number = #{hunting_type_number}, duedate = #{duedate},
-			price = #{price} and updatedate = now()
+			price = #{price}, updatedate = now(), join_number = #{join_number}
 		where buytogether_number = #{buyTogether_number}
 	</update>
 	

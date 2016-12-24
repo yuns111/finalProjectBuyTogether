@@ -282,6 +282,7 @@ public class BuyTogetherRestController {
 	@RequestMapping(value = "update", method = RequestMethod.POST) //같이사냥글 수정
 	public ResponseEntity<String> RequestUpdateBuytogether(BuyTogetherUpdateDTO buytogetherUpdate) {
 
+		System.out.println(buytogetherUpdate.getPrice());
 		ResponseEntity<String> entity = null;
 		try {
 			service.buyTogetherUpdate(buytogetherUpdate);

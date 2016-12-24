@@ -103,7 +103,7 @@ $(document).ready(function() {
 	// 게시판 삭제 
 	$(".delete_update_btn").on("click", ".row #buytogether_delete_btn", function() {
 
-		controller.requestBuytogetherDelete(buytogether_number, 4);
+		controller.requestBuytogetherDelete(buytogether_number);
 
 	});
 
@@ -241,7 +241,7 @@ $(document).ready(function() {
 		// 같이사냥 참여자 확인(게시판번호, 유저번호)
 		var buytoegetherCheck = controller.requestBuytogetherCheck(buytogether_number, user_number);
 
-		if(buytoegetherCheck == true){
+		if(buytoegetherCheck == true || user_number == readData.user_number){
 
 			// 참여자 댓글 쓰기 부분
 			$('#comment_List2').on("click", "#comment_content_Btn2", function() {

@@ -32,11 +32,11 @@ function buytogetherReadDao() {
 	}
 
 	// 같이사냥 게시글 삭제
-	this.buytogetherDeleteDao = function(buytogether_number, user_number, photoPath){
+	this.buytogetherDeleteDao = function(buytogether_number, photoPath){
 
 		$.ajax({
 			type: 'delete',
-			url: '/restBuytogetherRead/delete/' + buytogether_number + "/" + user_number,
+			url: '/restBuytogetherRead/delete/' + buytogether_number,
 			async : false,
 			headers: {
 				"Content-type" : "application/json",
@@ -54,6 +54,8 @@ function buytogetherReadDao() {
 							data: {fileName: photoPath[i].path},
 							dataType: 'text',
 							success: function(data){
+								
+								document.location = "/buyTogether/list";
 							}
 						});
 					}

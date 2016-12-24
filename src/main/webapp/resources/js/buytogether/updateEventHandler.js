@@ -80,19 +80,17 @@ function saveFunction() {
 	$('#tx_editor_form').append(str);
 	
 	var data = $('#tx_editor_form').serializeJSON();
-
 	buytogetherUpdate.buyTogether_number = buytogether_number;
 	buytogetherUpdate.title = data.title;
 	buytogetherUpdate.content = data.content;
 	buytogetherUpdate.duedate = data.duedate;
-	buytogetherUpdate.joinin_number = data.joinin_number;
+	buytogetherUpdate.join_number = data.join_number;
 	buytogetherUpdate.price = data.price;
 	buytogetherUpdate.category_number = data.category_number;
 	buytogetherUpdate.hunting_type_number = data.hunting_type_number;
 	buytogetherUpdate.path = data.files;
 	buytogetherUpdate.buyTogether_address_detail = data.address_detail;
 
-	console.log(buytogetherUpdate)
 	controller.requestUpdateBuyTogether(buytogetherUpdate);
 }
 

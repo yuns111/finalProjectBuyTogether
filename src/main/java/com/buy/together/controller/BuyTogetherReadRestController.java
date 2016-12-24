@@ -1,6 +1,5 @@
 package com.buy.together.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -50,14 +49,14 @@ public class BuyTogetherReadRestController {
 	}
 
 	// 게시글 삭제 부분
-	@RequestMapping(value = "delete/{buytogether_number}/{user_number}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> requestBuytogetherDelete(@PathVariable("buytogether_number") Integer buytogether_number, @PathVariable("user_number") Integer user_number){
+	@RequestMapping(value = "delete/{buytogether_number}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> requestBuytogetherDelete(@PathVariable("buytogether_number") Integer buytogether_number){
 
 		ResponseEntity<String> entity = null;
 
 		try{
 
-			service.deleteBuytogether(buytogether_number, user_number);
+			service.deleteBuytogether(buytogether_number);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		}catch(Exception e){
@@ -405,6 +404,7 @@ public class BuyTogetherReadRestController {
 			, String[] joinCheck_userNumber){
 		
 		ResponseEntity<String> entity = null;
+		
 		try{
 			System.out.println(joinCheck_userNumber);
 			//service.joinCheck(buytogether_number , 1);
@@ -421,11 +421,4 @@ public class BuyTogetherReadRestController {
 		
 	}
 	
-	
-	
-	
-	
-	
-
-
 }

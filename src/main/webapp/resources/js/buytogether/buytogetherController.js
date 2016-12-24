@@ -139,7 +139,7 @@ function buytogetherController() {
 			$("#address_detail").val(data.buyTogetherAddress.buyTogether_address_detail);
 		}
 		$("#duedate").val(duedate);
-		$("#joinin_number").val(data.buytogether.joinin_number);
+		$("#join_number").val(data.buytogether.join_number);
 		$("#price").val(data.buytogether.price);
 		$("#content").val(data.buytogether.content);
 		$('#category_number option[value=' + data.buytogether.category_number + ']').attr('selected', true);
