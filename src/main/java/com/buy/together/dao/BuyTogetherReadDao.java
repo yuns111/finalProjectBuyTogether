@@ -42,4 +42,11 @@ public interface BuyTogetherReadDao {
 	public Integer buytogetherCheckDao(Integer buytogether_number, Integer user_number) throws Exception;
 	
 	public void cancleBuytogetherDao(Integer buytogether_number, Integer user_number) throws Exception;
+	
+	public List<BuyTogetherDTO> joininListDao(Integer buytogether_number) throws Exception;
+	
+	public void joinCheckDao(Integer joinCheck_userNumber) throws Exception;
+	
+	public void JoinCheck2Dao(Integer buytogether_number) throws Exception;
+	
 }

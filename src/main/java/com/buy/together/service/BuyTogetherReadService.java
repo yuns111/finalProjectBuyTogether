@@ -40,4 +40,8 @@ public interface BuyTogetherReadService {
 	
 	public void cancleBuytogether(Integer buytogether_number, Integer user_number) throws Exception;
 	
+	public List<BuyTogetherDTO> joininList(Integer buytogether_number) throws Exception;
+	
+	public void joinCheck(Integer buytogether_number, Integer joinCheck_userNumber) throws Exception;
+	
 }

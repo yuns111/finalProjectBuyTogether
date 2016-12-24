@@ -1,5 +1,6 @@
 package com.buy.together.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -378,6 +379,53 @@ public class BuyTogetherReadRestController {
 		return entity;
 
 	}
+	
+	// 사냥 참여자 리스트
+	@RequestMapping(value = "joininList/{buytogether_number}" , method = RequestMethod.GET)
+	public ResponseEntity<List<BuyTogetherDTO>> requestjoininList(@PathVariable("buytogether_number") Integer buytogether_number){
+		
+		ResponseEntity<List<BuyTogetherDTO>> entity = null;
+		
+		try{
+
+			entity = new ResponseEntity<List<BuyTogetherDTO>>(service.joininList(buytogether_number), HttpStatus.OK);
+
+		} catch (Exception e){
+
+			e.printStackTrace();
+			entity = new ResponseEntity<List<BuyTogetherDTO>>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	// 사냥 참여자 선택 버튼(프로필 : "같이사냥중" 변경, Matching_status_number : "2번" 변경)
+	@RequestMapping(value = "joinCheck/{buytogether_number}", method = {RequestMethod.POST, RequestMethod.PATCH})
+	public ResponseEntity<String> requestJoinCheck(@PathVariable("buytogether_number") Integer buytogether_number 
+			, String[] joinCheck_userNumber){
+		
+		ResponseEntity<String> entity = null;
+		try{
+			System.out.println(joinCheck_userNumber);
+			//service.joinCheck(buytogether_number , 1);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+
+		}catch(Exception e){
+
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
+		}
+		
+		return entity;
+		
+	}
+	
+	
+	
+	
+	
+	
 
 
 }

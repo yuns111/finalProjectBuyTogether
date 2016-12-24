@@ -542,6 +542,54 @@ function buytogetherReadDao() {
 		});
 		
 	}
+	
+	// 사냥 참여 리스트
+	this.joininListDao = function(buytogether_number){
+		
+		$.ajax({
+			type : 'get',
+			url : '/restBuytogetherRead/joininList/' + buytogether_number,
+			async : false,
+			headers : {
+				"Content-type" : "application/json",
+				"X-HTTP-Method-Override": "GET"
+			},
+			dataType : 'json',
+			success : function(data){
+
+				var joinListTemplate = Handlebars.compile($('.joininListTemplate').html());
+
+				var joininListHtml = joinListTemplate(data);
+				
+				$("#joininList").html(joininListHtml);
+
+			}
+
+		});
+		
+		
+	}
+	
+	// 사냥 참여자 선택 버튼
+	this.joinCheckBtnDao = function(buytogether_number, joinCheck_userNumber){
+		
+		jQuery.ajaxSettings.tranditional = true;
+		console.log(joinCheck_userNumber);
+		$.ajax({
+			
+			type: 'post',
+			async : false,
+			url: '/restBuytogetherRead/joinCheck/' + buytogether_number,
+			data: {joinCheck_userNumber},
+			dataType: 'text',
+			success: function(data){
+
+				
+			}
+
+		});
+		
+	}
 
 }
 
