@@ -108,7 +108,12 @@ function buytogetherController() {
 	//첨부사진 삭제
 	this.requestPhotoDelete = function(photo) {
 
-		dao.deletePhotoDao(photo);
+		var result = dao.deletePhotoDao(photo);
+		
+		if(result == 'deleted') {
+			photo.parent().parent("div").remove();
+			photo.parent().parent("span").remove();
+		}
 	}
 
 	//같이사냥 게시글 저장
@@ -121,13 +126,13 @@ function buytogetherController() {
 	this.requestReadOneBuyTogether = function(buytogether_number) {
 
 		var data = dao.readOneDao(buytogether_number);
-
+		console.log(data);
 		var dateObj = new Date(data.buytogether.dueDate);
 		var year = dateObj.getFullYear();
 		var month = dateObj.getMonth() + 1;
 		var date = dateObj.getDate();
 		var duedate = year+"/"+month+"/"+date;
-		console.log(data);
+		
 		$("#title").val(data.buytogether.title);
 		if(data.buyTogetherAddress != null){
 			$("#address").val(data.buyTogetherAddress.buyTogether_address_road_address);

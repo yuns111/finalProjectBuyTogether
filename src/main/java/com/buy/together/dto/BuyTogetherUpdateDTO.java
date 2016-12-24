@@ -6,7 +6,7 @@ public class BuyTogetherUpdateDTO {
 	private String title;
 	private String content;
 	private String duedate;
-	private int joinin_number;
+	private int join_number;
 	private int price;
 	private int category_number;
 	private int hunting_type_number;
@@ -51,12 +51,12 @@ public class BuyTogetherUpdateDTO {
 		this.duedate = duedate;
 	}
 
-	public int getJoinin_number() {
-		return joinin_number;
+	public int getJoin_number() {
+		return join_number;
 	}
 
-	public void setJoinin_number(int joinin_number) {
-		this.joinin_number = joinin_number;
+	public void setJoin_number(int join_number) {
+		this.join_number = join_number;
 	}
 
 	public int getPrice() {

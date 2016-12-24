@@ -114,13 +114,14 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		List<AttachedPhoto> attachedPhotos = dao.photoList(buytogether_number);
 
 		String[] path = new String[attachedPhotos.size()];
-
+		
 		for(int i=0; i<attachedPhotos.size(); i++){
 
 			path[i] = attachedPhotos.get(i).getPath();
 		}
-
-		buytogether.setPath(path);
+		if(attachedPhotos.size() != 0){
+			buytogether.setPath(path);
+		}
 		buytogetherDTO.setBuytogether(buytogether);
 		buytogetherDTO.setBuyTogetherAddress(dao.buyTogetherAddressReadOneDao(buytogether_number));
 

@@ -32,7 +32,7 @@ function buytogetherReadDao() {
 	}
 
 	// 같이사냥 게시글 삭제
-	this.buytogetherDeleteDao = function(buytogether_number, user_number){
+	this.buytogetherDeleteDao = function(buytogether_number, user_number, photoPath){
 
 		$.ajax({
 			type: 'delete',
@@ -44,14 +44,21 @@ function buytogetherReadDao() {
 			},
 			dataType: 'text',
 			success: function(data){
-				console.log("success" + data);
 				if(data == "success"){
 
-					alert("게시글이 삭제 되었습니다.");
+					for(var i=0;i<photoPath.length; i++){
+						//첨부사진 삭제
+						$.ajax({
+							url:'/restBuytogether/deleteFile',
+							type: 'POST',
+							data: {fileName: photoPath[i].path},
+							dataType: 'text',
+							success: function(data){
+							}
+						});
+					}
 
 				} else {
-
-					alert("게시글이 삭제가 실패함");
 
 				}
 			}

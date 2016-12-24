@@ -79,7 +79,7 @@ function saveFunction() {
 	buytogether.title = data.title;
 	buytogether.content = data.content;
 	buytogether.duedate = data.duedate;
-	buytogether.joinin_number = data.joinin_number;
+	buytogether.join_number = data.joinin_number;
 	buytogether.price = data.price;
 	buytogether.category_number = data.category_number
 	buytogether.user_number = sessionStorage.getItem("number");

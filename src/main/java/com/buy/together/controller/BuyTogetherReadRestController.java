@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.Comment;
 import com.buy.together.domain.DeclareBoard;
 import com.buy.together.dto.BuyTogetherDTO;
@@ -69,25 +68,6 @@ public class BuyTogetherReadRestController {
 
 		return entity;
 
-	}
-
-	// 썸네일 이미지 부분
-	@RequestMapping(value = "image/{buytogether_number}", method = RequestMethod.GET)
-	public ResponseEntity<List<AttachedPhoto>> requestImage(@PathVariable("buytogether_number") Integer buytogether_number){
-
-		ResponseEntity<List<AttachedPhoto>> entity = null;
-
-		try{
-
-			entity = new ResponseEntity<List<AttachedPhoto>>(service.buyTogetherImage(buytogether_number), HttpStatus.OK);
-
-		} catch(Exception e){
-
-			e.printStackTrace();
-			entity = new ResponseEntity<List<AttachedPhoto>>(HttpStatus.BAD_REQUEST);
-		}
-
-		return entity;
 	}
 
 	// 댓글 리스트 부분

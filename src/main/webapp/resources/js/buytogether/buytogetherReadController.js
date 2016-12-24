@@ -1,21 +1,49 @@
 $('head').append('<script src=\'/resources/js/buytogether/buytogetherReadDao.js\'><\/script>');
 
-
 function buytogetherReadController() {
 
 	var dao = new buytogetherReadDao();
+	var photoPath;
 
 	// 같이사냥 조회
 	this.requestRead = function(buytogether_number) {
 		
-		return dao.readDao(buytogether_number);
-	
+		var data = dao.readDao(buytogether_number);
+		console.log(data);
+		photoPath = data.photo_path;
+		
+		if(data.photo_path == null){
+			
+			for(var i=0; i < 4 ; i++){
+				
+				$('#zoom'+(i+1)).attr("src","/resources/img/noImage.png");
+				$('#thumb'+(i+1)).attr("src","/resources/img/noImage.png");
+			}
+		} else {
+		
+			var size = data.photo_path.length;
+
+			for(var i=0; i < size ; i++) {
+				
+				var path = data.photo_path[i].path;
+				
+				$('#zoom'+(i+1)).attr("src","/restBuytogether/displayFile?fileName=" + path);
+				$('#thumb'+(i+1)).attr("src","/restBuytogether/displayFile?fileName=" + path);
+			}
+			for(var i=size; i<4 ; i++) {
+				
+				$('#zoom'+(i+1)).attr("src","/resources/img/noImage.png");
+				$('#thumb'+(i+1)).attr("src","/resources/img/noImage.png");
+			}
+		}
+		
+		return data;
 	}
 
 	// 같이사냥 게시판 삭제
 	this.requestBuytogetherDelete = function(buytogether_number, user_number){
 
-		dao.buytogetherDeleteDao(buytogether_number, user_number);
+		dao.buytogetherDeleteDao(buytogether_number, user_number, photoPath);
 
 	}
 

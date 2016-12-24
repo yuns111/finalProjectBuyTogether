@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.buy.together.dao.BuyTogetherReadDao;
 import com.buy.together.domain.AttachedPhoto;
@@ -19,21 +20,16 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 	private BuyTogetherReadDao dao;
 
 	// 같이사냥 조회
+	@Transactional
 	@Override
 	public BuyTogetherDTO buyTogetherRead(Integer buytogether_number) throws Exception {
 
 		BuyTogetherDTO dto = dao.buyTogetherRead(buytogether_number);
+		List<AttachedPhoto> photo = dao.photoList(buytogether_number);
+		
+		dto.setPhoto_path(photo);
 
 		return dto;
-	}
-
-	// 이미지 불러오기
-	@Override
-	public List<AttachedPhoto> buyTogetherImage(Integer buytogether_number) throws Exception {
-
-		List<AttachedPhoto> list = dao.photoList(buytogether_number);
-
-		return list;
 	}
 
 	// 댓글리스트

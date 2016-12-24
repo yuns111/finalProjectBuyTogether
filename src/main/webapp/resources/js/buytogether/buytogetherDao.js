@@ -99,20 +99,19 @@ function buytogetherDao() {
 	//첨부사진 삭제
 	this.deletePhotoDao = function(photo) {
 
+		var result;
 		$.ajax({
 
 			url:'/restBuytogether/deleteFile',
 			type: 'POST',
 			data: {fileName: photo.attr("data-src")},
 			dataType: 'text',
-			success: function(result){
+			success: function(data){
 
-				if(result == 'deleted') {
-					photo.parent().parent("div").remove();
-					photo.parent().parent("span").remove();
-				}
+				result=data;
 			}
 		});
+		return result;
 	}
 
 	//게시글 삽입
