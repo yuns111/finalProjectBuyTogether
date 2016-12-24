@@ -21,11 +21,9 @@
 		bt.price, bt.buytogether_number ,ba.buytogether_address_sido,
 		ba.buytogether_address_sigungu, ba.buytogether_address_road_address,
 		ba.buytogether_address_detail, bt.writedate, bt.duedate,
-		hs.status_name, bt.joinin_number, count(j.buytogether_number) as
-		joinin_user
+		hs.status_name, bt.join_number, count(j.buytogether_number) as joinin_user
 		from user u, huntingstatus hs, buytogetheraddress ba, buytogether bt
-		left outer join joinin j on bt.buytogether_number =
-		j.buytogether_number
+		left outer join joinin j on bt.buytogether_number = j.buytogether_number
 		where ba.buytogether_address_number = bt.buytogether_number 
 		and bt.status_number = hs.status_number 
 		and bt.user_number = u.user_number
