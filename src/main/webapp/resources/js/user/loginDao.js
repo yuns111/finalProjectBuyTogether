@@ -93,7 +93,7 @@ function loginDao() {
 		
 	};
 
-	//네이버 로그인 ㅇao
+	//네이버 로그인 dao
 	this.NVLoginDao = function() {
 
 		var state;

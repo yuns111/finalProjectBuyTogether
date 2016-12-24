@@ -88,7 +88,7 @@ function loginController() {
 
 			document.location = "/login/basicUserInfo"; //필수 정보 입력 화면으로 이동
 
-		} else { //기존 회훤이라면,
+		} else { //기존 회원이라면,
 
 			document.location = "/"; //홈으로 이동
 
