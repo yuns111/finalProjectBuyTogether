@@ -244,5 +244,12 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 		
 	}
 
+	// 사냥 참여자 선택 (글쓴이 상태 변경)
+	@Override
+	public void JoinCheck2Dao(Integer buytogether_number) throws Exception {
+		
+		sqlSession.update(namespace+".joinCheckStatus", buytogether_number);
+		
+	}
 
 }

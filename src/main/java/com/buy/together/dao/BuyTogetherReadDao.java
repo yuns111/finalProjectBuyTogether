@@ -47,4 +47,6 @@ public interface BuyTogetherReadDao {
 	
 	public void joinCheckDao(Integer joinCheck_userNumber) throws Exception;
 	
+	public void JoinCheck2Dao(Integer buytogether_number) throws Exception;
+	
 }

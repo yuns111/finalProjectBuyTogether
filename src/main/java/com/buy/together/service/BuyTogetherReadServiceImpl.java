@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.buy.together.dao.BuyTogetherReadDao;
 import com.buy.together.domain.AttachedPhoto;
@@ -166,10 +167,13 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 
+	// 참여자 선택 버튼
+	@Transactional
 	@Override
-	public void joinCheck(Integer joinCheck_userNumber) throws Exception {
+	public void joinCheck(Integer buytogether_number, Integer joinCheck_userNumber) throws Exception {
 		
 		dao.joinCheckDao(joinCheck_userNumber);
+		dao.JoinCheck2Dao(buytogether_number);
 		
 	}
 

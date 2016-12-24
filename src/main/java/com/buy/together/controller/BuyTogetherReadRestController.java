@@ -1,5 +1,6 @@
 package com.buy.together.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -419,15 +420,14 @@ public class BuyTogetherReadRestController {
 	}
 	
 	// 사냥 참여자 선택 버튼(프로필 : "같이사냥중" 변경, Matching_status_number : "2번" 변경)
-	@RequestMapping(value = "joinCheck/{joinCheck_userNumber}", method = {RequestMethod.PUT, RequestMethod.PATCH})
-	public ResponseEntity<String> requestJoinCheck(@PathVariable("joinCheck_userNumber") 
-		Integer joinCheck_userNumber){
+	@RequestMapping(value = "joinCheck/{buytogether_number}", method = {RequestMethod.POST, RequestMethod.PATCH})
+	public ResponseEntity<String> requestJoinCheck(@PathVariable("buytogether_number") Integer buytogether_number 
+			, String[] joinCheck_userNumber){
 		
 		ResponseEntity<String> entity = null;
-		
 		try{
-
-			service.joinCheck(joinCheck_userNumber);
+			System.out.println(joinCheck_userNumber);
+			//service.joinCheck(buytogether_number , 1);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		}catch(Exception e){

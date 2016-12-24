@@ -45,6 +45,6 @@ public interface BuyTogetherReadService {
 	
 	public List<BuyTogetherDTO> joininList(Integer buytogether_number) throws Exception;
 	
-	public void joinCheck(Integer joinCheck_userNumber) throws Exception;
+	public void joinCheck(Integer buytogether_number, Integer joinCheck_userNumber) throws Exception;
 	
 }

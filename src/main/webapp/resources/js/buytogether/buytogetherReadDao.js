@@ -564,17 +564,16 @@ function buytogetherReadDao() {
 	}
 	
 	// 사냥 참여자 선택 버튼
-	this.joinCheckBtnDao = function(joinCheck_userNumber){
+	this.joinCheckBtnDao = function(buytogether_number, joinCheck_userNumber){
 		
+		jQuery.ajaxSettings.tranditional = true;
+		console.log(joinCheck_userNumber);
 		$.ajax({
 			
-			type: 'put',
+			type: 'post',
 			async : false,
-			url: '/restBuytogetherRead/joinCheck/' + joinCheck_userNumber,
-			headers: {
-				"Content-type" : "application/json",
-				"X-HTTP-Method-Override": "PUT"
-			},
+			url: '/restBuytogetherRead/joinCheck/' + buytogether_number,
+			data: {joinCheck_userNumber},
 			dataType: 'text',
 			success: function(data){
 
