@@ -1,5 +1,7 @@
 package com.buy.together.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.buy.together.domain.Dip;
 import com.buy.together.domain.User;
+import com.buy.together.dto.BuyTogetherDTO;
 import com.buy.together.dto.UserDTO;
 import com.buy.together.service.UserService;
 
@@ -89,5 +93,58 @@ public class UserRestController {
 		return entity;
 		
 	}
+	
+	//내 찜 목록
+	   @RequestMapping(value = "/myDipList", method = RequestMethod.POST)
+	   public ResponseEntity<List<BuyTogetherDTO>> requestDipList(Integer user_number) {
+
+	      ResponseEntity<List<BuyTogetherDTO>> entity = null;
+	      
+	      try {
+	         entity = new ResponseEntity<List<BuyTogetherDTO>>(userService.myDipList(user_number), HttpStatus.OK);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<List<BuyTogetherDTO>>(HttpStatus.BAD_REQUEST);
+	      }
+
+	      return entity;
+	      
+	   }
+	   
+	   //선택 찜 DB 저장
+	   @RequestMapping(value="/registNewDip", method = RequestMethod.POST)
+	   public ResponseEntity<String> requestNewDip(@RequestBody Dip dip) {
+	      
+	      ResponseEntity<String> entity = null;
+	      System.out.println(dip);
+	      try {
+	         userService.registDip(dip);
+	         entity = new ResponseEntity<String>("success", HttpStatus.OK); // HttpStatus.OK == 200
+	      } catch(Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST); // HttpStatus.BAD_REQUEST == 400
+	      }
+	      
+	      return entity;
+	      
+	   }
+	   
+	   //찜 DB 삭제
+	   @RequestMapping(value="/removeDip", method = RequestMethod.POST)
+	   public ResponseEntity<String> requestDipDelete(String user_number, String[] buytogether_numbers) {
+	      
+	      ResponseEntity<String> entity = null;
+
+	      try {
+	         userService.removeDip(Integer.parseInt(user_number), buytogether_numbers);
+	         entity = new ResponseEntity<String>("success", HttpStatus.OK); // HttpStatus.OK == 200
+	      } catch(Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST); // HttpStatus.BAD_REQUEST == 400
+	      }
+	      
+	      return entity;
+	      
+	   }
 	
 }

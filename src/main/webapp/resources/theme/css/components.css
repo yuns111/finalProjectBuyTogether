@@ -2579,6 +2579,9 @@ h1 {
   .c-layout-header-fixed .c-layout-body {
     margin: 150px 0 50px 0; /* 수정 */
     padding: 50px 0 50px 0; }
+   .c-layout-header-fixed .c-layout-body1 {
+    margin: 100px 0 0px 0; /* 수정 */
+    padding: 50px 0 0px 0; }
   .c-layout-header-fixed .c-layout-body .container > .col-md-6 > .row > p {
   	font-size: 13px;
   	font-family: "notokr-regular", sans-serif;

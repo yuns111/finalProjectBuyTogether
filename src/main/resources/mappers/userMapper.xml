@@ -48,4 +48,29 @@
 		from user
 		where user_number = #{user_number}
 	</delete>
+	<!-- 내찜 목록 리스트 -->
+   <select id="dipList" resultType="com.buy.together.dto.BuyTogetherDTO">
+      select bt.buytogether_number, bt.join_number, bt.title, u.nickname, bt.price, bt.duedate
+      from user u,  buytogether bt, dip d
+      where u.user_number = #{user_number} and d.user_number = u.user_number and d.buytogether_number = bt.buytogether_number
+   </select>
+   <!-- 내 찜 같이사냥의 사진 -->
+   <select id="dipPhoto" resultType="AttachedPhoto">
+      select *
+      from attachedphoto 
+      where board_type_number = 5 and buytogether_number = #{buytogether_number}
+      order by photo_number desc
+      limit 1
+   </select>
+   <!-- 찜에 등록 -->
+   <insert id="registDip">
+      insert into dip (user_number, buytogether_number) 
+      values (#{user_number}, #{buytogether_number})
+   </insert>
+   <!-- 찜에서 삭제 -->
+   <delete id="deleteDip">
+      delete
+      from dip
+      where user_number = #{user_number} and buytogether_number = #{buytogether_number}
+   </delete>
 </mapper>
