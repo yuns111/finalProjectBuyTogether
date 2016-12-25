@@ -41,5 +41,16 @@ public class UserController {
 		return "/views/user/myDipList";
 
 	}
+	
+	//아이디 비밀번호 찾기
+	@RequestMapping(value="findIdPw", method = RequestMethod.GET)
+	public String requestfind(Locale locale, Model model) {
+		
+		System.out.println("UserController");
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		return "/views/user/findIdPw";
+	}
+	
 
 }

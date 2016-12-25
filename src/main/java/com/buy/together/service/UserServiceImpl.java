@@ -149,4 +149,28 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public String findId(User user) throws Exception {
+
+		return userDao.findId(user);
+
+	}
+
+	@Override
+	public User findPassword(User user) throws Exception {
+
+		return userDao.findPassword(user);
+
+	}
+
+	//유저 비밀번호 디비에 입력
+	@Override
+	public void setPassword(User user) throws Exception {
+
+		String shaPass = sha.getSha256(user.getPw().getBytes());
+		user.setPw(shaPass);
+		userDao.setPasswordDao(user);
+
+	}
+
 }

@@ -539,7 +539,6 @@ function buytogetherReadDao() {
 	// 사냥 참여자 선택 버튼
 	this.joinCheckBtnDao = function(buytogether_number, joinCheck_userNumber){
 		
-		jQuery.ajaxSettings.tranditional = true;
 		$.ajax({
 			
 			type: 'post',
