@@ -15,7 +15,6 @@ $(document).ready(function (){
 
 	if(user_number != null){
 		//관심 카테고리가 있는지 확인해서 없으면 전체 리스트를 보여준다
-		console.log(user_number);
 		var interest = controller.requestUserInterest(user_number);
 		console.log(interest);
 		if(interest <= 0){

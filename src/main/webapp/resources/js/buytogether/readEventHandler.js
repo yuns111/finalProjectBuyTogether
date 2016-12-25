@@ -27,7 +27,7 @@ $(document).ready(function() {
 	}
 
 	// 임의값
-	var user_number = 4;
+	var user_number = 7;
 
 	var data;
 	// 같이사냥 참여자 확인

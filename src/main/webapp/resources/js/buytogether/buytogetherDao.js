@@ -182,8 +182,6 @@ function buytogetherDao() {
 	//같이사냥 글 수정
 	this.UpdateBuyTogetherDao = function(buytogetherUpdate) {
 		
-		console.log("1 "+buytogetherUpdate.join_number);
-		console.log("2 "+buytogetherUpdate.price);
 		var result;
 		$.ajax({
 			type: 'post',

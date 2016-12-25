@@ -69,40 +69,6 @@ function buytogetherReadDao() {
 
 	}
 
-	// 같이 사냥 게시글 수정
-	this.buytogetherUpdateDao = function(buytogether_number, user_number){
-
-		/*$.ajax({
-			type: 'put',
-			url: '/restBuytogetherRead/',
-			headers: {
-				"Content-type" : "application/json",
-				"X-HTTP-Method-Override": "PUT"
-			},
-			data : JSON.stringify({
-				comment_content : comment_content,
-				comment_number : comment_number,
-				buytogether_number : buytogether_number
-			}),
-			dataType: 'text',
-			success: function(data){
-
-				if(data == "success"){
-
-						alert("전체 댓글이 수정 되었습니다.");
-						getPageTap1("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number);
-
-				} else {
-
-					alert("댓글 수정이 실패 하였습니다.");
-
-				}
-			}
-
-		});
-		 */
-	}
-
 	// 같이 사냥 댓글 입력(댓글 내용, 유저 번호(아이디), 게시판 번호, 댓글 타입번호)
 	this.commentInsertDao = function(buytogether_number, comment_type_number, user_number, comment_content){
 
@@ -483,8 +449,6 @@ function buytogetherReadDao() {
 			data: JSON.stringify(reportData),
 			success: function(data){
 
-				alert("성공");
-
 			}
 			
 		});
@@ -576,13 +540,16 @@ function buytogetherReadDao() {
 	this.joinCheckBtnDao = function(buytogether_number, joinCheck_userNumber){
 		
 		jQuery.ajaxSettings.tranditional = true;
-		console.log(joinCheck_userNumber);
 		$.ajax({
 			
 			type: 'post',
 			async : false,
-			url: '/restBuytogetherRead/joinCheck/' + buytogether_number,
-			data: {joinCheck_userNumber},
+			url: '/restBuytogetherRead/joinCheck',
+			data:
+			{	
+				"buytogether_number" : buytogether_number,
+				"joinCheck_userNumber" : joinCheck_userNumber
+			},
 			dataType: 'text',
 			success: function(data){
 
