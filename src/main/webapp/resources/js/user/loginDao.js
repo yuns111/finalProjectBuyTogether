@@ -85,10 +85,11 @@ function loginDao() {
 			dataType: 'json',
 			async : false,
 			success:function(data){
+				
 				userInfo = data;
 			}
 		});
-
+		console.log(userInfo);
 		return userInfo;
 		
 	};

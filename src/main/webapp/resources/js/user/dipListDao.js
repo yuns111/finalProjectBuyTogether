@@ -59,7 +59,7 @@ function dipListDao() {
       
       var result;
       var user_number = sessionStorage.getItem("number");
-
+      console.log(heartAni);
       jQuery.ajaxSettings.traditional = true; //jquery 1.3 version 사용 시
 
       //서버에 선택한 찜 삭제 결과 요청

@@ -50,9 +50,10 @@
 	</delete>
 	<!-- 내찜 목록 리스트 -->
    <select id="dipList" resultType="com.buy.together.dto.BuyTogetherDTO">
-      select bt.buytogether_number, bt.join_number, bt.title, u.nickname, bt.price, bt.duedate
-      from user u,  buytogether bt, dip d
-      where u.user_number = #{user_number} and d.user_number = u.user_number and d.buytogether_number = bt.buytogether_number
+      select bt.buytogether_number, bt.join_number, bt.title, u1.nickname, bt.price, bt.duedate
+      from user u,  buytogether bt, dip d, user u1
+      where u.user_number = #{user_number} and d.user_number = u.user_number
+      		 and d.buytogether_number = bt.buytogether_number and u1.user_number = bt.user_number
    </select>
    <!-- 내 찜 같이사냥의 사진 -->
    <select id="dipPhoto" resultType="AttachedPhoto">

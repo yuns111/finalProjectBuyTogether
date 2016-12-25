@@ -6,9 +6,9 @@ $(document).ready(function(){
 //   var user_number = sessionStorage.getItem("number");
    
    
-   sessionStorage.setItem("number", 1);
+ //  sessionStorage.setItem("number", 11);
    var user_number = sessionStorage.getItem("number");
-
+   console.log(user_number);
    controller.requestDipListAll(user_number);
    //찜하기 버튼 클릭
    $('body').on("click",'.heart', function() {
