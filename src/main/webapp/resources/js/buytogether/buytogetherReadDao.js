@@ -490,6 +490,7 @@ function buytogetherReadDao() {
 
 	}
 	
+	// 같이사냥 취소
 	this.cancleBuytogetherDao = function(buytogether_number, user_number){
 		
 		$.ajax({
@@ -539,7 +540,10 @@ function buytogetherReadDao() {
 	// 사냥 참여자 선택 버튼
 	this.joinCheckBtnDao = function(buytogether_number, joinCheck_userNumber){
 		
+		var joinCheckBox = [buytogether_number, joinCheck_userNumber];
+		
 		jQuery.ajaxSettings.tranditional = true;
+		
 		$.ajax({
 			
 			type: 'post',
@@ -547,8 +551,7 @@ function buytogetherReadDao() {
 			url: '/restBuytogetherRead/joinCheck',
 			data:
 			{	
-				"buytogether_number" : buytogether_number,
-				"joinCheck_userNumber" : joinCheck_userNumber
+				"joinCheckBox" : joinCheckBox
 			},
 			dataType: 'text',
 			success: function(data){

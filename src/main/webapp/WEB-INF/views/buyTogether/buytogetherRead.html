@@ -90,33 +90,37 @@
 
 	<!-- 페이스북 공유하기 -->
 	<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '226064184471058',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-  };
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '226064184471058',
+				xfbml : true,
+				version : 'v2.8'
+			});
+		};
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	<div class="fb-like" data-share="true" data-width="450"
 		data-show-faces="true"></div>
 
 	<script>
-function sharing(){
-	
-	/* window.open('http://www.facebook.com/sharer/sharer.php?u=http://localhost:8965/buyTogether/read?buytogether_number=11'); */
-	window.open('http://www.facebook.com/sharer/sharer.php?u=http://www.naver.com');
-}
-</script>
+		function sharing() {
+
+			/* window.open('http://www.facebook.com/sharer/sharer.php?u=http://localhost:8965/buyTogether/read?buytogether_number=11'); */
+			window
+					.open('http://www.facebook.com/sharer/sharer.php?u=http://www.naver.com');
+		}
+	</script>
 
 	<!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
 	<!-- BEGIN: HEADER -->
@@ -173,10 +177,10 @@ function sharing(){
 									</div>
 									<div class="col-xs-3 c-product-thumb">
 										<img id="thumb3">
-									</div> 
+									</div>
 									<div class="col-xs-3 c-product-thumb c-product-thumb-last">
 										<img id="thumb4">
-									</div> 
+									</div>
 								</div>
 
 							</div>
@@ -200,7 +204,7 @@ function sharing(){
 
 										<!-- 참여자 리스트 -->
 										<div id="joininList"></div>
-										
+
 									</div>
 									<div class="modal-footer">
 										<button type="button"
@@ -240,6 +244,27 @@ function sharing(){
 					</ul>
 
 				</div>
+
+				<!-- 참여자 댓글 modal -->
+				<div class="modal fade bs-example-modal-sm" id="commentModal"
+					tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-body" id="modal-body">
+								<p class="c-font-red" id="msg">
+									<span class="c-font-15">같이사냥 참여한 유저만 사용 가능합니다.</span>
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button"
+									class="btn c-theme-btn c-btn-border-2x c-btn-bold c-btn-uppercase"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="tab-1">
 
@@ -325,17 +350,20 @@ function sharing(){
 	<!-- END: PAGE SCRIPTS -->
 	<!-- END: LAYOUT/BASE/BOTTOM -->
 	<script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-64667612-1', 'themehats.com');
-        ga('send', 'pageview');
-    </script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-64667612-1', 'themehats.com');
+		ga('send', 'pageview');
+	</script>
 
 	<!----------------- Template ------------------->
 
@@ -710,42 +738,40 @@ function sharing(){
 
 </script>
 	<script>
-Handlebars.registerHelper("dateHelper", function(timeValue) {
-   
-   var dateObj = new Date(timeValue);
-   var year = dateObj.getFullYear();
-   var month = dateObj.getMonth() + 1;
-   var date = dateObj.getDate();
-   
-   return year+"/"+month+"/"+date;
-   
-});
+		Handlebars.registerHelper("dateHelper", function(timeValue) {
 
-</script>
+			var dateObj = new Date(timeValue);
+			var year = dateObj.getFullYear();
+			var month = dateObj.getMonth() + 1;
+			var date = dateObj.getDate();
 
-<script>
-// 수정 삭제 히든 부분
-/* var numberuser = sessionStorage.getItem("number"); */
-var user_number = 10;
+			return year + "/" + month + "/" + date;
 
-Handlebars.registerHelper("delupdateHelper", function(number){
-	
-	if(user_number == number){
+		});
+	</script>
 
-		return "inline";
-	} else {
-		return "none";
-	}
-});
+	<script>
+		// 수정 삭제 히든 부분
+		/* var numberuser = sessionStorage.getItem("number"); */
+		var user_number = 10;
 
-</script>
+		Handlebars.registerHelper("delupdateHelper", function(number) {
+
+			if (user_number == number) {
+
+				return "inline";
+			} else {
+				return "none";
+			}
+		});
+	</script>
 
 	<!----------------------------- 번호 증가 ------------------------->
 	<script>
 		Handlebars.registerHelper("indexHelper", function(keyValue) {
-	
+
 			return keyValue + 1;
-	
+
 		});
 	</script>
 

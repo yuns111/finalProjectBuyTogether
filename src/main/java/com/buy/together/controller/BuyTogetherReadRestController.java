@@ -400,10 +400,10 @@ public class BuyTogetherReadRestController {
 	
 	// 사냥 참여자 선택 버튼(프로필 : "같이사냥중" 변경, Matching_status_number : "2번" 변경)
 	@RequestMapping(value = "joinCheck", method = {RequestMethod.POST})
-	public ResponseEntity<String> requestJoinCheck(Integer buytogether_number, String[] joinCheck_userNumber){
+	public ResponseEntity<String> requestJoinCheck(@RequestBody String[] joinCheckBox){
 		
 		ResponseEntity<String> entity = null;
-		System.out.println(joinCheck_userNumber[0]);
+		System.out.println(joinCheckBox[0]);
 		
 		try{
 			
