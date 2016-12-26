@@ -102,18 +102,11 @@ public class BuyTogetherDTO {
 		this.duedate = duedate;
 	}
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 1ab3e3dde0102035fcad4992514ba2a2c327f8ed
 	public int getJoin_number() {
 		return join_number;
 	}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ab3e3dde0102035fcad4992514ba2a2c327f8ed
 	public void setJoin_number(int join_number) {
 		this.join_number = join_number;
 	}
@@ -288,12 +281,8 @@ public class BuyTogetherDTO {
 		this.joinin_user = joinin_user;
 	}
 
-<<<<<<< HEAD
-	public boolean getBeOrNot() {
-=======
 
 	public boolean isBeOrNot() {
->>>>>>> 1ab3e3dde0102035fcad4992514ba2a2c327f8ed
 		return beOrNot;
 	}
 
@@ -302,12 +291,7 @@ public class BuyTogetherDTO {
 		this.beOrNot = beOrNot;
 	}
 
-<<<<<<< HEAD
-	public boolean getFinishOrNot() {
-=======
-
 	public boolean isFinishOrNot() {
->>>>>>> 1ab3e3dde0102035fcad4992514ba2a2c327f8ed
 		return finishOrNot;
 	}
 
