@@ -25,7 +25,7 @@
 		where hs.status_number = bt.status_number and
 			  ht.hunting_type_number = bt.hunting_type_number and c.category_number = bt.category_number and
 			  (hs.status_name = "혼자사냥중" or hs.status_name = "같이사냥중" or hs.status_name = "사냥실패")
-			  and u.user_number in (select bt.user_number from buytogether where bt.user_number = #{user_number});
+			  and u.user_number in (select bt.user_number from buytogether where bt.user_number = #{user_number})
         
 		]]>
 
@@ -48,7 +48,7 @@
 				where hs.status_number = bt.status_number and
 			  ht.hunting_type_number = bt.hunting_type_number and u.user_number = j.user_number and
 			  (hs.status_name = "혼자사냥중" or hs.status_name = "같이사냥중" or hs.status_name = "사냥실패")
-              and bt.buytogether_number in (select j.buytogether_number from joinin where j.user_number = #{user_number});
+              and bt.buytogether_number in (select j.buytogether_number from joinin where j.user_number = #{user_number})
 		]]>
 
 		<include refid="search"></include>
@@ -77,7 +77,7 @@
               (hs.status_number = bt.status_number and
 			  ht.hunting_type_number = bt.hunting_type_number and
 			  hs.status_name = "같이사냥완료" and bt.buytogether_number = j.buytogether_number
-              and bt.buytogether_number in (select buytogether_number from joinin where user_number = #{user_number}));
+              and bt.buytogether_number in (select buytogether_number from joinin where user_number = #{user_number}))
 			]]>
 
 		<include refid="search"></include>

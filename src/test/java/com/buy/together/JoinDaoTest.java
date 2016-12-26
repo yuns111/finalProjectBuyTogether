@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -23,6 +24,7 @@ public class JoinDaoTest {
    JoinDao joinDao;
    
    @Test
+   @Ignore
    public void testJoin() throws Exception {
       
       User user = new User();
@@ -45,6 +47,114 @@ public class JoinDaoTest {
       user.setPw(shaPass);*/
       
       joinDao.create(user);
+      
+   }
+   
+   @Test
+   public void testUserIdCheck() throws Exception{
+      
+      String userid = "user01";
+      String result = joinDao.userIdCheck(userid);
+      
+      if(result != null){
+         
+         System.out.println("아이디 사용 불가");
+         
+      } else{
+         
+         System.out.println("아이디 사용 가능");
+         
+      }
+      
+   }
+   
+   @Test
+   public void testAdminIdCheck() throws Exception{
+      
+      String adminid = "admin1";
+      String result = joinDao.adminIdCheck(adminid);
+      
+      if(result != null){
+         
+         System.out.println("아이디 사용 불가");
+         
+      } else{
+         
+         System.out.println("아이디 사용 가능");
+         
+      }
+      
+   }
+   
+   @Test
+   public void testUserNicknameCheck() throws Exception{
+      
+      String userNickname = "양갱갱";
+      String result = joinDao.userNicknameCheck(userNickname);
+      
+      if(result != null){
+         
+         System.out.println("닉네임 사용 불가");
+         
+      } else{
+         
+         System.out.println("닉네임 사용 가능");
+         
+      }
+      
+   }
+   
+   @Test
+   public void testAdminNicknameCheck() throws Exception{
+      
+      String adminNickname = "admin1";
+      String result = joinDao.adminNicknameCheck(adminNickname);
+      
+      if(result != null){
+         
+         System.out.println("닉네임 사용 불가");
+         
+      } else{
+         
+         System.out.println("닉네임 사용 가능");
+         
+      }
+      
+   }
+   
+   @Test
+   public void testUserEmailCheck() throws Exception{
+      
+      String userEmail = "user1@user1";
+      String result = joinDao.userEmailCheck(userEmail);
+      
+      if(result != null){
+         
+         System.out.println("이메일 사용 불가");
+         
+      } else{
+         
+         System.out.println("이메일 사용 가능");
+         
+      }
+      
+   }
+   
+   @Test
+   public void testAdminEmailCheck() throws Exception{
+      
+      String adminEmail = "admin1@admin1.com";
+      String result = joinDao.adminEmailCheck(adminEmail);
+      
+      if(result != null){
+         
+         System.out.println("이메일 사용 불가");
+         
+      } else{
+         
+         System.out.println("이메일 사용 가능");
+         
+      }
       
    }
 
