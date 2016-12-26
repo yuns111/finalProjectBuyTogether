@@ -42,11 +42,9 @@ public class BuyTogetherDTO {
 
 	}
 
-
 	public int getBuytogether_number() {
 		return buytogether_number;
 	}
-
 
 	public void setBuytogether_number(int buytogether_number) {
 		this.buytogether_number = buytogether_number;
