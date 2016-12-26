@@ -5,7 +5,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.buy.together.dao.MyPageDao;
 import com.buy.together.domain.User;
@@ -35,14 +34,8 @@ public class MyPageServiceImpl implements MyPageService {
 		return user;
 
 	}
-	
-	@Override
-	public String userEmailCheck(String email) throws Exception {
 
-		return myPageDao.checkEmail(email);
-	}
-
-	////현재 비밀번호 조회 및 비밀번호 수정
+	//현재 비밀번호 조회 및 비밀번호 수정
 	@Override
 	public String updatePassword(String[] user_info) throws Exception {
 		
@@ -68,12 +61,7 @@ public class MyPageServiceImpl implements MyPageService {
 		
 	}
 
-	@Override
-	public void userModify(MyPageDTO dto) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
+	//연락처 중복확인 및 연락처 수정
 	@Override
 	public String updatePhoneNumber(String[] user_info) throws Exception {
 		
@@ -81,7 +69,7 @@ public class MyPageServiceImpl implements MyPageService {
 
 		String phone_number = myPageDao.readPhoneNumber(user_info[1]);
 
-		if(phone_number == null) { //이미 사용중인 이메일이 아니라면,
+		if(phone_number == null) { //이미 사용중인 연락처가 아니라면,
 			
 			User user = new User();
 			user.setUser_number(Integer.parseInt(user_info[0]));        
@@ -95,6 +83,7 @@ public class MyPageServiceImpl implements MyPageService {
 		
 	}
 	
+	//이메일 중복확인 및 이메일 수정 
 	@Override
 	public String updateEmail(String[] user_info) throws Exception {
 		
@@ -116,6 +105,7 @@ public class MyPageServiceImpl implements MyPageService {
 		
 	}
 	
+	//관심 카테고리 수정
 	@Override
 	public void updateInterest(int user_number, String[] interest) throws Exception {
 		
@@ -134,6 +124,7 @@ public class MyPageServiceImpl implements MyPageService {
 		
 	}
 
+	//관심 지역 수정
 	@Override
 	public void updateAddress(String[] user_info) throws Exception {
 		

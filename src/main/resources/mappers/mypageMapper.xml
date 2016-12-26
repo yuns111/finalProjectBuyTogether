@@ -97,23 +97,6 @@
 		where id = #{id}
 	</update>
 	
-	<delete id="userCategoryDelete">
-		delete from interest
-		where user_number = #{user_number};
-	</delete>
-	
-	<insert id="userCategoryInsert">
-		insert into Interest(category_number, user_number)
-		values (#{category_number}, #{user_number})
-	</insert>
-	
-	<update id="userAddressUpdate">
-		update useraddress
-		set user_sido = #{user_sido}, user_sigungu = #{user_sigungu}, user_dong = #{user_dong}
-		where user_number = #{user_number}
-	</update>
-	
-	
 </mapper>
 
 
