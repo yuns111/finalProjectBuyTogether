@@ -5,13 +5,11 @@ public class MySearchCriteria extends Criteria{
 	private String searchType;
 	private String keyword;
 	private int user_number;
-<<<<<<< HEAD
+
 	
 	public MySearchCriteria() {
 		super();
-=======
-
-	public MySearchCriteria(){}
+	}
 	
 	public MySearchCriteria(String searchType, String keyword, int user_number) {
 
@@ -19,7 +17,6 @@ public class MySearchCriteria extends Criteria{
 		this.keyword = keyword;
 		this.user_number = user_number;
 		
->>>>>>> 1abd8cab5f36e9cc2000ac9dba055e1cfd3110e8
 	}
 
 	public int getUser_number() {

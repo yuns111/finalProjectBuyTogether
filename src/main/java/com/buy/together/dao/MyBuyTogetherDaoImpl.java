@@ -42,10 +42,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 
 			//참여유저번호 조회
 			List<Integer> joinUserNumbersList = sqlSession.selectList(namespace+".searchJoinUser", myBuyTogetherNumber);
-<<<<<<< HEAD
-=======
 
->>>>>>> 1abd8cab5f36e9cc2000ac9dba055e1cfd3110e8
 			int[] joinUserNumbers = new int[joinUserNumbersList.size()];
 
 			for (int k=0; k < joinUserNumbers.length; k++)
@@ -67,11 +64,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 				} else {//평판 이미 줬음, 이제 평판주기 안뜸
 					reputationNumber = sqlSession.selectOne(namespace+".reputationLog", reputation);
 				}
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 1abd8cab5f36e9cc2000ac9dba055e1cfd3110e8
 				if(reputationNumber == 0){
 					beOrNot = false;//평판기록이 존재하지 않으면 평판을 줄 수 있음.
 				}
@@ -133,10 +126,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 	//평판주려고 참여유저 조회 
 	@Override
 	public List<JoinUserInfo> openReputation(int buyTogetherNumber) throws Exception {
-<<<<<<< HEAD
-=======
 
->>>>>>> 1abd8cab5f36e9cc2000ac9dba055e1cfd3110e8
 		return sqlSession.selectList(namespace+".openReputation", buyTogetherNumber);
 	}
 
@@ -186,20 +176,13 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 	//(참여한) 평판 점수 주기
 	@Override
 	public void scoreReputationForJoiner(ScoreUserInfo scoreUserInfo) throws Exception {
-<<<<<<< HEAD
-=======
 
->>>>>>> 1abd8cab5f36e9cc2000ac9dba055e1cfd3110e8
 		sqlSession.update(namespace+".scoreReputation", scoreUserInfo);
 	}
 	//(참여한) 평판기록 남기기
 	@Override
 	public void reputationLogForJoiner(ScoreUserInfo scoreUserInfo) throws Exception {
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> 1abd8cab5f36e9cc2000ac9dba055e1cfd3110e8
 		int score_user_number = scoreUserInfo.getScore_user_number();
 		int scored_user_number = scoreUserInfo.getScored_user_number();
 		int buyTogetherNumber = scoreUserInfo.getBuyTogetherNumber();

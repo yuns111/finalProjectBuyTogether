@@ -68,10 +68,7 @@ public class MyBuyTogetherRestController {
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
-<<<<<<< HEAD
-=======
 
->>>>>>> 1abd8cab5f36e9cc2000ac9dba055e1cfd3110e8
 			int searchMyBuyTogetherCount = service.searchJoinBuyTogetherCount(scri);
 			pageMaker.setTotalCount(searchMyBuyTogetherCount);
 
