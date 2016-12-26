@@ -13,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.buy.together.dao.BuyTogetherReadDao;
-import com.buy.together.domain.Board;
 import com.buy.together.domain.Comment;
 import com.buy.together.domain.DeclareBoard;
 import com.buy.together.dto.BuyTogetherDTO;
@@ -178,7 +177,7 @@ public class BuytogetherReadDaoTest {
 	@Test
 	public void testReportDao() throws Exception{
 
-		logger.info("testFaqCenterList() 호출됨.");
+		logger.info("testReportDao() 호출됨.");
 		Integer buytogether_number = 11;
 		Integer comment_number = 4;
 		BuyTogetherDTO list = dao.reportDao(buytogether_number, comment_number);
@@ -187,59 +186,82 @@ public class BuytogetherReadDaoTest {
 
 	}
 
+	@Ignore
 	//sendReport Test
 	@Test
 	public void testSendReport() throws Exception{
 
-		logger.info("testFaqCenterList() 호출됨.");
+		logger.info("testSendReport() 호출됨.");
 		int buytogether_number = 11;
 		int type_number = 2;
 		int comment_number = 4;
 		int declare_category_number = 2;
 		int user_number = 6;
 		String declare_reason = "qwe";
-		
+
 		DeclareBoard declareBoard = new DeclareBoard(buytogether_number, type_number, comment_number, declare_category_number, user_number, declare_reason);
-		
+
 		dao.sendReport(declareBoard);
 	}
 
-	/*//FaqCenterList [고객센터]Test
 	@Ignore
+	// buytogetherCheckDao Test
 	@Test
-	public void testFaqCenterList() throws Exception{
+	public void testBuytogetherCheckDao() throws Exception{
 
 		logger.info("testFaqCenterList() 호출됨.");
-		List<Board> list = dao.faqCenterList();
+		Integer buytogether_number = 11;
+		Integer user_number = 4;		
+		dao.buytogetherCheckDao(buytogether_number, user_number);
+
+	}
+
+	@Ignore
+	// cancleBuytogetherDao Test
+	@Test
+	public void testCancleBuytogetherDao() throws Exception{
+
+		logger.info("testCancleBuytogetherDao() 호출됨.");
+		Integer buytogether_number = 11;
+		Integer user_number = 4;
+		dao.cancleBuytogetherDao(buytogether_number, user_number);
+
+	}
+
+	@Ignore
+	// joininListDao Test
+	@Test
+	public void testJoininListDao() throws Exception{
+
+		logger.info("testJoininListDao() 호출됨.");
+		Integer buytogether_number = 11;
+		List<BuyTogetherDTO> list = dao.joininListDao(buytogether_number);
 
 		for(int i = 0 ; i < list.size() ; i++) {
 			logger.info(list.get(i).toString());
 		}
 	}
 
-	//FaqCenterList [고객센터]Test
 	@Ignore
+	// joinCheckDao Test
 	@Test
-	public void testFaqCenterList() throws Exception{
+	public void testJoinCheckDao() throws Exception{
 
-		logger.info("testFaqCenterList() 호출됨.");
-		List<Board> list = dao.faqCenterList();
+		logger.info("testJoinCheckDao() 호출됨.");
+		Integer joinCheck_userNumber = 1;
+		dao.joinCheckDao(joinCheck_userNumber);
 
-		for(int i = 0 ; i < list.size() ; i++) {
-			logger.info(list.get(i).toString());
-		}
 	}
 
-	//FaqCenterList [고객센터]Test
 	@Ignore
+	// JoinCheck2Dao Test
 	@Test
-	public void testFaqCenterList() throws Exception{
+	public void testJoinCheck2Dao() throws Exception{
 
-		logger.info("testFaqCenterList() 호출됨.");
-		List<Board> list = dao.faqCenterList();
+		logger.info("testJoinCheck2Dao() 호출됨.");
+		Integer buytogether_number = 11;
+		dao.JoinCheck2Dao(buytogether_number);
 
-		for(int i = 0 ; i < list.size() ; i++) {
-			logger.info(list.get(i).toString());
-		}
-	}*/
+	}
+	
 }
