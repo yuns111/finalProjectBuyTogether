@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 		showLoginBtn(); //로그인, 회원가입 버튼 표시
 		
-		if(url == "/login/basicUserInfo" || url == "/user/Esignout" || url == "/user/Bsignout"){
+		if(url == "/login/basicUserInfo" || url == "/user/Esignout" || url == "/user/Bsignout" || url == "/mypage"){
 
 			document.location = "/login";
 			
@@ -15,6 +15,7 @@ $(document).ready(function() {
 		
 	} else {
 		
+		//닉네임가져오기
 		showLogoutBtn(); //로그아웃 버튼 표시
 		
 	}

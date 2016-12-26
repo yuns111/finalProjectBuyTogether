@@ -30,7 +30,7 @@ public class BuyTogetherController {
 		System.out.println("buyTogetherController/list");
 		logger.info("Welcome home! The client locale is {}.", locale);
 	
-		return "/views/buyTogether/mapbuytogetherList";
+		return "/views/buyTogether/buytogetherMapList";
 	}
 	
 	@RequestMapping(value ="/write", method = RequestMethod.GET)

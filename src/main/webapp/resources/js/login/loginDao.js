@@ -60,7 +60,7 @@ function facebookAPI(callback) {
 				callback(user);
 			}
 		});
-		
+
 		return user;
 		
 	});
@@ -148,14 +148,14 @@ function loginDao() {
 			localStorage.clear(); //로컬 저장소 초기화
 			localStorage.setItem("id", user.id);
 			localStorage.setItem("pw", user.pw);
-			localStorage.setItem("number", user.number);
+			localStorage.setItem("number", user.user_number);
 			
 		}
 		
 		sessionStorage.clear(); //세션 초기화
 		sessionStorage.setItem("id", user.id);
 		sessionStorage.setItem("pw", user.pw);
-		sessionStorage.setItem("number", user.number);
+		sessionStorage.setItem("number", user.user_number);
 
 	};
 

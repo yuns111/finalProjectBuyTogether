@@ -1,4 +1,4 @@
-$('head').append('<script type="text/javascript" src="../../../resources/js/user/loginDao.js"></script>')
+$('head').append('<script type="text/javascript" src="/resources/js/login/loginDao.js"></script>')
 
 function loginController() {
 
@@ -17,6 +17,7 @@ function loginController() {
 			return message;
 			
 		} else { //아이디와 비밀번호를 작성했다면,
+			
 			
 			loginCheckStatus = loginCheck;		
 			userInfo = dao.LoginDao(user); //LoginDao 호출 후 결과 값 저장

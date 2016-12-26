@@ -10,35 +10,21 @@
 <meta content="" name="author" />
 
 <!---------------------공통스크립트--------------------->
-<link rel="shortcut icon" href="/resources/theme/css/favicon.ico"
-	type="image/x-icon" />
+<link href="/resources/theme/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/css/default.css" rel="stylesheet" id="style_theme" type="text/css" />
+<link href="/resources/theme/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/plugin/animate.css" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/plugin/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+<link href="/resources/theme/plugin/plugins.css" rel="stylesheet" type="text/css" />
 <script src="/resources/bootstrap/js/jquery-3.1.1.min.js"></script>
-<link href="/resources/theme/css/components.css" id="style_components"
-	rel="stylesheet" type="text/css" />
-<link href="/resources/theme/css/default.css" rel="stylesheet"
-	id="style_theme" type="text/css" />
-<link href="/resources/theme/css/custom.css" rel="stylesheet"
-	type="text/css" />
-<link href="/resources/theme/plugin/animate.css" rel="stylesheet"
-	type="text/css" />
-<link href="/resources/theme/plugin/jquery.fancybox.css"
-	rel="stylesheet" type="text/css" />
-<link href="/resources/theme/plugin/plugins.css" rel="stylesheet"
-	type="text/css" />
 <script src="/resources/theme/js/app.js" type="text/javascript"></script>
 <script src="/resources/theme/js/components.js" type="text/javascript"></script>
-<script src="/resources/theme/js/components-shop.js"
-	type="text/javascript"></script>
-<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/resources/theme/font/NotoKRRegular.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="/resources/theme/font/simple-line-icons.css" type="text/css">
-<link rel="stylesheet" href="/resources/theme/font/font-awesome.css"
-	type="text/css">
-<script src="/resources/theme/js/jquery-migrate.min.js"
-	type="text/javascript"></script>
+<script src="/resources/theme/js/components-shop.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/resources/theme/font/NotoKRRegular.css" type="text/css">
+<link rel="stylesheet" href="/resources/theme/font/simple-line-icons.css" type="text/css">
+<link rel="stylesheet" href="/resources/theme/font/font-awesome.css" type="text/css">
+<script src="/resources/theme/js/jquery-migrate.min.js" type="text/javascript"></script>
 <!-------------------------------------------------->
 
 <!----------- 이벤트핸들러 ------------->
@@ -49,7 +35,7 @@
 <link href="/resources/theme/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
 <link href="/resources/theme/css/owl.carousel.css" rel="stylesheet" type="text/css" />
 <link href="/resources/theme/css/slider.css" rel="stylesheet" type="text/css" />
-<script src="/resources/theme/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+<script src="/resources/theme/js/jquery.cubeportfolio.js" type="text/javascript"></script>
 <script src="/resources/theme/js/lightbox-gallery.js" type="text/javascript"></script>
 <script src="/resources/theme/js/jquery.fancybox.pack.js" type="text/javascript"></script>
 
@@ -62,15 +48,10 @@
 </script>
 <!-- 다음지도 스크립트 -->
 <script type="text/javascript"
-	src="//apis.daum.net/maps/maps3.js?apikey=3b80506c0d98be7058b55889cbd68a97"></script>
-<!--현재위치를 지도로 찍기위해 스크립트 포함 -->
+	src="//apis.daum.net/maps/maps3.js?apikey=ed4a2aaf9cf413b13605ac60c4e0e686"></script>
+<!-- 마커표시를 위한 스크립트 -->
 <script type="text/javascript"
-	src="/resources/js/buytogether/drawingmap.js"></script>
-<script type="text/javascript"
-	src="/resources/js/buytogether/geoLocation.js"></script>
-<!--마커표시를 위한 스크립트 -->
-<script type="text/javascript"
-	src="//apis.daum.net/maps/maps3.js?apikey=3b80506c0d98be7058b55889cbd68a97&libraries=services"></script>
+	src="//apis.daum.net/maps/maps3.js?apikey=ed4a2aaf9cf413b13605ac60c4e0e686&libraries=services"></script>
 <!-- <script>
 	function init() {
 		geoLocation();
@@ -88,17 +69,16 @@
 		<!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
 		<div class="container">
 
-			<br> <br> <br> <br>
+			<br><button id="refresh" class="btn btn-primary glyphicon glyphicon-refresh refresh"> 다시 불러오기</button><br><br>
 			<!--------------------------지도-------------------------->
-			<div class="c-toggle-show" data-object-selector="c-advanced-search1"
-				data-animation-speed="600">
+			<div class="c-toggle-show" data-object-selector="c-advanced-search1" data-animation-speed="600">
 				<!-- 지도 api 여기 느세요  -->
 				<div class="c-advanced-search1">
 					<div id="map" style="width: 100%; height: 350px;"></div>
 				</div>
-				<input type="checkbox" id="checkbox-1" class="c-check"
-					checked="checked"> <label for="checkbox-1"> <span
-					class="box" style="font-size: 15px">지도</span>
+				<input type="checkbox" id="checkbox-1" class="c-check" checked="checked">
+				<label for="checkbox-1"> 
+					<span class="box" style="font-size: 15px">지도</span>
 				</label>
 			</div>
 
@@ -214,16 +194,7 @@
 	<div class="c-layout-go2top">
 		<i class="icon-arrow-up"></i>
 	</div>
-	
-	<!-- 
- 	<script src="/resources/theme/js/jquery.easing.min.js" type="text/javascript"></script>
-	<script src="/resources/theme/js/owl.carousel.min.js" type="text/javascript"></script>
- 	<script src="/resources/theme/js/jquery.counterup.min.js" type="text/javascript"></script>
-	<script src="/resources/theme/js/jquery.waypoints.min.js" type="text/javascript"></script>
-	<script src="/resources/theme/js/jquery.smooth-scroll.js" type="text/javascript"></script>
- -->
 	<!-- END: LAYOUT/BASE/BOTTOM -->
-
 	<script src="/resources/bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>
 	<script src="/resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>
 	<script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

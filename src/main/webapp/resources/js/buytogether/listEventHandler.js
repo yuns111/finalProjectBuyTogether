@@ -7,7 +7,7 @@ $(document).ready(function (){
 	controller.requestCategoryList();
 	controller.requestHuntingTypeList();
 	controller.requestHuntingStatusList();
-
+	
 	var keyword =  $('#keyword').val();
 	var page = 1;
 	var perPageNum = 6;

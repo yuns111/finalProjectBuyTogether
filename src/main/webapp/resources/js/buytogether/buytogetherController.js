@@ -1,8 +1,10 @@
 $('head').append('<script src=\'/resources/js/buytogether/buytogetherDao.js\'><\/script>');
+$('head').append('<script src=\'/resources/js/buytogether/buytogetherMap.js\'><\/script>');
 
 function buytogetherController() {
 
 	var dao = new buytogetherDao();
+	var map = new buytogetherMap();
 
 	//글쓰기 버튼 클릭시 글쓰기 뷰로 이동
 	this.requestWrite = function() {
@@ -23,30 +25,30 @@ function buytogetherController() {
 		var cube = new cubphoto();
 		cube.destory();
 		$('.buyTogetherList').children().remove();
-		
+
 		var parsedResult = dao.listBuyTogetherDao(scri);
 		var searchBuyTogether = parsedResult.searchBuyTogether;
-		
+
 		//초기화
 		cube.init();
-		
+
 		//같이사냥 글이 없으면 해당 글 없음 화면에 표시
 		if(searchBuyTogether.length == 0) {
-			
+
 			$("#noItem").show();
 			$('.buyTogetherList').hide();
 			$("#pagination").hide();
 
 			return;
 		}
-		
+
 		$('.buyTogetherList').show();
-		
+
 		//리스트 붙여줌
 		for(var i=0; i<searchBuyTogether.length; i++){
-			
+
 			var str = "";
-			
+
 			if(searchBuyTogether[i].title.length > 14){
 				searchBuyTogether[i].title = searchBuyTogether[i].title.substring(0,14);
 				searchBuyTogether[i].title += "...";
@@ -69,15 +71,15 @@ function buytogetherController() {
 			str = str + "</div><div class='cbp-l-caption-desc' id='nickname'>by " + searchBuyTogether[i].nickname;
 			str = str + "(" + searchBuyTogether[i].reputation + ")";
 			str = str + "</div></div></div></div></a></div>";
-			
+
 			cube.addItem(str);
 		}
 		$("#noItem").hide();
-		
+
 		$("#pagination").show();
 		var pageMaker = parsedResult.pageMaker;
 		printPaging(pageMaker, $("#pagination"));//페이징
-		
+
 	}
 
 	//카테고리 리스트 조회
@@ -117,15 +119,6 @@ function buytogetherController() {
 		dao.insertDao(buytogether, buytogetherAddress);
 	}
 
-	//같이사냥 리스트(map)
-	this.requestBuyTogetherMap = function(scri) {
-
-		var parsedResult = dao.listBuyTogetherDao(scri);
-		var searchBuyTogether = parsedResult.searchBuyTogether;
-		new geoLocation(searchBuyTogether);
-
-	}
-
 	//페이징
 	var printPaging = function(pageMaker, target){
 
@@ -147,4 +140,87 @@ function buytogetherController() {
 		str += "</ul>"
 			target.html(str);
 	};
+
+	//같이사냥 리스트(map)
+	this.requestBuyTogetherMap = function(scri) {
+
+		var myBound;
+		var searchBuyTogetherMap;
+		
+		map.geoLocation(function(callback){
+
+			myBound = callback;
+			scri.swLng = myBound[0];
+			scri.swLat = myBound[1];
+			scri.neLng = myBound[2];
+			scri.neLat = myBound[3];
+			
+			//큐브를 삭제
+			var cube = new cubphoto();
+			cube.destory();
+			$('.buyTogetherList').children().remove();
+
+			var parsedResult = dao.mapListBuyTogetherDao(scri);
+			searchBuyTogetherMap = parsedResult.searchBuyTogetherMap;
+
+			//초기화
+			cube.init();
+
+			//같이사냥 위치 출력
+			map.showMarker(searchBuyTogetherMap);			
+			
+			//같이사냥 글이 없으면 해당 글 없음 화면에 표시
+			if(searchBuyTogetherMap.length == 0) {
+
+				$("#noItem").show();
+				$('.buyTogetherList').hide();
+				$("#pagination").hide();
+
+				return;
+			}
+
+			$('.buyTogetherList').show();
+
+			//리스트 붙여줌
+			for(var i=0; i<searchBuyTogetherMap.length; i++){
+
+				var str = "";
+
+				if(searchBuyTogetherMap[i].title.length > 14){
+					searchBuyTogetherMap[i].title = searchBuyTogetherMap[i].title.substring(0,14);
+					searchBuyTogetherMap[i].title += "...";
+				}
+				if(searchBuyTogetherMap[i].photo_path[0] == null){
+					searchBuyTogetherMap[i].photo_path[0] = '/resources/img/noImage.png';
+				} else {
+					var path = searchBuyTogetherMap[i].photo_path[0].path;
+					searchBuyTogetherMap[i].photo_path[0] = "/restBuytogether/displayFile?fileName=" + path;
+				}
+				str = str + "<div class='cbp-item'>";
+				str = str + "<a href='/buytogether/read?buyT" +
+						"ogether_number=" + searchBuyTogetherMap[i].buyTogether_number;
+				str = str + "'class='cbp-caption'>";
+				str = str + "<div class='cbp-caption-defaultWrap'>";
+				str = str + "<img src='"+searchBuyTogetherMap[i].photo_path[0]+"' alt=''>";
+				str = str + "</div> <div class='cbp-caption-activeWrap'>";
+				str = str + "<div class='cbp-l-caption-alignLeft'>";
+				str = str + "<div class='cbp-l-caption-body'>";
+				str = str + "<div class='cbp-l-caption-title' id='title'>" + searchBuyTogetherMap[i].title;
+				str = str + "</div><div class='cbp-l-caption-desc' id='nickname'>by " + searchBuyTogetherMap[i].nickname;
+				str = str + "(" + searchBuyTogetherMap[i].reputation + ")";
+				str = str + "</div></div></div></div></a></div>";
+
+				cube.addItem(str);
+			}
+			
+			$("#noItem").hide();
+
+			$("#pagination").show();
+			var pageMaker = parsedResult.pageMaker;
+			printPaging(pageMaker, $("#pagination"));//페이징
+			
+		});
+
+	}
+	
 }

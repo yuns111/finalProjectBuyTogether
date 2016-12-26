@@ -16,6 +16,7 @@ import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.dto.BuyTogetherMapDTO;
 
 @Service
 public class BuyTogetherServiceImpl implements BuyTogetherService {
@@ -33,18 +34,26 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		return dao.searchBuyTogetherCount(cri);
 	}
 	
-	@Override//같이사냥 지도리스트
-	public List<BuyTogetherDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception {
+	@Override
+	public Integer searchBuyTogetherMapCount(ListSearchCriteria cri) throws Exception {
 		
-		List<BuyTogetherDTO> searchBuyTogether = dao.searchBuyTogetherMapList(cri);
+		return dao.searchBuyTogetherMapCount(cri);
+	}
+	
+	@Override//사냥지도 리스트
+	public List<BuyTogetherMapDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception {
+		
+		List<BuyTogetherMapDTO> searchBuyTogether = dao.searchBuyTogetherMapList(cri);
 
-		for(int i = 0; i<searchBuyTogether.size(); i++){
+		for(int i = 0; i<searchBuyTogether.size(); i++) {
+			
 			List<AttachedPhoto> attachedPhotos = dao.photoList(searchBuyTogether.get(i).getBuyTogether_number());
-
 			searchBuyTogether.get(i).setPhoto_path(attachedPhotos);
+			
 		}
-		
+		System.out.println("찍혀라"+searchBuyTogether);
 		return searchBuyTogether;
+		
 	}
 	
 	@Override //같이사냥 리스트
@@ -108,4 +117,5 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 
 		dao.buyTogetherAddressInsert(buyTogetherAddress);
 	}
+	
 }

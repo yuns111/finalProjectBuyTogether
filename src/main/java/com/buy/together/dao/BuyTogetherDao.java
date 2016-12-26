@@ -9,8 +9,8 @@ import com.buy.together.domain.Category;
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
-import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.dto.BuyTogetherMapDTO;
 
 public interface BuyTogetherDao {
 	
@@ -18,7 +18,9 @@ public interface BuyTogetherDao {
 	
 	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception;
 	
-	public List<BuyTogetherDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception;
+	public Integer searchBuyTogetherMapCount(ListSearchCriteria cri) throws Exception;
+	
+	public List<BuyTogetherMapDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception;
 		
 	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception;
 	
@@ -37,6 +39,8 @@ public interface BuyTogetherDao {
 	public void buyTogetherAddressInsert(BuyTogetherAddress BuyTogetherAddress) throws Exception;
 	
 	public void buyTogetherPhotoInsert(AttachedPhoto AttachedPhoto) throws Exception;
+	
+
 
 	
 }
