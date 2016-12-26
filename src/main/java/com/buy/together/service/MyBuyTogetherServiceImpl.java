@@ -88,7 +88,6 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 	@Transactional
 	@Override
 	public void scoreUserInfo(String[] scoreUserInfoList) throws Exception {
-		System.out.println("사이즈 안 나와?");
 		String test = scoreUserInfoList[0];
 		String[] str= new String[4];
 		List<ScoreUserInfo> ScoreUserInfoList = new ArrayList<ScoreUserInfo>();

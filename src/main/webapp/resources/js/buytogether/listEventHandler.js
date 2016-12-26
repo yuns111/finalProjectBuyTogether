@@ -7,19 +7,22 @@ $(document).ready(function (){
 	controller.requestCategoryList();
 	controller.requestHuntingTypeList();
 	controller.requestHuntingStatusList();
-
+	
 	var keyword =  $('#keyword').val();
 	var page = 1;
 	var perPageNum = 6;
 	var user_number = sessionStorage.getItem("number");
 
-	if(user_number != null){
+	if(user_number != "undefined" && user_number != null){
 		//관심 카테고리가 있는지 확인해서 없으면 전체 리스트를 보여준다
+		console.log(typeof(user_number));
 		var interest = controller.requestUserInterest(user_number);
 		console.log(interest);
 		if(interest <= 0){
 			user_number = 0;
 		}
+	} else {
+		user_number = 0;
 	}
 	
 	var scri = {

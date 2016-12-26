@@ -304,15 +304,18 @@ $(document).ready(function() {
 </script>
 	<script>
 		Handlebars.registerHelper("imageHelper", function(imagePath) {
-
-			if (imagePath[0] == null) {
-
-				return "../../resources/img/noImage.png";
+			
+			if(imagePath[0] == null) {
+				
+				return "/resources/img/noImage.png";
+				
 			} else {
-				return imagePath[0].path;
+				
+				return "/restBuytogether/displayFile?fileName=" + imagePath[0].path;
 			}
+			
+			
 		});
-
 		Handlebars.registerHelper("DateHelper", function(timeValue) {
 
 			var dateObj = new Date(timeValue);

@@ -64,11 +64,10 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestJoinBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestjoinBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
-		System.out.println("잘받았나?"+scri);
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
-			System.out.println(pageMaker.getCri().getPerPageNum());
+
 			int searchMyBuyTogetherCount = service.searchJoinBuyTogetherCount(scri);
 			pageMaker.setTotalCount(searchMyBuyTogetherCount);
 
@@ -77,9 +76,8 @@ public class MyBuyTogetherRestController {
 
 			map.put("searchMyBuyTogether", searchMyBuyTogether);
 			map.put("pageMaker", pageMaker);
-			
+
 			entity = new ResponseEntity<>(map, HttpStatus.OK);
-			System.out.println(entity);
 
 		} catch (Exception e) {
 
@@ -91,12 +89,10 @@ public class MyBuyTogetherRestController {
 	}
 
 
-
 	/*---------------------------완료한 같이사냥------------------------------*/
 	@RequestMapping(value = "requestDoneBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestDoneBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
-		System.out.println("잘받았나?"+scri);
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
@@ -127,7 +123,6 @@ public class MyBuyTogetherRestController {
 	public ResponseEntity<List<JoinUserInfo>> requestOpenReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber){
 		ResponseEntity<List<JoinUserInfo>> entity = null;
 		try {
-			System.out.println("여긴 도착했고");
 			List<JoinUserInfo> joinUser_list = service.openReputaion(buyTogetherNumber);
 			entity = new ResponseEntity<List<JoinUserInfo>>(joinUser_list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -140,13 +135,11 @@ public class MyBuyTogetherRestController {
 	/*---------------------------(개설한)평판점수 보내기------------------------------*/
 	@RequestMapping(value = "requestReputationScore", method = RequestMethod.POST)
 	public ResponseEntity<String> requestRequestReputationScore (String[] scoreUserInfoList)	{
-		
+
 		ResponseEntity<String> entity = null;
 
 		try {
-
 			service.scoreUserInfo(scoreUserInfoList);
-
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -160,13 +153,12 @@ public class MyBuyTogetherRestController {
 	/*---------------------------(개설한) 1인 평판점수 보내기------------------------------*/
 	@RequestMapping(value = "requestReputationScoreForOne", method = RequestMethod.POST)
 	public ResponseEntity<String> requestReputationScoreForOne (String[] scoreUserInfoList)	{
-		
+
 		ResponseEntity<String> entity = null;
 
 		try {
 
 			service.scoreUserInfoForOne(scoreUserInfoList);
-
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -176,16 +168,14 @@ public class MyBuyTogetherRestController {
 
 		return entity;
 	}
-	
+
 	/*---------------------------같이사냥 완료하기------------------------------*/
 	@RequestMapping(value = "requestFinishBuyTogether/{buyTogetherNumber}", method = RequestMethod.GET)
 	public ResponseEntity<String> requestFinishBuyTogether(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
 		ResponseEntity<String> entity = null;
-		System.out.println("여긴 오니?");
 		try {
 
 			service.finishBuyTogether(buyTogetherNumber);
-			System.out.println("여기까지 오면 ㄳ");
 			entity = new ResponseEntity<>("success", HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -196,18 +186,18 @@ public class MyBuyTogetherRestController {
 		}
 		return entity;
 	}
-	
+
 	/*---------------------------(참여한)유저목록 가져오기------------------------------*/
 	@RequestMapping(value = "requestJoinReputation/{buyTogetherNumber}", method = RequestMethod.GET)
 	public ResponseEntity<JoinUserInfo> requestJoinReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber
-		) {
+			) {
 		ResponseEntity<JoinUserInfo> entity = null;
 		try {
 
 			JoinUserInfo UserInfo = service.joinReputaion(buyTogetherNumber);
-			
-				UserInfo.setBuyTogetherNumber(buyTogetherNumber);
-			
+
+			UserInfo.setBuyTogetherNumber(buyTogetherNumber);
+
 			entity = new ResponseEntity<>(UserInfo, HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -225,7 +215,7 @@ public class MyBuyTogetherRestController {
 			@PathVariable int score_user_number, @PathVariable int buyTogetherNumber){
 		ResponseEntity<String> entity = null;
 		ScoreUserInfo scoreUserInfo = new ScoreUserInfo(scored_user_number,score,score_user_number,buyTogetherNumber);
-		
+
 		try {
 			service.scoreUserInfoForJoiner(scoreUserInfo);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
@@ -235,7 +225,7 @@ public class MyBuyTogetherRestController {
 		}
 		return entity;
 	}
-	
+
 
 
 }
