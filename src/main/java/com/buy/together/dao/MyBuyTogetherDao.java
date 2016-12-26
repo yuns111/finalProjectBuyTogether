@@ -34,5 +34,9 @@ public interface MyBuyTogetherDao {
 	
 	public void reputationLogForJoiner(ScoreUserInfo scoreUserInfo) throws Exception;
 	
+	public int searchJoinBuyTogetherCount(MySearchCriteria cri) throws Exception;
+	
+	public int searchDoneBuyTogetherCount(MySearchCriteria cri) throws Exception;
+	
 	
 }
