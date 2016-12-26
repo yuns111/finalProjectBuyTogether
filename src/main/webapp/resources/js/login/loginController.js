@@ -1,4 +1,4 @@
-$('head').append('<script type="text/javascript" src="../../../resources/js/user/loginDao.js"></script>')
+$('head').append('<script type="text/javascript" src="/resources/js/login/loginDao.js"></script>')
 
 function loginController() {
 
@@ -83,7 +83,7 @@ function loginController() {
 	function isNewUser(userInfo, loginCheckStatus) {
 
 		var result = dao.loginSession(userInfo, loginCheckStatus); //체크전 세션에 로그인정보 저장
-		console.log(userInfo);
+
 		if(userInfo.nickname == null) { //첫 로그인이라면,
 
 			document.location = "/login/basicUserInfo"; //필수 정보 입력 화면으로 이동

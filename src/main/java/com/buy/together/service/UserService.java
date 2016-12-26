@@ -22,5 +22,11 @@ public interface UserService {
 	public void removeDip(int user_number, String[] buytogether_numbers) throws Exception;
 
 	public void registDip(Dip dip) throws Exception;
+	
+	public String findId(User user) throws Exception;
+	
+	public User findPassword(User user) throws Exception;
+	
+	public void setPassword(User user) throws Exception;
 
 }

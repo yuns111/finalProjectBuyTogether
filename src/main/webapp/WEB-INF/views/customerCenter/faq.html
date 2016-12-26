@@ -153,7 +153,7 @@
 {{#each.}}	
 <div id="faqLiAll">	
 	<a href="#{{indexHelper @key}}" data-toggle="collapse" data-target=".{{indexHelper @key}}">
-		<p class="c-font-sbold c-font-18 c-font-dark">{{board_title}}</p> 
+		<p class="c-font-sbold c-font-18 c-font-dark">{{titleHelper board_title}}</p> 
 	</a>
 	<div id="{{indexHelper @key}}" class="collapse {{indexHelper @key}}">
 		&emsp;&emsp;<label><span class="c-content-line-icon c-icon-sm c-icon-48"></span>
@@ -169,7 +169,7 @@
 {{#each.}}	
 <div id="faqLiUser">	
 	<a href="#{{indexHelper @key}}" data-toggle="collapse" data-target=".{{indexHelper @key}}">
-		<p class="c-font-sbold c-font-18 c-font-dark">{{board_title}}</p> 
+		<p class="c-font-sbold c-font-18 c-font-dark">{{titleHelper board_title}}</p> 
 	</a>
 	<div id="{{indexHelper @key}}" class="collapse {{indexHelper @key}}">
 		&emsp;&emsp;<label><span class="c-content-line-icon c-icon-sm c-icon-48 c-font-15 c-font-slim"></span>
@@ -185,7 +185,7 @@
 {{#each.}}
 <div id="faqLiBuy">	
 	<a href="#{{indexHelper @key}}" data-toggle="collapse" data-target=".{{indexHelper @key}}">
-		<p class="c-font-sbold c-font-18 c-font-dark">{{board_title}}</p> 
+		<p class="c-font-sbold c-font-18 c-font-dark">{{titleHelper board_title}}</p> 
 	</a>
 	<div id="{{indexHelper @key}}" class="collapse {{indexHelper @key}}" >
 		&emsp;&emsp;<label><span class="c-content-line-icon c-icon-sm c-icon-48 c-font-15 c-font-slim"></span>
@@ -202,7 +202,7 @@
 {{#each.}}
 <div id="faqLiInfo">	
 	<a href="#{{indexHelper @key}}" data-toggle="collapse" data-target=".{{indexHelper @key}}">
-		<p class="c-font-sbold c-font-18 c-font-dark">{{board_title}}</p> 
+		<p class="c-font-sbold c-font-18 c-font-dark">{{titleHelper board_title}}</p> 
 	</a>
 	<div id="{{indexHelper @key}}" class="collapse {{indexHelper @key}}">
 		&emsp;&emsp;<label><span class="c-content-line-icon c-icon-sm c-icon-48 c-font-15 c-font-slim"></span>
@@ -219,7 +219,7 @@
 {{#each.}}
 <div id="faqLiCustomer">	
 	<a href="#{{indexHelper @key}}" data-toggle="collapse" data-target=".{{indexHelper @key}}">
-		<p class="c-font-sbold c-font-18 c-font-dark">{{board_title}}</p> 
+		<p class="c-font-sbold c-font-18 c-font-dark">{{titleHelper board_title}}</p> 
 	</a>
 	<div id="{{indexHelper @key}}" class="collapse {{indexHelper @key}}">
 		&emsp;&emsp;<label><span class="c-content-line-icon c-icon-sm c-icon-48 c-font-15 c-font-slim"></span>
@@ -238,6 +238,15 @@
 	
 		});
 	</script>
+	
+	<script>
+		Handlebars.registerHelper("titleHelper", function(titleValue) {
+	
+			return titleValue.substring(10);
+	
+		});
+	</script>
+	
 
 	<script src="/resources/theme/js/bootstrap.min.js"
 		type="text/javascript"></script>

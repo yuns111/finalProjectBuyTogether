@@ -175,7 +175,7 @@ function buytogetherReadController() {
 	// 참여자 선택 버튼
 	this.requestJoinCheckBtn = function(buytogether_number, joinCheck_userNumber){
 		
-		dao.joinCheckBtnDao(buytogether_number, joinCheck_userNumber);
+		return dao.joinCheckBtnDao(buytogether_number, joinCheck_userNumber);
 		
 	}
 

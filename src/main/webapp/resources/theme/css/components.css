@@ -8634,8 +8634,8 @@ h1 {
     content: "";
     display: table;
     clear: both; }
-  .c-content-blog-post-1-list .c-content-blog-post-1 {
-    margin-bottom: 80px; }
+  .c-content-blog-post-1-list .c-content-blog-post-1 { /*수정 */
+    margin-bottom: 5px; }
   .c-content-blog-post-1-list .c-pagination {
     text-align: center; }
 
@@ -10060,7 +10060,7 @@ h1 {
 .c-content-tab-4.c-opt-3 > .nav > li.active > a,
 .c-content-tab-4.c-opt-3 > .nav > li:active > a {
   color: #ffffff;
-  background-color: #5bc2ce; }
+  background-color: #2364F8	; }
 
 .c-content-tab-4.c-opt-3 > .nav > li:nth-child(even) > a {
   background-color: #cfdae4; }
@@ -10069,7 +10069,7 @@ h1 {
 
 .c-content-tab-4.c-opt-3 > .nav > li:nth-child(even).active > a, .c-content-tab-4.c-opt-3 > .nav > li:nth-child(even):active > a {
   color: #ffffff;
-  background-color: #5bc2ce; }
+  background-color: #2364F8; }
 
 .c-content-tab-4.c-opt-3 > .tab-content {
   background-color: #f6f9fb; }

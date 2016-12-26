@@ -25,8 +25,8 @@ public class FaqDaoTest {
 	@Inject
 	FaqDao dao;
 	
-	//FaqAllList [전체보기]Test
 	@Ignore
+	//FaqAllList [전체보기]Test
 	@Test
 	public void testFaqAllList() throws Exception {
 		
@@ -39,8 +39,8 @@ public class FaqDaoTest {
 		
 	}
 	
-	//FaqUserList [회원관련]Test
 	@Ignore
+	//FaqUserList [회원관련]Test
 	@Test
 	public void testFaqUserList() throws Exception{
 		
@@ -52,8 +52,8 @@ public class FaqDaoTest {
 		}
 	}
 	
-	//FaqBuyList [사냥관련]Test
 	@Ignore
+	//FaqBuyList [사냥관련]Test
 	@Test
 	public void testFaqBuyList() throws Exception{
 		
@@ -66,8 +66,8 @@ public class FaqDaoTest {
 		
 	}
 	
-	//FaqInfoList [정보관련]Test
 	@Ignore
+	//FaqInfoList [정보관련]Test
 	@Test
 	public void testFaqInfoList() throws Exception{
 		
@@ -80,8 +80,8 @@ public class FaqDaoTest {
 		
 	}
 	
-	//FaqCenterList [고객센터]Test
 	@Ignore
+	//FaqCenterList [고객센터]Test
 	@Test
 	public void testFaqCenterList() throws Exception{
 		
@@ -92,4 +92,5 @@ public class FaqDaoTest {
 			logger.info(list.get(i).toString());
 		}
 	}
+	
 }

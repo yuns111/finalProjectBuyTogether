@@ -122,4 +122,31 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
+	@Override
+	public String findId(User user) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("name", user.getName());
+		map.put("email", user.getEmail());
+		
+		return sqlSession.selectOne(namespace + ".findId", map);
+		
+	}
+	
+	@Override
+	public User findPassword(User user) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("name", user.getName());
+		map.put("email", user.getEmail());
+		map.put("id", user.getId());
+		
+		return sqlSession.selectOne(namespace + ".findPassword", map);
+	}
+	
+	@Override
+	public void setPasswordDao(User user) throws Exception {
+		
+		sqlSession.update(namespace + ".setPassword",user);
+	}
+
 }
