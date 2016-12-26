@@ -10,13 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.buy.together.dao.BuyTogetherDao;
 import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.BuyTogether;
-import com.buy.together.domain.BuyTogetherAddress;
 import com.buy.together.domain.Category;
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
 import com.buy.together.dto.BuyTogetherMapDTO;
+import com.buy.together.dto.BuyTogetherUpdateDTO;
+import com.buy.together.dto.BuyTogetherWriteDTO;
 
 @Service
 public class BuyTogetherServiceImpl implements BuyTogetherService {
@@ -45,13 +46,13 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		
 		List<BuyTogetherMapDTO> searchBuyTogether = dao.searchBuyTogetherMapList(cri);
 
-		for(int i = 0; i<searchBuyTogether.size(); i++) {
+		for(int i = 0; i<searchBuyTogether.size(); i++){
 			
 			List<AttachedPhoto> attachedPhotos = dao.photoList(searchBuyTogether.get(i).getBuyTogether_number());
 			searchBuyTogether.get(i).setPhoto_path(attachedPhotos);
 			
 		}
-		System.out.println("찍혀라"+searchBuyTogether);
+
 		return searchBuyTogether;
 		
 	}
@@ -63,7 +64,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 
 		for(int i = 0; i<buyTogether.size(); i++) {
 
-			List<AttachedPhoto> attachedPhotos = dao.photoList(buyTogether.get(i).getBuyTogether_number());
+			List<AttachedPhoto> attachedPhotos = dao.photoList(buyTogether.get(i).getBuytogether_number());
 
 			buyTogether.get(i).setPhoto_path(attachedPhotos);
 
@@ -92,30 +93,67 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 
 	@Transactional
 	@Override //같이사낭 쓰기
-	public Integer buyTogetherWrite(BuyTogether buyTogether) throws Exception {
+	public void buyTogetherWrite(BuyTogetherUpdateDTO buytogether) throws Exception {
 
-		dao.buyTogetherInsert(buyTogether);
+		dao.buyTogetherInsert(buytogether);
 
 		//입력한 같이사냥 글의 번호를 가져온다.
-		int number = dao.getBuyTogetherNumber(buyTogether);
+		int number = dao.getBuyTogetherNumber(buytogether);
 
 		//같이사냥 글과 함께 사진 경로까지 입력
-		if(buyTogether.getPath() != null){
-			for(int i=0; i<buyTogether.getPath().length; i++){
+		if(buytogether.getPath() != null){
+			for(int i=0; i<buytogether.getPath().length; i++){
 				AttachedPhoto photo = new AttachedPhoto();
 				photo.setBuyTogether_number(number);
-				photo.setPath(buyTogether.getPath()[i]);
+				photo.setPath(buytogether.getPath()[i]);
 				dao.buyTogetherPhotoInsert(photo);
 			}
 		}
+		buytogether.setBuyTogether_number(number);
+		dao.buyTogetherAddressInsert(buytogether);
+	}
+	
+	@Transactional
+	@Override
+	public BuyTogetherWriteDTO buyTogetherReadOne(Integer buytogether_number) throws Exception {
 
-		return number;
+		BuyTogetherWriteDTO buytogetherDTO = new BuyTogetherWriteDTO();
+
+		BuyTogether buytogether = dao.buyTogetherReadOneDao(buytogether_number);
+		List<AttachedPhoto> attachedPhotos = dao.photoList(buytogether_number);
+
+		String[] path = new String[attachedPhotos.size()];
+		
+		for(int i=0; i<attachedPhotos.size(); i++){
+
+			path[i] = attachedPhotos.get(i).getPath();
+		}
+		if(attachedPhotos.size() != 0){
+			buytogether.setPath(path);
+		}
+		buytogetherDTO.setBuytogether(buytogether);
+		buytogetherDTO.setBuyTogetherAddress(dao.buyTogetherAddressReadOneDao(buytogether_number));
+
+		return buytogetherDTO;
 	}
 
-	@Override //같이사냥 쓰기시 주소 입력
-	public void buyTogetherWriteAddress(BuyTogetherAddress buyTogetherAddress) throws Exception {
+	@Transactional
+	@Override
+	public void buyTogetherUpdate(BuyTogetherUpdateDTO buyTogetherUpdateDTO) throws Exception {
 
-		dao.buyTogetherAddressInsert(buyTogetherAddress);
+		dao.buyTogetherUpdateDao(buyTogetherUpdateDTO);
+		dao.buyTogetherUpdateAddressDao(buyTogetherUpdateDTO);
+		dao.buyTogetherPhotoDeleteDao(buyTogetherUpdateDTO.getBuyTogether_number());
+
+		if(buyTogetherUpdateDTO.getPath() != null){
+			
+			for(int i=0; i<buyTogetherUpdateDTO.getPath().length; i++){
+				AttachedPhoto photo = new AttachedPhoto();
+				photo.setBuyTogether_number(buyTogetherUpdateDTO.getBuyTogether_number());
+				photo.setPath(buyTogetherUpdateDTO.getPath()[i]);
+				dao.buyTogetherPhotoInsert(photo);
+			}
+		}
 	}
 	
 }

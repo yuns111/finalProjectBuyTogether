@@ -59,6 +59,7 @@ public class LoginServiceImpl implements LoginService {
 		} else { //같이사냥 회원이 로그인 했다면,
 
 			userInfo = new LoginDTO(userLogin.getUser_number(), userLogin.getId(), userLogin.getPw());
+			userInfo.setNickname(userLogin.getNickname());
 			
 		}
 		

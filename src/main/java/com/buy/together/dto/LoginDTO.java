@@ -5,6 +5,7 @@ public class LoginDTO { //같이사냥 회원 및 같이사냥 로그인을 위�
 	private int number;
 	private String id;
 	private String pw;
+	private String nickname;
 	
 	public LoginDTO() {
 
@@ -39,5 +40,15 @@ public class LoginDTO { //같이사냥 회원 및 같이사냥 로그인을 위�
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
+	
 	
 }

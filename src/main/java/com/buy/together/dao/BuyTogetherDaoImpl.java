@@ -16,6 +16,7 @@ import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
 import com.buy.together.dto.BuyTogetherMapDTO;
+import com.buy.together.dto.BuyTogetherUpdateDTO;
 
 @Repository
 public class BuyTogetherDaoImpl implements BuyTogetherDao {
@@ -96,25 +97,22 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 		
 	}
 	
-	//같이사냥 게시글 쓰기
-	@Override 
-	public void buyTogetherInsert(BuyTogether buyTogether) throws Exception {
+	@Override //같이사냥 게시글 쓰기
+	public void buyTogetherInsert(BuyTogetherUpdateDTO buyTogether) throws Exception {
 
 		sqlSession.insert(namespace+".buytogetherInsert", buyTogether);
 		
 	}
 	
-	//방금 쓴 게시글 번호
-	@Override 
-	public Integer getBuyTogetherNumber(BuyTogether buyTogether) throws Exception {
+	@Override //방금 쓴 게시글 번호
+	public Integer getBuyTogetherNumber(BuyTogetherUpdateDTO buyTogether) throws Exception {
 
 		return sqlSession.selectOne(namespace+".buytogetherNumber", buyTogether);
 		
 	}
 	
-	//게시글과 함께 같이사냥 주소 저장
-	@Override 
-	public void buyTogetherAddressInsert(BuyTogetherAddress buyTogetherAddress) throws Exception {
+	@Override //게시글과 함께 같이사냥 주소 저장
+	public void buyTogetherAddressInsert(BuyTogetherUpdateDTO buyTogetherAddress) throws Exception {
 
 		sqlSession.insert(namespace+".buytogetherAddressInsert", buyTogetherAddress);
 		
@@ -126,5 +124,35 @@ public class BuyTogetherDaoImpl implements BuyTogetherDao {
 
 		sqlSession.insert(namespace+".buytogetherPhotoInsert", attachedPhoto);
 		
+	}
+	
+	@Override //해당 게시글 정보를 가져옴
+	public BuyTogether buyTogetherReadOneDao(Integer buytogether_number) throws Exception {
+
+		return sqlSession.selectOne(namespace+".buytogetherReadOne", buytogether_number);
+	}
+	
+	@Override //해당 게시글 주소 정보를 가져옴
+	public BuyTogetherAddress buyTogetherAddressReadOneDao(Integer buytogether_number) throws Exception {
+
+		return sqlSession.selectOne(namespace+".buytogetherAddressReadOne", buytogether_number);
+	}
+	
+	@Override //같이사냥 게시글 수정
+	public void buyTogetherUpdateDao(BuyTogetherUpdateDTO buytogetherUpdateDTO) throws Exception {
+
+		sqlSession.update(namespace+".buytogetherUpdate",buytogetherUpdateDTO);
+	}
+	
+	@Override //같이사냥 주소 수정
+	public void buyTogetherUpdateAddressDao(BuyTogetherUpdateDTO buytogetherUpdateDTO) throws Exception {
+
+		sqlSession.update(namespace+".buytogetherUpdateAddress",buytogetherUpdateDTO);
+	}
+	
+	@Override //사진삭제
+	public void buyTogetherPhotoDeleteDao(Integer buytogether_number) throws Exception {
+
+		sqlSession.delete(namespace+".deletePhotoPath",buytogether_number);
 	}
 }

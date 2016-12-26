@@ -65,7 +65,7 @@ function buytogetherDao() {
 
 			$(data).each(function() {
 
-				str += "<option value='" + this.hunting_status_number + "'>";
+				str += "<option value='" + this.status_number + "'>";
 				str += this.status_name+"</option>";
 			});
 
@@ -99,30 +99,32 @@ function buytogetherDao() {
 	//첨부사진 삭제
 	this.deletePhotoDao = function(photo) {
 
+		var result;
 		$.ajax({
 
 			url:'/restBuytogether/deleteFile',
 			type: 'POST',
 			data: {fileName: photo.attr("data-src")},
 			dataType: 'text',
-			success: function(result){
+			async : false,
+			success: function(data){
 
-				if(result == 'deleted') {
-					photo.parent().parent("div").remove();
-					photo.parent().parent("span").remove();
-				}
+				result = data;
 			}
 		});
+		console.log("!" + result);
+		return result;
 	}
 
 	//게시글 삽입
-	this.insertDao = function(buytogether, buyTogetherAddress) {
+	this.insertDao = function(buytogether) {
 
+		console.log(buytogether);
 		$.ajax({
 			type : "post",
 			url : "/restBuytogether/write",
 			header: {
-				"Content-Type" : "application/json;charset=UTF-8",
+				"Content-Type": "application/json",
 				"X-HTTP-Method-Override" : "POST"
 			},
 			dataType: "text",	
@@ -130,43 +132,24 @@ function buytogetherDao() {
 				title : buytogether.title,
 				content : buytogether.content,
 				path : buytogether.path,
-				dueDate : buytogether.duedate,
-				joinin_number : buytogether.joinin_number,
+				duedate : buytogether.duedate,
+				join_number : buytogether.join_number,
 				price : buytogether.price,
+				user_number : 4,
 				category_number : buytogether.category_number,
-				user_number : buytogether.user_number,
 				hunting_type_number : buytogether.hunting_type_number,
+				buytogether_address_sido : buytogether.buyTogether_address_sido,
+				buytogether_address_sigungu : buytogether.buyTogether_address_sigungu,
+				buytogether_address_road_address : buytogether.buyTogether_address_road_address,
+				buytogether_address_detail : buytogether.buyTogether_address_detail,
+				longitude : buytogether.longitude,
+				latitude : buytogether.latitude
 			},
 			success : function(result) {
 
-				if(result != null) {
-
-					console.log(buyTogetherAddress);
-					$.ajax({
-						type : "post",
-						url : "/restBuytogether/addressWrite",
-						header: {
-							"Content-Type" : "application/json;charset=UTF-8",
-							"X-HTTP-Method-Override" : "POST"
-						},
-						dataType: "text",	
-						data: {
-							buyTogether_number : result,
-							buyTogether_address_sido : buyTogetherAddress.buyTogether_address_sido,
-							buyTogether_address_sigungu : buyTogetherAddress.buyTogether_address_sigungu,
-							buyTogether_address_road_address : buyTogetherAddress.buyTogether_address_road_address,
-							longitude : buyTogetherAddress.longitude,
-							latitude : buyTogetherAddress.latitude,
-							buyTogether_address_detail : buyTogetherAddress.buyTogether_address_detail,
-						},
-						success : function(data) {
-							if(data == "success") {
-								document.location.href='/buyTogether/list';
-							}
-						}
-					});
-
-				} else {
+				if(result == "success") {
+					document.location.href='/buyTogether/list';
+				}else {
 					alert("글쓰기 실패");
 					document.location.href='/buyTogether/list';
 				}
@@ -175,11 +158,71 @@ function buytogetherDao() {
 		});
 	}
 	
+	//같이사냥 수정시 해당 글번호의 내용 가져옴
+	this.readOneDao = function(buytogether_number) {
+		
+		var result;
+		
+		$.ajax({
+			type: 'post',
+			url : '/restBuytogether/readOne',
+			async : false,
+			data : {buytogether_number : buytogether_number},
+			dataType : 'json',
+			success : function(data) {
+				
+				result = data;
+			}
+		});
+		
+		console.log(result);
+		return result;
+	}
+	
+	//같이사냥 글 수정
+	this.UpdateBuyTogetherDao = function(buytogetherUpdate) {
+		
+		var result;
+		$.ajax({
+			type: 'post',
+			url : '/restBuytogether/update',
+			header: {
+				"Content-Type": "application/json",
+				"X-HTTP-Method-Override" : "POST"
+			},
+			async : false,
+			data : { 
+				buyTogether_number : buytogetherUpdate.buyTogether_number,
+				title : buytogetherUpdate.title,
+				content : buytogetherUpdate.content,
+				path : buytogetherUpdate.path,
+				duedate : buytogetherUpdate.duedate,
+				join_number : buytogetherUpdate.join_number,
+				price : buytogetherUpdate.price,
+				category_number : buytogetherUpdate.category_number,
+				hunting_type_number : buytogetherUpdate.hunting_type_number,
+				buytogether_address_sido : buytogetherUpdate.buyTogether_address_sido,
+				buytogether_address_sigungu : buytogetherUpdate.buyTogether_address_sigungu,
+				buytogether_address_road_address : buytogetherUpdate.buyTogether_address_road_address,
+				buytogether_address_detail : buytogetherUpdate.buyTogether_address_detail,
+				longitude : buytogetherUpdate.longitude,
+				latitude : buytogetherUpdate.latitude
+			},
+			dataType : 'text',
+			success : function(data) {
+				
+				result = data;
+			}
+		});
+		return result;
+		
+	}
+
 	//같이사냥 리스트(기본)
 	this.listBuyTogetherDao = function(scri){
-		
+
 		var parsedResult;
-		
+
 		$.ajax({
 			type : 'post',
 			url : '/restBuytogether/listBuyTogether',
@@ -197,10 +240,10 @@ function buytogetherDao() {
 
 			}
 		});
-		
+
 		return parsedResult;
 	}
-	
+
 	//같이사냥 리스트(지도)
 	this.mapListBuyTogetherDao = function(scri){
 		

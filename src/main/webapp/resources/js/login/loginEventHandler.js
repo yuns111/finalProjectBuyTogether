@@ -17,7 +17,10 @@ $(document).ready(function() {
 		loginCheck = isLoginCheckCheked(); //로그인 상태 유지 체크 시
 		
 		message = controller.requestLogin(user, loginCheck); //로그인 컨트롤러 요청
-		modal(message);
+		
+		if(message != null){
+			modal(message);
+		}
 
 	});
 

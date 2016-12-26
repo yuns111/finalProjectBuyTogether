@@ -103,15 +103,15 @@
 	
 	<!-- 같이사냥 글쓰기 1.게시글쓰기 -->
 	<insert id="buytogetherInsert">
-		insert into buytogether(title, content, duedate, joinin_number, price, category_number, user_number, hunting_type_number)
-		values(#{title}, #{content}, #{dueDate}, #{joinin_number}, #{price}, #{category_number}, #{user_number}, #{hunting_type_number});
+		insert into buytogether(title, content, duedate, join_number, price, category_number, user_number, hunting_type_number)
+		values(#{title}, #{content}, #{duedate}, #{join_number}, #{price}, #{category_number}, 4, #{hunting_type_number});
 	</insert>
 	
 	<!-- 같이사냥 글쓰기 - 쓴 게시글의 게시글 번호를 받아온다 -->
 	<select id="buytogetherNumber" resultType="Integer">
 	select buytogether_number
 	from buytogether
-	where title = #{title} and content = #{content};
+	where title = #{title} and content = #{content} and user_number=#{user_number};
 	</select>
 	
 	<!-- 같이사냥 글쓰기 2.첨부사진저장 -->
@@ -123,8 +123,47 @@
 	<!-- 같이사냥 글쓰기 3.같이사냥 주소저장 -->
 	<insert id="buytogetherAddressInsert">
 		insert into buytogetheraddress(latitude, longitude, buytogether_address_sido, buytogether_address_sigungu, buytogether_address_road_address, buytogether_address_detail, buytogether_number)
-		values (#{latitude}, #{longitude}, #{buyTogether_address_sido}, #{buyTogether_address_sigungu}, #{buyTogether_address_road_address}, #{buyTogether_address_detail}, #{buyTogether_number});
+		values (#{latitude}, #{longitude}, #{buytogether_address_sido}, #{buytogether_address_sigungu}, #{buytogether_address_road_address}, #{buytogether_address_detail}, #{buyTogether_number});
 	</insert>
+	
+	<!-- 같이사냥 글번호로 해당글 조회 -->
+	<select id="buytogetherReadOne" resultType="BuyTogether">
+		select *
+		from buytogether
+		where buytogether_number = #{buytogether_number}
+	</select>
+	
+		<!-- 같이사냥 글번호로 해당글 주소 조회 -->
+	<select id="buytogetherAddressReadOne" resultType="BuyTogetherAddress">
+		select *
+		from buytogetheraddress
+		where buytogether_number = #{buytogether_number}
+	</select>
+	
+	<!-- 같이사냥 글 수정 -->
+	<update id="buytogetherUpdate">
+		update buytogether
+		set title = #{title}, content = #{content}, category_number = #{category_number},
+			hunting_type_number = #{hunting_type_number}, duedate = #{duedate},
+			price = #{price}, updatedate = now(), join_number = #{join_number}
+		where buytogether_number = #{buyTogether_number}
+	</update>
+	
+	<!-- 같이사냥 주소 수정 -->
+	<update id="buytogetherUpdateAddress">
+		update buytogetheraddress
+		set latitude = #{latitude}, longitude = #{longitude}, buytogether_address_sido = #{buytogether_address_sido},
+			buytogether_address_sigungu = #{buytogether_address_sigungu},
+			buytogether_address_road_address = #{buytogether_address_road_address}, 
+			buytogether_address_detail = #{buytogether_address_detail}
+		where buytogether_number = #{buyTogether_number}
+	</update>
+	
+	<!-- 첨부사진 삭제 -->
+	<delete id="deletePhotoPath">
+		delete from attachedphoto
+		where buytogether_number = #{buyTogether_number}
+	</delete>
 	
 	<!-- 검색용 코드 -->
 	<sql id="search">
@@ -133,6 +172,9 @@
 		</if>
 		<if test="hunting_type_number != 0 and hunting_type_number != null">
 			and bt.hunting_type_number = #{hunting_type_number}
+		</if>
+		<if test="hunting_type_number != 0 and hunting_type_number != null">
+			and bt.hunting_type_number = #{hunting_type_number} 
 		</if>
 		<if test="status_number != 0 and status_number != null">
 			and bt.status_number = #{status_number}

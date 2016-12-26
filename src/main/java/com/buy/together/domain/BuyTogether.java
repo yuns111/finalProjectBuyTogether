@@ -10,7 +10,7 @@ public class BuyTogether {
 	private Timestamp writeDate;
 	private Timestamp updateDate;
 	private String dueDate;
-	private int joinin_number;
+	private int join_number;
 	private int price;
 	private int category_number;
 	private int user_number;
@@ -70,12 +70,12 @@ public class BuyTogether {
 		this.dueDate = dueDate;
 	}
 
-	public int getJoinin_number() {
-		return joinin_number;
+	public int getJoin_number() {
+		return join_number;
 	}
 
-	public void setJoinin_number(int joinin_number) {
-		this.joinin_number = joinin_number;
+	public void setJoin_number(int join_number) {
+		this.join_number = join_number;
 	}
 
 	public int getPrice() {

@@ -2579,6 +2579,9 @@ h1 {
   .c-layout-header-fixed .c-layout-body {
     margin: 150px 0 50px 0; /* 수정 */
     padding: 50px 0 50px 0; }
+   .c-layout-header-fixed .c-layout-body1 {
+    margin: 100px 0 0px 0; /* 수정 */
+    padding: 50px 0 0px 0; }
   .c-layout-header-fixed .c-layout-body .container > .col-md-6 > .row > p {
   	font-size: 13px;
   	font-family: "notokr-regular", sans-serif;
@@ -10057,7 +10060,7 @@ h1 {
 .c-content-tab-4.c-opt-3 > .nav > li.active > a,
 .c-content-tab-4.c-opt-3 > .nav > li:active > a {
   color: #ffffff;
-  background-color: #5bc2ce; }
+  background-color: #2364F8	; }
 
 .c-content-tab-4.c-opt-3 > .nav > li:nth-child(even) > a {
   background-color: #cfdae4; }
@@ -10066,7 +10069,7 @@ h1 {
 
 .c-content-tab-4.c-opt-3 > .nav > li:nth-child(even).active > a, .c-content-tab-4.c-opt-3 > .nav > li:nth-child(even):active > a {
   color: #ffffff;
-  background-color: #5bc2ce; }
+  background-color: #2364F8; }
 
 .c-content-tab-4.c-opt-3 > .tab-content {
   background-color: #f6f9fb; }

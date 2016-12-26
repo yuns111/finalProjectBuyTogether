@@ -84,6 +84,7 @@ function setForm(editor) {
 	var textarea = document.createElement('textarea');
 	textarea.name = 'content';
 	textarea.value = content;
+	textarea.type = 'hidden';
 	form.createField(textarea);
 
 	/* 아래의 코드는 첨부된 데이터를 필드를 생성하여 값을 할당하는 부분으로 상황에 맞게 수정하여 사용한다.
