@@ -7,9 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.buy.together.domain.Interest;
 import com.buy.together.domain.User;
-import com.buy.together.domain.UserAddress;
 import com.buy.together.dto.MyPageDTO;
 
 @Repository
@@ -34,47 +32,6 @@ public class MyPageDaoImpl implements MyPageDao {
 
 		return sqlSession.selectList(namespace + ".readInterest", user_number);
 		
-	}
-	
-	//---------------- 관심 지역 ----------------
-	@Override
-	public UserAddress userAddress(Integer user_number) throws Exception {
-
-		return sqlSession.selectOne(namespace + ".userAddress", user_number);
-		
-	}
-	
-	//---------------- 이메일 중복확인 ----------------
-	@Override
-	public String checkEmail(String email) throws Exception {
-		
-		return sqlSession.selectOne(namespace + ".userEmailCheck", email);
-	}
-	
-	//---------------- 내 정보 수정 ----------------
-	@Override
-	public void userUpdate(User user) throws Exception {
-		
-		sqlSession.update(namespace + ".userUpdate", user);
-		
-	}
-	
-	@Override
-	public void userCategoryDelete(Integer user_number) throws Exception {
-
-		sqlSession.delete(namespace + ".userCategoryDelete", user_number);
-	}
-	
-	@Override
-	public void userCategoryInsert(List<Interest> interestCategory) throws Exception {
-
-		sqlSession.insert(namespace + ".userCategoryInsert", interestCategory);
-	}
-	
-	@Override
-	public void userAddressUpdate(UserAddress address) throws Exception {
-
-		sqlSession.update(namespace + ".userAddressUpdate", address);
 	}
 
 	//회원 비밀번호 조회
@@ -125,6 +82,7 @@ public class MyPageDaoImpl implements MyPageDao {
 		
 	}
 
+	//관심 카테고리 삭제
 	@Override
 	public void deleteInterest(int user_number) throws Exception {
 		
@@ -132,6 +90,7 @@ public class MyPageDaoImpl implements MyPageDao {
 		
 	}
 
+	//관심 카테고리 등록
 	@Override
 	public void createInterest(MyPageDTO user) throws Exception {
 		
@@ -139,6 +98,7 @@ public class MyPageDaoImpl implements MyPageDao {
 		
 	}
 
+	//관심 지역 수정
 	@Override
 	public void updateAddress(MyPageDTO user) throws Exception {
 		
