@@ -9,16 +9,12 @@ $(document).ready(function() {
 
 		showLoginBtn(); //로그인, 회원가입 버튼 표시
 		
-		if(url == "/login/basicUserInfo" || url == "/user/Esignout" || url == "/user/Bsignout" || url == "/mypage"){
+		if(url == "/login/basicUserInfo" || url == "/user/Esignout" || url == "/user/Bsignout" || url == "/mypage"
+			|| url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"){
 
 			document.location = "/login";
 			
 		}
-		/*if(url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"){
-
-			document.location = "/login";
-			
-		}*/
 		
 	} else {
 		
