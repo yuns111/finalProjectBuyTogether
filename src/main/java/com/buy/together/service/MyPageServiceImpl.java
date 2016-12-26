@@ -22,11 +22,15 @@ public class MyPageServiceImpl implements MyPageService {
 	//내 정보 조회
 	@Override
 	public MyPageDTO readMyPage(int user_number) throws Exception {
-		
+
 		MyPageDTO user =  myPageDao.read(user_number);
 		List<Integer> interest = myPageDao.readInterest(user_number);
-		
-		user.setCategory_number(interest);
+
+		if(interest.size() != 0) {
+			
+			user.setCategory_number(interest);
+			
+		}
 		
 		return user;
 

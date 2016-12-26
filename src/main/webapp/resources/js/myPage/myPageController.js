@@ -15,6 +15,7 @@ function myPageController() {
 			
 			$("#id").val(user.id);
 			$("#reputation").val(user.reputation);
+			$("#name").val(user.name);
 			$("#nickname").val(user.nickname);
 			$("#phone_number").val(user.phone_number);
 			$("#email").val(user.email);

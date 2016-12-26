@@ -86,9 +86,7 @@ input[type=tel]:disabled {
 						</div>
 						<label for="inputPasswordCheck" class="col-md-4 control-label c-font-bold">변경 패스워드</label>
 						<div class="col-md-4">
-							<input type="password" class="form-control" id="updatePassword"
-								data-rule-required="true" placeholder="변경 할 패스워드를 입력해주세요"
-								maxlength="16">
+							<input type="password" class="form-control" id="updatePassword" data-rule-required="true" placeholder="변경 할 패스워드를 입력해주세요" maxlength="16">
 							<p class="help-block" style="font-size: 12px">* 최소 6~16자이내의 숫자 혹은 특수문자를 반드시 포함</p>
 						</div>
 						<div class="col-md-2">
@@ -96,14 +94,19 @@ input[type=tel]:disabled {
 						</div>
 					</div>
 				</div>
-				<div class="form-group" id="divNickname">
-					<label for="inputNickname" class="col-md-4 control-label c-font-bold">닉네임</label>
+				<div class="form-group">
+					<label for="inputNickname" class="col-md-4 control-label c-font-bold">이름</label>
 					<div class="col-md-5">
-						<input type="text" class="form-control" id="nickname"
-							data-rule-required="true" disabled="disabled">
+						<input type="text" class="form-control" id="name" data-rule-required="true" disabled="disabled">
 					</div>
 				</div>
-				<div class="form-group" id="divPhoneNumber">
+				<div class="form-group">
+					<label for="inputNickname" class="col-md-4 control-label c-font-bold">닉네임</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" id="nickname" data-rule-required="true" disabled="disabled">
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="inputPhoneNumber" class="col-md-4 control-label c-font-bold">연락처</label>
 					<div class="col-md-4">
 						<input type="tel" class="form-control onlyNumber" id="phone_number" data-rule-required="true" maxlength="11">
@@ -122,7 +125,7 @@ input[type=tel]:disabled {
 						<button class="btn btn-primary c-btn-square c-btn-uppercase" id="emailBtn">중복확인</button>
 					</div>
 				</div>
-				<div class="form-group" id="divinterest">
+				<div class="form-group">
 					<label for="inputInterest" class="col-md-4 control-label c-font-bold">관심 카테고리</label>
 					<div class="col-md-4 ">
 						<div class="checkbox checkbox-primary">
