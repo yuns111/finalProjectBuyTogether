@@ -2,7 +2,7 @@ package com.buy.together.dto;
 
 public class LoginDTO { //같이사냥 회원 및 같이사냥 로그인을 위한 DTO
 	
-	private int number;
+	private int user_number;
 	private String id;
 	private String pw;
 	private String nickname;
@@ -11,18 +11,18 @@ public class LoginDTO { //같이사냥 회원 및 같이사냥 로그인을 위�
 
 	}
 	
-	public LoginDTO(int number, String id, String pw) {
-		this.number = number;
+	public LoginDTO(int user_number, String id, String pw) {
+		this.user_number = user_number;
 		this.id = id;
 		this.pw = pw;
 	}
 
-	public int getNumber() {
-		return number;
+	public int getUser_number() {
+		return user_number;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
+	public void setUser_number(int user_number) {
+		this.user_number = user_number;
 	}
 
 	public String getId() {
@@ -48,7 +48,5 @@ public class LoginDTO { //같이사냥 회원 및 같이사냥 로그인을 위�
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
-	
 	
 }

@@ -18,7 +18,6 @@ function loginController() {
 			
 		} else { //아이디와 비밀번호를 작성했다면,
 			
-			
 			loginCheckStatus = loginCheck;		
 			userInfo = dao.LoginDao(user); //LoginDao 호출 후 결과 값 저장
 			
@@ -84,7 +83,7 @@ function loginController() {
 	function isNewUser(userInfo, loginCheckStatus) {
 
 		var result = dao.loginSession(userInfo, loginCheckStatus); //체크전 세션에 로그인정보 저장
-		console.log(userInfo);
+
 		if(userInfo.nickname == null) { //첫 로그인이라면,
 
 			document.location = "/login/basicUserInfo"; //필수 정보 입력 화면으로 이동

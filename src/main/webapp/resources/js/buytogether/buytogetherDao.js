@@ -234,7 +234,6 @@ function buytogetherDao() {
 			dataType : 'text',
 			data : JSON.stringify(scri),
 			success : function(result) {
-
 				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
 				parsedResult = JSON.parse(result);
 

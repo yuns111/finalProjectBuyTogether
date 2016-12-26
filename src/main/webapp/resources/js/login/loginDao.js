@@ -89,7 +89,7 @@ function loginDao() {
 				userInfo = data;
 			}
 		});
-		console.log(userInfo);
+
 		return userInfo;
 		
 	};
