@@ -11,6 +11,10 @@ public class ListSearchCriteria extends Criteria {
 	private int user_number;
 	private String searchType;
 	private String keyword;
+	private double swLng;
+	private double swLat;
+	private double neLng;
+	private double neLat;
 
 	public int getCategory_number() {
 		return category_number;
@@ -51,14 +55,6 @@ public class ListSearchCriteria extends Criteria {
 	public void setBuytogether_address_sigungu(String buytogether_address_sigungu) {
 		this.buytogether_address_sigungu = buytogether_address_sigungu;
 	}
-	
-	public int getUser_number() {
-		return user_number;
-	}
-
-	public void setUser_number(int user_number) {
-		this.user_number = user_number;
-	}
 
 	public int getRegDate() {
 		return regDate;
@@ -66,6 +62,14 @@ public class ListSearchCriteria extends Criteria {
 
 	public void setRegDate(int regDate) {
 		this.regDate = regDate;
+	}
+
+	public int getUser_number() {
+		return user_number;
+	}
+
+	public void setUser_number(int user_number) {
+		this.user_number = user_number;
 	}
 
 	public String getSearchType() {
@@ -82,6 +86,38 @@ public class ListSearchCriteria extends Criteria {
 
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+
+	public double getSwLng() {
+		return swLng;
+	}
+
+	public void setSwLng(double swLng) {
+		this.swLng = swLng;
+	}
+
+	public double getSwLat() {
+		return swLat;
+	}
+
+	public void setSwLat(double swLat) {
+		this.swLat = swLat;
+	}
+
+	public double getNeLng() {
+		return neLng;
+	}
+
+	public void setNeLng(double neLng) {
+		this.neLng = neLng;
+	}
+
+	public double getNeLat() {
+		return neLat;
+	}
+
+	public void setNeLat(double neLat) {
+		this.neLat = neLat;
 	}
 
 }

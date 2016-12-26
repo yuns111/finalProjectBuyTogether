@@ -25,23 +25,34 @@
 		</where>
 		<include refid="search"></include>
 	</select>
+	
+		<!-- 사냥 지도 서치카운트 -->
+	<select id="searchBuyTogetherMapCount" parameterType="map" resultType="Integer">
+	<![CDATA[
+		select count(bt.buytogether_number)
+		from user u, buytogether bt, buytogetheraddress addr
+		where u.user_number = bt.user_number and addr.buytogether_number = bt.buytogether_number 
+				and addr.latitude > #{swLat} and addr.latitude < #{neLat}
+        		and addr.longitude > #{swLng} and addr.longitude < #{neLng}
+    ]]>
+		<include refid="search"></include>
+		
+	</select>
 
-	<!-- 같이사냥(지도)리스트 -->
-	<select id="searchBuyTogetherMapList" resultType="com.buy.together.dto.BuyTogetherDTO">
+	<!-- 사냥 지도 리스트 -->
+	<select id="searchBuyTogetherMapList" resultType="com.buy.together.dto.BuyTogetherMapDTO">
 	 	<![CDATA[
-        select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude
+        select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude, bt.category_number
         from user u,  buytogether bt, buytogetheraddress addr
-        where u.user_number = bt.user_number and bt.buytogether_number = addr.buytogether_address_number
+        where u.user_number = bt.user_number 
+        		and bt.buytogether_number = addr.buytogether_address_number 
+				and addr.latitude > #{swLat} and addr.latitude < #{neLat}
+        		and addr.longitude > #{swLng} and addr.longitude < #{neLng}
 		]]>
 
 		<include refid="search"></include>
 			  
-		<![CDATA[
-		 order by sqrt(round(round(37.4785252-addr.latitude,10)*111000,10) * round(round(37.4785252 - addr.latitude,10)*111000,10)+  
-					round(round(126.8809673 - addr.longitude,10)*88800,10) * round(round(126.8809673 - addr.longitude,10)*88800,10))/1000 asc,
-					bt.buytogether_number desc
-		limit #{pageStart}, #{perPageNum}
-		]]>
+		<![CDATA[ limit #{pageStart}, #{perPageNum} ]]>
 	</select>
 
 	<!-- 같이사냥리스트 -->
@@ -156,13 +167,16 @@
 	
 	<!-- 검색용 코드 -->
 	<sql id="search">
-		<if test="category_number != 0 and category_number != ''">
+		<if test="category_number != 0 and category_number != null">
 			and bt.category_number = #{category_number}
 		</if>
-		<if test="hunting_type_number != 0 and hunting_type_number != ''">
+		<if test="hunting_type_number != 0 and hunting_type_number != null">
+			and bt.hunting_type_number = #{hunting_type_number}
+		</if>
+		<if test="hunting_type_number != 0 and hunting_type_number != null">
 			and bt.hunting_type_number = #{hunting_type_number} 
 		</if>
-		<if test="status_number != 0 and status_number != ''">
+		<if test="status_number != 0 and status_number != null">
 			and bt.status_number = #{status_number}
 		</if>
 		<if test="buytogether_address_sido != null and buytogether_address_sido != ''">

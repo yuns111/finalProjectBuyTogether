@@ -217,38 +217,12 @@ function buytogetherDao() {
 		return result;
 		
 	}
-	
-	//같이사냥 리스트(지도)
-	this.listBuyTogetherMapDao = function(scri){
-		
-		var parsedResult;
-		
-		$.ajax({
-			type : 'post',
-			url : '/restBuytogether/maplistBuyTogether',
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
-			async : false,
-			dataType : 'text',
-			data : JSON.stringify(scri),
-			success : function(result) {
 
-				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
-				parsedResult = JSON.parse(result);
-
-			}
-		});
-		
-		return parsedResult;
-	}
-	
 	//같이사냥 리스트(기본)
 	this.listBuyTogetherDao = function(scri){
-		
+
 		var parsedResult;
-		
+
 		$.ajax({
 			type : 'post',
 			url : '/restBuytogether/listBuyTogether',
@@ -260,14 +234,40 @@ function buytogetherDao() {
 			dataType : 'text',
 			data : JSON.stringify(scri),
 			success : function(result) {
+				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
+				parsedResult = JSON.parse(result);
+
+			}
+		});
+
+		return parsedResult;
+	}
+
+	//같이사냥 리스트(지도)
+	this.mapListBuyTogetherDao = function(scri){
+		
+		var parsedResult;
+		
+		$.ajax({
+			type : 'post',
+			url : '/restBuytogether/mapListBuyTogether',
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "POST"
+			},
+			async : false,
+			dataType : 'text',
+			data : JSON.stringify(scri),
+			success : function(result) {
 
 				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
 				parsedResult = JSON.parse(result);
 
 			}
 		});
-		
+
 		return parsedResult;
+		
 	}
 	
 }

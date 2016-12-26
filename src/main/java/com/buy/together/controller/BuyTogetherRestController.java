@@ -31,6 +31,7 @@ import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.domain.PageMaker;
 import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.dto.BuyTogetherMapDTO;
 import com.buy.together.dto.BuyTogetherUpdateDTO;
 import com.buy.together.dto.BuyTogetherWriteDTO;
 import com.buy.together.service.BuyTogetherService;
@@ -40,10 +41,9 @@ import com.buy.together.util.UploadFileUtils;
 @RequestMapping("/restBuytogether/*")
 public class BuyTogetherRestController {
 
-	private static final Logger logger = LoggerFactory.getLogger(BuyTogetherRestController.class);
-
 	@Inject
 	private BuyTogetherService service;
+	private static final Logger logger = LoggerFactory.getLogger(BuyTogetherRestController.class);
 	
 	//유저의 관심 카테고리 등록 여부 확인
 	@RequestMapping(value = "userInterest", method = RequestMethod.POST)
@@ -61,7 +61,7 @@ public class BuyTogetherRestController {
 		return entity;
 	}
 
-	@RequestMapping(value = "maplistBuyTogether", method = RequestMethod.POST)
+	@RequestMapping(value = "mapListBuyTogether", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestMapListBuyTogether(@RequestBody ListSearchCriteria scri) {
 
 		ResponseEntity<Map<String, Object>> entity = null;
@@ -71,15 +71,15 @@ public class BuyTogetherRestController {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
 			
-			int searchBuyTogetherCount = service.searchBuyTogetherCount(scri);
+			int searchBuyTogetherCount = service.searchBuyTogetherMapCount(scri);
 			pageMaker.setTotalCount(searchBuyTogetherCount);
-			
+
 			Map<String, Object> map = new HashMap<String, Object>();
-			List<BuyTogetherDTO> searchBuyTogether = service.searchBuyTogetherList(scri);
-			map.put("searchBuyTogether", searchBuyTogether);
+			List<BuyTogetherMapDTO> searchBuyTogetherMap = service.searchBuyTogetherMapList(scri);
+			map.put("searchBuyTogetherMap", searchBuyTogetherMap);
 			map.put("pageMaker", pageMaker);
 			
-			entity = new ResponseEntity<>(map, HttpStatus.OK);
+			entity = new ResponseEntity<>(map, HttpStatus.OK); 
 
 		} catch (Exception e) {
 
@@ -87,7 +87,9 @@ public class BuyTogetherRestController {
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
 		}
+		
 		return entity;
+		
 	}
 	
 	@RequestMapping(value = "listBuyTogether", method = RequestMethod.POST)
@@ -105,6 +107,7 @@ public class BuyTogetherRestController {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			List<BuyTogetherDTO> searchBuyTogether = service.searchBuyTogetherList(scri);
+			System.out.println(searchBuyTogether.size());
 			map.put("searchBuyTogether", searchBuyTogether);
 			map.put("pageMaker", pageMaker);
 			

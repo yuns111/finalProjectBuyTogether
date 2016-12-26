@@ -70,10 +70,6 @@ public class LoginServiceImpl implements LoginService {
 	//페이스북 로그인 회원 정보 조회
 	@Override
 	public User facebookLogin(User user) throws Exception {
-		
-        String shaPass = sha.getSha256(user.getPw().getBytes());
-        String bcPass = BCrypt.hashpw(shaPass, BCrypt.gensalt());    
-        user.setPw(bcPass);
         
 		User isNewUser = loginDao.externalLogin(user);
 		

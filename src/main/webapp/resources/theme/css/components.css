@@ -8634,8 +8634,8 @@ h1 {
     content: "";
     display: table;
     clear: both; }
-  .c-content-blog-post-1-list .c-content-blog-post-1 {
-    margin-bottom: 80px; }
+  .c-content-blog-post-1-list .c-content-blog-post-1 { /*수정 */
+    margin-bottom: 5px; }
   .c-content-blog-post-1-list .c-pagination {
     text-align: center; }
 
