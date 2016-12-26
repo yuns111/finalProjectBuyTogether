@@ -26,6 +26,7 @@ public class FaqDaoTest {
 	FaqDao dao;
 	
 	//FaqAllList [전체보기]Test
+	@Ignore
 	@Test
 	public void testFaqAllList() throws Exception {
 		
@@ -39,6 +40,7 @@ public class FaqDaoTest {
 	}
 	
 	//FaqUserList [회원관련]Test
+	@Ignore
 	@Test
 	public void testFaqUserList() throws Exception{
 		
@@ -51,6 +53,7 @@ public class FaqDaoTest {
 	}
 	
 	//FaqBuyList [사냥관련]Test
+	@Ignore
 	@Test
 	public void testFaqBuyList() throws Exception{
 		
@@ -64,6 +67,7 @@ public class FaqDaoTest {
 	}
 	
 	//FaqInfoList [정보관련]Test
+	@Ignore
 	@Test
 	public void testFaqInfoList() throws Exception{
 		
@@ -77,6 +81,7 @@ public class FaqDaoTest {
 	}
 	
 	//FaqCenterList [고객센터]Test
+	@Ignore
 	@Test
 	public void testFaqCenterList() throws Exception{
 		
