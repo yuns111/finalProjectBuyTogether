@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$("#buytogetherFooter").load("/views/include/footer.html");
 
 	// 로그인한 유저번호 
-	var numberuser = sessionStorage.getItem("number");
+	var user_number = sessionStorage.getItem("number");
 
 	// 게시판 넘버
 	var buytogether_number =  $(location).attr('search');
@@ -25,9 +25,6 @@ $(document).ready(function() {
 	if(readData.status_name == '같이사냥중' || readData.status_name == '같이사냥완료' || readData.status_name == '같이사냥실패'){
 		$('.buy_together_btn').attr("disabled",true);
 	}
-
-	// 임의값
-	var user_number = 7;
 
 	var data;
 	// 같이사냥 참여자 확인
@@ -73,16 +70,15 @@ $(document).ready(function() {
 					joinCheck_userNumber.push(num);
 					
 				});
-				controller.requestJoinCheckBtn(buytogether_number, joinCheck_userNumber);
-
+				var result = controller.requestJoinCheckBtn(buytogether_number, joinCheck_userNumber);
+				if(result == 'success') {
+					document.location = '/buyTogether/read?buytogether_number='+buytogether_number;
+				}
 			});
 
 		});
 
-	} else {
-
 	}
-
 	var dip;
 	// 찜확인 후 하트 색 변경
 	if(user_number != readData.user_number){
@@ -340,8 +336,6 @@ $(document).ready(function() {
 					recommentList.html(html_recomment);
 
 				} else {
-
-					alert("답글이 존재하지 않습니다.");
 				}
 
 			});

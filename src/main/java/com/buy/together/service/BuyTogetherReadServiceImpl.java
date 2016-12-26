@@ -26,7 +26,7 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 
 		BuyTogetherDTO dto = dao.buyTogetherRead(buytogether_number);
 		List<AttachedPhoto> photo = dao.photoList(buytogether_number);
-		
+
 		dto.setPhoto_path(photo);
 
 		return dto;
@@ -102,74 +102,76 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 	// 찜하기 버튼
 	@Override
 	public void registDip(Integer buytogether_number, Integer user_number) throws Exception {
-	
+
 		dao.insertDip(buytogether_number, user_number);
-		
+
 	}
 
 	// 찜하기 취소
 	@Override
 	public void deleteDip(Integer buytogether_number, Integer user_number) throws Exception {
-		
+
 		dao.deleteDip(buytogether_number, user_number);
-		
+
 	}
-	
+
 	// 찜 확인
 	@Override
 	public Integer checkDip(Integer buytogether_number, Integer user_number) throws Exception {
-		
+
 		return dao.checkDip(buytogether_number, user_number);
 	}
 
 	// 신고
 	@Override
 	public BuyTogetherDTO report(Integer buytogether_number, Integer comment_number) throws Exception {
-		
+
 		return dao.reportDao(buytogether_number, comment_number);
-		
+
 	}
 
 	// 신고하기
 	@Override
 	public void registReport(DeclareBoard declareBoard) throws Exception {
-		
+
 		dao.sendReport(declareBoard);
-		
+
 	}
 
 	// 같이사냥 확인
 	@Override
 	public Integer buytogetherCheck(Integer buytogether_number, Integer user_number) throws Exception {
-		
+
 		return dao.buytogetherCheckDao(buytogether_number, user_number);
-		
+
 	}
 
 	// 같이사냥 취소하기
 	@Override
 	public void cancleBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
-		
+
 		dao.cancleBuytogetherDao(buytogether_number, user_number);
-		
+
 	}
 
 	// 사냥 참여자 리스트
 	@Override
 	public List<BuyTogetherDTO> joininList(Integer buytogether_number) throws Exception {
-		
+
 		return dao.joininListDao(buytogether_number);
-		
+
 	}
 
 	// 참여자 선택 버튼
 	@Transactional
 	@Override
-	public void joinCheck(Integer buytogether_number, Integer joinCheck_userNumber) throws Exception {
-		
-		dao.joinCheckDao(joinCheck_userNumber);
+	public void joinCheck(Integer buytogether_number, Integer[] joinCheck_userNumber) throws Exception {
+
+		for(int i=0; i<joinCheck_userNumber.length; i++){
+			dao.joinCheckDao(joinCheck_userNumber[i]);
+		}
 		dao.JoinCheck2Dao(buytogether_number);
-		
+
 	}
 
 }
