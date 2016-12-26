@@ -28,4 +28,9 @@ public interface MyBuyTogetherService {
 	public void scoreUserInfoForJoiner(ScoreUserInfo scoreUserInfo) throws Exception;
 	
 	public void scoreUserInfoForOne(String[] scoreUserInfoList) throws Exception;
+	
+	public int searchJoinBuyTogetherCount(MySearchCriteria cri) throws Exception;
+
+	public int searchDoneBuyTogetherCount(MySearchCriteria cri) throws Exception;
+
 }

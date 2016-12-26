@@ -14,11 +14,11 @@ $(document).ready(function() {
 			document.location = "/login";
 			
 		}
-		if(url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"){
+		/*if(url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"){
 
 			document.location = "/login";
 			
-		}
+		}*/
 		
 	} else {
 		

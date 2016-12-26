@@ -16,6 +16,36 @@ public class Comment {
 
 	}
 
+	// 댓글 입력
+	public Comment(String comment_content, int buytogether_number, int user_number, int comment_type_number) {
+		
+		this.comment_content = comment_content;
+		this.buytogether_number = buytogether_number;
+		this.user_number = user_number;
+		this.comment_type_number = comment_type_number;
+		
+	}
+
+	// 댓글 수정
+	public Comment(String comment_content, int buytogether_number, int comment_number) {
+		
+		this.comment_content = comment_content;
+		this.buytogether_number = buytogether_number;
+		this.comment_number = comment_number;
+		
+	}
+
+	// 답글 입력
+	public Comment(int comment_parent_number, String comment_content, int buytogether_number, int user_number, int comment_type_number) {
+		
+		this.comment_parent_number = comment_parent_number;
+		this.comment_content = comment_content;
+		this.buytogether_number = buytogether_number;
+		this.user_number = user_number;
+		this.comment_type_number = comment_type_number;
+		
+	}
+
 	public int getComment_number() {
 		return comment_number;
 	}

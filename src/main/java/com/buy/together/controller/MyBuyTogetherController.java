@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/buyTogether/*")
+@RequestMapping("/myBuyTogether/*")
 public class MyBuyTogetherController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MyBuyTogetherController.class);

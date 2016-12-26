@@ -12,7 +12,6 @@ $(document).ready(function() {
 	// 게시판 넘버
 	var buytogether_number =  $(location).attr('search');
 	var searchKeyword = buytogether_number.split("?buytogether_number=");
-
 	buytogether_number = searchKeyword[1];
 
 	// controller 선언
@@ -27,14 +26,20 @@ $(document).ready(function() {
 	}
 
 	var data;
+	
 	// 같이사냥 참여자 확인
 	if(user_number != readData.user_number){
 
 		data = controller.requestBuytogetherCheck(buytogether_number, user_number);
 	}
-	// 사냥 참여자 있을 시 같이사냥 버튼 CHECK로 바꿈
+	
+	// 게시글 등록자가 조회에서 사냥 참여자 있을 시, 같이사냥 버튼 CHECK로 바꿈
 	if(user_number == readData.user_number){
-
+		
+		// 게시글 등록한 사람이 글 조회시  UPDATE, DELETE 버튼이 보여야 한다.
+		$(".buytogether_delete_btn").show();
+		$(".buytogether_update_btn").show();
+		
 		$("#buy_together_btn").attr("value", "CHECK PLEASE");
 		$("#buy_together_btn").attr("id", "buy_together_btn_check");
 
@@ -44,7 +49,6 @@ $(document).ready(function() {
 			// 참여자 리스트 부
 			controller.requestJoininList(buytogether_number);
 			$("#myModal2").modal({'show' : true});
-
 
 			//참여자 전체 선택
 			$('[name=checkAll]').click(function () {
@@ -77,16 +81,21 @@ $(document).ready(function() {
 			});
 
 		});
+	} else {
 
+		// 게시글 등록한 사람이 글 조회시  UPDATE, DELETE 버튼이 안보여야 한다.
+		$(".buytogether_delete_btn").hide();
+		$(".buytogether_update_btn").hide();
 	}
+	
 	var dip;
+	
 	// 찜확인 후 하트 색 변경
 	if(user_number != readData.user_number){
 
 		dip = controller.requestCheckDip(buytogether_number, user_number);
 
 	}
-
 
 	if(dip == false) {
 
@@ -344,7 +353,8 @@ $(document).ready(function() {
 
 		} else if(buytoegetherCheck == false){
 
-			alert("같이사냥 참여한 유저만 사용 가능합니다.");
+			// 같이사냥 참여자 댓글 모달
+			$("#commentModal").modal({'show' : true});
 
 		}
 

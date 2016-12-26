@@ -490,6 +490,7 @@ function buytogetherReadDao() {
 
 	}
 	
+	// 같이사냥 취소
 	this.cancleBuytogetherDao = function(buytogether_number, user_number){
 		
 		$.ajax({
@@ -549,8 +550,7 @@ function buytogetherReadDao() {
 			url: '/restBuytogetherRead/joinCheck',
 			data:
 			{	
-				"buytogether_number" : buytogether_number,
-				"joinCheck_userNumber" : joinCheck_userNumber
+				"joinCheckBox" : joinCheckBox
 			},
 			dataType: 'text',
 			success: function(data){

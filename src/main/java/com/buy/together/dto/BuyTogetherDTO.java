@@ -42,11 +42,9 @@ public class BuyTogetherDTO {
 
 	}
 
-
 	public int getBuytogether_number() {
 		return buytogether_number;
 	}
-
 
 	public void setBuytogether_number(int buytogether_number) {
 		this.buytogether_number = buytogether_number;
@@ -106,7 +104,6 @@ public class BuyTogetherDTO {
 	public int getJoin_number() {
 		return join_number;
 	}
-
 
 	public void setJoin_number(int join_number) {
 		this.join_number = join_number;
@@ -291,7 +288,6 @@ public class BuyTogetherDTO {
 	public void setBeOrNot(boolean beOrNot) {
 		this.beOrNot = beOrNot;
 	}
-
 
 	public boolean isFinishOrNot() {
 		return finishOrNot;

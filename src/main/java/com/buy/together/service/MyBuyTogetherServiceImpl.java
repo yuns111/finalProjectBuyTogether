@@ -68,7 +68,7 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		return searchDoneBuyTogether;
 	}
 
-	//페이지 번호 카운트
+	//개설한 페이지 번호 카운트
 	@Override
 	public int searchMyBuyTogetherCount(MySearchCriteria cri) throws Exception {
 		return dao.searchMyBuyTogetherCount(cri);
@@ -158,6 +158,20 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 
 		dao.scoreReputationForJoiner(scoreUserInfo);
 		dao.reputationLogForJoiner(scoreUserInfo);
+	}
+
+	//참여한 페이지 카운트
+	@Override
+	public int searchJoinBuyTogetherCount(MySearchCriteria cri) throws Exception {
+		
+		return dao.searchJoinBuyTogetherCount(cri);
+	}
+
+	//완료한 페이지 카운트
+	@Override
+	public int searchDoneBuyTogetherCount(MySearchCriteria cri) throws Exception {
+		
+		return dao.searchDoneBuyTogetherCount(cri);
 	}
 
 

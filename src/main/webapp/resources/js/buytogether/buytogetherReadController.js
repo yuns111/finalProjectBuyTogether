@@ -18,6 +18,7 @@ function buytogetherReadController() {
 				
 				$('#zoom'+(i+1)).attr("src","/resources/img/noImage.png");
 				$('#thumb'+(i+1)).attr("src","/resources/img/noImage.png");
+				
 			}
 		} else {
 		
@@ -90,7 +91,7 @@ function buytogetherReadController() {
 
 	}
 
-	// 같이사냥 권한 답글 리스트 부분
+	// 같이사냥 참여자 답글 리스트 부분
 	this.requestRecommentList = function(comment_number, comment_type_number){
 
 		var data = dao.recommentListDao(comment_number, comment_type_number);
