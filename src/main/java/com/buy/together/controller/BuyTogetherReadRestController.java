@@ -399,15 +399,14 @@ public class BuyTogetherReadRestController {
 	}
 	
 	// 사냥 참여자 선택 버튼(프로필 : "같이사냥중" 변경, Matching_status_number : "2번" 변경)
-	@RequestMapping(value = "joinCheck", method = {RequestMethod.POST})
-	public ResponseEntity<String> requestJoinCheck(@RequestBody String[] joinCheckBox){
+	@RequestMapping(value="/joinCheck", method = RequestMethod.POST)
+	public ResponseEntity<String> requestJoinCheck(Integer buytogether_number, Integer[] joinCheck_userNumber){
 		
 		ResponseEntity<String> entity = null;
-		System.out.println(joinCheckBox[0]);
 		
 		try{
 			
-			//service.joinCheck(buytogether_number , 1);
+			service.joinCheck(buytogether_number , joinCheck_userNumber);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		}catch(Exception e){

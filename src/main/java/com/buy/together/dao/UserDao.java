@@ -35,4 +35,10 @@ public interface UserDao {
 
 	public void registNewDip(Dip dip) throws Exception;
 
+	public String findId(User user) throws Exception;;
+
+	public User findPassword(User user) throws Exception;
+	
+	public void setPasswordDao(User user) throws Exception;
+
 }

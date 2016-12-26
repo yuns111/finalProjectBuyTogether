@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$("#buytogetherFooter").load("/views/include/footer.html");
 
 	// 로그인한 유저번호 
-	var usernumber = sessionStorage.getItem("number");
+	var user_number = sessionStorage.getItem("number");
 
 	// 게시판 넘버
 	var buytogether_number =  $(location).attr('search');
@@ -25,10 +25,8 @@ $(document).ready(function() {
 		$('.buy_together_btn').attr("disabled",true);
 	}
 
-	// 임의값
-	var user_number = 2;
-
 	var data;
+	
 	// 같이사냥 참여자 확인
 	if(user_number != readData.user_number){
 
@@ -76,20 +74,20 @@ $(document).ready(function() {
 					joinCheck_userNumber.push(num);
 					
 				});
-				controller.requestJoinCheckBtn(buytogether_number, joinCheck_userNumber);
-
+				var result = controller.requestJoinCheckBtn(buytogether_number, joinCheck_userNumber);
+				if(result == 'success') {
+					document.location = '/buyTogether/read?buytogether_number='+buytogether_number;
+				}
 			});
 
 		});
-
 	} else {
 
 		// 게시글 등록한 사람이 글 조회시  UPDATE, DELETE 버튼이 안보여야 한다.
 		$(".buytogether_delete_btn").hide();
 		$(".buytogether_update_btn").hide();
-		
 	}
-
+	
 	var dip;
 	
 	// 찜확인 후 하트 색 변경
@@ -347,8 +345,6 @@ $(document).ready(function() {
 					recommentList.html(html_recomment);
 
 				} else {
-
-					alert("답글이 존재하지 않습니다.");
 				}
 
 			});
