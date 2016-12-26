@@ -268,6 +268,20 @@ function myBuyTogetherDao() {
 		});
 	}
 
-	
+	this.openReadBuyTogether = function(buyTogether_number){
+
+		$.ajax({
+			type : 'get',
+			url : '/restBuytogetherRead/read/' + buyTogether_number,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "GET"
+			},
+			dataType : 'text',
+			success : function(result){
+				
+			}
+		});
+	};
 	
 }

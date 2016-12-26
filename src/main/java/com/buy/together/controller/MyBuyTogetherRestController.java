@@ -24,6 +24,7 @@ import com.buy.together.dto.BuyTogetherDTO;
 import com.buy.together.service.MyBuyTogetherService;
 
 @RestController
+/*@RequestMapping("/restMyBuytogether/*")*/
 @RequestMapping("/restMyBuytogether/*")
 public class MyBuyTogetherRestController {
 
@@ -36,6 +37,7 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestOpenBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestOpenBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
+
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
@@ -50,7 +52,6 @@ public class MyBuyTogetherRestController {
 			map.put("pageMaker", pageMaker);
 
 			entity = new ResponseEntity<>(map, HttpStatus.OK);
-			System.out.println(entity);
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -64,11 +65,9 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestJoinBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestjoinBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
-		System.out.println("잘받았나?"+scri);
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
-			System.out.println(pageMaker.getCri().getPerPageNum());
 			int searchMyBuyTogetherCount = service.searchJoinBuyTogetherCount(scri);
 			pageMaker.setTotalCount(searchMyBuyTogetherCount);
 
@@ -79,7 +78,6 @@ public class MyBuyTogetherRestController {
 			map.put("pageMaker", pageMaker);
 			
 			entity = new ResponseEntity<>(map, HttpStatus.OK);
-			System.out.println(entity);
 
 		} catch (Exception e) {
 
@@ -96,7 +94,6 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestDoneBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestDoneBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
-		System.out.println("잘받았나?"+scri);
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
@@ -111,7 +108,6 @@ public class MyBuyTogetherRestController {
 			map.put("pageMaker", pageMaker);
 
 			entity = new ResponseEntity<>(map, HttpStatus.OK);
-			System.out.println(entity);
 
 		} catch (Exception e) {
 
@@ -127,7 +123,6 @@ public class MyBuyTogetherRestController {
 	public ResponseEntity<List<JoinUserInfo>> requestOpenReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber){
 		ResponseEntity<List<JoinUserInfo>> entity = null;
 		try {
-			System.out.println("여긴 도착했고");
 			List<JoinUserInfo> joinUser_list = service.openReputaion(buyTogetherNumber);
 			entity = new ResponseEntity<List<JoinUserInfo>>(joinUser_list, HttpStatus.OK);
 		} catch (Exception e) {
@@ -181,11 +176,9 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestFinishBuyTogether/{buyTogetherNumber}", method = RequestMethod.GET)
 	public ResponseEntity<String> requestFinishBuyTogether(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
 		ResponseEntity<String> entity = null;
-		System.out.println("여긴 오니?");
 		try {
 
 			service.finishBuyTogether(buyTogetherNumber);
-			System.out.println("여기까지 오면 ㄳ");
 			entity = new ResponseEntity<>("success", HttpStatus.OK);
 
 		} catch (Exception e) {

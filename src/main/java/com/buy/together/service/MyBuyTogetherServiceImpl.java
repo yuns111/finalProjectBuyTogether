@@ -88,7 +88,6 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 	@Transactional
 	@Override
 	public void scoreUserInfo(String[] scoreUserInfoList) throws Exception {
-		System.out.println("사이즈 안 나와?");
 		String test = scoreUserInfoList[0];
 		String[] str= new String[4];
 		List<ScoreUserInfo> ScoreUserInfoList = new ArrayList<ScoreUserInfo>();
@@ -99,10 +98,7 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 
 		for(int i = 0; i<scoreUserInfoList.length; i++){
 			str = scoreUserInfoList[i].split(",");//str = [],[],[],[];
-			System.out.println("str0"+str[0]);
-			System.out.println("str0"+str[1]);
-			System.out.println("str0"+str[2]);
-			System.out.println("str0"+str[3]);
+			
 			scored_user_number = Integer.parseInt(str[0]);
 			score = Integer.parseInt(str[1]);
 			score_user_number = Integer.parseInt(str[2]);
@@ -127,7 +123,6 @@ public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {
 		int score = Integer.parseInt(scoreUserInfoList[1]);
 		int score_user_number = Integer.parseInt(scoreUserInfoList[2]);
 		int buyTogetherNumber = Integer.parseInt(scoreUserInfoList[3]);
-		System.out.println(scored_user_number+"/"+score+"/"+score_user_number+"/"+buyTogetherNumber);
 		ScoreUserInfo scoreUserInfo = new ScoreUserInfo(scored_user_number, score, score_user_number, buyTogetherNumber);
 		ScoreUserInfoList.add(scoreUserInfo);
 
