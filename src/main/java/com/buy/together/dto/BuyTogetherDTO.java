@@ -13,7 +13,7 @@ public class BuyTogetherDTO {
 	private Date writedate;
 	private Date updatedate;
 	private Date duedate;
-	private int joinin_number;
+	private int join_number;
 	private int price;
 	private double longitude;
 	private double latitude;
@@ -89,12 +89,12 @@ public class BuyTogetherDTO {
 		this.duedate = duedate;
 	}
 
-	public int getJoinin_number() {
-		return joinin_number;
+	public int getJoin_number() {
+		return join_number;
 	}
 
-	public void setJoinin_number(int joinin_number) {
-		this.joinin_number = joinin_number;
+	public void setJoin_number(int join_number) {
+		this.join_number = join_number;
 	}
 
 	public int getPrice() {
@@ -233,7 +233,7 @@ public class BuyTogetherDTO {
 		this.joinin_user = joinin_user;
 	}
 
-	public boolean isBeOrNot() {
+	public boolean getBeOrNot() {
 		return beOrNot;
 	}
 
@@ -241,7 +241,7 @@ public class BuyTogetherDTO {
 		this.beOrNot = beOrNot;
 	}
 
-	public boolean isFinishOrNot() {
+	public boolean getFinishOrNot() {
 		return finishOrNot;
 	}
 

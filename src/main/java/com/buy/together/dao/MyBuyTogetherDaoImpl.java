@@ -190,5 +190,23 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 		sqlSession.insert(namespace+".writeReputation", scoreUserInfoOne);
 	
 	}
+	
+	//참여한 페이지 카운트
+	@Override
+	public int searchJoinBuyTogetherCount(MySearchCriteria cri) throws Exception {
+		
+		return sqlSession.selectOne(namespace+".searchJoinBuyTogetherCount", cri);
+	}
+	
+	//완료한 페이지 카운트
+	@Override
+	public int searchDoneBuyTogetherCount(MySearchCriteria cri) throws Exception {
+		
+		int countedOpen = sqlSession.selectOne(namespace+".searchDoneBuyTogetherCount1", cri);
+		int countedJoin = sqlSession.selectOne(namespace+".searchDoneBuyTogetherCount2", cri); 
+		int sumOfCount = countedOpen + countedJoin;
+		
+		return sumOfCount;
+	}
 
 }

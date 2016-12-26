@@ -69,7 +69,7 @@ public class MyBuyTogetherRestController {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
 			System.out.println(pageMaker.getCri().getPerPageNum());
-			int searchMyBuyTogetherCount = service.searchMyBuyTogetherCount(scri);
+			int searchMyBuyTogetherCount = service.searchJoinBuyTogetherCount(scri);
 			pageMaker.setTotalCount(searchMyBuyTogetherCount);
 
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -101,7 +101,7 @@ public class MyBuyTogetherRestController {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
 
-			int searchMyBuyTogetherCount = service.searchMyBuyTogetherCount(scri);
+			int searchMyBuyTogetherCount = service.searchDoneBuyTogetherCount(scri);
 			pageMaker.setTotalCount(searchMyBuyTogetherCount);
 
 			Map<String, Object> map = new HashMap<String, Object>();

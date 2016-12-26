@@ -37,7 +37,7 @@ function myBuyTogetherDao() {
 			dataType : 'text',
 			data : JSON.stringify(scri),
 			success : function(result) {
-				alert(result);
+				
 				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
 				var parsedResult = JSON.parse(result);
 				var searchMyBuyTogether = parsedResult.searchMyBuyTogether;
@@ -86,7 +86,6 @@ function myBuyTogetherDao() {
 	
 	//(개설한) 같이사냥 평판매기기
 	this.scoreUserInfo = function(scoreUserInfoList){
-		alert(JSON.stringify(scoreUserInfoList));
 		
 		$.ajaxSettings.traditional = true;
 		
@@ -112,7 +111,7 @@ function myBuyTogetherDao() {
 
 	//(개설한) 같이사냥 1인 평판매기기
 	this.ScoreUserInfoForOne = function(scoreUserInfoList){
-		alert(JSON.stringify(scoreUserInfoList));
+		
 		
 		$.ajaxSettings.traditional = true;
 		
@@ -150,7 +149,7 @@ function myBuyTogetherDao() {
 			},
 			dataType : 'text',
 			success : function(result){
-				alert("finish돌아와?"+result);
+				
 				var keyword = "";
 				var page = 1;
 				var perPageNum = 1;
@@ -181,7 +180,7 @@ function myBuyTogetherDao() {
 			data : JSON.stringify(scri),
 			success : function(result) {
 				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
-				alert(result);
+				
 				var parsedResult = JSON.parse(result);
 				var searchMyBuyTogether = parsedResult.searchMyBuyTogether;
 				var ListTemplate = Handlebars.compile($('#myBuyTogetherTemplate').html());
@@ -207,8 +206,6 @@ function myBuyTogetherDao() {
 		var dataPlate;
 		$.ajaxSettings.async = false;
 		$.getJSON("/restMyBuytogether/requestJoinReputation/"+buyTogetherNumber, function(data){
-			
-			alert(JSON.stringify(data))
 			
 			/*var ListTemplate = Handlebars.compile($('#joinUserInfo').html());
 			var html1 = ListTemplate(data);
@@ -250,7 +247,7 @@ function myBuyTogetherDao() {
 			dataType : 'text',
 			data : JSON.stringify(scri),
 			success : function(result) {
-				alert(result);
+				
 				//data가 map에 담겨 있는 json형식의 문자열이므로 list를 쓰려면 한 단계 추가로 거쳐줘야함.
 				var parsedResult = JSON.parse(result);
 				var searchMyBuyTogether = parsedResult.searchMyBuyTogether;
