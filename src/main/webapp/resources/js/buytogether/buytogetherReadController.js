@@ -1,21 +1,50 @@
 $('head').append('<script src=\'/resources/js/buytogether/buytogetherReadDao.js\'><\/script>');
 
-
 function buytogetherReadController() {
 
 	var dao = new buytogetherReadDao();
+	var photoPath;
 
 	// 같이사냥 조회
 	this.requestRead = function(buytogether_number) {
 		
-		return dao.readDao(buytogether_number);
-	
+		var data = dao.readDao(buytogether_number);
+		console.log(data);
+		photoPath = data.photo_path;
+		
+		if(data.photo_path == null){
+			
+			for(var i=0; i < 4 ; i++){
+				
+				$('#zoom'+(i+1)).attr("src","/resources/img/noImage.png");
+				$('#thumb'+(i+1)).attr("src","/resources/img/noImage.png");
+				
+			}
+		} else {
+		
+			var size = data.photo_path.length;
+
+			for(var i=0; i < size ; i++) {
+				
+				var path = data.photo_path[i].path;
+				
+				$('#zoom'+(i+1)).attr("src","/restBuytogether/displayFile?fileName=" + path);
+				$('#thumb'+(i+1)).attr("src","/restBuytogether/displayFile?fileName=" + path);
+			}
+			for(var i=size; i<4 ; i++) {
+				
+				$('#zoom'+(i+1)).attr("src","/resources/img/noImage.png");
+				$('#thumb'+(i+1)).attr("src","/resources/img/noImage.png");
+			}
+		}
+		
+		return data;
 	}
 
 	// 같이사냥 게시판 삭제
-	this.requestBuytogetherDelete = function(buytogether_number, user_number){
+	this.requestBuytogetherDelete = function(buytogether_number){
 
-		dao.buytogetherDeleteDao(buytogether_number, user_number);
+		dao.buytogetherDeleteDao(buytogether_number, photoPath);
 
 	}
 
@@ -62,7 +91,7 @@ function buytogetherReadController() {
 
 	}
 
-	// 같이사냥 권한 답글 리스트 부분
+	// 같이사냥 참여자 답글 리스트 부분
 	this.requestRecommentList = function(comment_number, comment_type_number){
 
 		var data = dao.recommentListDao(comment_number, comment_type_number);
@@ -133,6 +162,20 @@ function buytogetherReadController() {
 	this.requestCancleBuytogether = function(buytogether_number, user_number){
 
 		dao.cancleBuytogetherDao(buytogether_number, user_number);
+		
+	}
+	
+	// 사냥 참여 리스트
+	this.requestJoininList = function(buytogether_number){
+		
+		dao.joininListDao(buytogether_number);
+		
+	}
+	
+	// 참여자 선택 버튼
+	this.requestJoinCheckBtn = function(buytogether_number, joinCheck_userNumber){
+		
+		dao.joinCheckBtnDao(buytogether_number, joinCheck_userNumber);
 		
 	}
 

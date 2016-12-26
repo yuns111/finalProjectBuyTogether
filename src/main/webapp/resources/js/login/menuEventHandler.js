@@ -2,6 +2,8 @@ $(document).ready(function() {
 	
 	var sessionId  = sessionStorage.getItem("id"); //세선에 저장된 아이디 조회
 	var url = window.location.pathname;
+	url = url.split("?")[0];
+	console.log(url);
 	
 	if(sessionId == null && localStorage.getItem("id") == null) { //로그인 기록이 없다면,
 
@@ -12,6 +14,11 @@ $(document).ready(function() {
 			document.location = "/login";
 			
 		}
+		/*if(url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"){
+
+			document.location = "/login";
+			
+		}*/
 		
 	} else {
 		

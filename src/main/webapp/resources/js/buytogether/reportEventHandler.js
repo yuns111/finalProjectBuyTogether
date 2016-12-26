@@ -1,4 +1,5 @@
 $('head').append('<script src=\'/resources/js/buytogether/buytogetherReadController.js\'><\/script>');
+
 $(document).ready(function() {
 
    // 로그인한 유저번호 

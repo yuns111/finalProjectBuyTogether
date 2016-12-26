@@ -85,15 +85,16 @@ function loginDao() {
 			dataType: 'json',
 			async : false,
 			success:function(data){
+				
 				userInfo = data;
 			}
 		});
-
+		console.log(userInfo);
 		return userInfo;
 		
 	};
 
-	//네이버 로그인 ㅇao
+	//네이버 로그인 dao
 	this.NVLoginDao = function() {
 
 		var state;

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.Comment;
 import com.buy.together.domain.DeclareBoard;
 import com.buy.together.dto.BuyTogetherDTO;
@@ -50,14 +49,14 @@ public class BuyTogetherReadRestController {
 	}
 
 	// 게시글 삭제 부분
-	@RequestMapping(value = "delete/{buytogether_number}/{user_number}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> requestBuytogetherDelete(@PathVariable("buytogether_number") Integer buytogether_number, @PathVariable("user_number") Integer user_number){
+	@RequestMapping(value = "delete/{buytogether_number}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> requestBuytogetherDelete(@PathVariable("buytogether_number") Integer buytogether_number){
 
 		ResponseEntity<String> entity = null;
 
 		try{
 
-			service.deleteBuytogether(buytogether_number, user_number);
+			service.deleteBuytogether(buytogether_number);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 
 		}catch(Exception e){
@@ -69,25 +68,6 @@ public class BuyTogetherReadRestController {
 
 		return entity;
 
-	}
-
-	// 썸네일 이미지 부분
-	@RequestMapping(value = "image/{buytogether_number}", method = RequestMethod.GET)
-	public ResponseEntity<List<AttachedPhoto>> requestImage(@PathVariable("buytogether_number") Integer buytogether_number){
-
-		ResponseEntity<List<AttachedPhoto>> entity = null;
-
-		try{
-
-			entity = new ResponseEntity<List<AttachedPhoto>>(service.buyTogetherImage(buytogether_number), HttpStatus.OK);
-
-		} catch(Exception e){
-
-			e.printStackTrace();
-			entity = new ResponseEntity<List<AttachedPhoto>>(HttpStatus.BAD_REQUEST);
-		}
-
-		return entity;
 	}
 
 	// 댓글 리스트 부분
@@ -398,6 +378,47 @@ public class BuyTogetherReadRestController {
 		return entity;
 
 	}
+	
+	// 사냥 참여자 리스트
+	@RequestMapping(value = "joininList/{buytogether_number}" , method = RequestMethod.GET)
+	public ResponseEntity<List<BuyTogetherDTO>> requestjoininList(@PathVariable("buytogether_number") Integer buytogether_number){
+		
+		ResponseEntity<List<BuyTogetherDTO>> entity = null;
+		
+		try{
 
+			entity = new ResponseEntity<List<BuyTogetherDTO>>(service.joininList(buytogether_number), HttpStatus.OK);
 
+		} catch (Exception e){
+
+			e.printStackTrace();
+			entity = new ResponseEntity<List<BuyTogetherDTO>>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	// 사냥 참여자 선택 버튼(프로필 : "같이사냥중" 변경, Matching_status_number : "2번" 변경)
+	@RequestMapping(value = "joinCheck", method = {RequestMethod.POST})
+	public ResponseEntity<String> requestJoinCheck(@RequestBody String[] joinCheckBox){
+		
+		ResponseEntity<String> entity = null;
+		System.out.println(joinCheckBox[0]);
+		
+		try{
+			
+			//service.joinCheck(buytogether_number , 1);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+
+		}catch(Exception e){
+
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
+		}
+		
+		return entity;
+		
+	}
+	
 }

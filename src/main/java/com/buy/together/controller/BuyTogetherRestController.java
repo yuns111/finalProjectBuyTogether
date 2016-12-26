@@ -25,14 +25,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.buy.together.domain.BuyTogether;
-import com.buy.together.domain.BuyTogetherAddress;
 import com.buy.together.domain.Category;
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.domain.PageMaker;
 import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.dto.BuyTogetherUpdateDTO;
+import com.buy.together.dto.BuyTogetherWriteDTO;
 import com.buy.together.service.BuyTogetherService;
 import com.buy.together.util.UploadFileUtils;
 
@@ -242,13 +242,13 @@ public class BuyTogetherRestController {
 	}
 	
 	@RequestMapping(value = "write", method = RequestMethod.POST) //같이사냥 글쓰기
-	public ResponseEntity<Integer> RequestWrite(BuyTogether buytogether) {
+	public ResponseEntity<String> RequestWriteBuyTogether(BuyTogetherUpdateDTO buytogether) {
 
-		ResponseEntity<Integer> entity = null;
+		ResponseEntity<String> entity = null;
 
 		try {
-			int buytogether_number = service.buyTogetherWrite(buytogether);
-			entity = new ResponseEntity<>(buytogether_number, HttpStatus.OK);
+			service.buyTogetherWrite(buytogether);
+			entity = new ResponseEntity<>("success", HttpStatus.OK);
 
 		} catch (Exception e) {
 
@@ -260,12 +260,32 @@ public class BuyTogetherRestController {
 		return entity;
 	}
 	
-	@RequestMapping(value = "addressWrite", method = RequestMethod.POST) //같이사냥 글쓰기시 주소 저장
-	public ResponseEntity<String> RequestInsertAddress(BuyTogetherAddress buytogetherAddress) {
+	@RequestMapping(value = "readOne", method = RequestMethod.POST) //같이사냥글 수정
+	public ResponseEntity<BuyTogetherWriteDTO> RequestReadOne(Integer buytogether_number) {
 
+		ResponseEntity<BuyTogetherWriteDTO> entity = null;
+
+		try {
+		
+			entity = new ResponseEntity<>(service.buyTogetherReadOne(buytogether_number), HttpStatus.OK);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+		}
+
+		return entity;
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST) //같이사냥글 수정
+	public ResponseEntity<String> RequestUpdateBuytogether(BuyTogetherUpdateDTO buytogetherUpdate) {
+
+		System.out.println(buytogetherUpdate.getPrice());
 		ResponseEntity<String> entity = null;
 		try {
-			service.buyTogetherWriteAddress(buytogetherAddress);
+			service.buyTogetherUpdate(buytogetherUpdate);
 			entity = new ResponseEntity<>("success", HttpStatus.OK);
 
 		} catch (Exception e) {

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.buy.together.dao.BuyTogetherReadDao;
 import com.buy.together.domain.AttachedPhoto;
@@ -19,21 +20,16 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 	private BuyTogetherReadDao dao;
 
 	// 같이사냥 조회
+	@Transactional
 	@Override
 	public BuyTogetherDTO buyTogetherRead(Integer buytogether_number) throws Exception {
 
 		BuyTogetherDTO dto = dao.buyTogetherRead(buytogether_number);
+		List<AttachedPhoto> photo = dao.photoList(buytogether_number);
+		
+		dto.setPhoto_path(photo);
 
 		return dto;
-	}
-
-	// 이미지 불러오기
-	@Override
-	public List<AttachedPhoto> buyTogetherImage(Integer buytogether_number) throws Exception {
-
-		List<AttachedPhoto> list = dao.photoList(buytogether_number);
-
-		return list;
 	}
 
 	// 댓글리스트
@@ -88,9 +84,9 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 
 	// 게시판 삭제
 	@Override
-	public void deleteBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
+	public void deleteBuytogether(Integer buytogether_number) throws Exception {
 
-		dao.deleteBuytogether(buytogether_number, user_number);
+		dao.deleteBuytogether(buytogether_number);
 
 	}
 
@@ -150,10 +146,29 @@ public class BuyTogetherReadServiceImpl implements BuyTogetherReadService {
 		
 	}
 
+	// 같이사냥 취소하기
 	@Override
 	public void cancleBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
 		
 		dao.cancleBuytogetherDao(buytogether_number, user_number);
+		
+	}
+
+	// 사냥 참여자 리스트
+	@Override
+	public List<BuyTogetherDTO> joininList(Integer buytogether_number) throws Exception {
+		
+		return dao.joininListDao(buytogether_number);
+		
+	}
+
+	// 참여자 선택 버튼
+	@Transactional
+	@Override
+	public void joinCheck(Integer buytogether_number, Integer joinCheck_userNumber) throws Exception {
+		
+		dao.joinCheckDao(joinCheck_userNumber);
+		dao.JoinCheck2Dao(buytogether_number);
 		
 	}
 

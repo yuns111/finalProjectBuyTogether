@@ -2,14 +2,13 @@ package com.buy.together.service;
 
 import java.util.List;
 
-import com.buy.together.domain.BuyTogether;
-import com.buy.together.domain.BuyTogetherAddress;
 import com.buy.together.domain.Category;
 import com.buy.together.domain.HuntingStatus;
 import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
-import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.dto.BuyTogetherUpdateDTO;
+import com.buy.together.dto.BuyTogetherWriteDTO;
 
 public interface BuyTogetherService {
 	
@@ -27,7 +26,10 @@ public interface BuyTogetherService {
 	
 	public List<HuntingStatus> huntingStatusList() throws Exception;
 	
-	public Integer buyTogetherWrite(BuyTogether buyTogether) throws Exception;
+	public void buyTogetherWrite(BuyTogetherUpdateDTO buytogether) throws Exception;
 
-	public void buyTogetherWriteAddress(BuyTogetherAddress buyTogetherAddress) throws Exception;
+	public BuyTogetherWriteDTO buyTogetherReadOne(Integer buytogether_number) throws Exception;
+
+	public void buyTogetherUpdate(BuyTogetherUpdateDTO buyTogetherUpdateDTO) throws Exception;
+
 }

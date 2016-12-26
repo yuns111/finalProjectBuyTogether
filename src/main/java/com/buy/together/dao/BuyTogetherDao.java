@@ -11,6 +11,7 @@ import com.buy.together.domain.HuntingType;
 import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.dto.BuyTogetherUpdateDTO;
 
 public interface BuyTogetherDao {
 	
@@ -30,13 +31,22 @@ public interface BuyTogetherDao {
 	
 	public List<HuntingStatus> huntingStatusList() throws Exception;
 	
-	public void buyTogetherInsert(BuyTogether buyTogether) throws Exception;
+	public void buyTogetherInsert(BuyTogetherUpdateDTO buyTogether) throws Exception;
 	
-	public Integer getBuyTogetherNumber(BuyTogether buyTogether) throws Exception;
+	public Integer getBuyTogetherNumber(BuyTogetherUpdateDTO buyTogether) throws Exception;
 
-	public void buyTogetherAddressInsert(BuyTogetherAddress BuyTogetherAddress) throws Exception;
+	public void buyTogetherAddressInsert(BuyTogetherUpdateDTO BuyTogetherAddress) throws Exception;
 	
 	public void buyTogetherPhotoInsert(AttachedPhoto AttachedPhoto) throws Exception;
 
+	public BuyTogether buyTogetherReadOneDao(Integer buytogether_number) throws Exception;
 	
+	public BuyTogetherAddress buyTogetherAddressReadOneDao(Integer buytogether_number) throws Exception;
+	
+	public void buyTogetherUpdateDao(BuyTogetherUpdateDTO buytogetherUpdateDTO) throws Exception;
+
+	public void buyTogetherUpdateAddressDao(BuyTogetherUpdateDTO buytogetherUpdateDTO) throws Exception;
+
+	public void buyTogetherPhotoDeleteDao(Integer buytogether_number) throws Exception;
+
 }

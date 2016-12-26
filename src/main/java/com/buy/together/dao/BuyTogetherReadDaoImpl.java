@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.sql.rowset.serial.SerialStruct;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -117,14 +118,9 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 
 	// 같이사냥 게시판 삭제
 	@Override
-	public void deleteBuytogether(Integer buytogether_number, Integer user_number) throws Exception {
+	public void deleteBuytogether(Integer buytogether_number) throws Exception {
 
-		Map<String, Object> map = new HashMap<>();
-
-		map.put("buytogether_number", buytogether_number);
-		map.put("user_number", user_number);
-
-		sqlSession.delete(namespace+".deleteBuytogether", map);
+		sqlSession.delete(namespace+".deleteBuytogether", buytogether_number);
 
 	}
 
@@ -214,6 +210,7 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 		
 	}
 
+	// 같이사냥 취소
 	@Override
 	public void cancleBuytogetherDao(Integer buytogether_number, Integer user_number) throws Exception {
 		
@@ -226,5 +223,28 @@ public class BuyTogetherReadDaoImpl implements BuyTogetherReadDao {
 		
 	}
 
+	// 사냥 참여자 리스트
+	@Override
+	public List<BuyTogetherDTO> joininListDao(Integer buytogether_number) throws Exception {
+			
+		return sqlSession.selectList(namespace+".joininList" , buytogether_number);
+		
+	}
+
+	// 사냥 참여자 선택 등록 
+	@Override
+	public void joinCheckDao(Integer joinCheck_userNumber) throws Exception {
+		
+		sqlSession.update(namespace+".joinCheck", joinCheck_userNumber);
+		
+	}
+
+	// 사냥 참여자 선택 (글쓴이 상태 변경)
+	@Override
+	public void JoinCheck2Dao(Integer buytogether_number) throws Exception {
+		
+		sqlSession.update(namespace+".joinCheckStatus", buytogether_number);
+		
+	}
 
 }

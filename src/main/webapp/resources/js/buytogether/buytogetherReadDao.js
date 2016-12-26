@@ -32,11 +32,11 @@ function buytogetherReadDao() {
 	}
 
 	// 같이사냥 게시글 삭제
-	this.buytogetherDeleteDao = function(buytogether_number, user_number){
+	this.buytogetherDeleteDao = function(buytogether_number, photoPath){
 
 		$.ajax({
 			type: 'delete',
-			url: '/restBuytogetherRead/delete/' + buytogether_number + "/" + user_number,
+			url: '/restBuytogetherRead/delete/' + buytogether_number,
 			async : false,
 			headers: {
 				"Content-type" : "application/json",
@@ -44,54 +44,29 @@ function buytogetherReadDao() {
 			},
 			dataType: 'text',
 			success: function(data){
-				console.log("success" + data);
 				if(data == "success"){
 
-					alert("게시글이 삭제 되었습니다.");
+					for(var i=0;i<photoPath.length; i++){
+						//첨부사진 삭제
+						$.ajax({
+							url:'/restBuytogether/deleteFile',
+							type: 'POST',
+							data: {fileName: photoPath[i].path},
+							dataType: 'text',
+							success: function(data){
+								
+								document.location = "/buyTogether/list";
+							}
+						});
+					}
 
 				} else {
-
-					alert("게시글이 삭제가 실패함");
 
 				}
 			}
 
 		});
 
-	}
-
-	// 같이 사냥 게시글 수정
-	this.buytogetherUpdateDao = function(buytogether_number, user_number){
-
-		/*$.ajax({
-			type: 'put',
-			url: '/restBuytogetherRead/',
-			headers: {
-				"Content-type" : "application/json",
-				"X-HTTP-Method-Override": "PUT"
-			},
-			data : JSON.stringify({
-				comment_content : comment_content,
-				comment_number : comment_number,
-				buytogether_number : buytogether_number
-			}),
-			dataType: 'text',
-			success: function(data){
-
-				if(data == "success"){
-
-						alert("전체 댓글이 수정 되었습니다.");
-						getPageTap1("/restBuytogetherRead/commentList/" + buytogether_number + "/" + comment_type_number);
-
-				} else {
-
-					alert("댓글 수정이 실패 하였습니다.");
-
-				}
-			}
-
-		});
-		 */
 	}
 
 	// 같이 사냥 댓글 입력(댓글 내용, 유저 번호(아이디), 게시판 번호, 댓글 타입번호)
@@ -474,8 +449,6 @@ function buytogetherReadDao() {
 			data: JSON.stringify(reportData),
 			success: function(data){
 
-				alert("성공");
-
 			}
 			
 		});
@@ -517,6 +490,7 @@ function buytogetherReadDao() {
 
 	}
 	
+	// 같이사냥 취소
 	this.cancleBuytogetherDao = function(buytogether_number, user_number){
 		
 		$.ajax({
@@ -530,6 +504,59 @@ function buytogetherReadDao() {
 			},
 			dataType: 'text',
 			success: function(data){
+			}
+
+		});
+		
+	}
+	
+	// 사냥 참여 리스트
+	this.joininListDao = function(buytogether_number){
+		
+		$.ajax({
+			type : 'get',
+			url : '/restBuytogetherRead/joininList/' + buytogether_number,
+			async : false,
+			headers : {
+				"Content-type" : "application/json",
+				"X-HTTP-Method-Override": "GET"
+			},
+			dataType : 'json',
+			success : function(data){
+
+				var joinListTemplate = Handlebars.compile($('.joininListTemplate').html());
+
+				var joininListHtml = joinListTemplate(data);
+				
+				$("#joininList").html(joininListHtml);
+
+			}
+
+		});
+		
+		
+	}
+	
+	// 사냥 참여자 선택 버튼
+	this.joinCheckBtnDao = function(buytogether_number, joinCheck_userNumber){
+		
+		var joinCheckBox = [buytogether_number, joinCheck_userNumber];
+		
+		jQuery.ajaxSettings.tranditional = true;
+		
+		$.ajax({
+			
+			type: 'post',
+			async : false,
+			url: '/restBuytogetherRead/joinCheck',
+			data:
+			{	
+				"joinCheckBox" : joinCheckBox
+			},
+			dataType: 'text',
+			success: function(data){
+
+				
 			}
 
 		});
