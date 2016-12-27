@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="/resources/theme/font/simple-line-icons.css" type="text/css">
 <link rel="stylesheet" href="/resources/theme/font/font-awesome.css" type="text/css">
 <script src="/resources/theme/js/jquery-migrate.min.js" type="text/javascript"></script>
+<link rel="shortcut icon" href="/resources/theme/css/favicon.ico" type="image/x-icon"/>
 <!-------------------------------------------------->
 
 <!-------- 리스트 디자인 필요한 것 -------------->
@@ -59,27 +60,26 @@
 		<div class="container">
 
 			<!-------------------------선택 메뉴------------------------>
-			<div class="c-toggle-show" data-object-selector="c-advanced-search"
+			<div class="c-toggle-show c-checkbox has-info" data-object-selector="c-advanced-search"
 				data-animation-speed="600">
-				<input type="checkbox" id="checkbox-2" class="c-check" checked="checked"> <label
-					for="checkbox-2"> <span class="box" style="font-size: 15px">상세검색</span>
-				</label>
+				<input type="checkbox" id="checkbox1" class="c-check">
+                <label class="c-font-bold c-font-14" for="checkbox1"><span></span><span class="box" id="searchCheck"></span>상세검색</label><br>
 				<form class="c-advanced-search">
 					<div class="row">
 						<div class="form-group col-md-12">
 							<div class="row">
 								<div class="col-md-4">
-									<label class="control-label">카테고리</label> <select
+									<label class="c-font-bold control-label">카테고리</label> <select
 										class="form-control c-theme" id="category_number">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">사냥방식</label> <select
+									<label class="c-font-bold control-label">사냥방식</label> <select
 										class="form-control c-theme" id="hunting_type_number">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">사냥상태</label> <select
+									<label class="c-font-bold control-label">사냥상태</label> <select
 										class="form-control c-theme" id="hunting_status_number">
 									</select>
 								</div>
@@ -90,17 +90,17 @@
 						<div class="form-group col-md-12">
 							<div class="row">
 								<div class="col-md-4">
-									<label class="control-label">시/도</label> <select
+									<label class="c-font-bold control-label">시/도</label> <select
 										class="form-control c-theme" id="sido">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">시/군/구</label> <select
+									<label class="c-font-bold control-label">시/군/구</label> <select
 										class="form-control c-theme" id="sigungu">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">등록일</label> <select
+									<label class="c-font-bold control-label">등록일</label> <select
 										class="form-control c-theme" id="registDate">
 										<option value="">선택해주세요</option>
 										<option value="0">오늘</option>

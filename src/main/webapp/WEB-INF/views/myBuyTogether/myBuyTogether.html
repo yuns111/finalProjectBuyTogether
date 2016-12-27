@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MyBuyTogether</title>
+<title>같이사냥 | 내 사냥 목록</title>
  
 <!---------------------공통스크립트--------------------->
 <link rel="shortcut icon" href="/resources/theme/css/favicon.ico" type="image/x-icon"/> 
@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="/resources/theme/font/NotoKRRegular.css" type="text/css">
 <link rel="stylesheet" href="/resources/theme/font/simple-line-icons.css" type="text/css">
 <link rel="stylesheet" href="/resources/theme/font/font-awesome.css" type="text/css">
+<link rel="shortcut icon" href="/resources/theme/css/favicon.ico" type="image/x-icon"/>
 <!--------------------페이지 설정------------------------------>
 
 <script src="/resources/bootstrap/js/jquery-3.1.1.min.js"></script>
@@ -55,21 +56,27 @@ $(document).ready(function() {
 
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
 	<div id="buytogetherHeader"></div>
-	<div class="c-layout-page">
-
+	<div class="c-layout-body">
+		<!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-2 -->
+         <div class="container c-content-title-1">
+			<h3 class="c-font-bold">내 사냥 목록</h3>
+			<div class="c-line-left"></div>
+		</div>
+            <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-2 -->
 		<!-------------------------------------- 탭선택 --------------------------------------->
 
-		<div class="c-content-box c-size-md c-overflow-hide c-bg-grey-1">
-			<div class="c-container">
+		<div class="c-content-box c-size-md c-overflow-hide">
+			<div class="container">
 				<div class="c-content-tab-3 c-opt-1">
-					<div>
+					<div class="col-md-offset-3">
 						<ul class="nav c-theme-nav">
-							<li class="active"><a
-								class="c-font-16 c-theme-font c-font-bold" href="#c-tab3-1"
-								data-toggle="tab" id="openBuyTogether">개설한 같이사냥</a></li>
+							<li class="active">
+								<a class="c-font-16 c-theme-font c-font-bold" href="#c-tab3-1"
+								data-toggle="tab" id="openBuyTogether">개설한 같이사냥</a>
+							</li>
 							<li>
-								<div class="c-separator"></div> <a
-								class="c-font-16 c-theme-font c-font-bold" href="#c-tab3-2"
+								<div class="c-separator"></div>
+								<a class="c-font-16 c-theme-font c-font-bold" href="#c-tab3-2"
 								data-toggle="tab" id="joinBuyTogether">참여한 같이사냥</a>
 							</li>
 							<li>
@@ -79,16 +86,14 @@ $(document).ready(function() {
 							</li>
 						</ul>
 					</div>
-
 					<br>
 
 					<!-- --------------------------------------------검색창------------------------------------------- -->
 					<div class="container c-shop-advanced-search-1 c-center">
 						<div class="col-md-12 c-center">
 							<div class="row">
-								<div class="col-md-offset-2"></div>
-								<div class="col-md-4">
-									<select class="form-control c-square c-theme input-lg"
+								<div class="col-md-4 col-md-offset-2">
+									<select class="form-control c-square c-theme"
 										id="searchType">
 										<option value="t">제목</option>
 										<option value="c">내용</option>
@@ -98,15 +103,16 @@ $(document).ready(function() {
 										<option value="tcw">제목&내용&작성자</option>
 									</select>
 								</div>
-								<div class="col-md-5">
-									<input type="text" class="c-square c-theme input-lg"
-										id="keyword">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="keyword">
+									
+								</div>
+								<div class="col-md-2">
 									<button id="search" type="submit"
-										class="btn btn-lg c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">
+										class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">
 										<i class="fa fa-search"></i>Search
 									</button>
 								</div>
-								<div class="col-md-offset-1"></div>
 							</div>
 						</div>
 					</div>

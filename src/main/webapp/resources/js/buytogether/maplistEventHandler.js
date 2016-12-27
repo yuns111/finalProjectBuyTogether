@@ -9,10 +9,11 @@ $(document).ready(function (){
 	controller.requestHuntingStatusList();
 	
 	//첫 화면(지도에 해당하는 리스트)
+	var mapChecked = 0;
+	var searchChecked = 0;
 	var keyword =  $('#keyword').val();
 	var page = 1;
 	var perPageNum = 6;
-
 	var scri = {
 			page : page, perPageNum : perPageNum, keyword : keyword
 	};
@@ -21,6 +22,42 @@ $(document).ready(function (){
 	cube.init();
 
 	controller.requestBuyTogetherMap(scri);
+	
+	/*$('#mapCheck').click(function(){
+		
+		$(this).removeClass();
+		
+		if(mapChecked == 0) {
+			
+			$(this).addClass("check");
+			mapChecked = 1;
+			
+		} else {
+			
+			$(this).addClass("box");
+			mapChecked = 0;
+			
+		}
+		
+	});
+
+	$('#searchCheck').click(function(){
+		
+		$(this).removeClass();
+		
+		if(searchChecked == 0) {
+			
+			$(this).addClass("check");
+			searchChecked = 1;
+			
+		} else {
+			
+			$(this).addClass("box");
+			searchChecked = 0;
+			
+		}
+		
+	});*/
 	
 	//검색버튼 클릭시
 	$('#search_button').click(function(){

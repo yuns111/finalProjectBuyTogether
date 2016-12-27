@@ -59,21 +59,9 @@ $(document).ready(function() {
 	<div id=buytogetherHeader></div>	
 				<!--  ---------------------------------------------------------- 상단 ---------------------------------------------------------- -->		
 		<div class="c-layout-body">
-			
-			<!-- 정보사냥 목록 body begin-->
-			<div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
-				<div class="container">
-					<div class="c-page-title c-pull-left">
-						<h3 class="c-font-uppercase c-font-sbold">QnA</h3>
-					</div>
-					<ul
-						class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-						<li>QnA</li>
-						<li>/</li>
-						<li>목록</li>
-
-					</ul>
-				</div>
+			<div class="container c-content-title-1">
+				<h3 class="c-font-bold">QnA</h3>
+				<div class="c-line-left"></div>
 			</div><br><br>
 
 			<!--  ---------------------------------------------------------- qna 목록 ---------------------------------------------------------- -->
@@ -93,7 +81,7 @@ $(document).ready(function() {
 				</table>
 <!-- 페이징 버튼 -->				
 				<div class="c-pagination c-center" id="pagination"></div>
-				<a href="/qna/qnaInsert" class=insertBtn>
+				<a href="/qna/write" class=insertBtn>
 					<button id="qnaInsert" type="submit"
 						class="pull-right btn btn-md c-theme-btn c-btn-square c-btn-bold">
 						글쓰기</button>
