@@ -107,7 +107,6 @@ public class MyBuyTogetherDaoTest {
 
 	// searchMyBuyTogetherCount Test
 	@Test
-	@Ignore
 	public void testSearchMyBuyTogetherCount() throws Exception {
 
 		logger.info("testSearchMyBuyTogetherCount() 호출됨.");
