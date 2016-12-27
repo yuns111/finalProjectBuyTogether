@@ -18,7 +18,11 @@
  		<property name="url" value="jdbc:log4jdbc:mysql://buytogether.cci55dbsdydo.us-west-2.rds.amazonaws.com:3306/buytogether"></property>
 		<property name="username" value="buytogether"></property>
 		<property name="password" value="buytogether"></property>
+<<<<<<< HEAD
 	</bean>  -->
+=======
+	</bean>
+>>>>>>> bd801c871af9edd39170e760906813b993f7af94
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

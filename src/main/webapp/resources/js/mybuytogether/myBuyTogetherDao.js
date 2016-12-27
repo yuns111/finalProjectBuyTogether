@@ -152,7 +152,7 @@ function myBuyTogetherDao() {
 				
 				var keyword = "";
 				var page = 1;
-				var perPageNum = 1;
+				var perPageNum = 6;
 				var searchType = 't';
 				var user_number = sessionStorage.getItem("number");
 
@@ -268,6 +268,20 @@ function myBuyTogetherDao() {
 		});
 	}
 
-	
+	this.openReadBuyTogether = function(buyTogether_number){
+
+		$.ajax({
+			type : 'get',
+			url : '/restBuytogetherRead/read/' + buyTogether_number,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "GET"
+			},
+			dataType : 'text',
+			success : function(result){
+				
+			}
+		});
+	};
 	
 }

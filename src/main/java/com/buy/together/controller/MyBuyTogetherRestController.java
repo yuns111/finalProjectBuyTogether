@@ -36,6 +36,7 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestOpenBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestOpenBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
+
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
@@ -50,7 +51,6 @@ public class MyBuyTogetherRestController {
 			map.put("pageMaker", pageMaker);
 
 			entity = new ResponseEntity<>(map, HttpStatus.OK);
-			System.out.println(entity);
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -64,6 +64,7 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestJoinBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestjoinBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
+		
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
@@ -93,6 +94,7 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestDoneBuyTogether/", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> requestDoneBuyTogether(@RequestBody MySearchCriteria scri) {
 		ResponseEntity<Map<String, Object>> entity = null;
+		
 		try {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
@@ -107,7 +109,6 @@ public class MyBuyTogetherRestController {
 			map.put("pageMaker", pageMaker);
 
 			entity = new ResponseEntity<>(map, HttpStatus.OK);
-			System.out.println(entity);
 
 		} catch (Exception e) {
 
@@ -122,6 +123,7 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestOpenReputation/{buyTogetherNumber}", method = RequestMethod.GET)
 	public ResponseEntity<List<JoinUserInfo>> requestOpenReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber){
 		ResponseEntity<List<JoinUserInfo>> entity = null;
+		
 		try {
 			List<JoinUserInfo> joinUser_list = service.openReputaion(buyTogetherNumber);
 			entity = new ResponseEntity<List<JoinUserInfo>>(joinUser_list, HttpStatus.OK);
@@ -173,6 +175,7 @@ public class MyBuyTogetherRestController {
 	@RequestMapping(value = "requestFinishBuyTogether/{buyTogetherNumber}", method = RequestMethod.GET)
 	public ResponseEntity<String> requestFinishBuyTogether(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
 		ResponseEntity<String> entity = null;
+		
 		try {
 
 			service.finishBuyTogether(buyTogetherNumber);
@@ -189,9 +192,9 @@ public class MyBuyTogetherRestController {
 
 	/*---------------------------(참여한)유저목록 가져오기------------------------------*/
 	@RequestMapping(value = "requestJoinReputation/{buyTogetherNumber}", method = RequestMethod.GET)
-	public ResponseEntity<JoinUserInfo> requestJoinReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber
-			) {
+	public ResponseEntity<JoinUserInfo> requestJoinReputation(@PathVariable("buyTogetherNumber") int buyTogetherNumber) {
 		ResponseEntity<JoinUserInfo> entity = null;
+		
 		try {
 
 			JoinUserInfo UserInfo = service.joinReputaion(buyTogetherNumber);

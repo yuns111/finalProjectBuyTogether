@@ -192,10 +192,10 @@ $(document).ready(function() {
 <div class="col-md-3 col-sm-6 c-margin-b-20 myBuyTogetherLi">
 	<input type="hidden" class ="buyTogetherNumber" value="{{buytogether_number}}">
     <div class="c-content-product-2 c-bg-white">
-       	<div class="c-content-overlay">
+       	<div class="c-content-overlay readBuyTogether">
            	<div class="c-overlay-wrapper">
                	<div class="c-overlay-content">
-                   	<a href="shop-product-details.html" class="btn btn-md c-btn-grey-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">보기</a>
+                   	<a class="btn btn-md c-btn-grey-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">보기</a>
                 </div>
             </div>
         	<div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 330px; background-image: url({{imageHelper photo_path}}); id="buyTogether_number">
@@ -203,7 +203,7 @@ $(document).ready(function() {
         </div>
 
       	<div class="c-info">
-        	<p class="c-title c-font-18 c-font-slim" id="title">{{title}}</p>
+        	<p class="c-title c-font-18 c-font-slim" id="title">{{titleHelper title}}</p>
             <p class="c-price c-font-16 c-font-slim" id="price">가격:{{price}} 원</p>
 			<p class="c-price c-font-16 c-font-slim" id="duedate">마감일: ~{{DateHelper duedate}}</p>
 			<p class="c-price c-font-16 c-font-slim" id="buyTogether_address">지역:{{buytogether_address_sido}} {{buytogether_address_sigungu}}</p>
@@ -335,15 +335,23 @@ $(document).ready(function() {
 			}
 		});
 
-		Handlebars.registerHelper("visibleOrNotForFinish",
-				function(finishOrNot) {
+		Handlebars.registerHelper("visibleOrNotForFinish", function(finishOrNot) {
 
-					if (finishOrNot == true) {
-						return 'display:none;';
-					} else if (finishOrNot == false) {
-						return 'display:""';
-					}
-				});
+			if (finishOrNot == true) {
+				return 'display:none;';
+			} else if (finishOrNot == false) {
+				return 'display:""';
+			}
+		});
+		
+		Handlebars.registerHelper("titleHelper", function(title) {
+
+			if (title.length >= 10) {
+				return title.substring(0,10) + "...";
+			} else {
+				return title;
+			}
+		});
 	</script>
 
 	<!-- --------------------------------풋터------------------------------------ -->

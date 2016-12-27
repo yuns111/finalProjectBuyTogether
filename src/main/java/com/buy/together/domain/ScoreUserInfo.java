@@ -7,6 +7,12 @@ public class ScoreUserInfo {
 	private int score_user_number;
 	private int buyTogetherNumber;
 	
+	
+	public ScoreUserInfo() {
+		
+	}
+
+	//service 평판매기기
 	public ScoreUserInfo(int scored_user_number, int score, int score_user_number, int buyTogetherNumber) {
 		this.scored_user_number = scored_user_number;
 		this.score = score;
@@ -14,10 +20,18 @@ public class ScoreUserInfo {
 		this.buyTogetherNumber = buyTogetherNumber;
 	}
 	
+	//dao 평판 기록 남기기
 	public ScoreUserInfo(int scored_user_number, int score_user_number, int buyTogetherNumber) {
 		this.scored_user_number = scored_user_number;
 		this.score_user_number = score_user_number;
 		this.buyTogetherNumber = buyTogetherNumber;
+	}
+	
+	//dao 평판 점수 주기
+	public ScoreUserInfo(int scored_user_number, int score) {
+		super();
+		this.scored_user_number = scored_user_number;
+		this.score = score;
 	}
 	
 	public int getScored_user_number() {
@@ -26,12 +40,6 @@ public class ScoreUserInfo {
 	
 	public void setScored_user_number(int scored_user_number) {
 		this.scored_user_number = scored_user_number;
-	}
-	
-	public ScoreUserInfo(int scored_user_number, int score) {
-		super();
-		this.scored_user_number = scored_user_number;
-		this.score = score;
 	}
 	
 	public int getScore() {
