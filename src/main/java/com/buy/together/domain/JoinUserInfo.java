@@ -6,11 +6,13 @@ public class JoinUserInfo {
 	private int joinUserReputation;
 	private int joinUserNumber;
 	private int buyTogetherNumber;
-	
+
+	//dao 평판주려고 참여유저 조회, (참여한) 평판 매길 유저정보 가져오기에서 맵퍼로 받음
 	public JoinUserInfo() {
 		
 	}
-
+	
+	//dao 평판주려고 참여유저 조회, (참여한) 평판 매길 유저정보 가져오기에서 맵퍼로 받음
 	public JoinUserInfo(int joinUserNumber, int buyTogetherNumber) {
 		
 		this.joinUserNumber = joinUserNumber;

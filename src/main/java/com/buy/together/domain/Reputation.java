@@ -6,7 +6,7 @@ public class Reputation {
 	private int joinUserNumber;
 	private int MyBuyTogetherNumber;
 	
-	
+	//dao 개설한 같이사냥, 참여한 같이사냥
 	public Reputation(int user_number, int joinUserNumber, int myBuyTogetherNumber) {
 		this.user_number = user_number;
 		this.joinUserNumber = joinUserNumber;

@@ -6,8 +6,12 @@ public class MySearchCriteria extends Criteria{
 	private String keyword;
 	private int user_number;
 
-	public MySearchCriteria(){}
+	//RestController에서 받을 때
+	public MySearchCriteria() {
+		super();
+	}
 	
+	//RestController에서 받을 때
 	public MySearchCriteria(String searchType, String keyword, int user_number) {
 
 		this.searchType = searchType;

@@ -65,7 +65,6 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 					reputationNumber = sqlSession.selectOne(namespace+".reputationLog", reputation);
 				}
 
-
 				if(reputationNumber == 0){
 					beOrNot = false;//평판기록이 존재하지 않으면 평판을 줄 수 있음.
 				}
