@@ -152,7 +152,7 @@ function myBuyTogetherDao() {
 				
 				var keyword = "";
 				var page = 1;
-				var perPageNum = 1;
+				var perPageNum = 6;
 				var searchType = 't';
 				var user_number = sessionStorage.getItem("number");
 

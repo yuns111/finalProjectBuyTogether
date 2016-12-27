@@ -5,7 +5,7 @@ $(document).ready(function (){
 	//첫 화면(개설한 같이사냥) 
 	var keyword =  $('#keyword').val();
 	var page = 1;
-	var perPageNum = 1;
+	var perPageNum = 6;
 	var searchType = $('#searchType').val();
 	var user_number = sessionStorage.getItem("number");
 
@@ -18,7 +18,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = 1;
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -33,7 +33,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = 1;
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -50,7 +50,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = $(this).attr("href");
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -65,7 +65,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = 1;
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -80,7 +80,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = 1;
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -97,7 +97,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = $(this).attr("href");
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -112,7 +112,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = 1;
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -127,7 +127,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = 1;
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -144,7 +144,7 @@ $(document).ready(function (){
 
 		var keyword = $('#keyword').val();
 		var page = $(this).attr("href");
-		var perPageNum = 1;
+		var perPageNum = 6;
 		var searchType = $('#searchType').val();
 		var user_number = sessionStorage.getItem("number");;
 
@@ -204,7 +204,7 @@ $(document).ready(function (){
 			var keyword = $('#keyword').val();
 			var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
 			siblings('#openBuyTogetherPaging').children().children('.active').val;
-			var perPageNum = 1;
+			var perPageNum = 6;
 			var searchType = $('#searchType').val();
 			var user_number = 2;
 
@@ -218,7 +218,7 @@ $(document).ready(function (){
 				var keyword = $('#keyword').val();
 				var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
 				siblings('#openBuyTogetherPaging').children().children('.active').val;
-				var perPageNum = 1;
+				var perPageNum = 6;
 				var searchType = $('#searchType').val();
 				var user_number = 2;
 
@@ -253,7 +253,7 @@ $(document).ready(function (){
 			var keyword = $('#keyword').val();
 			var page = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().
 			siblings('#joinBuyTogetherPaging').children().children('.active').val;
-			var perPageNum = 1;
+			var perPageNum = 6;
 			var searchType = $('#searchType').val();
 			var user_number = 2;
 
