@@ -78,6 +78,12 @@ function loginController() {
 		isNewUser(userInfo, loginCheckStatus);
 
 	};
+	
+	//회원가입화면으로 이동
+	this.requestJoinin = function() {
+		
+		document.location = '/user/join';
+	}
 
 	//신규 회원 검사
 	function isNewUser(userInfo, loginCheckStatus) {
@@ -93,7 +99,6 @@ function loginController() {
 			document.location = "/"; //홈으로 이동
 
 		}
-
 	}
-
+	
 }
