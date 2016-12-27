@@ -65,7 +65,6 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 					reputationNumber = sqlSession.selectOne(namespace+".reputationLog", reputation);
 				}
 
-
 				if(reputationNumber == 0){
 					beOrNot = false;//평판기록이 존재하지 않으면 평판을 줄 수 있음.
 				}
@@ -180,6 +179,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 
 		sqlSession.update(namespace+".scoreReputation", scoreUserInfo);
 	}
+	
 	//(참여한) 평판기록 남기기
 	@Override
 	public void reputationLogForJoiner(ScoreUserInfo scoreUserInfo) throws Exception {

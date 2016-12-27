@@ -119,6 +119,7 @@ public class QnaDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testQnaDoneUpdate() throws Exception {
 
 		

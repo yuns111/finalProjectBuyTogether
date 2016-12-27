@@ -28,11 +28,15 @@ $(document).ready(function (){
 	var scri = {
 			page : page, perPageNum : perPageNum, keyword : keyword, user_number : user_number
 	};
+	
+	//리스트를 보여주기 위해 큐브포토폴리오 초기화
 	var cube = new cubphoto();
 	cube.init();
 
 	controller.requestListAll(scri);
 	
+	
+	//글쓰기버튼 클릭시
 	$('#writeButton').click(function(){
 		controller.requestWrite();
 	});

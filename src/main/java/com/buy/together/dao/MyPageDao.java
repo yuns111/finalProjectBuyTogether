@@ -28,5 +28,5 @@ public interface MyPageDao {
 	public void createInterest(MyPageDTO user) throws Exception;
 	
 	public void updateAddress(MyPageDTO user) throws Exception;
-	
+   
 }

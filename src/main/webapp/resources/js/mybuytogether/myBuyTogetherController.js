@@ -58,6 +58,10 @@ function myBuyTogetherController() {
 		dao.ScoreUserInfoForJoiner(scored_user_number, score, score_user_number, buyTogetherNumber);
 	}
 	
-	
+	//조회 클릭시
+	this.requestOpenReadBuyTogether = function(buyTogether_number){
+
+		document.location = '/buyTogether/read?buytogether_number='+buyTogether_number;
+	}
 	
 }

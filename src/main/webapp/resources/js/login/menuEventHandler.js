@@ -3,14 +3,14 @@ $(document).ready(function() {
 	var sessionId  = sessionStorage.getItem("id"); //세선에 저장된 아이디 조회
 	var url = window.location.pathname;
 	url = url.split("?")[0];
-	console.log(url);
 	
 	if(sessionId == null && localStorage.getItem("id") == null) { //로그인 기록이 없다면,
 
 		showLoginBtn(); //로그인, 회원가입 버튼 표시
 		
 		if(url == "/login/basicUserInfo" || url == "/user/Esignout" || url == "/user/Bsignout" || url == "/mypage"
-			|| url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"){
+			|| url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"
+			|| url == "/buyTogether/update"){
 
 			document.location = "/login";
 			

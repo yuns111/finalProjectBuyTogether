@@ -109,7 +109,6 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public void updateInterest(int user_number, String[] interest) throws Exception {
 		
-		String result = "fail";
 		MyPageDTO user = new MyPageDTO();
 		
 		myPageDao.deleteInterest(user_number);
@@ -136,5 +135,5 @@ public class MyPageServiceImpl implements MyPageService {
 		myPageDao.updateAddress(user);
 		
 	}
-	
+
 }
