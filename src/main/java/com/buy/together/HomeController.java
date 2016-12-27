@@ -28,4 +28,11 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String error(Locale locale, Model model) {
+		
+		return "/views/include/404page";
+		
+	}
+	
 }
