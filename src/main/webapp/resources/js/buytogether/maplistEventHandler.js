@@ -17,7 +17,9 @@ $(document).ready(function (){
 			page : page, perPageNum : perPageNum, keyword : keyword
 	};
 
-	controller.listAll(scri);
+	var cube = new cubphoto();
+	cube.init();
+
 	controller.requestBuyTogetherMap(scri);
 	
 	//검색버튼 클릭시
@@ -25,7 +27,7 @@ $(document).ready(function (){
 
 		var category_number = $('#category_number').val();
 		var hunting_type_number = $('#hunting_type_number').val();
-		var hunting_status_number = $('#hunting_status_number').val();
+		var status_number = $('#hunting_status_number').val();
 		var buytogether_address_sido = $('#sido').val();
 		var buytogether_address_sigungu = $('#sigungu').val();
 		var regDate = $('#registDate').val();
@@ -39,14 +41,15 @@ $(document).ready(function (){
 				perPageNum : perPageNum,
 				category_number : category_number,
 				hunting_type_number : hunting_type_number,
-				hunting_status_number : hunting_status_number,
+				status_number : status_number,
 				buytogether_address_sido : buytogether_address_sido,
 				buytogether_address_sigungu : buytogether_address_sigungu,
 				regDate : regDate,
 				keyword : keyword
 		}
 
-		controller.listAll(scri);
+		controller.requestBuyTogetherMap(scri);
+		
 	});
 
 	//페이징
@@ -56,7 +59,7 @@ $(document).ready(function (){
 
 		var category_number = $('#category_number').val();
 		var hunting_type_number = $('#hunting_type_number').val();
-		var hunting_status_number = $('#hunting_status_number').val();
+		var status_number = $('#hunting_status_number').val();
 		var buytogether_address_sido = $('#sido').val();
 		var buytogether_address_sigungu = $('#sigungu').val();
 		var regDate = $('#registDate').val();
@@ -71,15 +74,20 @@ $(document).ready(function (){
 				perPageNum : perPageNum,
 				category_number : category_number,
 				hunting_type_number : hunting_type_number,
-				hunting_status_number : hunting_status_number,
+				status_number : status_number,
 				buytogether_address_sido : buytogether_address_sido,
 				buytogether_address_sigungu : buytogether_address_sigungu,
 				regDate : regDate,
 				keyword : keyword
 		}
-		console.log("scri");
-		console.log(scri);
-		controller.listAll(scri);
+		
+		controller.requestBuyTogetherMap(scri);
+		
+	});
+	
+	$('#refresh').on("click", function() {
+
+		controller.requestBuyTogetherMap(scri);
 		
 	});
 	

@@ -1,92 +1,127 @@
 var map;
 
-function geoLocation(searchBuyTogether) {
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showPosition,showError);
-	} else {
-		alert("Geolocation is not supported by this browser");
-	}
-}
+function buytogetherMap() {
+	
+	var searchBuyTogether = {};
+	var myPosition = [];
+	var myBound = [];
+	var myLat, myLng, bounds, swLatlng, neLatlng, level;
+	var refresh = 0;
+	
+	this.geoLocation = function(callback) {
 
-function showPosition(position, searchBuyTogether) {
-	
-	var nLat = position.coords.latitude;
-	var nLng = position.coords.longitude;
-	
-	console.log("nLat : " + nLat);
-	console.log("nLng : " + nLng);
-	
-	map_initialize(nLat,nLng, searchBuyTogether);
-	
-}
+		if(navigator.geolocation) {
+			
+			navigator.geolocation.getCurrentPosition(function(position){
+				
+				myLat = position.coords.latitude;
+				myLng = position.coords.longitude;
+				
+				showMap();
+				
+				myBound = [swLatlng.gb, swLatlng.hb, neLatlng.gb, neLatlng.hb];
 
-function showError(error) {
-	
-	console.log(error);
-	alert("에러발생!");
-}
-
-function map_initialize(myLat, myLng, searchBuyTogether) {
-	
-	var mapContainer = document.getElementById('map');
-	var mapOption = {
-		center: new daum.maps.LatLng(myLat, myLng),
-		level: 3
+				callback(myBound);
+				
+			});
+			
+		} else {
+			alert("Geolocation is not supported by this browser");
+		}
+		
 	};
 
-	map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	
-	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-	var zoomControl = new daum.maps.ZoomControl();
-	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);  
-	
-	var str = "";
-	
-	// 여러개의 마커
-	var positions = [
-		{ content: '<div>제목</div>', latlng: new daum.maps.LatLng(myLat+1.0, myLng+1.0) },
-		{ content: '<div>내 위치</div>', latlng: new daum.maps.LatLng(myLat, myLng) }
+	function showMap() {	
 		
-		];
-
-	// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-	daum.maps.event.addListener(map, 'zoom_changed', function() {        
-/*		//처음 설정했던 지도 레벨과 현재 지도 레벨이 다르다면,
-		if(map.getLevel() != mapOption.level) {
-			
-			//리스트 다시 불러오기
-			
-		}*/
+		var mapContainer = document.getElementById('map');
+		var mapOption = { center: new daum.maps.LatLng(myLat, myLng) };
 		
-	});
-	
-	for (var i = 0; i < positions.length; i ++) {
-	    // 마커를 생성합니다
-	    var marker = new daum.maps.Marker({
-	        map: map, // 마커를 표시할 지도
-	        position: positions[i].latlng // 마커의 위치
-	    });
+		if(refresh == 0) {
+			
+			mapOption.level = 8;
+			
+		} else {
+			
+			mapOption.level = map.getLevel();
+			
+		}
+		
+		map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-	    // 마커에 표시할 인포윈도우를 생성합니다 
-	    var infowindow = new daum.maps.InfoWindow({
-	        content: positions[i].content // 인포윈도우에 표시할 내용
-	    });
+		var zoomControl = new daum.maps.ZoomControl(); // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+		
+		bounds = map.getBounds();
+		swLatlng = bounds.getSouthWest(); // 영역정보의 남서쪽 정보를 얻어옵니다 		    
+		neLatlng = bounds.getNorthEast(); // 영역정보의 북동쪽 정보를 얻어옵니다
 
-	    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-	    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-	    (function(marker, infowindow) {
-	        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-	        daum.maps.event.addListener(marker, 'mouseover', function() {
-	            infowindow.open(map, marker);
-	        });
-
-	        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-	        daum.maps.event.addListener(marker, 'mouseout', function() {
-	            infowindow.close();
-	        });
-	    })(marker, infowindow);
 	}
 	
-	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-	// marker.setMap(null);    
+	this.showMarker = function(data) {
+		
+		searchBuyTogether = data;
+
+		var markerImage = [];
+		var positions = [];
+		var imageSize = new daum.maps.Size(64, 69); 
+		var imageOprion = {offset: new daum.maps.Point(27, 69)};
+		var background = ['#32C739', '#FFDA44', '#E330B3', '#C73234', '#933EC5'];
+		var imageSrc = [
+			'http://localhost:8098/resources/img/category_1.png',
+			'http://localhost:8098/resources/img/category_2.png',
+			'http://localhost:8098/resources/img/category_3.png',
+			'http://localhost:8098/resources/img/category_4.png',
+			'http://localhost:8098/resources/img/category_5.png'
+		];
+		
+		//현재 위치에 마커 설정
+		markerImage[0] = new daum.maps.MarkerImage('http://localhost:8098/resources/img/myPosition.png', imageSize, imageOprion);
+		positions[0] = { content: '<div class="customoverlay">' 
+	    		+ '<a style="background:#2364F8;">'
+	    		+ '<span class="title">여기 계신가요?</span></a></div>', 
+				latlng: new daum.maps.LatLng(myLat, myLng), img:markerImage[0] };
+		//카테고리별 마커 이미지 설정
+		for(var i=1; i<6; i++) {
+			
+			markerImage[i] = new daum.maps.MarkerImage(imageSrc[i-1], imageSize, imageOprion);
+			
+		}
+
+		// 여러개의 마커
+		for(var i=1; i<searchBuyTogether.length; i++){
+			
+			positions[i] = {
+					content: '<div class="customoverlay">' 
+					+ '<a href="http://localhost:8098/buyTogether/read?buytogether_number=' + searchBuyTogether[i].buyTogether_number + '" style="background:' + background[searchBuyTogether[i].category_number-1] + ';">'
+					+ '<span class="title">' + searchBuyTogether[i].title.substring(0,8) + '...' + '</span></a></div>', 
+					latlng: new daum.maps.LatLng(searchBuyTogether[i].latitude, searchBuyTogether[i].longitude),
+					img: markerImage[searchBuyTogether[i].category_number]
+			};
+				
+		}
+		
+		for (var i = 0; i < positions.length; i ++) {
+		    // 마커를 생성합니다
+		    var marker = new daum.maps.Marker({
+		    	
+		        map: map, // 마커를 표시할 지도
+		        position: positions[i].latlng, // 마커의 위치
+		        image: positions[i].img
+		        
+		    });
+		    
+			var customOverlay = new daum.maps.CustomOverlay({
+				
+			    map: map,
+			    position: positions[i].latlng,
+			    content: positions[i].content,
+			    yAnchor: 1
+			    
+			});
+			
+			refresh = 1;
+		}
+		
+	};
+	
 }

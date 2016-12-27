@@ -2,18 +2,18 @@ package com.buy.together.domain;
 
 public class MySearchCriteria extends Criteria{
 
-/*	private int page;
-	private int perPageNum;*/
 	private String searchType;
 	private String keyword;
 	private int user_number;
 
+	public MySearchCriteria(){}
 	
 	public MySearchCriteria(String searchType, String keyword, int user_number) {
-		super();
+
 		this.searchType = searchType;
 		this.keyword = keyword;
 		this.user_number = user_number;
+		
 	}
 
 	public int getUser_number() {
