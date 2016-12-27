@@ -9,7 +9,6 @@ function buytogetherReadController() {
 	this.requestRead = function(buytogether_number) {
 		
 		var data = dao.readDao(buytogether_number);
-		console.log(data);
 		photoPath = data.photo_path;
 		
 		if(data.photo_path == null){

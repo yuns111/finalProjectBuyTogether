@@ -112,7 +112,6 @@ function buytogetherDao() {
 				result = data;
 			}
 		});
-		console.log("!" + result);
 		return result;
 	}
 
