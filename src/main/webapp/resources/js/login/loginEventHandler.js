@@ -39,6 +39,13 @@ $(document).ready(function() {
 
 	});
 	
+	//회원가입버튼 클릭시
+	$('#joinin').on("click", function(event) {
+		
+		controller.requestJoinin();
+
+	});
+	
 	//로그인 함수
 	function login() {
 		

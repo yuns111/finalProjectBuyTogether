@@ -24,7 +24,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 
 	@Inject
 	private BuyTogetherDao dao;
-	
+
 	@Override //유저의 관심 카테고리 존재 여부 확인
 	public Integer userInterest(Integer user_number) throws Exception {
 		return dao.userInterestDao(user_number);
@@ -34,29 +34,29 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
 		return dao.searchBuyTogetherCount(cri);
 	}
-	
+
 	@Override
 	public Integer searchBuyTogetherMapCount(ListSearchCriteria cri) throws Exception {
-		
+
 		return dao.searchBuyTogetherMapCount(cri);
 	}
-	
+
 	@Override//사냥지도 리스트
 	public List<BuyTogetherMapDTO> searchBuyTogetherMapList(ListSearchCriteria cri) throws Exception {
-		
+
 		List<BuyTogetherMapDTO> searchBuyTogether = dao.searchBuyTogetherMapList(cri);
 
 		for(int i = 0; i<searchBuyTogether.size(); i++){
-			
+
 			List<AttachedPhoto> attachedPhotos = dao.photoList(searchBuyTogether.get(i).getBuyTogether_number());
 			searchBuyTogether.get(i).setPhoto_path(attachedPhotos);
-			
+
 		}
 
 		return searchBuyTogether;
-		
+
 	}
-	
+
 	@Override //같이사냥 리스트
 	public List<BuyTogetherDTO> searchBuyTogetherList(ListSearchCriteria cri) throws Exception {
 
@@ -84,7 +84,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 
 		return dao.huntingTypeList();
 	}
-	
+
 	@Override //사냥 상태 리스트
 	public List<HuntingStatus> huntingStatusList() throws Exception {
 
@@ -109,10 +109,13 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 				dao.buyTogetherPhotoInsert(photo);
 			}
 		}
-		buytogether.setBuyTogether_number(number);
-		dao.buyTogetherAddressInsert(buytogether);
+
+		if(buytogether.getBuytogether_address_sido() != null){
+			buytogether.setBuyTogether_number(number);
+			dao.buyTogetherAddressInsert(buytogether);
+		}
 	}
-	
+
 	@Transactional
 	@Override
 	public BuyTogetherWriteDTO buyTogetherReadOne(Integer buytogether_number) throws Exception {
@@ -123,7 +126,7 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 		List<AttachedPhoto> attachedPhotos = dao.photoList(buytogether_number);
 
 		String[] path = new String[attachedPhotos.size()];
-		
+
 		for(int i=0; i<attachedPhotos.size(); i++){
 
 			path[i] = attachedPhotos.get(i).getPath();
@@ -142,11 +145,13 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 	public void buyTogetherUpdate(BuyTogetherUpdateDTO buyTogetherUpdateDTO) throws Exception {
 
 		dao.buyTogetherUpdateDao(buyTogetherUpdateDTO);
-		dao.buyTogetherUpdateAddressDao(buyTogetherUpdateDTO);
+		if(buyTogetherUpdateDTO.getBuytogether_address_sido() != null){
+			dao.buyTogetherUpdateAddressDao(buyTogetherUpdateDTO);
+		}
 		dao.buyTogetherPhotoDeleteDao(buyTogetherUpdateDTO.getBuyTogether_number());
 
 		if(buyTogetherUpdateDTO.getPath() != null){
-			
+
 			for(int i=0; i<buyTogetherUpdateDTO.getPath().length; i++){
 				AttachedPhoto photo = new AttachedPhoto();
 				photo.setBuyTogether_number(buyTogetherUpdateDTO.getBuyTogether_number());
@@ -155,5 +160,5 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 			}
 		}
 	}
-	
+
 }

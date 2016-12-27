@@ -148,6 +148,7 @@ $(document).ready(function (){
 
 				controller.requestPhotoPath(formData);
 				count++;
+				
 			} else if(count > 4){
 
 				alert("사진은 4장까지만 첨부할 수 있어요");

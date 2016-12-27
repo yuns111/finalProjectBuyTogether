@@ -115,7 +115,7 @@ function buytogetherDao() {
 		return result;
 	}
 
-	//게시글 삽입
+	//게시글 쓰기
 	this.insertDao = function(buytogether) {
 
 		console.log(buytogether);
@@ -134,7 +134,7 @@ function buytogetherDao() {
 				duedate : buytogether.duedate,
 				join_number : buytogether.join_number,
 				price : buytogether.price,
-				user_number : 4,
+				user_number : buytogether.user_number,
 				category_number : buytogether.category_number,
 				hunting_type_number : buytogether.hunting_type_number,
 				buytogether_address_sido : buytogether.buyTogether_address_sido,

@@ -124,7 +124,7 @@ function buytogetherController() {
 		dao.insertDao(buytogether);
 	}
 	
-	//같이사냥 해당 글 정보를 가져옴
+	//같이사냥 해당 글 정보를 가져옴(글수정용)
 	this.requestReadOneBuyTogether = function(buytogether_number) {
 
 		var data = dao.readOneDao(buytogether_number);

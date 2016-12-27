@@ -18,6 +18,10 @@ public class BuyTogetherUpdateDTO {
 	private String buytogether_address_sigungu;
 	private String buytogether_address_road_address;
 	private String buytogether_address_detail;
+	
+	public BuyTogetherUpdateDTO() {
+		
+	}
 
 	public int getBuyTogether_number() {
 		return buyTogether_number;

@@ -111,7 +111,7 @@
 	<select id="buytogetherNumber" resultType="Integer">
 	select buytogether_number
 	from buytogether
-	where title = #{title} and content = #{content} and user_number=#{user_number};
+	where title = #{title} and content = #{content} and user_number = #{user_number};
 	</select>
 	
 	<!-- 같이사냥 글쓰기 2.첨부사진저장 -->

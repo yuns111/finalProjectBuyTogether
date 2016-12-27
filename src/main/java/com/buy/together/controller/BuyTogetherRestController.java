@@ -248,6 +248,7 @@ public class BuyTogetherRestController {
 	public ResponseEntity<String> RequestWriteBuyTogether(BuyTogetherUpdateDTO buytogether) {
 
 		ResponseEntity<String> entity = null;
+		System.out.println(buytogether.getCategory_number());
 
 		try {
 			service.buyTogetherWrite(buytogether);
