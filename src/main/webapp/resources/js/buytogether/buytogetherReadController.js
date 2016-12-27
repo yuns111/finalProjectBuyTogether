@@ -9,14 +9,10 @@ function buytogetherReadController() {
 	this.requestRead = function(buytogether_number) {
 		
 		var data = dao.readDao(buytogether_number);
-<<<<<<< HEAD
-		photoPath = data.photo_path;
-=======
 
 		if(data == undefined) {
 			document.location = '/error';
 		}
->>>>>>> bd801c871af9edd39170e760906813b993f7af94
 		
 		photoPath = data.photo_path;
 		if(data.photo_path == null){
