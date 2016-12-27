@@ -12,14 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.buy.together.dao.BuyTogetherDao;
 import com.buy.together.dao.MyBuyTogetherDao;
-import com.buy.together.domain.AttachedPhoto;
-import com.buy.together.domain.ListSearchCriteria;
 import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.domain.ScoreUserInfo;
 import com.buy.together.dto.BuyTogetherDTO;
-import com.buy.together.dto.BuyTogetherUpdateDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
@@ -71,7 +67,7 @@ public class MyBuyTogetherDaoTest {
 
 	// searchJoinBuyTogether Test
 	@Test
-
+	@Ignore
 	public void testSearchJoinBuyTogether() throws Exception {
 
 		logger.info("testSearchJoinBuyTogether() 호출됨.");
@@ -89,14 +85,15 @@ public class MyBuyTogetherDaoTest {
 		cri.setKeyword(keyword);
 		cri.setSearchType(searchType);
 
-		dao.searchOpenBuyTogether(cri);
+		List<BuyTogetherDTO> list = dao.searchOpenBuyTogether(cri);
 
-
+		logger.info(list.toString());
+		
 	}
 
 	// searchDoneBuyTogether Test
-	@Ignore
 	@Test
+	@Ignore
 	public void testSearchDoneBuyTogether() throws Exception {
 
 		logger.info("testSearchDoneBuyTogether() 호출됨.");
@@ -104,6 +101,8 @@ public class MyBuyTogetherDaoTest {
 
 		List<BuyTogetherDTO> list = dao.searchDoneBuyTogether(cri);
 
+		logger.info(list.toString());
+		
 	}
 
 	// searchMyBuyTogetherCount Test
@@ -134,38 +133,140 @@ public class MyBuyTogetherDaoTest {
 
 	}
 
-	/*// scoreReputation Test
+	// scoreReputation Test
 	@Test
+	@Ignore
 	public void testScoreReputation() throws Exception {
 
 		logger.info("testScoreReputation() 호출됨.");	
-		List<ScoreUserInfo> scoreUserInfo
-		
-		
-		dao.scoreReputation(scoreUserInfo);
+
+		ScoreUserInfo scoreUserInfo = new ScoreUserInfo();
+		List<ScoreUserInfo> list = null;
+
+		Integer score_user_number = 5;
+		Integer score = 50;
+
+		scoreUserInfo.setScore_user_number(score_user_number);
+		scoreUserInfo.setScore(score);
+
+		dao.scoreReputation(list);
+
 
 	}
-*/
 
+	// scoreReputation Test
+	@Test	
+	@Ignore
+	public void testReputationLog() throws Exception {
 
+		logger.info("testReputationLog() 호출됨.");	
 
+		Integer scored_user_number = 1;
+		Integer score_user_number = 2;
+		Integer buyTogetherNumber = 3;
 
+		ScoreUserInfo scoreUserInfo = new ScoreUserInfo(scored_user_number, score_user_number, buyTogetherNumber);
+		List<ScoreUserInfo> scoreUserInfoList = null;
 
+		dao.reputationLog(scoreUserInfoList);
 
+	}
 
+	// FinishBuyTogether Test
+	@Test	
+	@Ignore
+	public void testFinishBuyTogether() throws Exception {
 
+		logger.info("testFinishBuyTogether() 호출됨.");	
 
+		Integer buyTogetherNumber = 3;
 
+		dao.finishBuyTogether(buyTogetherNumber);
 
+	}
 
+	// JoinReputation Test
+	@Test	
+	@Ignore
+	public void testJoinReputation() throws Exception {
 
+		logger.info("testJoinReputation() 호출됨.");	
 
+		Integer buyTogetherNumber = 3;
 
+		dao.finishBuyTogether(buyTogetherNumber);
 
+	}
 
+	// ScoreReputationForJoiner Test
+	@Test	
+	@Ignore
+	public void testScoreReputationForJoiner() throws Exception {
 
+		logger.info("testScoreReputationForJoiner() 호출됨.");	
 
+		ScoreUserInfo scoreUserInfo = new ScoreUserInfo();
 
+		Integer score = 12;
+		Integer score_user_number = 1;
 
+		scoreUserInfo.setScore(score);
+		scoreUserInfo.setScore_user_number(score_user_number);
+
+		dao.scoreReputationForJoiner(scoreUserInfo);
+	}
+
+	// reputationLogForJoiner Test
+	@Test	
+	@Ignore
+	public void testReputationLogForJoiner() throws Exception {
+
+		logger.info("testReputationLogForJoiner() 호출됨.");	
+
+		Integer scored_user_number = 1;
+		Integer score_user_number = 2;
+		Integer buyTogetherNumber = 3;
+
+		ScoreUserInfo scoreUserInfoOne = new ScoreUserInfo(scored_user_number, score_user_number, buyTogetherNumber);
+
+		dao.reputationLogForJoiner(scoreUserInfoOne);
+	}
+
+	// searchJoinBuyTogetherCount Test
+	@Test	
+	@Ignore
+	public void testSearchJoinBuyTogetherCount() throws Exception {
+
+		logger.info("testSearchJoinBuyTogetherCount() 호출됨.");	
+
+		MySearchCriteria cri = new MySearchCriteria();
+
+		String keyword ="test";
+		Integer user_number = 1;
+
+		cri.setKeyword(keyword);
+		cri.setUser_number(user_number);
+
+		dao.searchJoinBuyTogetherCount(cri);
+	}
+
+	// searchDoneBuyTogetherCount Test
+	@Test	
+	@Ignore
+	public void testSearchDoneBuyTogetherCount() throws Exception {
+
+		logger.info("testSearchDoneBuyTogetherCount() 호출됨.");	
+
+		MySearchCriteria cri = new MySearchCriteria();
+		
+		String keyword ="test";
+		Integer user_number = 1;
+
+		cri.setKeyword(keyword);
+		cri.setUser_number(user_number);
+		
+		dao.searchDoneBuyTogetherCount(cri);
+	
+	}
 
 }

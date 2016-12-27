@@ -7,6 +7,10 @@ public class ScoreUserInfo {
 	private int score_user_number;
 	private int buyTogetherNumber;
 	
+	public ScoreUserInfo(){
+		
+	}
+	
 	public ScoreUserInfo(int scored_user_number, int score, int score_user_number, int buyTogetherNumber) {
 		this.scored_user_number = scored_user_number;
 		this.score = score;
@@ -29,7 +33,7 @@ public class ScoreUserInfo {
 	}
 	
 	public ScoreUserInfo(int scored_user_number, int score) {
-		super();
+
 		this.scored_user_number = scored_user_number;
 		this.score = score;
 	}

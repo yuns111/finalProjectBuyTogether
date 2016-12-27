@@ -180,6 +180,7 @@ public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {
 
 		sqlSession.update(namespace+".scoreReputation", scoreUserInfo);
 	}
+	
 	//(참여한) 평판기록 남기기
 	@Override
 	public void reputationLogForJoiner(ScoreUserInfo scoreUserInfo) throws Exception {
