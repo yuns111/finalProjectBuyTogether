@@ -7,14 +7,12 @@ public class ScoreUserInfo {
 	private int score_user_number;
 	private int buyTogetherNumber;
 	
-<<<<<<< HEAD
-	//service 평판매기기
-=======
-	public ScoreUserInfo(){
+	
+	public ScoreUserInfo() {
 		
 	}
-	
->>>>>>> f80fe7a52c889b5327c309da682be909d6ed1cd4
+
+	//service 평판매기기
 	public ScoreUserInfo(int scored_user_number, int score, int score_user_number, int buyTogetherNumber) {
 		this.scored_user_number = scored_user_number;
 		this.score = score;
@@ -43,17 +41,7 @@ public class ScoreUserInfo {
 	public void setScored_user_number(int scored_user_number) {
 		this.scored_user_number = scored_user_number;
 	}
-<<<<<<< HEAD
-		
-=======
 	
-	public ScoreUserInfo(int scored_user_number, int score) {
-
-		this.scored_user_number = scored_user_number;
-		this.score = score;
-	}
-	
->>>>>>> f80fe7a52c889b5327c309da682be909d6ed1cd4
 	public int getScore() {
 		return score;
 	}
