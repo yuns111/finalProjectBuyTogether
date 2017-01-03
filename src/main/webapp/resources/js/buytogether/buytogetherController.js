@@ -10,6 +10,7 @@ function buytogetherController() {
 	this.requestWrite = function() {
 
 		document.location = '/buyTogether/write';
+		
 	}
 
 	//유저의 관심카테고리 존재 여부 확인

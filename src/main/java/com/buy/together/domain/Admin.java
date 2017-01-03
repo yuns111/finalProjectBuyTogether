@@ -7,7 +7,7 @@ public class Admin {
 	private String admin_pw;
 	private String admin_nickname;
 	private String admin_email;
-	private String admin_phoneNumber;
+	private String admin_phonenumber;
 	private int admin_grade;
 
 	public Admin() {
@@ -60,12 +60,12 @@ public class Admin {
 		this.admin_email = admin_email;
 	}
 
-	public String getAdmin_phoneNumber() {
-		return admin_phoneNumber;
+	public String getAdmin_phonenumber() {
+		return admin_phonenumber;
 	}
 
-	public void setAdmin_phoneNumber(String admin_phoneNumber) {
-		this.admin_phoneNumber = admin_phoneNumber;
+	public void setAdmin_phonenumber(String admin_phonenumber) {
+		this.admin_phonenumber = admin_phonenumber;
 	}
 
 	public int getAdmin_grade() {

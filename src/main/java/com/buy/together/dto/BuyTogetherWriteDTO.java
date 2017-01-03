@@ -6,7 +6,7 @@ import com.buy.together.domain.BuyTogetherAddress;
 public class BuyTogetherWriteDTO {
 	
 	private BuyTogether buytogether;
-	private BuyTogetherAddress buyTogetherAddress;
+	private BuyTogetherAddress buytogetherAddress;
 	
 	public BuyTogether getBuytogether() {
 		
@@ -17,15 +17,13 @@ public class BuyTogetherWriteDTO {
 		
 		this.buytogether = buytogether;
 	}
-	
-	public BuyTogetherAddress getBuyTogetherAddress() {
-		
-		return buyTogetherAddress;
+
+	public BuyTogetherAddress getBuytogetherAddress() {
+		return buytogetherAddress;
 	}
-	
-	public void setBuyTogetherAddress(BuyTogetherAddress buyTogetherAddress) {
-		
-		this.buyTogetherAddress = buyTogetherAddress;
+
+	public void setBuytogetherAddress(BuyTogetherAddress buytogetherAddress) {
+		this.buytogetherAddress = buytogetherAddress;
 	}
 	
 }

@@ -181,7 +181,7 @@ public class BuytogetherDaoTest {
 		BuyTogetherAddress.setBuytogether_address_sigungu(buytogether_address_sigungu);
 		BuyTogetherAddress.setBuytogether_address_road_address(buytogether_address_road_address);
 		BuyTogetherAddress.setBuytogether_address_detail(buytogether_address_detail);
-		BuyTogetherAddress.setBuyTogether_number(buyTogether_number);
+		BuyTogetherAddress.setBuytogether_number(buyTogether_number);
 
 
 		dao.buyTogetherAddressInsert(BuyTogetherAddress);
@@ -201,7 +201,7 @@ public class BuytogetherDaoTest {
 		int buytogether_number = 11;
 
 		AttachedPhoto.setPath(path);
-		AttachedPhoto.setBuyTogether_number(buytogether_number);
+		AttachedPhoto.setBuytogether_number(buytogether_number);
 
 		dao.buyTogetherPhotoInsert(AttachedPhoto);
 
@@ -255,7 +255,7 @@ public class BuytogetherDaoTest {
 		buytogetherUpdateDTO.setDuedate(duedate);
 		buytogetherUpdateDTO.setPrice(price);
 		buytogetherUpdateDTO.setJoin_number(join_number);
-		buytogetherUpdateDTO.setBuyTogether_number(buyTogether_number);
+		buytogetherUpdateDTO.setBuytogether_number(buyTogether_number);
 
 		dao.buyTogetherUpdateDao(buytogetherUpdateDTO);
 
@@ -283,7 +283,7 @@ public class BuytogetherDaoTest {
 		buytogetherUpdateDTO.setBuytogether_address_sigungu(buytogether_address_sigungu);
 		buytogetherUpdateDTO.setBuytogether_address_road_address(buytogether_address_road_address);
 		buytogetherUpdateDTO.setBuytogether_address_detail(buytogether_address_detail);
-		buytogetherUpdateDTO.setBuyTogether_number(buyTogether_number);
+		buytogetherUpdateDTO.setBuytogether_number(buyTogether_number);
 
 		dao.buyTogetherUpdateAddressDao(buytogetherUpdateDTO);
 	}
