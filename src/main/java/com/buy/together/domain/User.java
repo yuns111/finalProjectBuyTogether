@@ -5,7 +5,6 @@ import java.util.Date;
 public class User {
 
    private int user_number;
-   private String id;
    private String pw;
    private String name;
    private String email;
@@ -38,14 +37,6 @@ public class User {
 
    public void setUser_number(int user_number) {
       this.user_number = user_number;
-   }
-
-   public String getId() {
-      return id;
-   }
-
-   public void setId(String id) {
-      this.id = id;
    }
 
    public String getPw() {

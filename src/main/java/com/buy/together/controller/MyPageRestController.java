@@ -30,7 +30,7 @@ public class MyPageRestController {
 		
 		ResponseEntity<MyPageDTO> entity = null;
 		MyPageDTO user = null;
-
+		
 		try {
 			user = myPageService.readMyPage(Integer.parseInt(user_number));
 			entity = new ResponseEntity<MyPageDTO>(user, HttpStatus.OK); // HttpStatus.OK == 200
