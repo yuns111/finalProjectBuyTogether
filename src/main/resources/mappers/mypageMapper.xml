@@ -7,7 +7,7 @@
 
 	<!-- 내 정보 조회 -->
 	<select id="read" resultType="com.buy.together.dto.MyPageDTO">
-		select u.id, u.name, u.email, u.phone_number, u.birthdate, u.gender, u.nickname, u.reputation, a.user_sido, a.user_sigungu
+		select u.name, u.email, u.phone_number, u.birthdate, u.gender, u.nickname, u.reputation, a.user_sido, a.user_sigungu
 		from user u
 		left outer join useraddress a on a.user_number = u.user_number 
 		where u.user_number = #{user_number}

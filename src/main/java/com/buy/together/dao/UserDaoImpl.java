@@ -138,7 +138,7 @@ public class UserDaoImpl implements UserDao {
 		Map<String, Object> map = new HashMap<>();
 		map.put("name", user.getName());
 		map.put("email", user.getEmail());
-		map.put("id", user.getId());
+		//map.put("id", user.getId());
 		
 		return sqlSession.selectOne(namespace + ".findPassword", map);
 	}

@@ -38,10 +38,9 @@ function facebookAPI(callback) {
 
 	var user;
 	//페이스북 로그인 회원의 이메일, 이름, 아이디 정보 요청
-	FB.api('/me?fields=email, first_name, last_name, id', function(response) {	
+	FB.api('/me?fields=email, first_name, last_name', function(response) {	
 
 		var FBuser = {
-				id : response.id,
 				name : response.last_name + response.first_name,
 				email : response.email
 		};
@@ -147,14 +146,14 @@ function loginDao() {
 		if(loginCheckStatus == "true") { //로그인 상태 유지하기를 체크했다면,
 			
 			localStorage.clear(); //로컬 저장소 초기화
-			localStorage.setItem("id", user.id);
+			localStorage.setItem("email", user.email);
 			localStorage.setItem("pw", user.pw);
 			localStorage.setItem("number", user.user_number);
 			
 		}
 		
 		sessionStorage.clear(); //세션 초기화
-		sessionStorage.setItem("id", user.id);
+		sessionStorage.setItem("email", user.email);
 		sessionStorage.setItem("pw", user.pw);
 		sessionStorage.setItem("number", user.user_number);
 

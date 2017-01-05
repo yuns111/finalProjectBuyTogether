@@ -50,7 +50,7 @@ $(document).ready(function() {
 	function login() {
 		
 		var user = { 
-				id : $('#id').val(),
+				email : $('#email').val(),
 				pw : $('#pw').val()
 		};
 		
