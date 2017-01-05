@@ -10,13 +10,13 @@ function loginController() {
 	//로그인 요청
 	this.requestLogin = function(user, loginCheck) {
 		
-		if(user.id == "" || user.pw == "") { //아이디 또는 비밀번호를 작성하지 않았다면,
+		if(user.email == "" || user.pw == "") { //이메일 또는 비밀번호를 작성하지 않았다면,
 
 			message[0] = "c-font-red glyphicon glyphicon-remove-sign";
-			message[1] = "아이디 또는 비밀번호를 입력해주세요.";
+			message[1] = "이메일 또는 비밀번호를 입력해주세요.";
 			return message;
 			
-		} else { //아이디와 비밀번호를 작성했다면,
+		} else { //이메일와 비밀번호를 작성했다면,
 			
 			loginCheckStatus = loginCheck;		
 			userInfo = dao.LoginDao(user); //LoginDao 호출 후 결과 값 저장
@@ -24,7 +24,7 @@ function loginController() {
 			if(userInfo == null) { //로그인에 실패했다면,
 
 				message[0] = "c-font-red glyphicon glyphicon-remove-sign";
-				message[1] = "등록되지 않은 아이디이거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.";
+				message[1] = "등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다.";
 				return message;
 
 			} else { //로그인에 성공했다면,
