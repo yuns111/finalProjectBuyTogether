@@ -24,60 +24,47 @@ function buytogetherDao() {
 	//카테고리 리스트 요청
 	this.listCategoryDao = function() {
 
+		var result;
+		
 		$.getJSON("/restBuytogether/listCategory", function(data) {
-
-			var str = "<option value=''>선택해주세요.</option>";
-
-			$(data).each(function() {
-
-				str += "<option value='" + this.category_number + "'>";
-				str += this.category_name+"</option>";
-
-			});
-
-			$("#category_number").html(str);
+			
+			result = data;
 		});
+		
+		return result;
 	}
 
 	//사냥방식 리스트 요청
 	this.listHuntingTypeDao = function() {
 
+		var result;
+		
 		$.getJSON("/restBuytogether/listHuntingType", function(data) {
 
-			var str = "<option value=''>선택해주세요.</option>";
-
-			$(data).each(function() {
-
-				str += "<option value='" + this.hunting_type_number + "'>";
-				str += this.hunting_type+"</option>";
-			});
-
-			$("#hunting_type_number").html(str);
+			result = data;
 		});
+		
+		return result;
 	}
 	
 	//사냥방식 리스트 요청
 	this.listHuntingStatusDao = function() {
 
+		var result;
 		$.getJSON("/restBuytogether/listHuntingStatus", function(data) {
 
-			var str = "<option value=''>선택해주세요.</option>";
-
-			$(data).each(function() {
-
-				str += "<option value='" + this.status_number + "'>";
-				str += this.status_name+"</option>";
-			});
-
-			$("#hunting_status_number").html(str);
+			result = data;
 		});
+		
+		return result;
 	}
 
 	//사진경로
 	this.savePhotoPath = function(formData) {
 
+		var result;
+		
 		$.ajax({
-
 			url:'/restBuytogether/uploadAjax',
 			type: 'POST',
 			data: formData,
@@ -86,14 +73,11 @@ function buytogetherDao() {
 			contentType: false,
 			success: function(data){
 
-				var str="<div class='col-md-3'>";
-				str = str + "<img src='/restBuytogether/displayFile?fileName=" + data +"'/>";
-				str = str + "<div class='mailbox-attachment-info'>"+data.substr(data.indexOf("_",14)+1);
-				str = str + " <small class='btn btn-default btn-xs delbtn' data-src=" + data + ">X</small></div></div>";
-
-				$(".uploadedList").append(str);
+				result = data;
 			}
 		});
+		
+		return result;
 	};
 
 	//첨부사진 삭제

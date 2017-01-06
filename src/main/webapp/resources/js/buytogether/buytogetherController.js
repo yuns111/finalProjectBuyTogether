@@ -86,25 +86,60 @@ function buytogetherController() {
 	//카테고리 리스트 조회
 	this.requestCategoryList = function() {
 
-		dao.listCategoryDao();
+		var result = dao.listCategoryDao();
+		var str = "<option value=''>선택해주세요.</option>";
+
+		$(result).each(function() {
+
+			str += "<option value='" + this.category_number + "'>";
+			str += this.category_name+"</option>";
+
+		});
+
+		$("#category_number").html(str);
 	}
 
 	//사냥방식 리스트 조회
 	this.requestHuntingTypeList = function() {
 
-		dao.listHuntingTypeDao();
+		var result = dao.listHuntingTypeDao();
+		var str = "<option value=''>선택해주세요.</option>";
+
+		$(result).each(function() {
+
+			str += "<option value='" + this.hunting_type_number + "'>";
+			str += this.hunting_type+"</option>";
+		});
+
+		$("#hunting_type_number").html(str);
 	}
 
 	//사냥상태 리스트 조회
 	this.requestHuntingStatusList = function() {
 
-		dao.listHuntingStatusDao();
+		var result = dao.listHuntingStatusDao();
+		var str = "<option value=''>선택해주세요.</option>";
+
+		$(data).each(function() {
+
+			str += "<option value='" + this.status_number + "'>";
+			str += this.status_name+"</option>";
+		});
+
+		$("#hunting_status_number").html(str);
 	}
 
 	//첨부사진 경로 받아옴
 	this.requestPhotoPath = function(formData) {
 
-		dao.savePhotoPath(formData);
+		var data = dao.savePhotoPath(formData);
+		
+		var str="<div class='col-md-3'>";
+		str = str + "<img src='/restBuytogether/displayFile?fileName=" + data +"'/>";
+		str = str + "<div class='mailbox-attachment-info'>"+data.substr(data.indexOf("_",14)+1);
+		str = str + " <small class='btn btn-default btn-xs delbtn' data-src=" + data + ">X</small></div></div>";
+
+		$(".uploadedList").append(str);
 
 	}
 
@@ -138,8 +173,8 @@ function buytogetherController() {
 		
 		$("#title").val(data.buytogether.title);
 		if(data.buyTogetherAddress != null){
-			$("#address").val(data.buyTogetherAddress.buyTogether_address_road_address);
-			$("#address_detail").val(data.buyTogetherAddress.buyTogether_address_detail);
+			$("#address").val(data.buyTogetherAddress.buytogether_address_road_address);
+			$("#address_detail").val(data.buyTogetherAddress.buytogether_address_detail);
 		}
 		$("#duedate").val(duedate);
 		$("#join_number").val(data.buytogether.join_number);

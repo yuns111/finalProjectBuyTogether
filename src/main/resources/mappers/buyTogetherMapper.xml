@@ -117,13 +117,13 @@
 	<!-- 같이사냥 글쓰기 2.첨부사진저장 -->
 	<insert id="buytogetherPhotoInsert">
 		insert into attachedphoto(path, buytogether_number, board_type_number)
-		values ( #{path}, #{buyTogether_number}, 5);
+		values ( #{path}, #{buytogether_number}, 5);
 	</insert>
 	
 	<!-- 같이사냥 글쓰기 3.같이사냥 주소저장 -->
 	<insert id="buytogetherAddressInsert">
 		insert into buytogetheraddress(latitude, longitude, buytogether_address_sido, buytogether_address_sigungu, buytogether_address_road_address, buytogether_address_detail, buytogether_number)
-		values (#{latitude}, #{longitude}, #{buytogether_address_sido}, #{buytogether_address_sigungu}, #{buytogether_address_road_address}, #{buytogether_address_detail}, #{buyTogether_number});
+		values (#{latitude}, #{longitude}, #{buytogether_address_sido}, #{buytogether_address_sigungu}, #{buytogether_address_road_address}, #{buytogether_address_detail}, #{buytogether_number});
 	</insert>
 	
 	<!-- 같이사냥 글번호로 해당글 조회 -->
@@ -146,7 +146,7 @@
 		set title = #{title}, content = #{content}, category_number = #{category_number},
 			hunting_type_number = #{hunting_type_number}, duedate = #{duedate},
 			price = #{price}, updatedate = now(), join_number = #{join_number}
-		where buytogether_number = #{buyTogether_number}
+		where buytogether_number = #{buytogether_number}
 	</update>
 	
 	<!-- 같이사냥 주소 수정 -->
@@ -156,13 +156,13 @@
 			buytogether_address_sigungu = #{buytogether_address_sigungu},
 			buytogether_address_road_address = #{buytogether_address_road_address}, 
 			buytogether_address_detail = #{buytogether_address_detail}
-		where buytogether_number = #{buyTogether_number}
+		where buytogether_number = #{buytogether_number}
 	</update>
 	
 	<!-- 첨부사진 삭제 -->
 	<delete id="deletePhotoPath">
 		delete from attachedphoto
-		where buytogether_number = #{buyTogether_number}
+		where buytogether_number = #{buytogether_number}
 	</delete>
 	
 	<!-- 검색용 코드 -->
