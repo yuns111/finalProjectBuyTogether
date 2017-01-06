@@ -12,7 +12,7 @@ $(function(){
 	
 	$("#listBtn").on("click", function () {
 		
-		document.location = "/qna";
+		document.location = "/event";
 		
 	});
     

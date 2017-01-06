@@ -1,24 +1,32 @@
 $(document).ready(function() {
 	
-	var sessionId  = sessionStorage.getItem("id"); //세선에 저장된 아이디 조회
+	var returnUrl = null;
+	var sessionEmail  = sessionStorage.getItem("email"); //세선에 저장된 아이디 조회
 	var url = window.location.pathname;
 	url = url.split("?")[0];
 	
-	if(sessionId == null && localStorage.getItem("id") == null) { //로그인 기록이 없다면,
+	
+	if(sessionEmail == null && localStorage.getItem("email") == null) { //로그인 기록이 없다면,
 
 		showLoginBtn(); //로그인, 회원가입 버튼 표시
 		
 		if(url == "/login/basicUserInfo" || url == "/user/Esignout" || url == "/user/Bsignout" || url == "/mypage"
 			|| url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"
 			|| url == "/buyTogether/update"){
-
+			
+			//user_number 같이 넘겨주는 값 있을 때는 document.location 으로 바로 보낼 수 없음. returnUrl = url;
 			document.location = "/login";
 			
 		}
 		
 	} else {
 		
-		//닉네임가져오기
+		if(returnUrl != null) {
+			
+			document.location = returnUrl;
+			
+		}
+		
 		showLogoutBtn(); //로그아웃 버튼 표시
 		
 	}
@@ -37,6 +45,7 @@ $(document).ready(function() {
 		
 		localStorage.clear();
 		sessionStorage.clear();
+		alert("logout");
 		document.location = "/";
 		
 	});
@@ -64,7 +73,7 @@ $(document).ready(function() {
 		$('#loginBtn').css({display:'none'});
 		$('#joinBtn').css({display:'none'});
 		$('#logoutBtn').css({display:'block'});
-		$('#userId').text(sessionId +" 님 환영합니다");
+		$('#userId').text(sessionEmail + " 님 환영합니다");
 		
 	};
     

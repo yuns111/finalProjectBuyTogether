@@ -6,24 +6,18 @@
 	<select id="buyTogetherUserLogin" resultType="User">
 		select *
 		from user
-		where id = #{id} and pw = #{pw}
-	</select>
-	<!-- 같이사냥 관리자로그인 -->
-	<select id="buyTogetherAdminLogin" resultType="Admin">
-		select *
-		from admin
-		where admin_id = #{admin_id} and admin_pw = #{admin_pw}
+		where email = #{email} and pw = #{pw}
 	</select>
 	<!-- 네이버/페이스북 로그인 -->
 	<select id="externalLogin" resultType="User">
 		select *
 		from user
-		where id = #{id}
+		where email = #{email}
 	</select>
 	<!-- 신규회원 등록 -->
 	<insert id="create">
-		insert into user (id, name, email)
-		values(#{id}, #{name}, #{email})
+		insert into user (name, email)
+		values(#{name}, #{email})
 	</insert>
 	
 </mapper>

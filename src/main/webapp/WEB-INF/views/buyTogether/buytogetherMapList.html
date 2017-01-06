@@ -75,36 +75,34 @@
 				<!-- 지도 api 여기 느세요  -->
 				<div class="c-advanced-search1">
 					<div id="map" style="width: 100%; height: 350px;"></div>
-				</div>
-				<input type="checkbox" id="checkbox-1" class="c-check" checked="checked">
-				<label for="checkbox-1"> 
-					<span class="box" style="font-size: 15px">지도</span>
-				</label>
+				</div><br>
+				<div class="c-checkbox has-info">
+                    <input type="checkbox" id="checkbox12-111" class="c-check">
+                    <label class="c-font-bold c-font-14" for="checkbox12-111"><span></span><span class="box" id="mapCheck"></span> 지도</label>
+                </div>
 			</div>
 
 			<br> <br>
 			<!-------------------------선택 메뉴------------------------>
-			<div class="c-toggle-hide" data-object-selector="c-advanced-search"
-				data-animation-speed="600">
-				<input type="checkbox" id="checkbox-2" class="c-check"> <label
-					for="checkbox-2"> <span class="box" style="font-size: 15px">상세검색</span>
-				</label>
+			<div class="c-toggle-hide c-checkbox has-info" data-object-selector="c-advanced-search" data-animation-speed="600">
+				<input type="checkbox" id="checkbox1" class="c-check">
+                <label class="c-font-bold c-font-14" for="checkbox1"><span></span><span class="box" id="searchCheck"></span>상세검색</label><br>
 				<form class="c-advanced-search">
 					<div class="row">
 						<div class="form-group col-md-12">
 							<div class="row">
 								<div class="col-md-4">
-									<label class="control-label">카테고리</label> <select
+									<label class="c-font-bold control-label">카테고리</label> <select
 										class="form-control c-theme" id="category_number">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">사냥방식</label> <select
+									<label class="c-font-bold control-label">사냥방식</label> <select
 										class="form-control c-theme" id="hunting_type_number">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">사냥상태</label> <select
+									<label class="c-font-bold control-label">사냥상태</label> <select
 										class="form-control c-theme" id="hunting_status_number">
 									</select>
 								</div>
@@ -115,17 +113,17 @@
 						<div class="form-group col-md-12">
 							<div class="row">
 								<div class="col-md-4">
-									<label class="control-label">시/도</label> <select
+									<label class="c-font-bold control-label">시/도</label> <select
 										class="form-control c-theme" id="sido">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">시/군/구</label> <select
+									<label class="c-font-bold control-label">시/군/구</label> <select
 										class="form-control c-theme" id="sigungu">
 									</select>
 								</div>
 								<div class="col-md-4">
-									<label class="control-label">등록일</label> <select
+									<label class="c-font-bold control-label">등록일</label> <select
 										class="form-control c-theme" id="registDate">
 										<option value="">선택해주세요</option>
 										<option value="0">오늘</option>
@@ -161,22 +159,6 @@
 
 						<!--------------------같이사냥 리스트--------------------->
 						<div id="grid-container" class="buyTogetherList cbp">
-							<div class="cbp-item" id="buyTogetherLi">
-								<a href="#" class="cbp-caption">
-									<div class="cbp-caption-defaultWrap">
-										<img src="/resources/img/noImage.png" alt="">
-									</div>
-									<div class="cbp-caption-activeWrap">
-										<div class="cbp-l-caption-alignLeft">
-											<div class="cbp-l-caption-body">
-												<div class="cbp-l-caption-title">나랑 치킨 먹을 사람~~</div>
-												<div class="cbp-l-caption-desc">by 양갱갱이 (70)</div>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-
 						</div>
 					</div>
 				</div>

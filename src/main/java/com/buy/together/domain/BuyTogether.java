@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class BuyTogether {
 
-	private int buyTogether_number;
+	private int buytogether_number;
 	private String title;
 	private String content;
 	private Timestamp writeDate;
@@ -22,12 +22,12 @@ public class BuyTogether {
 
 	}
 
-	public int getBuyTogether_number() {
-		return buyTogether_number;
+	public int getBuytogether_number() {
+		return buytogether_number;
 	}
-
-	public void setBuyTogether_number(int buyTogether_number) {
-		this.buyTogether_number = buyTogether_number;
+	
+	public void setBuytogether_number(int buytogether_number) {
+		this.buytogether_number = buytogether_number;
 	}
 
 	public String getTitle() {

@@ -6,7 +6,7 @@ import com.buy.together.domain.AttachedPhoto;
 
 public class BuyTogetherMapDTO {
 	
-	private int buyTogether_number;
+	private int buytogether_number;
 	private String title;
 	private double longitude;
 	private double latitude;
@@ -19,12 +19,12 @@ public class BuyTogetherMapDTO {
 		
 	}
 
-	public int getBuyTogether_number() {
-		return buyTogether_number;
+	public int getBuytogether_number() {
+		return buytogether_number;
 	}
 
-	public void setBuyTogether_number(int buyTogether_number) {
-		this.buyTogether_number = buyTogether_number;
+	public void setBuytogether_number(int buytogether_number) {
+		this.buytogether_number = buytogether_number;
 	}
 
 	public String getTitle() {

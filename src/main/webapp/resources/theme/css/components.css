@@ -6467,7 +6467,7 @@ h1 {
     -moz-animation: growCircle 0.3s ease;
     animation: growCircle 0.3s ease; }
   .c-checkbox input[type=checkbox]:checked ~ label > .box {
-    opacity: 0;
+    opacity: 1;
     -webkit-transform: scale(0) rotate(-180deg);
     -moz-transform: scale(0) rotate(-180deg);
     transform: scale(0) rotate(-180deg); }
@@ -6498,11 +6498,11 @@ h1 {
   .c-checkbox.has-error label > .check {
     border-color: #e7505a; }
   .c-checkbox.has-info label {
-    color: #4eabe6; }
+    color: #2364F8; }
   .c-checkbox.has-info label > .box {
-    border-color: #4eabe6; }
+    border-color: #2364F8; }
   .c-checkbox.has-info label > .check {
-    border-color: #4eabe6; }
+    border-color: #2364F8; }
   .c-checkbox.has-success label {
     color: #5dc09c; }
   .c-checkbox.has-success label > .box {

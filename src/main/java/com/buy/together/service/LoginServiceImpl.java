@@ -14,10 +14,8 @@ import org.json.XML;
 import org.springframework.stereotype.Repository;
 
 import com.buy.together.dao.LoginDao;
-import com.buy.together.domain.Admin;
 import com.buy.together.domain.User;
 import com.buy.together.dto.LoginDTO;
-import com.buy.together.util.BCrypt;
 import com.buy.together.util.SHA256;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,28 +35,16 @@ public class LoginServiceImpl implements LoginService {
 	public LoginDTO buyTogetherLogin(User user) throws Exception {
 		
 		User userLogin;
-		Admin adminLogin;
 		LoginDTO userInfo = null;
 
         String shaPass = sha.getSha256(user.getPw().getBytes());
         user.setPw(shaPass);
         
 		userLogin = loginDao.buyTogetherUserLogin(user);
-		
-		if(userLogin == null) { //로그인한 유저가 같이사냥 회원이 아니라면,
-			
-			adminLogin = new Admin(user.getUser_number(), user.getId(), user.getPw());
-			adminLogin = loginDao.buyTogetherAdminLogin(adminLogin);
-			
-			if(adminLogin != null) { //같이사냥 관리자가 로그인 했다면,
-				
-				userInfo = new LoginDTO(adminLogin.getAdmin_number(), adminLogin.getAdmin_id(), adminLogin.getAdmin_pw());
-				
-			} 
-			
-		} else { //같이사냥 회원이 로그인 했다면,
 
-			userInfo = new LoginDTO(userLogin.getUser_number(), userLogin.getId(), userLogin.getPw());
+		if(userLogin != null) { //같이사냥 회원이 로그인 했다면,
+
+			userInfo = new LoginDTO(userLogin.getUser_number(), userLogin.getEmail(), userLogin.getPw());
 			userInfo.setNickname(userLogin.getNickname());
 			
 		}
@@ -109,7 +95,10 @@ public class LoginServiceImpl implements LoginService {
 		//json의 구조가 data 아래에 자식이 둘인 형태여서 map으로 파싱이 안되기 때문에 자식 노드로 접근
 		Map<String,String> userMap = JSONStringToMap(responseData.get("response").toString()); 
 		
-		User user = new User(Integer.parseInt(userMap.get("id")), userMap.get("name"), userMap.get("email"));
+		User user = new User();
+		user.setName(userMap.get("name"));
+		user.setEmail(userMap.get("email"));
+		
 		User naverUser = loginDao.externalLogin(user); //네이버 로그인 회원의 아이디 조회
 		
 		if(naverUser == null) { //네이버 로그인이 처음이라면,

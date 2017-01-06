@@ -75,21 +75,14 @@ $(document).ready(function() {
 
 			<!--  ---------------------------------------------------------- 상단 ---------------------------------------------------------- -->
 
-			<div
-				class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+			<!-- <div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both"></div> -->
 				<div class="container">
-					<div class="c-page-title c-pull-left">
-						<h3 class="c-font-uppercase c-font-sbold">정보사냥</h3>
+					<div class="container c-content-title-1">
+						<h3 class="c-font-bold">이벤트</h3>
+						<div class="c-line-left"></div>
 					</div>
-					<ul
-						class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-						<li>정보사냥</li>
-						<li>/</li>
-						<li>목록</li>
-
-					</ul>
 				</div>
-			</div>
+			
 
 			<!--  ---------------------------------------------------------- 정보사냥 목록 ---------------------------------------------------------- -->
 
@@ -132,7 +125,9 @@ $(document).ready(function() {
 
 
 	<div id=buytogetherFooter></div>
-		
+	<div class="c-layout-go2top">
+		<i class="icon-arrow-up"></i>
+	</div>
 		<script id="eventListTemplate" type="text/x-handlebars-template">
 			   	 {{#each.}}
     				<div class="row c-margin-b-40" id = "eventListAllLi">
@@ -183,8 +178,6 @@ Handlebars.registerHelper("imageHelper", function(imagePath) {
 	
 });
 </script>
-	<!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
-	<!-- END: LAYOUT/FOOTERS/GO2TOP -->
 	<!-- BEGIN: LAYOUT/BASE/BOTTOM -->
 	<!-- BEGIN: CORE PLUGINS -->
 	<script src="/resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>
