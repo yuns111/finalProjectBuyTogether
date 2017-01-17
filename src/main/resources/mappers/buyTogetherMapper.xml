@@ -45,7 +45,7 @@
         select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude, bt.category_number
         from user u,  buytogether bt, buytogetheraddress addr
         where u.user_number = bt.user_number 
-        		and bt.buytogether_number = addr.buytogether_address_number 
+        		and bt.buytogether_number = addr.buytogether_address_number
 				and addr.latitude > #{swLat} and addr.latitude < #{neLat}
         		and addr.longitude > #{swLng} and addr.longitude < #{neLng}
 		]]>
