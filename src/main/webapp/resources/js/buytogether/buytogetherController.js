@@ -18,6 +18,12 @@ function buytogetherController() {
 
 		return dao.listUserInterest(user_number);
 	}
+	
+	//유저의 관심지역 존재 여부 확인
+	this.requestUserAddress = function(user_number) {
+		
+		return dao.listUserAddress(user_number);
+	}
 
 	//같이사냥 목록 요청
 	this.requestListAll = function(scri) {
@@ -120,7 +126,7 @@ function buytogetherController() {
 		var result = dao.listHuntingStatusDao();
 		var str = "<option value=''>선택해주세요.</option>";
 
-		$(data).each(function() {
+		$(result).each(function() {
 
 			str += "<option value='" + this.status_number + "'>";
 			str += this.status_name+"</option>";
@@ -205,7 +211,7 @@ function buytogetherController() {
 		
 		if(result == 'success') {
 			
-			window.location = '/buyTogether/read?buytogether_number=' + buytogetherUpdate.buyTogether_number;
+			window.location = '/buyTogether/read?buytogether_number=' + buytogetherUpdate.buytogether_number;
 
 		} else {
 			

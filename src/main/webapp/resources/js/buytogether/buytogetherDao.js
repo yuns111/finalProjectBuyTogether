@@ -20,15 +20,43 @@ function buytogetherDao() {
 		
 		return result;
 	};
+	
+	//유저 관심 지역 존재 여부 확인
+	this.listUserAddress = function(user_number) {
+		
+		var result;
+		
+		$.ajax({
+
+			url:'/restBuytogether/userAddress',
+			type: 'post',
+			data: {user_number : user_number},
+			dataType: 'text',
+			async : false,
+			success: function(data){
+
+				result = data;
+			}
+		})
+		
+		return result;
+	}
 
 	//카테고리 리스트 요청
 	this.listCategoryDao = function() {
 
 		var result;
 		
-		$.getJSON("/restBuytogether/listCategory", function(data) {
+		$.ajax({
 			
-			result = data;
+			url:'/restBuytogether/listCategory',
+			type: 'get',
+			dataType: 'json',
+			async : false,
+			success: function(data){
+
+				result = data;
+			}
 		});
 		
 		return result;
@@ -39,9 +67,16 @@ function buytogetherDao() {
 
 		var result;
 		
-		$.getJSON("/restBuytogether/listHuntingType", function(data) {
+		$.ajax({
+			
+			url:'/restBuytogether/listHuntingType',
+			type: 'get',
+			dataType: 'json',
+			async : false,
+			success: function(data){
 
-			result = data;
+				result = data;
+			}
 		});
 		
 		return result;
@@ -51,9 +86,17 @@ function buytogetherDao() {
 	this.listHuntingStatusDao = function() {
 
 		var result;
-		$.getJSON("/restBuytogether/listHuntingStatus", function(data) {
+		
+		$.ajax({
+			
+			url:'/restBuytogether/listHuntingStatus',
+			type: 'get',
+			dataType: 'json',
+			async : false,
+			success: function(data){
 
-			result = data;
+				result = data;
+			}
 		});
 		
 		return result;
@@ -102,32 +145,12 @@ function buytogetherDao() {
 	//게시글 쓰기
 	this.insertDao = function(buytogether) {
 
-		console.log(buytogether);
 		$.ajax({
 			type : "post",
 			url : "/restBuytogether/write",
-			header: {
-				"Content-Type": "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
+			contentType: "application/json;charset=UTF-8",
 			dataType: "text",	
-			data: {
-				title : buytogether.title,
-				content : buytogether.content,
-				path : buytogether.path,
-				duedate : buytogether.duedate,
-				join_number : buytogether.join_number,
-				price : buytogether.price,
-				user_number : buytogether.user_number,
-				category_number : buytogether.category_number,
-				hunting_type_number : buytogether.hunting_type_number,
-				buytogether_address_sido : buytogether.buyTogether_address_sido,
-				buytogether_address_sigungu : buytogether.buyTogether_address_sigungu,
-				buytogether_address_road_address : buytogether.buyTogether_address_road_address,
-				buytogether_address_detail : buytogether.buyTogether_address_detail,
-				longitude : buytogether.longitude,
-				latitude : buytogether.latitude
-			},
+			data: JSON.stringify(buytogether),
 			success : function(result) {
 
 				if(result == "success") {
@@ -158,7 +181,6 @@ function buytogetherDao() {
 			}
 		});
 		
-		console.log(result);
 		return result;
 	}
 	
@@ -169,34 +191,16 @@ function buytogetherDao() {
 		$.ajax({
 			type: 'post',
 			url : '/restBuytogether/update',
-			header: {
-				"Content-Type": "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
+			contentType: "application/json;charset=UTF-8",
 			async : false,
-			data : { 
-				buyTogether_number : buytogetherUpdate.buyTogether_number,
-				title : buytogetherUpdate.title,
-				content : buytogetherUpdate.content,
-				path : buytogetherUpdate.path,
-				duedate : buytogetherUpdate.duedate,
-				join_number : buytogetherUpdate.join_number,
-				price : buytogetherUpdate.price,
-				category_number : buytogetherUpdate.category_number,
-				hunting_type_number : buytogetherUpdate.hunting_type_number,
-				buytogether_address_sido : buytogetherUpdate.buyTogether_address_sido,
-				buytogether_address_sigungu : buytogetherUpdate.buyTogether_address_sigungu,
-				buytogether_address_road_address : buytogetherUpdate.buyTogether_address_road_address,
-				buytogether_address_detail : buytogetherUpdate.buyTogether_address_detail,
-				longitude : buytogetherUpdate.longitude,
-				latitude : buytogetherUpdate.latitude
-			},
+			data : JSON.stringify(buytogetherUpdate),
 			dataType : 'text',
 			success : function(data) {
 				
 				result = data;
 			}
 		});
+		
 		return result;
 		
 	}

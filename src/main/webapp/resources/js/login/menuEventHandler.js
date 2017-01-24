@@ -11,14 +11,14 @@ $(document).ready(function() {
 		showLoginBtn(); //로그인, 회원가입 버튼 표시
 		
 		if(url == "/login/basicUserInfo" || url == "/user/Esignout" || url == "/user/Bsignout" || url == "/mypage"
-			|| url == "/user/myDipList" || url == "/buyTogether/write" || url == "/buyTogether/read"
+			|| url == "/user/myDipList" ||  url == "/buyTogether/read"
 			|| url == "/buyTogether/update"){
 			
 			//user_number 같이 넘겨주는 값 있을 때는 document.location 으로 바로 보낼 수 없음. returnUrl = url;
 			document.location = "/login";
 			
-		}
-		
+		}/*
+		url == "/buyTogether/write" ||*/
 	} else {
 		
 		if(returnUrl != null) {

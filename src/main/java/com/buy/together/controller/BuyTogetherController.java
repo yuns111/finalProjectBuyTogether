@@ -39,7 +39,7 @@ public class BuyTogetherController {
 		System.out.println("buyTogetherController/write");
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		return "/views/buyTogether/buytogetherwrite";
+		return "/views/buyTogether/buytogetherWrite";
 	}
 
 	// 신고 팝업 
@@ -67,6 +67,6 @@ public class BuyTogetherController {
 		System.out.println("buyTogetherController/write");
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		return "/views/buyTogether/buytogetherupdate";
+		return "/views/buyTogether/buytogetherUpdate";
 	}
 }

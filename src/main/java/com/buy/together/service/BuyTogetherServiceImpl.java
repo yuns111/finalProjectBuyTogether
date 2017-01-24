@@ -29,6 +29,11 @@ public class BuyTogetherServiceImpl implements BuyTogetherService {
 	public Integer userInterest(Integer user_number) throws Exception {
 		return dao.userInterestDao(user_number);
 	}
+	
+	@Override //유저의 관심 지역 존재 여부 확인
+	public Integer userAddress(Integer user_number) throws Exception {
+		return dao.userAddressDao(user_number);
+	}
 
 	@Override //리스트 확인
 	public Integer searchBuyTogetherCount(ListSearchCriteria cri) throws Exception {
