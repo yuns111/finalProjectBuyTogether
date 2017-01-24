@@ -123,6 +123,7 @@ public class BuyTogetherRestController {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			List<BuyTogetherDTO> searchBuyTogether = service.searchBuyTogetherList(scri);
+
 			map.put("searchBuyTogether", searchBuyTogether);
 			map.put("pageMaker", pageMaker);
 			
