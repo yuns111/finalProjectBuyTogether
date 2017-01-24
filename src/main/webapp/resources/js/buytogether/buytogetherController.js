@@ -323,4 +323,18 @@ function buytogetherController() {
 
 	}
 	
+	//로그인 화면으로 이동
+	this.requestLogin = function() {
+		
+		document.location = '/login';
+		
+	}
+	
+	//기초 정보 입력 화면으로 이동
+	this.requestBasicUserInfo = function() {
+		
+		document.location = '/login/basicUserInfo';
+		
+	}
+	
 }

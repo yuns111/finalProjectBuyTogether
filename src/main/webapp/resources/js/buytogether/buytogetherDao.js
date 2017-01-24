@@ -188,6 +188,7 @@ function buytogetherDao() {
 	this.UpdateBuyTogetherDao = function(buytogetherUpdate) {
 		
 		var result;
+		
 		$.ajax({
 			type: 'post',
 			url : '/restBuytogether/update',

@@ -28,14 +28,15 @@ $(document).ready(function (){
 		if($('#listOption').val()==1){
 			//관심카테고리로 보기 선택시
 			if(user_number == "undefined" || user_number == null){
-				//로그인상태가 아닌경우 로그인화면으로 가?
+				//로그인상태가 아닌경우 로그인화면으로 이동
+				controller.requestLogin();
 				
 			}
 			
 			var interest = controller.requestUserInterest(user_number);
 			if(interest <= 0){
-				//관심카테고리 등록화면으로 이동?
-				alert("관심카테고리 없음");
+				//관심카테고리 등록화면으로 이동
+				controller.requestBasicUserInfo();
 			} else {
 				//관심카테고리로 리스트 출력
 				scri.option = 1;
@@ -46,13 +47,15 @@ $(document).ready(function (){
 			//관심지역으로 보기 선택시
 			
 			if(user_number == "undefined" || user_number == null){
-				//로그인상태가 아닌경우 로그인화면으로 가?
+				//로그인상태가 아닌경우 로그인화면으로	//로그인상태가 아닌경우 로그인화면으로 이동
+				ontroller.requestLogin();
 				
 			}
 			var userAddress = controller.requestUserAddress(user_number);
 			if(userAddress <= 0){
 				//관심지역 등록화면으로 이동?
-				alert("관심지역없음");
+				controller.requestBasicUserInfo();
+				
 			} else {
 				//관심지역으로 리스트 출력
 				scri.option = 2;
