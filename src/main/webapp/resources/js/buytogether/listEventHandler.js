@@ -53,7 +53,7 @@ $(document).ready(function (){
 			}
 			var userAddress = controller.requestUserAddress(user_number);
 			if(userAddress <= 0){
-				//관심지역 등록화면으로 이동?
+				//관심지역 등록화면으로 이동
 				controller.requestBasicUserInfo();
 				
 			} else {
