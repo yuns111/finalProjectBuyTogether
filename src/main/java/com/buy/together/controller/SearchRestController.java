@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.board.model.BuyTogetherDTO;
 import com.buy.together.service.SearchService;
 
 @RestController

@@ -4,9 +4,6 @@ import java.util.List;
 
 import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.MyCriteria;
-import com.buy.together.domain.User;
-import com.buy.together.dto.BoardDTO;
-import com.buy.together.dto.BuyTogetherDTO;
 import com.buy.together.dto.QnaDTO;
 
 public interface QnaDao {

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.buy.together.domain.MyCriteria;
 import com.buy.together.domain.PageMaker;
-import com.buy.together.dto.BoardDTO;
+import com.buy.together.board.model.BoardDTO;
 import com.buy.together.service.EventService;
 
 

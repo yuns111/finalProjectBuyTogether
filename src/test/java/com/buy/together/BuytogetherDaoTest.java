@@ -10,10 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.buy.together.dao.BuyTogetherDao;
+import com.buy.together.board.dao.BuyTogetherDao;
 import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.ListSearchCriteria;
-import com.buy.together.dto.BuyTogetherUpdateDTO;
+import com.buy.together.board.model.BuyTogetherUpdateDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})

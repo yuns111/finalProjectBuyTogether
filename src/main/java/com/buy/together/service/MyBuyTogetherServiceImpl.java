@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.buy.together.dao.MyBuyTogetherDao;
 import com.buy.together.domain.AttachedPhoto;
-import com.buy.together.domain.JoinUserInfo;
+import com.buy.together.user.model.JoinUserInfo;
 import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.domain.ScoreUserInfo;
-import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.board.model.BuyTogetherDTO;
 
 @Service
 public class MyBuyTogetherServiceImpl implements MyBuyTogetherService {

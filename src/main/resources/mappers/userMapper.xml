@@ -54,7 +54,7 @@
 		where user_number = #{user_number}
 	</delete>
 	<!-- 내찜 목록 리스트 -->
-	<select id="dipList" resultType="com.buy.together.dto.BuyTogetherDTO">
+	<select id="dipList" resultType="com.buy.together.board.model.BuyTogetherDTO">
 		select bt.buytogether_number, bt.join_number, bt.title, u1.nickname,
 		bt.price, bt.duedate
 		from user u, buytogether bt, dip d, user u1

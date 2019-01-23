@@ -51,7 +51,7 @@
 	</select>
 
 	<!-- 사냥 지도 리스트 -->
-	<select id="searchBuyTogetherMapList" resultType="com.buy.together.dto.BuyTogetherMapDTO">
+	<select id="searchBuyTogetherMapList" resultType="com.buy.together.board.model.BuyTogetherMapDTO">
 	 	<![CDATA[
         select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude, bt.category_number
         from user u,  buytogether bt, buytogetheraddress addr
@@ -67,7 +67,7 @@
 	</select>
 
 	<!-- 같이사냥리스트 -->
-	<select id="searchBuyTogetherList" resultType="com.buy.together.dto.BuyTogetherDTO">
+	<select id="searchBuyTogetherList" resultType="com.buy.together.board.model.BuyTogetherDTO">
 	 	<![CDATA[
         select bt.buytogether_number, bt.title, u.nickname, u.reputation, addr.latitude, addr.longitude, bt.category_number
         from  user u, buytogether bt

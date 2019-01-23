@@ -9,11 +9,11 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.buy.together.dao.UserDao;
+import com.buy.together.user.dao.UserDao;
 import com.buy.together.domain.Interest;
-import com.buy.together.domain.User;
-import com.buy.together.domain.UserAddress;
-import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.user.model.User;
+import com.buy.together.user.model.UserAddress;
+import com.buy.together.board.model.BuyTogetherDTO;
 import com.buy.together.util.SHA256;
 
 @RunWith(SpringJUnit4ClassRunner.class)

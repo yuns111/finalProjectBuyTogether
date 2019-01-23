@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.buy.together.domain.User;
+import com.buy.together.user.model.User;
 import com.buy.together.dto.MyPageDTO;
 
 @Repository

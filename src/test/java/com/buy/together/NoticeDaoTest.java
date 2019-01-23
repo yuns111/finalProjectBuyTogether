@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.buy.together.dao.NoticeDao;
 import com.buy.together.domain.Board;
 import com.buy.together.domain.MyCriteria;
-import com.buy.together.dto.BoardDTO;
+import com.buy.together.board.model.BoardDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})

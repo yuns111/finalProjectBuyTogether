@@ -1,7 +1,5 @@
 package com.buy.together;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.junit.Ignore;
@@ -11,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.buy.together.dao.MyPageDao;
-import com.buy.together.domain.User;
+import com.buy.together.user.model.User;
 import com.buy.together.dto.MyPageDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)

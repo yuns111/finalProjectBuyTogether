@@ -3,7 +3,7 @@
 
 <mapper namespace="com.buy.together.mappers.searchMapper">
 	<!-- 같이사냥 검색 -->
-	<select id="search" resultType="com.buy.together.dto.BuyTogetherDTO">
+	<select id="search" resultType="com.buy.together.board.model.BuyTogetherDTO">
 		<![CDATA[select bt.title
 		from buytogether bt
 		WHERE bt.title like CONCAT('%', #{keyword}, '%')

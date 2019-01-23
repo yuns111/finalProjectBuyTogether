@@ -5,14 +5,13 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.buy.together.dao.JoinDao;
-import com.buy.together.domain.User;
+import com.buy.together.user.dao.JoinDao;
+import com.buy.together.user.model.User;
 import com.buy.together.util.SHA256;
 
 @RunWith(SpringJUnit4ClassRunner.class)

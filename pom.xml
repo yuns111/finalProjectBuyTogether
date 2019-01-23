@@ -9,7 +9,6 @@
 	<packaging>war</packaging>
 	<name>finalBuyTogether</name>
 	<properties>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.1.7.RELEASE</org.springframework-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
@@ -267,8 +266,8 @@
 							<goal>compile</goal>
 						</goals>
 						<configuration>
-							<source>1.6</source>
-							<target>1.6</target>
+							<source>1.8</source>
+							<target>1.8</target>
 							<compilerArgument>-Xlint:all</compilerArgument>
 							<showWarnings>true</showWarnings>
 							<showDeprecation>true</showDeprecation>
@@ -290,8 +289,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
@@ -431,7 +430,15 @@
 					</reportPlugins>
 				</configuration>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 	<reporting>
 		<outputDirectory>\target\site</outputDirectory>

@@ -15,7 +15,7 @@
 	</select>
 
 	<!-- 같이사냥 조회 -->
-	<select id="read" resultType="com.buy.together.dto.BuyTogetherDTO">
+	<select id="read" resultType="com.buy.together.board.model.BuyTogetherDTO">
 		select bt.title, bt.content,
 		bt.user_number, bt.buytogether_number, bt.duedate, u.nickname, u.gender, u.reputation,
 		bt.price, bt.buytogether_number ,ba.buytogether_address_sido,
@@ -111,7 +111,7 @@
 	</select>
 	
 	<!-- 같이사냥 신고 당한 내용 / 작성자(닉네임)  data -->
-	<select id="report" parameterType="java.util.Map" resultType = "com.buy.together.dto.BuyTogetherDTO">
+	<select id="report" parameterType="java.util.Map" resultType = "com.buy.together.board.model.BuyTogetherDTO">
 		select c.buytogether_number, c.comment_number, u.nickname, c.comment_content
 		from user u, comment c
 		where u.user_number = c.user_number 
@@ -138,7 +138,7 @@
 	</delete>
 	
 	<!-- 사냥 참여자 리스트 -->
-	<select id="joininList" resultType = "com.buy.together.dto.BuyTogetherDTO">
+	<select id="joininList" resultType = "com.buy.together.board.model.BuyTogetherDTO">
 		select u.nickname, u.reputation, u.phone_number, u.email, j.user_number
 		from user u, joinin j where j.user_number = u.user_number and j.buytogether_number = #{buytogether_number}
 	</select>

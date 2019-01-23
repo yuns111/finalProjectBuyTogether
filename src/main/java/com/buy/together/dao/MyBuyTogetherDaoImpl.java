@@ -8,11 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.buy.together.domain.AttachedPhoto;
-import com.buy.together.domain.JoinUserInfo;
+import com.buy.together.user.model.JoinUserInfo;
 import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.domain.Reputation;
 import com.buy.together.domain.ScoreUserInfo;
-import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.board.model.BuyTogetherDTO;
 
 @Repository
 public class MyBuyTogetherDaoImpl implements MyBuyTogetherDao {

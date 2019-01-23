@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buy.together.domain.JoinUserInfo;
+import com.buy.together.user.model.JoinUserInfo;
 import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.domain.PageMaker;
 import com.buy.together.domain.ScoreUserInfo;
-import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.board.model.BuyTogetherDTO;
 import com.buy.together.service.MyBuyTogetherService;
 
 @RestController

@@ -2,7 +2,7 @@ package com.buy.together.dao;
 
 import java.util.List;
 
-import com.buy.together.domain.User;
+import com.buy.together.user.model.User;
 import com.buy.together.dto.MyPageDTO;
 
 public interface MyPageDao {

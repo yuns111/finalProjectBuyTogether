@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.buy.together.domain.Board;
 import com.buy.together.domain.MyCriteria;
-import com.buy.together.dto.BoardDTO;
+import com.buy.together.board.model.BoardDTO;
 
 public interface NoticeDao {
 	

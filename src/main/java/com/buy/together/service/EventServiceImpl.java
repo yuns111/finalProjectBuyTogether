@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.buy.together.dao.EventDao;
 import com.buy.together.domain.AttachedPhoto;
 import com.buy.together.domain.MyCriteria;
-import com.buy.together.dto.BoardDTO;
+import com.buy.together.board.model.BoardDTO;
 
 @Service
 public class EventServiceImpl implements EventService {

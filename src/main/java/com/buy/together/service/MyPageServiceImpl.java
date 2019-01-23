@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.buy.together.dao.MyPageDao;
-import com.buy.together.domain.User;
+import com.buy.together.user.model.User;
 import com.buy.together.dto.MyPageDTO;
 import com.buy.together.util.SHA256;
 

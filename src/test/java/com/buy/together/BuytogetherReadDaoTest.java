@@ -12,10 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.buy.together.dao.BuyTogetherReadDao;
+import com.buy.together.board.dao.BuyTogetherReadDao;
 import com.buy.together.domain.Comment;
 import com.buy.together.domain.DeclareBoard;
-import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.board.model.BuyTogetherDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})

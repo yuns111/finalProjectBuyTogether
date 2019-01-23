@@ -16,7 +16,7 @@
 	</select>
 
 	<!-- 정보사냥 	목록 -->
-	<select id="eventListAll" resultType="com.buy.together.dto.BoardDTO">
+	<select id="eventListAll" resultType="com.buy.together.board.model.BoardDTO">
       <![CDATA[
 		select bd.board_number, bd.board_title, bd.board_content, ad.admin_nickname
 		from board bd, admin ad
@@ -32,7 +32,7 @@
 	</select>
 
 	<!-- 정보사냥 조회 -->
-	<select id="eventListOne" resultType="com.buy.together.dto.BoardDTO">
+	<select id="eventListOne" resultType="com.buy.together.board.model.BoardDTO">
 		select bd.board_number,
 		bd.board_title, bd.board_content, ad.admin_nickname
 		from board bd,

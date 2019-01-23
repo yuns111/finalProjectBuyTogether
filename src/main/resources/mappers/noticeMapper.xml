@@ -6,7 +6,7 @@
 <mapper namespace="com.buy.together.mappers.noticeMapper">
 
 	<!-- 공지사항 목록 -->
-	<select id="noticeListAll" resultType="com.buy.together.dto.BoardDTO">
+	<select id="noticeListAll" resultType="com.buy.together.board.model.BoardDTO">
 	<![CDATA[
 		select b.board_number,
 		b.board_title, a.admin_nickname, b.board_writeDate
@@ -53,7 +53,7 @@
 	</sql>
 
 	<!-- 공지사항 조회 -->
-	<select id="noticeListOne" resultType="com.buy.together.dto.BoardDTO">
+	<select id="noticeListOne" resultType="com.buy.together.board.model.BoardDTO">
 		select b.board_number, b.board_title, b.board_content, a.admin_nickname, b.board_writeDate
 		from board b, admin a
 		where b.board_number = #{board_number} and a.admin_number = b.admin_number;

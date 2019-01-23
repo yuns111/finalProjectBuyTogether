@@ -3,10 +3,10 @@ package com.buy.together.dao;
 import java.util.List;
 
 import com.buy.together.domain.AttachedPhoto;
-import com.buy.together.domain.JoinUserInfo;
+import com.buy.together.user.model.JoinUserInfo;
 import com.buy.together.domain.MySearchCriteria;
 import com.buy.together.domain.ScoreUserInfo;
-import com.buy.together.dto.BuyTogetherDTO;
+import com.buy.together.board.model.BuyTogetherDTO;
 
 public interface MyBuyTogetherDao {
 	
