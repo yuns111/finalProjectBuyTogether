@@ -219,22 +219,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
-		<sourceDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\src\main\java</sourceDirectory>
-		<scriptSourceDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\src\main\scripts</scriptSourceDirectory>
-		<testSourceDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\src\test\java</testSourceDirectory>
-		<outputDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\target\classes</outputDirectory>
-		<testOutputDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\target\test-classes</testOutputDirectory>
-		<resources>
-			<resource>
-				<directory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\src\main\resources</directory>
-			</resource>
-		</resources>
-		<testResources>
-			<testResource>
-				<directory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\src\test\resources</directory>
-			</testResource>
-		</testResources>
-		<directory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\target</directory>
+		<directory>/target</directory>
 		<finalName>together-1.0.0-BUILD-SNAPSHOT</finalName>
 		<pluginManagement>
 			<plugins>
@@ -432,18 +417,12 @@
 							<goal>deploy</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\target\site</outputDirectory>
-							<reportPlugins>
-								<reportPlugin>
-									<groupId>org.apache.maven.plugins</groupId>
-									<artifactId>maven-project-info-reports-plugin</artifactId>
-								</reportPlugin>
-							</reportPlugins>
+							<outputDirectory>\target\site</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
 				<configuration>
-					<outputDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\target\site</outputDirectory>
+					<outputDirectory>\target\site</outputDirectory>
 					<reportPlugins>
 						<reportPlugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -455,6 +434,6 @@
 		</plugins>
 	</build>
 	<reporting>
-		<outputDirectory>C:\Users\kosta13\Documents\GitHub\finalBuyTogether\target\site</outputDirectory>
+		<outputDirectory>\target\site</outputDirectory>
 	</reporting>
 </project>
